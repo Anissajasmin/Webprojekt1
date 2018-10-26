@@ -3,7 +3,6 @@
  * Created by PhpStorm.
  * User: admin
  * Date: 26.10.18
- * Time: 12:03
+ * Time: 12:24
  */
-echo"test";
-echo"test1";
+echo"testtesttest1";
