@@ -1,31 +1,46 @@
 <?php
+session_start();
+$pdo = new PDO('mysql:host=mars.iuk.hdm-stuttgart.de;dbname=u-nk093', 'nk093', 'oHae6Johxa');
 
-$name = $_POST["text"];
-echo $name;
+if(isset($_GET['login'])) {
+    $email = $_POST['hdm_mail'];
+    $passwort = $_POST['passwort'];
 
-$pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de;
-dbname=u-nk093', 'nk093', 'oHae6Johxa',
-    array('charset'=>'utf8'));
+    $statement = $pdo->prepare("SELECT * FROM login WHERE hdm_mail = :hdm_mail");
+    $result = $statement->execute(array('hdm_mail' => $email));
+    $user = $statement->fetch();
 
-$statement = $pdo->prepare("INSERT INTO id_login (content) VALUES (:name)");
-$statement->execute(array(":name"=>$name ));
-echo "id in der Datenbank: ".$pdo->lastInsertId(). "<br>";
-
-
-if($statement->execute()) {
-    while($row=$statement->fetch()) {
-        echo $row['id_login']." ".$row['content'];
-        echo "<br>";
+    //Überprüfung des Passworts
+    if ($user !== false && password_verify($passwort, $user['passwort'])) {
+        $_SESSION['userid'] = $user['id'];
+        die('Login erfolgreich. Weiter zu <a href="geheim.php">internen Bereich</a>');
+    } else {
+        $errorMessage = "E-Mail oder Passwort war ungültig<br>";
     }
-} else {
-    echo "Datenbank-Fehler:";
-    echo $statement->errorInfo()[2];
-    echo $statement->queryString;
-    die();
+
 }
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
 
-
+<?php
+if(isset($errorMessage)) {
+    echo $errorMessage;
+}
 ?>
 
+<form action="?login=1" method="post">
+    E-Mail:<br>
+    <input type="hdm_mail" size="40" maxlength="250" name="hdm_mail"><br><br>
+
+    Dein Passwort:<br>
+    <input type="password" size="40"  maxlength="250" name="passwort"><br>
+
+    <input type="submit" value="Abschicken">
+</form>
 </body>
 </html>
