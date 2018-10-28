@@ -1,13 +1,5 @@
 <?php
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <title>TOUCH</title>
-</head>
-<body>
-<h1>Login</h1>
-<?php
+
 $name = $_POST["text"];
 echo $name;
 

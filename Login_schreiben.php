@@ -7,7 +7,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de;
 dbname=u-nk093', 'nk093', 'oHae6Johxa',
     array('charset'=>'utf8'));
 
-$statement = $pdo->prepare("INSERT INTO login (id_login, content) VALUES (NULL, :name)");
+$statement = $pdo->prepare("INSERT INTO login (id_login, benutzername) VALUES (NULL, :name)");
 $statement->execute(array("name"=>$name ));
 echo "id in der Datenbank: ".$id=$pdo->lastInsertId();
 
