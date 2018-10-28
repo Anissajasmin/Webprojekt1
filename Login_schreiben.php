@@ -1,6 +1,6 @@
 <?php
 session_start();
-$pdo = new PDO('mysql:host=mars.iuk.hdm-stuttgart.de;dbname=u-nk093', 'nk093', 'oHae6Johxa');
+$pdo = new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de;dbname=u-nk093', 'nk093', 'oHae6Johxa'array('charset'=>'utf8'));
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,7 +28,7 @@ if(isset($_GET['register'])) {
 
     //Überprüfe, dass die E-Mail-Adresse noch nicht registriert wurde
     if(!$error) {
-        $statement = $pdo->prepare("SELECT * FROM login WHERE hdm_mail = :email");
+        $statement = $pdo->prepare("SELECT * FROM login WHERE hdm_mail = :hdm_mail");
         $result = $statement->execute(array('hdm_mail' => $email));
         $user = $statement->fetch();
 
@@ -42,7 +42,7 @@ if(isset($_GET['register'])) {
     if(!$error) {
         $passwort_hash = password_hash($passwort, PASSWORD_DEFAULT);
 
-        $statement = $pdo->prepare("INSERT INTO login (hdm_mail, passwort) VALUES (:email, :passwort)");
+        $statement = $pdo->prepare("INSERT INTO login (hdm_mail, passwort) VALUES (:hdm_mail, :passwort)");
         $result = $statement->execute(array('hdm_mail' => $email, 'passwort' => $passwort_hash));
 
         if($result) {
