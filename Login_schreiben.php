@@ -21,11 +21,11 @@
 
 <?php
 session_start();
-$pdo = new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de;dbname=u-nk093', 'nk093', 'oHae6Johxa');
+$pdo = new PDO('mysql: host= mars.iuk.hdm-stuttgart.de; dbname= u-nk093', 'nk093', 'oHae6Johxa');
 
 if(isset($_POST['abschicken'])):
     $error = false;
-    $Benutzername = $_POST['benutzername'];
+    $benutzername = $_POST['benutzername'];
     $passwort = $_POST['passwort'];
     $mail = $_POST['hdm_mail'];
 
