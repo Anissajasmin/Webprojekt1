@@ -23,6 +23,7 @@
 session_start();
 $pdo = new PDO('mysql:host=mars.iuk.hdm-stuttgart.de;dbname=u-nk093', 'nk093', 'oHae6Johxa');
 
+
 if(isset($_POST['abschicken'])):
     $error = false;
     $benutzername = $_POST['benutzername'];
