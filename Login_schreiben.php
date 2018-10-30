@@ -7,10 +7,6 @@
 <form action="?register=1" method="post">
     Benutzername:<br>
     <input type="text" size="40" maxlength="250" name="benutzername" placeholder="Benutzername"><br><br>
-    Vorname:<br>
-    <input type="text" size="40" maxlength="250" name="vorname" placeholder="Vorname"><br><br>
-    Nachname:<br>
-    <input type="text" size="40" maxlength="250" name="nachname" placeholder="Nachname"><br><br>
     HdM E-Mail:<br>
     <input type="email" size="40" maxlength="250" name="hdm_mail" placeholder="HdM-Email"> <br><br>
     Dein Passwort:<br>
@@ -21,7 +17,7 @@
 
 <?php
 session_start();
-$pdo = new PDO('mysql:host=mars.iuk.hdm-stuttgart.de;dbname=u-nk093', 'nk093', 'oHae6Johxa');
+$pdo = new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de;dbname=u-nk093', 'nk093', 'oHae6Johxa');
 
 
 if(isset($_POST['abschicken'])):
@@ -46,7 +42,7 @@ if(isset($_POST['abschicken'])):
     if(!$error) {
 
          $statement = $pdo->prepare("INSERT INTO login (benutzername, hdm_mail, passwort) VALUES (:benutzername, :hdm_mail, :passwort)");
-         $result = $statement->execute(array('hdm_mail' => $mail, 'passwort' => $passwort));
+         $result = $statement->execute(array('benutzername' => $benutzername, 'hdm_mail' => $mail, 'passwort' => $passwort));
 
      if($result) {
         echo 'Du wurdest erfolgreich registriert. <a href="login_lesen.php">Zum Login</a>';
@@ -57,7 +53,6 @@ if(isset($_POST['abschicken'])):
    }
 
 ?>
-
 <?php
 $showFormular = true;
 if($showFormular) {
