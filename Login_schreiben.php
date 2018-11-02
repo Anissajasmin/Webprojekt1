@@ -37,16 +37,20 @@ if(isset($_POST['abschicken'])):
         $error = true;
       }
     }endif;
+$registererror=false;
+$benutzername = $_POST['benutzername'];
+$passwort = $_POST['passwort'];
+$mail = $_POST['hdm_mail'];
 
     //Registierung erfolgreich
-    if(!$error) {
+    if(!$registererror) {
 
          $statement = $pdo->prepare("INSERT INTO login (benutzername, hdm_mail, passwort) VALUES (:benutzername, :hdm_mail, :passwort)");
          $result = $statement->execute(array('benutzername' => $benutzername, 'hdm_mail' => $mail, 'passwort' => $passwort));
 
      if($result) {
-        echo 'Du wurdest erfolgreich registriert. <a href="login_lesen.php">Zum Login</a>';
-        $showFormular = false;
+        echo 'Du wurdest erfolgreich registriert. <a href="Login_lesen.php">Zum Login</a>';
+        $showFormular = true;
     } else {
          echo 'Beim Registrieren ist leider ein Fehler aufgetreten<br>';
       }
