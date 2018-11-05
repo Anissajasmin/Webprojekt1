@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="Login_lesen.css">
 </head>
 <body>
 
@@ -10,16 +11,30 @@ if(isset($errorMessage)) {
     echo $errorMessage;
 }
 ?>
+<body>
+<div id="startseite">
+    <div id="header">
+        <h1 id="ueberschrift"> TOUCH </h1>
 
-<form action="?login=1" method="post">
-    Benutzername:<br>
-    <input type="text" size="40" maxlength="250" name="benutzername" placeholder="Benutzername"><br><br>
+    </div>
+    <div id="main">
+        <h2 id="unterueberschrift"> Login
+        </h2>
 
-    Dein Passwort:<br>
-    <input type="password" size="40"  maxlength="250" name="passwort" placeholder="Passwort"><br><br>
 
-    <input type="submit" value="Login">
-</form>
+
+        <form action="?login=1" method="post">
+            <p class="beschriftung"> Benutzername: </p>
+            <input class="beschriftung2" type="text" size="25" maxlength="250" name="benutzername" ><br><br>
+
+            <p class="beschriftung"> Dein Passwort: </p>
+            <input class="beschriftung2" type="password" size="25"  maxlength="250" name="passwort" ><br><br>
+
+            <input id="loginbutton" type="submit" value="Get in touch">
+        </form>
+    </div>
+
+
 </body>
 </html>
 

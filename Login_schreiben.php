@@ -2,20 +2,39 @@
 <html>
 <head>
     <title>Registrierung</title>
+    <link rel="stylesheet" type="text/css" href="Login_schreiben.css">
+
+
 </head>
 <body>
-<form action="?register=1" method="post">
-    Benutzername:<br>
-    <input type="text" size="40" maxlength="250" name="benutzername" placeholder="Benutzername"><br><br>
-    HdM E-Mail:<br>
-    <input type="email" size="40" maxlength="250" name="hdm_mail" placeholder="HdM-Email"> <br><br>
-    Dein Passwort:<br>
-    <input type="password" size="40"  maxlength="250" name="passwort" placeholder="Passwort"><br><br>
+<div id="startseite">
+    <div id="header">
+        <h1 id="ueberschrift"> TOUCH </h1>
 
-    <input type="submit" value="Abschicken">
-</form>
+    </div>
+    <div id="main">
+        <h2 id="unterueberschrift"> Registrierung
+        </h2>
 
-<?php
+
+
+        <form action="?register=1" method="post">
+            <p class="beschriftung"> Benutzername: </p>
+            <input class="beschriftung3" type="text" size="25" maxlength="250" name="benutzername" >
+
+
+            <p class="beschriftung"> HdM E-Mail: </p>
+            <input class= beschriftung3 type="email" size="25" maxlength="250" name="hdm_mail">
+
+
+            <p class="beschriftung"> Passwort: </p>
+            <input class= beschriftung3 type="password" size="25"  maxlength="250" name="passwort" >
+
+            <input id=loginbutton type="submit" value="Registrieren">
+        </form>
+
+
+        <?php
 session_start();
 $pdo = new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de;dbname=u-nk093', 'nk093', 'oHae6Johxa');
 
@@ -68,3 +87,4 @@ if($showFormular) {
 
 </body>
 </html>
+
