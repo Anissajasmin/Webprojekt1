@@ -40,6 +40,7 @@ if(isset($errorMessage)) {
 
 <?php
 session_start();
+
 include ("datenbankpasswort.php");
 
 if(isset($_GET['login'])) {
