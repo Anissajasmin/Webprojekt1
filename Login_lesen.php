@@ -40,7 +40,7 @@ if(isset($errorMessage)) {
 
 <?php
 session_start();
-$pdo = new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de;dbname=u-nk093', 'nk093', 'oHae6Johxa');
+include ("datenbankpasswort.php");
 
 if(isset($_GET['login'])) {
     $benutzername = $_POST['benutzername'];
