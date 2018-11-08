@@ -20,15 +20,15 @@
 
         <form action="?register=1" method="post">
             <p class="beschriftung"> Benutzername: </p>
-            <input class="beschriftung3" type="text" size="25" maxlength="250" name="benutzername" >
+            <input class="beschriftung3" type="text" size="25" maxlength="250" name="benutzername" placeholder= "Benutzername" value="" >
 
 
             <p class="beschriftung"> HdM E-Mail: </p>
-            <input class= beschriftung3 type="email" size="25" maxlength="250" name="hdm_mail">
+            <input class= beschriftung3 type="email" size="25" maxlength="250" name="hdm_mail" placeholder= "Hdm E-Mail" value="">
 
 
             <p class="beschriftung"> Passwort: </p>
-            <input class= beschriftung3 type="password" size="25"  maxlength="250" name="passwort" >
+            <input class= beschriftung3 type="password" size="25"  maxlength="250" name="passwort" placeholder = "Passwort" value="" >
 
             <input id=loginbutton type="submit" value="Registrieren">
         </form>
@@ -39,7 +39,7 @@ session_start();
  include ("datenbankpasswort.php");
 
 
-if(isset($_POST['abschicken'])):
+if(isset($_POST['Registrieren'])):
     $error = false;
     $benutzername = $_POST['benutzername'];
     $passwort = $_POST['passwort'];
@@ -70,22 +70,13 @@ $mail = $_POST['hdm_mail'];
 
          if($result) {
             echo 'Du wurdest erfolgreich registriert. <a href="Login_lesen.php">Zum Login</a>';
-            $showFormular = false;
         } else {
+             if($benutzername="" OR $mail="" OR $passwort=""){
              echo 'Beim Registrieren ist leider ein Fehler aufgetreten<br>';
-          }
+          }}
    }
 
-?>
-<?php
-$showFormular = true;
-if($showFormular) {
-    ?>
-
-    <?php
-} //Ende von if($showFormular)
 ?>
 
 </body>
 </html>
-
