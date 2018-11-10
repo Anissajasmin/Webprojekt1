@@ -1,0 +1,119 @@
+body {
+    background-image: url(startseite-bild1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+
+#startseite {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
+#ueberschrift {
+
+    font-family: "Helvetica Neue";
+    font-size: 500%;
+    color: white;
+    font-weight: 100;
+
+}
+
+#unterueberschrift {
+    display:block;
+    padding-top: 80px;
+    font-family: "Helvetica Neue";
+    color: white;
+    font-size: 130%;
+    font-weight: 200;
+}
+
+#header {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    height:130px;
+    background-color: #2C2C2C;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -o-border-radius: 100px;
+
+}
+
+#main {
+
+    width: 300px;
+    height: 450px;
+    background-color: #2C2C2C;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -o-border-radius: 100px;
+
+}
+
+#buttonlogin {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height:35px;
+    background-color:white;
+    color: black;
+    font-family: "Helvetica Neue";
+    font-size: 130%;
+    font-weight:300;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    border-radius: 70px;
+    -moz-border-radius: 70px;
+    -webkit-border-radius: 70px;
+    -o-border-radius: 70px;
+
+    position:relative;
+    top:30px;
+}
+
+#buttonlogin:hover {
+    background-color:#B9877E;
+}
+
+#buttonregister {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height:35px;
+    background-color:white;
+    color: black;
+    font-family: "Helvetica Neue";
+    font-size: 130%;
+    font-weight: 300;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    border-radius: 70px;
+    -moz-border-radius: 70px;
+    -webkit-border-radius: 70px;
+    -o-border-radius: 70px;
+
+    position:relative;
+    top:10px;
+
+}
+
+#buttonregister:hover {
+    background-color: #B9877E;
+}

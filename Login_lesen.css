@@ -1,0 +1,105 @@
+body {
+    background-image: url(startseite-bild1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+
+#startseite {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+#ueberschrift {
+
+    font-family: "Helvetica Neue";
+    font-size: 500%;
+    color: white;
+    font-weight: 100;
+
+}
+#unterueberschrift {
+    display:block;
+    padding-top: 60px;
+    font-family: "Helvetica Neue";
+    color: white;
+    font-size: 200%;
+    font-weight: 300;
+}
+
+
+#header {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    height:130px;
+    background-color: #2C2C2C;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -o-border-radius: 100px;
+
+}
+
+#main {
+
+    width: 300px;
+    height: 450px;
+    background-color: #2C2C2C;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -o-border-radius: 100px;
+
+}
+
+.beschriftung {
+    color: white;
+    font-family: "Helvetica Neue";
+    color: white;
+    font-size: 120%;
+    font-weight: 200;
+    position:relative;
+    top: 10px;
+
+}
+
+.beschriftung2 {
+    font-family: "Helvetica Neue";
+    font-size: 90%;
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -o-border-radius: 100px;
+
+    position: relative;
+    top:5px;
+
+}
+
+#loginbutton {
+
+    font-family: "Helvetica Neue";
+    font-weight: 200;
+    font-size: 130%;
+    background-color: white;
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -o-border-radius: 100px;
+
+    position: relative;
+    top:40px;
+
+}
+#loginbutton:hover {
+    background-color:#B9877E;
+}
