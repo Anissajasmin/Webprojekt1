@@ -30,7 +30,7 @@ if(isset($errorMessage)) {
             <p class="beschriftung"> Dein Passwort: </p>
             <input class="beschriftung2" type="password" size="25"  maxlength="250" name="passwort" ><br><br>
 
-            <input id="loginbutton" type="submit" value="Get in touch">
+            <input id="loginbutton" type="submit" name="login" value="Get in touch">
         </form>
     </div>
 
@@ -53,8 +53,8 @@ if(isset($_GET['login'])) {
 
     //Überprüfung des Passworts
     if ($benutzername !== false && password_verify($passwort, $benutzername ['passwort'])) {
-        $_SESSION['benutzername'] = $benutzername['id_login'];
-        die('Login erfolgreich. Weiter zu <a href="geheim.php">internen Bereich</a>');
+        $_SESSION['benutzername'] = $benutzername['login_id'];
+        die('Login erfolgreich. Weiter zu <a href="Follow.php">internen Bereich</a>');
     } else {
         $errorMessage = "Benutzername oder Passwort war ungültig<br>";
     }
