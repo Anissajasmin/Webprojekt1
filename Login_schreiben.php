@@ -4,10 +4,9 @@
     <title>Registrierung</title>
     <link rel="stylesheet" type="text/css" href="Login_schreiben.css">
 
-
 </head>
 <body>
-<div id="startseite">
+    <div id="startseite">
     <div id="header">
         <h1 id="ueberschrift"> TOUCH </h1>
 
@@ -16,67 +15,88 @@
         <h2 id="unterueberschrift"> Registrierung
         </h2>
 
-
-
-        <form action="?register=1" method="post">
+        <form action="" method="post">
             <p class="beschriftung"> Benutzername: </p>
-            <input class="beschriftung3" type="text" size="25" maxlength="250" name="benutzername" placeholder= "Benutzername" value="" >
+            <input class="beschriftung3" type="text" size="25" maxlength="250" name="benutzername" placeholder= "Benutzername" value = "">
 
 
             <p class="beschriftung"> HdM E-Mail: </p>
-            <input class= beschriftung3 type="email" size="25" maxlength="250" name="hdm_mail" placeholder= "Hdm E-Mail" value="">
+            <input class= "beschriftung3" type="email" size="25" maxlength="250" name="hdm_mail" placeholder= "Hdm E-Mail" value = "">
 
 
             <p class="beschriftung"> Passwort: </p>
-            <input class= beschriftung3 type="password" size="25"  maxlength="250" name="passwort" placeholder = "Passwort" value="" >
+            <input class= "beschriftung3" type="password" size="25"  maxlength="250" name="passwort" placeholder = "Passwort" value = "">
 
+            <input type="hidden" name="ueberpruefen" value="1">
             <input id=loginbutton type="submit" value="Registrieren">
+
         </form>
 
-
-        <?php
+<?php
 session_start();
- include ("datenbankpasswort.php");
+    include ("datenbankpasswort.php");
 
-
-if(isset($_POST['Registrieren'])):
-    $error = false;
     $benutzername = $_POST['benutzername'];
     $passwort = $_POST['passwort'];
     $mail = $_POST['hdm_mail'];
+    $errorbenutzer = false;
+    $errormail = false;
 
-    //Wurde die Mailadresse schon registriert?
-    if(!$error) {
-        $statement = $pdo->prepare("SELECT * FROM login WHERE hdm_mail = :hdm_mail");
-        $result = $statement->execute(array('hdm_mail' => $mail));
-        $benutzername = $statement->fetch();
+        //Wurde der Benutzername schon registriert?
+            if (!$errorbenutzer) {
+                $statement = $pdo->prepare("SELECT * FROM login WHERE benutzername = :benutzername");
+                $result = $statement->execute(array('benutzername' => $benutzername));
+                $user = $statement->fetch();
 
-      if($benutzername !== false) {
-        echo 'Diese E-Mail-Adresse ist bereits vergeben<br>';
-        $error = true;
-      }
-    }endif;
+                if ($user !== false) {
+                 echo '<div id="meldung" ><br>Dieser Benutzername ist bereits vergeben<br></div>';
+                 $errorbenutzer = true;
+                }
+            }
 
-$registererror=false;
-$benutzername = $_POST['benutzername'];
-$passwort = $_POST['passwort'];
-$mail = $_POST['hdm_mail'];
+        //Wurde die Mailadresse schon registriert?
+            if (!$errormail) {
+                $statement = $pdo->prepare("SELECT * FROM login WHERE hdm_mail = :hdm_mail");
+                $result = $statement->execute(array('hdm_mail' => $mail));
+                $mailadress = $statement->fetch();
 
-    //Registierung erfolgreich
-    if(!$registererror) {
 
-         $statement = $pdo->prepare("INSERT INTO login (benutzername, hdm_mail, passwort) VALUES (:benutzername, :hdm_mail, :passwort)");
-         $result = $statement->execute(array('benutzername' => $benutzername, 'hdm_mail' => $mail, 'passwort' => $passwort));
+                if ($mailadress !== false) {
+                  echo '<div id="meldung"><br>Diese E-Mail-Adresse ist bereits vergeben<br></div>';
+                  $errormail = true;
+                }
+            }
 
-         if($result) {
-            echo 'Du wurdest erfolgreich registriert. <a href="Login_lesen.php">Zum Login</a>';
-        } else {
-             if($benutzername="" OR $mail="" OR $passwort=""){
-             echo 'Beim Registrieren ist leider ein Fehler aufgetreten<br>';
-          }}
-   }
+        //Registrierung nur dann erfolgreich, wenn alle Felder ausgefüllt sind!
 
+            $errorfelder = array();
+            $fehler = null;
+            $felder = array("benutzername", "hdm_mail", "passwort");
+
+            if(isset($_POST['ueberpruefen'])) {
+                $fehler = false;
+
+                foreach($felder as $feld) {
+                    if(empty($_POST[$feld])) {
+                        $fehler = true;
+                        $errorfelder[$feld] = true;
+                    }
+                }
+            }
+
+            if($fehler === false) {
+
+                $statement = $pdo->prepare("INSERT INTO login (benutzername, hdm_mail, passwort) VALUES (:benutzername, :hdm_mail, :passwort)");
+                $result = $statement->execute(array('benutzername' => $benutzername, 'hdm_mail' => $mail, 'passwort' => $passwort));
+
+                if ($result) {
+                    echo '<div id="meldung"> <br><br>Du wurdest erfolgreich registriert. <a href="Login_lesen.php">Zum Login</a> </div>';
+                }
+            } else {
+
+                if ($fehler === true)
+                echo  '<div id="meldung"> <br><br>Bitte fülle alle Felder aus<br> </div>';
+            }
 ?>
-
 </body>
 </html>
