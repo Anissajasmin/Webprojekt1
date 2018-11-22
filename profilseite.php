@@ -41,6 +41,7 @@
 
         <div class="button1">Save</div>
         <div class="button2">Settings</div>
+        <div class="button9">Upload Picture</div>
         <div id="ueberschrift">
             <h3> Your Profile</h3>
         </div>

@@ -96,17 +96,17 @@ border-radius: 30px;
     position: absolute;
     left: 210px;
     right: 125px;
-    top: 260px;
+    top: 245px;
     width: 85px;
-    height: 65px;
+    height: 85px;
     background: #eee;
     color: #707070;
     font-family: "Helvetica Neue";
     box-sizing: border-box;
-    border-radius: 40px;
-    -moz-border-radius: 40px;
-    -webkit-border-radius: 40px;
-    -o-border-radius: 40px;
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -o-border-radius: 25px;
 
 }
 
@@ -121,17 +121,17 @@ border-radius: 30px;
     justify-content: center;
     position: absolute;
     left: 20%;
-    top: 260px;
+    top: 245px;
     width: 85px;
-    height: 65px;
+    height: 85px;
     background: #eee;
     color: #707070;
     font-family: "Helvetica Neue";
     box-sizing: border-box;
-    border-radius: 40px;
-    -moz-border-radius: 40px;
-    -webkit-border-radius: 40px;
-    -o-border-radius: 40px;
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -o-border-radius: 25px;
 
 }
 .button4:hover {
@@ -145,17 +145,17 @@ border-radius: 30px;
     justify-content: center;
     position: absolute;
     right: 20%;
-    top: 260px;
+    top: 245px;
     width: 85px;
-    height: 65px;
+    height: 85px;
     background: #eee;
     color: #707070;
     font-family: "Helvetica Neue";
     box-sizing: border-box;
-    border-radius: 40px;
-    -moz-border-radius: 40px;
-    -webkit-border-radius: 40px;
-    -o-border-radius: 40px;
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -o-border-radius: 25px;
 
 }
 
@@ -231,12 +231,33 @@ border-radius: 30px;
     background-color:#D86763;
 }
 
+.button9 {
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    top: 350px;
+    right:35px;
+    background: #eee;
+    color: #707070;
+    font-family: "Helvetica Neue";
+    box-sizing: border-box;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -o-border-radius: 15px;
+
+}
+
 
 
 #text {
     position: absolute;
-    width:220px;
-    height: 80px;
+    width:250px;
+    height: 90px;
     top: 350px;
     left: 25px;
     color: #707070;
