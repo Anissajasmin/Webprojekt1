@@ -42,7 +42,7 @@ h1 {
 
 
     width: 500px;
-    height: 2000px;
+    height: auto;
     background-color: #905A53;
     margin-top: 65px;
     border-radius: 30px;
@@ -51,7 +51,9 @@ h1 {
     -o-border-radius: 30px;
 
 }
+.wrapper{
 
+}
 
 
 #buttonfriends {

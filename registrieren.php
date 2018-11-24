@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Registrierung</title>
-    <link rel="stylesheet" type="text/css" href="Login_schreiben.css">
+    <link rel="stylesheet" type="text/css" href="registrieren.css">
 
 </head>
 <body>
@@ -39,38 +39,54 @@ session_start();
     $benutzername = $_POST['benutzername'];
     $passwort = $_POST['passwort'];
     $mail = $_POST['hdm_mail'];
-    $errorbenutzer = false;
-    $errormail = false;
+    $fehler = false;
 
         //Wurde der Benutzername schon registriert?
-            if (!$errorbenutzer) {
-                $statement = $pdo->prepare("SELECT * FROM login WHERE benutzername = :benutzername");
-                $result = $statement->execute(array('benutzername' => $benutzername));
+
+            if (!$fehler) {
+                $statement = $pdo->prepare("SELECT benutzername FROM login WHERE benutzername = :benutzername");
+                $result = $statement->execute(array(':benutzername' => $benutzername));
                 $user = $statement->fetch();
 
+
                 if ($user !== false) {
-                 echo '<div id="meldung" ><br>Dieser Benutzername ist bereits vergeben<br></div>';
-                 $errorbenutzer = true;
+                    echo '<div id="meldung"><br>Dieser Benutzername ist bereits vergeben<br></div>';
+                    $fehler = true;
                 }
             }
 
+        // Ist der Benutzername valide?
+
+            if (strlen($benutzername) >= 3 && strlen ($benutzername) <= 32) {
+
+                $statement = $pdo->prepare("INSERT INTO login (benutzername, hdm_mail, passwort) VALUES (:benutzername, :hdm_mail, :passwort)");
+                $ergebnis = $statement->execute(array(':benutzername' => $benutzername, ':hdm_mail' => $mail, ':passwort' => $passwort));
+
+                if ($ergebnis) {
+                    echo '<div id="meldung"> <br><br>Du wurdest erfolgreich registriert. <a href="login.php">Zum Login</a> </div>';
+                }
+            } else {
+
+                echo  '<div id="meldung"> <br><br>Der Benutzername ist ungültig.<br> </div>';
+            }
+
+
         //Wurde die Mailadresse schon registriert?
-            if (!$errormail) {
-                $statement = $pdo->prepare("SELECT * FROM login WHERE hdm_mail = :hdm_mail");
-                $result = $statement->execute(array('hdm_mail' => $mail));
+            if (!$fehler) {
+                $statement = $pdo->prepare("SELECT hdm_mail FROM login WHERE hdm_mail = :hdm_mail");
+                $result = $statement->execute(array(':hdm_mail' => $mail));
                 $mailadress = $statement->fetch();
 
 
                 if ($mailadress !== false) {
-                  echo '<div id="meldung"><br>Diese E-Mail-Adresse ist bereits vergeben<br></div>';
-                  $errormail = true;
+                    echo '<div id="meldung"><br>Diese E-Mail-Adresse ist bereits vergeben<br></div>';
+                    $fehler = true;
                 }
             }
 
         //Registrierung nur dann erfolgreich, wenn alle Felder ausgefüllt sind!
 
             $errorfelder = array();
-            $fehler = null;
             $felder = array("benutzername", "hdm_mail", "passwort");
 
             if(isset($_POST['ueberpruefen'])) {
@@ -87,10 +103,10 @@ session_start();
             if($fehler === false) {
 
                 $statement = $pdo->prepare("INSERT INTO login (benutzername, hdm_mail, passwort) VALUES (:benutzername, :hdm_mail, :passwort)");
-                $result = $statement->execute(array('benutzername' => $benutzername, 'hdm_mail' => $mail, 'passwort' => $passwort));
+                $ergebnis = $statement->execute(array(':benutzername' => $benutzername, ':hdm_mail' => $mail, ':passwort' => $passwort));
 
-                if ($result) {
-                    echo '<div id="meldung"> <br><br>Du wurdest erfolgreich registriert. <a href="Login_lesen.php">Zum Login</a> </div>';
+                if ($ergebnis) {
+                    echo '<div id="meldung"> <br><br>Du wurdest erfolgreich registriert. <a href="login.php">Zum Login</a> </div>';
                 }
             } else {
 

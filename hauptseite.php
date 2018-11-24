@@ -5,6 +5,12 @@
     <title>Hauptseite</title>
     <link rel="stylesheet" type="text/css" href="hauptseite.css";
 </head>
+<?php
+session_start();
+include_once "logincheck.php";
+if (isset($_SESSION['logged-in'])) {
+
+?>
 <body>
 
 <div id="hauptseite">
@@ -43,7 +49,7 @@
 
 
 
-            <form id= postbox2 action="Login_lesen.php" method="post">
+            <form id= postbox2 action="login.php" method="post">
                      <textarea id="text" name="text" placeholder="Post something" cols="40" rows="4">
                         Hallo
                       </textarea>
@@ -67,7 +73,13 @@
 
 
 </div>
+<?php
+} else {
 
+    echo "Bitte logge dich ein oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
+
+}
+?>
 
 
 
