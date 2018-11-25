@@ -18,11 +18,11 @@
     <div id="main">
         <h2 id="unterueberschrift"> Connect with other people
         </h2>
-        <a style="text-decoration:none;" href="Login_lesen.php">
+        <a style="text-decoration:none;" href="login.php">
             <div id="buttonlogin">Login</div>
         </a>
 
-        <a style="text-decoration: none;" href="Login_schreiben.php">
+        <a style="text-decoration: none;" href="registrieren.php">
             <div id="buttonregister">Register</div>
         </a>
 

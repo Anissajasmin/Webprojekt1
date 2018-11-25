@@ -5,7 +5,13 @@
     <input type="submit" name="folgen" value="folgen">
 </form>
 <?php
+session_start();
 
+if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
+
+    header ("Location: login.php");
+
+}
 include ("datenbankpasswort.php");
 
 
