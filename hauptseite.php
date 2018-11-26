@@ -8,8 +8,9 @@
 <?php
 session_start();
 include_once "logincheck.php";
-if (isset($_SESSION['logged-in'])) {
-
+if (!isset($_SESSION['logged-in'])) {
+    echo "Bitte logge dich ein oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
+}else{
 ?>
 <body>
 
@@ -74,10 +75,6 @@ if (isset($_SESSION['logged-in'])) {
 
 </div>
 <?php
-} else {
-
-    echo "Bitte logge dich ein oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
-
 }
 ?>
 
