@@ -20,6 +20,21 @@ if (!isset($_SESSION['logged-in'])) {
     <div id="header">
         <h1>TOUCH</h1>
 
+        <ul id="navigation">
+
+            <li class="listitem"><a href="#">Mein Feed</a></li>
+            <li class="listitem"><a href="#">Mein Profil</a>
+                <ul>
+                    <li><a href="#"> Meine Daten</a></li>
+                    <li><a href="#"> Meine Beiträge</a></li>
+                    <li><a href="#"> Einstellungen</a></li>
+                </ul>
+            </li>
+            <li class="listitem"><a href="#">Meine Freunde</a></li>
+
+        </ul>
+
+
         <label id="suche1" for="suche">Search</label>
         <input type="search" id="suche" placeholder="Profile, ...">
 
