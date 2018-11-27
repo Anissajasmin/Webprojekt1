@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Startseite Touch</title>
-    <link rel="stylesheet" type="text/css" href="Startseitecss.css">
+    <link rel="stylesheet" type="text/css" href="Startseite.css">
 </head>
 
 

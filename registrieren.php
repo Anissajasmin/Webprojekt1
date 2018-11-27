@@ -37,8 +37,10 @@ session_start();
     include ("datenbankpasswort.php");
 
     $benutzername = $_POST['benutzername'];
-    $passwort = $_POST['passwort'];
     $mail = $_POST['hdm_mail'];
+    $passwort = $_POST['passwort'];
+    $passworthash = password_hash($passwort, PASSWORD_DEFAULT);
+
     $fehler = false;
 
         //Wurde der Benutzername schon registriert?
@@ -53,21 +55,6 @@ session_start();
                     echo '<div id="meldung"><br>Dieser Benutzername ist bereits vergeben<br></div>';
                     $fehler = true;
                 }
-            }
-
-        // Ist der Benutzername valide?
-
-            if (strlen($benutzername) >= 3 && strlen ($benutzername) <= 32) {
-
-                $statement = $pdo->prepare("INSERT INTO login (benutzername, hdm_mail, passwort) VALUES (:benutzername, :hdm_mail, :passwort)");
-                $ergebnis = $statement->execute(array(':benutzername' => $benutzername, ':hdm_mail' => $mail, ':passwort' => $passwort));
-
-                if ($ergebnis) {
-                    echo '<div id="meldung"> <br><br>Du wurdest erfolgreich registriert. <a href="login.php">Zum Login</a> </div>';
-                }
-            } else {
-
-                echo  '<div id="meldung"> <br><br>Der Benutzername ist ungültig.<br> </div>';
             }
 
 
@@ -103,7 +90,7 @@ session_start();
             if($fehler === false) {
 
                 $statement = $pdo->prepare("INSERT INTO login (benutzername, hdm_mail, passwort) VALUES (:benutzername, :hdm_mail, :passwort)");
-                $ergebnis = $statement->execute(array(':benutzername' => $benutzername, ':hdm_mail' => $mail, ':passwort' => $passwort));
+                $ergebnis = $statement->execute(array(':benutzername' => $benutzername, ':hdm_mail' => $mail, ':passwort' => $passworthash));
 
                 if ($ergebnis) {
                     echo '<div id="meldung"> <br><br>Du wurdest erfolgreich registriert. <a href="login.php">Zum Login</a> </div>';
@@ -113,6 +100,8 @@ session_start();
                 if ($fehler === true)
                 echo  '<div id="meldung"> <br><br>Bitte fülle alle Felder aus<br> </div>';
             }
+
+
 ?>
 </body>
 </html>
