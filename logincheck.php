@@ -1,6 +1,8 @@
 
 <?php
 
+
+
 session_start();
     include ("datenbankpasswort.php");
 if (isset($_POST["benutzername"]) AND isset($_POST["passwort"])) {

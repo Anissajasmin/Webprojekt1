@@ -65,8 +65,6 @@ session_start();
                 $fehler = true;
             }}
 
-
-
         //Wurde die Mailadresse schon registriert?
             if (!$fehler) {
                 $statement = $pdo->prepare("SELECT hdm_mail FROM login WHERE hdm_mail = :hdm_mail");

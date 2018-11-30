@@ -40,8 +40,6 @@ if (!isset($_SESSION['logged-in'])) {
 
     </div>
 
-
-
     <div id="main">
 
         <div id="recommondation">

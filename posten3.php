@@ -47,6 +47,7 @@
 			}
     ?>
 
+
 </head>
 <body>
 <p align="center"><b> Neuer Beitrag</b></p>
@@ -82,14 +83,13 @@
         <?php
         //Chronik - wo die geposteten Beiträge auftauchen
 
-
             $stmt = $pdo->prepare("SELECT beitrag.*, login.* FROM beitrag, login ORDER BY beitrag.zeitstempel DESC ");
 
             $result = $stmt->execute();
             while ($row = $stmt->fetch()) {
                 echo "<tr>";
-                echo "<td>" . $row['benutzername'] . "</td>";
-                echo "<td>" . $row['posts'] . "</td>";
+                echo "<td>" . $row["benutzername"] . "</td>";
+                echo "<td>" . $row["posts"] . "</td>";
                 echo "</tr>";
             }
         ?>
@@ -98,68 +98,5 @@
 </body>
 </html>
 <?php
-
-//Einfügen Bild
-
-if ()
-{
-    if ($art == 1){
-        //Neuer Name
-        $fn = $_FILES["upfile"] ["name"];
-        $fn_teile = explode( ".", $fn);
-        $fn_endung= $fn_teile [count($fn_teile) - 1];
-        if (strtolower ($fn_endung) == "jpg") {
-            $fn = "post_" . date("YmdHis") . "." . $fn_endung;
-
-
-            //In DB einfügen, Bild kopieren
-
-            copy($_FILES["upfile"]["tmp_name"], $fn);
-            $statement = $pdo->prepare("INSERT INTO posts (art,posts) VALUES art = :art, posts = :posts");
-            $result = $statement->execute(array(":art" => $art, ":posts => $posts" ));
-
-
-            // Originalgröße ermitteln
-
-            $info = getimagesize($fn);
-            $width_alt = $info[0];
-            $height_alt = $info[1];
-
-
-            //Neue Bildgröße festlegen
-            if ($width_alt > $height_alt) {
-                $width_neu = 320;
-                $height_neu = ceil($height_alt * $width_neu / $width_alt);
-            } else {
-                $height_neu = 240;
-                $width_neu = ceil($width_alt * $height_neu / $height_alt);
-
-            }
-
-            // Altes und neues Grafikobjekt erzeugen
-
-            $im_alt = imagecreatefromjpeg($fn);
-            $im_neu = imagecreatetruecolor($width_neu, $height_neu);
-
-
-            //Bild in neuer Größe kopieren, speichern
-
-            imagecopyresampled($im_neu, $im_alt, 0, 0, 0, 0, $width_neu, $height_neu, $width_alt, $height_alt);
-            imagejpeg($im_neu, $fn);
-
-            //Grafikobjekt löschen
-            imagedestroy($im_alt);
-            imagedestroy($im_neu);
-        }
-
-        else
-            echo "<p> Bild wurde nicht hochgeladen, muss vom Typ JPG sein!</p>";
-
-
-    }}
-
-
     }
-
-
 ?>
