@@ -28,7 +28,7 @@
             <input class= "beschriftung3" type="password" size="25"  maxlength="250" name="passwort" placeholder = "Passwort" value = "">
 
             <input type="hidden" name="ueberpruefen" value="1">
-            <input id=loginbutton type="submit" value="Registrieren">
+            <input id=loginbutton type="submit" name = "registrieren" value="Registrieren">
 
         </form>
 
@@ -57,6 +57,13 @@ session_start();
                 }
             }
 
+        //Wurde der Benutzername schon registriert?
+
+    if (isset($_POST['benutzername'])){
+        if (!strlen($benutzername) >= 3 && !strlen($benutzername) <= 32) {
+                echo '<div id="meldung"><br>Dieser Benutzername ist ungültig<br></div>';
+                $fehler = true;
+            }}
 
         //Wurde die Mailadresse schon registriert?
             if (!$fehler) {

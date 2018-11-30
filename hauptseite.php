@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Hauptseite</title>
-    <link rel="stylesheet" type="text/css" href="hauptseite.css";
+    <link rel="stylesheet" type="text/css" href="hauptseite.css">
 </head>
 <?php
 session_start();
@@ -39,8 +39,6 @@ if (!isset($_SESSION['logged-in'])) {
         <input type="search" id="suche" placeholder="Profile, ...">
 
     </div>
-
-
 
     <div id="main">
 
