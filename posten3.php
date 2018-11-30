@@ -83,7 +83,7 @@
         <?php
         //Chronik - wo die geposteten Beiträge auftauchen
 
-            $stmt = $pdo->prepare("SELECT beitrag.*, login.* FROM beitrag, login ORDER BY beitrag.zeitstempel DESC ");
+            $stmt = $pdo->prepare("SELECT * FROM vlj_beitraglogin ORDER BY zeitstempel DESC ");
 
             $result = $stmt->execute();
             while ($row = $stmt->fetch()) {
