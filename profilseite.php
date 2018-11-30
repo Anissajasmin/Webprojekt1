@@ -43,7 +43,7 @@
         </div>
 
 
-            <form id= postbox2 action="Login_lesen.php" method="post">
+            <form id= postbox2 action="login.php" method="post">
                      <textarea id="text" name="text" placeholder="Write something..." cols="40" rows="4"></textarea>
                 <br>
                 <input type="submit">
