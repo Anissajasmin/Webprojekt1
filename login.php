@@ -33,11 +33,8 @@
 session_start();
 
 include_once ("logincheck.php");
-if (isset($_SESSION['logged-in'])) {
+if (isset($_SESSION['login-id'])) {
 
-}else {
-    echo '<p id="meldung">Deine eingegebenen Daten sind leider falsch. Probiers nochmal.
-<a href="login.php">Zum Login</a></p><br>';
 }
 
 
