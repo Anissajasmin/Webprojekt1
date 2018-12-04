@@ -57,13 +57,6 @@ session_start();
                 }
             }
 
-        //Wurde der Benutzername schon registriert?
-
-    if (isset($_POST['benutzername'])){
-        if (!strlen($benutzername) >= 3 && !strlen($benutzername) <= 32) {
-                echo '<div id="meldung"><br>Dieser Benutzername ist ungültig<br></div>';
-                $fehler = true;
-            }}
 
         //Wurde die Mailadresse schon registriert?
             if (!$fehler) {
@@ -77,6 +70,13 @@ session_start();
                     $fehler = true;
                 }
             }
+
+        //Ist die Mailadresse von der HdM?
+
+$mail_teile = explode( "@", $mail);
+$mail_endung= $mail_teile [count($mail_teile) - 1];
+if (strtolower ($mail_endung) !== "hdm-stuttgart.de") {
+echo '<p id="meldung">Bitte benutze eine HdM-Mailadresse!</p>';}
 
         //Registrierung nur dann erfolgreich, wenn alle Felder ausgefüllt sind!
 
@@ -104,9 +104,14 @@ session_start();
                 }
             } else {
 
-                if ($fehler === true)
-                echo  '<div id="meldung"> <br><br>Bitte fülle alle Felder aus<br> </div>';
+                if ($fehler === true) {
+                    echo '<div id="meldung"> <br><br>Bitte fülle alle Felder aus<br> </div>';
+                }
+                if (strlen($benutzername) <= 3 && strlen($benutzername) >= 32) {
+                echo '<div id="meldung"><br><br>Dieser Benutzername ist ungültig<br></div>';
+                }
             }
+
 
 
 ?>

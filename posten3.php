@@ -52,7 +52,7 @@
 <body>
 <p align="center"><b> Neuer Beitrag</b></p>
 
-<form action="posten3.php" method="post">
+<form  action="posten3.php" method="post">
     <input type="hidden" name="text" value="1">
     <p> Schreibe einen Beitrag (max. 1000 Zeichen):</p>
     <p><textarea name="posts" rows="5" cols="80" value="" ></textarea></p>
@@ -63,7 +63,7 @@
 <p><b> oder </b></p>
 
 <form enctype="multipart/form-data"
-      action="posten3.php" method="post">
+      name = "uploadformular" action="posten3.php" method="post">
     <input type="hidden" name="picture" value="1">
     <p> Auswahl und Absenden des Bildes:</p>
     <p><input name="upfile" type="file"></p>
@@ -98,5 +98,63 @@
 </body>
 </html>
 <?php
+
+//Einfügen Bild
+
+if (array_key_exists('upfile',$_FILES)) {
+
+$tmpname = $_FILES['upfile']['tmp_name'];
+
+$type = $_FILES['upfile']['type'];
+
+$hndFile = fopen($tmpname, "r");
+
+$data = addslashes(fread($hndFile, filesize($tmpname)));
+
+$statement = $pdo->prepare("INSERT INTO beitrag (bild, bildtext, user_id) VALUES ('$data', '$type', '$user_id')");
+$result = $statement->execute();
+
+}
+
+        else {
+            echo "<p> Bild wurde nicht hochgeladen, muss vom Typ JPG sein!</p>";
+        }
+
+
+    ?>
+<div>
+    <table>
+        <tr>
+            <th>Benutzername</th>
+            <th>Bild</th>
+        </tr>
+
+        <?php
+        //Chronik - wo die geposteten Bilder auftauchen
+
+
+        $stmt = $pdo->prepare("SELECT * FROM vlj_beitraglogin ORDER BY zeitstempel DESC");
+
+        $result = $stmt->execute();
+        while ($row = $stmt->fetch()) {
+            echo "<tr>";
+            echo "<td>" . $row["benutzername"] . "</td>";
+
+            echo "<td><img src='" . $row["bild"] . "'></td>";
+            echo "</tr>";
+        }
+        ?>
+    </table>
+
+
+</div>
+<br>
+<br>
+<div> Hier kannst du dich <a href="logout.php">ausloggen</a></div>
+
+<?php
     }
+
+
+
 ?>
