@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Beitrag Posten</title>
+    <link rel="stylesheet" type="text/css" href="hauptseite.css">
 
     <?php
     session_start();
@@ -103,25 +104,25 @@
 
 if (array_key_exists('upfile',$_FILES)) {
 
-$tmpname = $_FILES['upfile']['tmp_name'];
+    $tmpname = $_FILES['upfile']['tmp_name'];
 
-$type = $_FILES['upfile']['type'];
+    $type = $_FILES['upfile']['type'];
 
-$hndFile = fopen($tmpname, "r");
+    $hndFile = fopen($tmpname, "r");
 
-$data = addslashes(fread($hndFile, filesize($tmpname)));
+    $data = addslashes(fread($hndFile, filesize($tmpname)));
 
-$statement = $pdo->prepare("INSERT INTO beitrag (bild, bildtext, user_id) VALUES ('$data', '$type', '$user_id')");
-$result = $statement->execute();
+    $statement = $pdo->prepare("INSERT INTO beitrag (bild, bildtext, user_id) VALUES ('$data', '$type', '$user_id')");
+    $result = $statement->execute();
 
 }
 
-        else {
-            echo "<p> Bild wurde nicht hochgeladen, muss vom Typ JPG sein!</p>";
-        }
+else {
+    echo "<p> Bild wurde nicht hochgeladen, muss vom Typ JPG sein!</p>";
+}
 
 
-    ?>
+?>
 <div>
     <table>
         <tr>
@@ -153,7 +154,7 @@ $result = $statement->execute();
 <div> Hier kannst du dich <a href="logout.php">ausloggen</a></div>
 
 <?php
-    }
+}
 
 
 
