@@ -43,7 +43,6 @@ session_start();
 
     $fehler = false;
 
-
         //Wurde der Benutzername schon registriert?
 
             if (!$fehler) {
@@ -72,24 +71,26 @@ session_start();
                 }
             }
 
-
-//Ist die Mailadresse von der HdM?
+  //Ist die Mailadresse von der HdM?
 
 if(isset($_POST['ueberpruefen'])) {
     $fehler = false;
-    $mail_teile = explode( "@", $mail);
-    $mail_endung= $mail_teile [count($mail_teile) - 1];
-    $mailmail = substr ($mail_endung, -16);
+    $mail_teile = explode("@", $mail);
+    $mail_endung = $mail_teile [count($mail_teile) - 1];
+    $mailmail = substr($mail_endung, -16);
+    $hdmmail = $mailmail == 'hdm-stuttgart.de';
 
-    $xy = "hdm-stuttgart.de";
-    $hdmmail = $mailmail !== $xy;
 
-    if($hdmmail) {
-        echo '<p id="meldung">Bitte benutze eine HdM-Mailadresse!</p>';
-        $fehler = true;
 
-    }
-    else {
+
+if(isset($_POST['uebe'])) {
+    $fehler = false;
+
+    foreach($felder as $feld) {
+        if(empty($_POST[$feld])) {
+            $fehler = true;
+            $errorfelder[$feld] = true;
+        }
     }
 }
 
