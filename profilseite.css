@@ -136,9 +136,8 @@ border-radius: 30px;
 
 }
 
-.button3:hover {
-    background-color:#B9877E;
-}
+
+
 
 .button4 {
     float: left;
@@ -159,9 +158,6 @@ border-radius: 30px;
     -webkit-border-radius: 25px;
     -o-border-radius: 25px;
 
-}
-.button4:hover {
-    background-color:#B9877E;
 }
 
 
@@ -186,9 +182,7 @@ border-radius: 30px;
 
 }
 
-.button5:hover {
-    background-color:#B9877E;
-}
+
 
 .button6 {
     display: flex;

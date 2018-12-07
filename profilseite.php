@@ -6,6 +6,14 @@
     <link rel="stylesheet" type="text/css" href="profilseite.css">
     <meta name = "viewport" content="width-device-width, initial-scale=1.0, maximum-scale=1.0, user scalelable=no">
 </head>
+
+<?php
+session_start();
+include_once "logincheck.php";
+if (!isset($_SESSION['login-id'])) {
+    echo "Bitte logge dich ein oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
+}else{
+?>
 <body>
 
 
@@ -63,17 +71,17 @@
         <div class="button2">Settings</div>
     </a>
 
-    <a style="..." href="">
+
         <div class="button3">Friends</div>
-    </a>
 
-    <a style="..." href="">
+
+
         <div class="button4">Posts</div>
-    </a>
 
-    <a style="..." href="">
+
+
         <div class="button5">Touches</div>
-    </a>
+
 
     <div class="button6">Your Name</div>
     <div class="button7">Your E-Mail</div>
@@ -101,4 +109,7 @@
 
 
 </body>
+    <?php
+}
+?>
 </html>
