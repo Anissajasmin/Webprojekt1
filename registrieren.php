@@ -71,54 +71,57 @@ session_start();
                 }
             }
 
+
+
         //Ist die Mailadresse von der HdM?
 
-if(isset($_POST['ueberpruefen'])) {
-    $fehler = false;
-    $mail_teile = explode( "@", $mail);
-    $mail_endung= $mail_teile [count($mail_teile) - 1];
-    $mailmail = substr ($mail_endung, -16);
-    $hdmmail = $mailmail == 'hdm-stuttgart.de';
 
-  if($hdmmail == false){
-            echo '<p id="meldung">Bitte benutze eine HdM-Mailadresse!</p>';
-            $fehler = true;
-        }
+    if (isset($_POST['ueberpruefen'])) {
+        $mail_teile = explode("@", $mail);
+
+            if ($mail_teile[1]!=="hdm-stuttgart.de") {
+                echo '<p id="meldung"><br> Benutze eine gültige HdM-Mail</p>';
+                return true;
+            }
+
     }
 
-        //Registrierung nur dann erfolgreich, wenn alle Felder ausgefüllt sind!
 
-            $errorfelder = array();
-            $felder = array("benutzername", "hdm_mail", "passwort");
 
-            if(isset($_POST['ueberpruefen'])) {
-                $fehler = false;
+       //Registrierung nur dann erfolgreich, wenn alle Felder ausgefüllt sind!
 
-                foreach($felder as $feld) {
-                    if(empty($_POST[$feld])) {
-                        $fehler = true;
-                        $errorfelder[$feld] = true;
-                    }
-                }
-            }
+       $errorfelder = array();
+       $felder = array("benutzername", "hdm_mail", "passwort");
 
-            if($fehler === false) {
+       if (isset($_POST['ueberpruefen'])) {
+           $fehler = false;
 
-                $statement = $pdo->prepare("INSERT INTO login (benutzername, hdm_mail, passwort) VALUES (:benutzername, :hdm_mail, :passwort)");
-                $ergebnis = $statement->execute(array(':benutzername' => $benutzername, ':hdm_mail' => $mail, ':passwort' => $passworthash));
+           foreach ($felder as $feld) {
+               if (empty($_POST[$feld])) {
+                   $fehler = true;
+                   $errorfelder[$feld] = true;
+               }
+           }
+       }
 
-                if ($ergebnis) {
-                    echo '<div id="meldung"> <br><br>Du wurdest erfolgreich registriert. <a href="login.php">Zum Login</a> </div>';
-                }
-            } else {
+       if ($fehler === false) {
 
-                if ($fehler === true) {
-                    echo '<div id="meldung"> <br><br>Bitte fülle alle Felder aus<br> </div>';
-                }
-                if (strlen($benutzername) <= 3 && strlen($benutzername) >= 32) {
-                echo '<div id="meldung"><br><br>Dieser Benutzername ist ungültig<br></div>';
-                }
-            }
+           $statement = $pdo->prepare("INSERT INTO login (benutzername, hdm_mail, passwort) VALUES (:benutzername, :hdm_mail, :passwort)");
+           $ergebnis = $statement->execute(array(':benutzername' => $benutzername, ':hdm_mail' => $mail, ':passwort' => $passworthash));
+
+           if ($ergebnis) {
+               echo '<div id="meldung"> <br><br>Du wurdest erfolgreich registriert. <a href="login.php">Zum Login</a> </div>';
+           }
+       } else {
+
+           if ($fehler === true) {
+               echo '<div id="meldung"> <br><br>Bitte fülle alle Felder aus<br> </div>';
+           }
+           if (strlen($benutzername) <= 3 && strlen($benutzername) >= 32) {
+               echo '<div id="meldung"><br><br>Dieser Benutzername ist ungültig<br></div>';
+           }
+       }
+
 
 
 
