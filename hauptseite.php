@@ -5,48 +5,48 @@
     <title>Hauptseite</title>
     <link rel="stylesheet" type="text/css" href="hauptseite.css">
 
-<?php
-session_start();
-include_once "logincheck.php";
-if (!isset($_SESSION['login-id'])) {
-    echo "Bitte logge dich ein oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
-}else{
-include("datenbankpasswort.php");
+    <?php
+    session_start();
+    include_once "logincheck.php";
+    if (!isset($_SESSION['login-id'])) {
+        echo "Bitte logge dich ein oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
+    }else{
+    include("datenbankpasswort.php");
 
-$textbox = array('posts');
-$posts = $_POST['posts'];
-$user_id = $_SESSION["login-id"];
+    $textbox = array('posts');
+    $posts = $_POST['posts'];
+    $user_id = $_SESSION["login-id"];
 
-$fehlerfelder = array();
+    $fehlerfelder = array();
 
-if (isset($_POST['text'])) {
-    $error = false;
+    if (isset($_POST['text'])) {
+        $error = false;
 
-    foreach ($textbox as $feld) {
-        if (empty($_POST[$feld])) {
-            $error = true;
-            $fehlerfelder[$feld] = true;
+        foreach ($textbox as $feld) {
+            if (empty($_POST[$feld])) {
+                $error = true;
+                $fehlerfelder[$feld] = true;
+            }
         }
     }
-}
-//Einfügen des Textes, Fehlerausgabe wenn Textfeld leer abgeschickt wird
+    //Einfügen des Textes, Fehlerausgabe wenn Textfeld leer abgeschickt wird
 
-if ($error === false) {
+    if ($error === false) {
 
-    $statement = $pdo->prepare("INSERT INTO beitrag (posts, user_id) VALUES ('$posts', '$user_id')");
-    $result = $statement->execute();
+        $statement = $pdo->prepare("INSERT INTO beitrag (posts, user_id) VALUES ('$posts', '$user_id')");
+        $result = $statement->execute();
 
 
-    if ($result) {
-        echo 'Danke für deinen Beitrag!';
+        if ($result) {
+            echo 'Danke für deinen Beitrag!';
 
-    } else {
+        } else {
 
-        if ($error === true)
-            echo '<div id="meldung"> <br><br>Etwas ist schief gelaufen.<br> </div>';
+            if ($error === true)
+                echo '<div id="meldung"> <br><br>Etwas ist schief gelaufen.<br> </div>';
+        }
     }
-}
-?>
+    ?>
 
 </head>
 
@@ -149,7 +149,7 @@ if ($error === false) {
                         echo "</tr>";
                     }
                     ?>
-                    
+
                 </table>
             </div>
 

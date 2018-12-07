@@ -200,19 +200,19 @@ h1 {
 }
 
 #button4 {
-     float:left;
-     margin-left: 25px;
-     margin-top: 10px;
-     justify-content: center;
-     width: 80px;
-     height:20px;
-     background-color:white;
-     color: black;
-     font-family: "Helvetica Neue";
-     font-size: 90%;
-     font-weight:400;
+    float:left;
+    margin-left: 25px;
+    margin-top: 10px;
+    justify-content: center;
+    width: 80px;
+    height:20px;
+    background-color:white;
+    color: black;
+    font-family: "Helvetica Neue";
+    font-size: 90%;
+    font-weight:400;
 
- }
+}
 
 
 #button5 {
@@ -363,4 +363,3 @@ ul li:hover ul li{
     right: 100px;
 
 }
-
