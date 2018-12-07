@@ -71,30 +71,20 @@ session_start();
                 }
             }
 
-  //Ist die Mailadresse von der HdM?
+        //Ist die Mailadresse von der HdM?
 
 if(isset($_POST['ueberpruefen'])) {
     $fehler = false;
-    $mail_teile = explode("@", $mail);
-    $mail_endung = $mail_teile [count($mail_teile) - 1];
-    $mailmail = substr($mail_endung, -16);
+    $mail_teile = explode( "@", $mail);
+    $mail_endung= $mail_teile [count($mail_teile) - 1];
+    $mailmail = substr ($mail_endung, -16);
     $hdmmail = $mailmail == 'hdm-stuttgart.de';
 
-
-
-
-if(isset($_POST['uebe'])) {
-    $fehler = false;
-
-    foreach($felder as $feld) {
-        if(empty($_POST[$feld])) {
+  if($hdmmail == false){
+            echo '<p id="meldung">Bitte benutze eine HdM-Mailadresse!</p>';
             $fehler = true;
-            $errorfelder[$feld] = true;
         }
     }
-}
-
-
 
         //Registrierung nur dann erfolgreich, wenn alle Felder ausgefüllt sind!
 
