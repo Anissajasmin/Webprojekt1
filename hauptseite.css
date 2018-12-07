@@ -9,8 +9,8 @@ body {
     height: 40px;
     background-color: #5A342F;
     position:fixed;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
 
 }
 
@@ -51,9 +51,7 @@ h1 {
     -o-border-radius: 30px;
 
 }
-.wrapper{
 
-}
 
 
 #buttonfriends {
@@ -99,9 +97,6 @@ h1 {
     margin-top: 40px;
 
 
-
-
-
     border-radius: 70px;
     -moz-border-radius: 70px;
     -webkit-border-radius: 70px;
@@ -114,17 +109,127 @@ h1 {
     background-color:#B9877E;
 }
 
-#text {
+#neuerbeitrag {
+    color: white;
+    font-family: "Helvetica Neue";
+    font-size: 130%;
+    font-weight:500;
+    float: left;
+    margin-left: 30px;
+    margin-top:10px;
+}
+
+#text1 {
+    color: white;
+    font-family: "Helvetica Neue";
+    font-size: 80%;
+    font-weight:300;
+    float:right;
+    margin-right: 233px;
+    margin-top:-20px;
+
+}
+
+#text2 {
+    color: white;
+    font-family: "Helvetica Neue";
+    font-size: 90%;
+    font-weight:400;
+    float:left;
+    margin-left: 30px;
+    margin-top:20px;
+}
+
+#dateiauswahl {
+    float:right;
+    margin-right: 233px;
+    margin-top:-5px;
+
+    font-family: "Helvetica Neue";
+    font-size: 80%;
+    font-weight:300;
+
+
+}
+
+#post {
     width:450px;
     height: 100px;
-    margin-top: 60px;
+    margin-top: -5px;
     border-radius: 15px;
     -moz-border-radius: 15px;
     -webkit-border-radius: 15px;
     -o-border-radius: 15px;
 
+}
+
+
+.strich {
+    margin-top: 100px;
 
 }
+
+#button2 {
+    float:right;
+    margin-right: 30px;
+    margin-top: -5px;
+    justify-content: center;
+    width: 80px;
+    height:20px;
+    background-color:white;
+    color: black;
+    font-family: "Helvetica Neue";
+    font-size: 90%;
+    font-weight:400;
+
+}
+
+#button3 {
+    float:right;
+    margin-right: 10px;
+    margin-top: -5px;
+    justify-content: center;
+    width: 80px;
+    height:20px;
+    background-color:white;
+    color: black;
+    font-family: "Helvetica Neue";
+    font-size: 90%;
+    font-weight:400;
+
+}
+
+#button4 {
+     float:left;
+     margin-left: 25px;
+     margin-top: 10px;
+     justify-content: center;
+     width: 80px;
+     height:20px;
+     background-color:white;
+     color: black;
+     font-family: "Helvetica Neue";
+     font-size: 90%;
+     font-weight:400;
+
+ }
+
+
+#button5 {
+    float:left;
+    margin-left: 10px;
+    margin-top: 10px;
+    justify-content: center;
+    width: 80px;
+    height:20px;
+    background-color:white;
+    color: black;
+    font-family: "Helvetica Neue";
+    font-size: 90%;
+    font-weight:400;
+
+}
+
 
 
 #recommondation {
@@ -223,3 +328,39 @@ ul li ul li {
 ul li:hover ul li{
     display:block;
 }
+
+
+.tabelle1 {
+    color: black;
+    font-family: "Helvetica Neue";
+    font-size: 90%;
+
+
+}
+#tabelleposts {
+    width:450px;
+    height: auto;
+    background-color: white;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -o-border-radius: 15px;
+
+
+}
+
+
+
+#notificationneu {
+    position: fixed;
+    top: 10px;
+    right: 100px;
+
+}
+
