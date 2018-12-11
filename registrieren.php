@@ -26,6 +26,7 @@
 
             <p class="beschriftung"> Passwort: </p>
             <input class= "beschriftung3" type="password" size="25"  maxlength="250" name="passwort" placeholder = "Passwort" value = "">
+            <br>
 
             <input type="hidden" name="ueberpruefen" value="1">
             <input id=loginbutton type="submit" name = "registrieren" value="Registrieren">
@@ -74,20 +75,19 @@ session_start();
 
         //Ist die Mailadresse von der HdM?
 
-            if(isset($_POST['ueberpruefen'])) {
-                $mail_teile = explode("@", $mail);
 
-                 if ($mail_teile[1] !== 'hdm-stuttgart.de') {
-                    echo '<p id="meldung"><br><br>Bitte benutze eine HdM-Mailadresse!</p>';
-                    return true;
-                 }
+    if (isset($_POST['ueberpruefen'])) {
+        $mail_teile = explode("@", $mail);
+
+            if ($mail_teile[1]!=="hdm-stuttgart.de") {
+                echo '<p id="meldung"><br> Benutze eine gültige HdM-Mail</p>';
+                return true;
             }
+    }
 
+// Benutzername zu kurz/lang?
 
-        // Benutzername zu kurz/lang?
-
-            if(isset($_POST['benutzername'])) {
-
+if(isset($_POST['benutzername'])) {
                 if (strlen($benutzername) <= 3){
                     echo '<div id= "meldung"><br><br>Dieser Benutzername ist zu kurz. Bitte wähle einen anderen.<br></div>';
                     return true;

@@ -1,5 +1,5 @@
 body {
-    background-image: url(startseite-bild1.jpg);
+    background-image: url(startseite_bild.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     text-align: center;
@@ -50,7 +50,7 @@ body {
 
 #main {
 
-    width: 300px;
+    width: 350px;
     height: 450px;
     background-color: #2C2C2C;
     margin-left: auto;
@@ -87,7 +87,7 @@ body {
 }
 
 #buttonlogin:hover {
-    background-color:#B9877E;
+    background-color:#7B0202;
 }
 
 #buttonregister {
@@ -115,5 +115,5 @@ body {
 }
 
 #buttonregister:hover {
-    background-color: #B9877E;
+    background-color: #7B0202;
 }

@@ -1,13 +1,14 @@
 body {
-    background-color: white;
+    background-image: url(hintergrundbild.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
     text-align: center;
-
 }
 
 #header {
     width: 100%;
     height: 40px;
-    background-color: #5A342F;
+    background-color: #7B0202;
     position:fixed;
     top: 0;
     left: 0;
@@ -43,7 +44,7 @@ h1 {
 
     width: 500px;
     height: auto;
-    background-color: #905A53;
+    background-color: #888483;
     margin-top: 150px;
     border-radius: 30px;
     -moz-border-radius: 30px;
@@ -78,7 +79,7 @@ h1 {
 }
 
 #buttonfriends:hover {
-    background-color:#B9877E;
+    background-color:#7B0202;
 }
 
 #buttonstudents {
@@ -106,7 +107,7 @@ h1 {
 }
 
 #buttonstudents:hover {
-    background-color:#B9877E;
+    background-color:#7B0202;
 }
 
 #neuerbeitrag {
@@ -200,19 +201,19 @@ h1 {
 }
 
 #button4 {
-     float:left;
-     margin-left: 25px;
-     margin-top: 10px;
-     justify-content: center;
-     width: 80px;
-     height:20px;
-     background-color:white;
-     color: black;
-     font-family: "Helvetica Neue";
-     font-size: 90%;
-     font-weight:400;
+    float:left;
+    margin-left: 25px;
+    margin-top: 10px;
+    justify-content: center;
+    width: 80px;
+    height:20px;
+    background-color:white;
+    color: black;
+    font-family: "Helvetica Neue";
+    font-size: 90%;
+    font-weight:400;
 
- }
+}
 
 
 #button5 {
@@ -235,7 +236,7 @@ h1 {
 #recommondation {
     width: 200px;
     height: 300px;
-    background-color: #B9877E;
+    background-color: #888483;
     margin-top: 150px;
     border-radius: 30px;
     -moz-border-radius: 30px;
@@ -248,7 +249,7 @@ h1 {
 #profile {
     width: 200px;
     height: 300px;
-    background-color: #B9877E;
+    background-color: #888483;
     margin-top: 150px;
     border-radius: 30px;
     -moz-border-radius: 30px;
@@ -291,7 +292,7 @@ h1 {
     width: 170px;
     height: 30px;
     background-color: white;
-    border-color: #5A342F;
+    border-color: #70202F;
     border-width:1px;
     border-style:solid;
     margin-right:2px;
@@ -310,14 +311,14 @@ h1 {
 }
 
 .listitem a:hover {
-    background-color: #D0B3AE;
+    background-color: #7B0202;
 
 }
 
 ul li ul li {
     display: none;
     background-color: white;
-    border-color: #5A342F;
+    border-color: #7B0202;
     border-width:1px;
     border-style:solid;
     margin-top:1px;
@@ -363,4 +364,3 @@ ul li:hover ul li{
     right: 100px;
 
 }
-

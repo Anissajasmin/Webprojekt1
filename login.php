@@ -18,7 +18,7 @@
 
 
 
-        <form action="?login=1" method="post">
+        <form action="hauptseite.php" method="post">
             <p class="beschriftung"> Benutzername: </p>
             <input class="beschriftung2" type="text" size="25" maxlength="250" name="benutzername" ><br><br>
 
