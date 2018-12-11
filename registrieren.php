@@ -41,8 +41,8 @@ session_start();
     $mail = $_POST['hdm_mail'];
     $passwort = $_POST['passwort'];
     $passworthash = password_hash($passwort, PASSWORD_DEFAULT);
-
     $fehler = false;
+
 
         //Wurde der Benutzername schon registriert?
 
@@ -60,11 +60,11 @@ session_start();
 
 
         //Wurde die Mailadresse schon registriert?
+
             if (!$fehler) {
                 $statement = $pdo->prepare("SELECT hdm_mail FROM login WHERE hdm_mail = :hdm_mail");
                 $result = $statement->execute(array(':hdm_mail' => $mail));
                 $mailadress = $statement->fetch();
-
 
                 if ($mailadress !== false) {
                     echo '<div id="meldung"><br>Diese E-Mail-Adresse ist bereits vergeben<br></div>';
@@ -73,55 +73,80 @@ session_start();
             }
 
 
-
         //Ist die Mailadresse von der HdM?
 
+            if(isset($_POST['ueberpruefen'])) {
+                $mail_teile = explode("@", $mail);
 
-    if (isset($_POST['ueberpruefen'])) {
-        $mail_teile = explode("@", $mail);
-
-            if ($mail_teile[1]!=="hdm-stuttgart.de") {
-                echo '<p id="meldung"><br> Benutze eine gültige HdM-Mail</p>';
-                return true;
+                 if ($mail_teile[1] !== 'hdm-stuttgart.de') {
+                    echo '<p id="meldung"><br><br>Bitte benutze eine gülitge HdM-Mail!</p>';
+                    return true;
+                 }
             }
 
-    }
 
-       //Registrierung nur dann erfolgreich, wenn alle Felder ausgefüllt sind!
+        // Benutzername zu kurz/lang?
 
-       $errorfelder = array();
-       $felder = array("benutzername", "hdm_mail", "passwort");
+            if(isset($_POST['benutzername'])) {
 
-       if (isset($_POST['ueberpruefen'])) {
-           $fehler = false;
+                if (strlen($benutzername) <= 3){
+                    echo '<div id= "meldung"><br><br>Dieser Benutzername ist zu kurz. Bitte wähle einen anderen.<br></div>';
+                    return true;
+                }
+                if (strlen($benutzername) >= 32) {
+                    echo '<div id="meldung"><br><br>Dieser Benutzername ist zu lang. Bitte wähle einen anderen.<br></div>';
+                    return true;
+                }
+            }
 
-           foreach ($felder as $feld) {
-               if (empty($_POST[$feld])) {
-                   $fehler = true;
-                   $errorfelder[$feld] = true;
-               }
-           }
-       }
 
-       if ($fehler === false) {
+        // Passwort zu kurz/lang?
 
-           $statement = $pdo->prepare("INSERT INTO login (benutzername, hdm_mail, passwort) VALUES (:benutzername, :hdm_mail, :passwort)");
-           $ergebnis = $statement->execute(array(':benutzername' => $benutzername, ':hdm_mail' => $mail, ':passwort' => $passworthash));
+            if(isset($_POST['passwort'])) {
 
-           if ($ergebnis) {
-               echo '<div id="meldung"> <br><br>Du wurdest erfolgreich registriert. <a href="login.php">Zum Login</a> </div>';
-           }
-       } else {
+                if (strlen($passwort) <= 7){
+                    echo '<div id= "meldung"><br><br>Das Passwort ist zu kurz. Es muss mindestens 8 Zeichen und maximal 20 Zeichen beinhalten.<br></div>';
+                    return true;
+                }
+                if (strlen($passwort) >= 21) {
+                    echo '<div id="meldung"><br><br>Das Passwort ist zu lang. Es muss mindestens 8 Zeichen und maximal 20 Zeichen beinhalten.<br></div>';
+                    return true;
+                }
+            }
 
-           if ($fehler === true) {
-               echo '<div id="meldung"> <br><br>Bitte fülle alle Felder aus<br> </div>';
-           }
-           if (strlen($benutzername) <= 3 && strlen($benutzername) >= 32) {
-               echo '<div id="meldung"><br><br>Dieser Benutzername ist ungültig<br></div>';
-           }
-       }
 
-       
+        //Registrierung nur dann erfolgreich, wenn alle Felder ausgefüllt sind!
+
+            $errorfelder = array();
+            $felder = array("benutzername", "hdm_mail", "passwort");
+
+            if(isset($_POST['ueberpruefen'])) {
+                $fehler = false;
+
+                foreach($felder as $feld) {
+                    if(empty($_POST[$feld])) {
+                        $fehler = true;
+                        $errorfelder[$feld] = true;
+                    }
+                }
+            }
+
+            if($fehler === false) {
+
+                $statement = $pdo->prepare("INSERT INTO login (benutzername, hdm_mail, passwort) VALUES (:benutzername, :hdm_mail, :passwort)");
+                $ergebnis = $statement->execute(array(':benutzername' => $benutzername, ':hdm_mail' => $mail, ':passwort' => $passworthash));
+
+                if ($ergebnis) {
+                    echo '<div id="meldung"> <br><br>Du wurdest erfolgreich registriert. <a href="login.php">Zum Login</a> </div>';
+                }
+            } else {
+
+                if ($fehler === true) {
+                    echo '<div id="meldung"> <br><br>Bitte fülle alle Felder aus<br> </div>';
+                }
+
+            }
+
 ?>
 </body>
 </html>

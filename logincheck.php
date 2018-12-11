@@ -21,7 +21,7 @@ session_start();
 
 				if (password_verify ($passwort, $passwortdatenbank)) {
 				$_SESSION["login-id"] = $row["login_id"];
-				header('Location: posten3.php');
+				header('Location: hauptseite.php');
 			}else {
                     echo '<p id="meldung">Deine eingegebenen Daten sind leider falsch. Probiers nochmal. Oder <a href="registrieren.php">registriere dich zuerst.</a></p><br>';
                 }
