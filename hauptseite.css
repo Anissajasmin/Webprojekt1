@@ -80,6 +80,7 @@ h1 {
 
 #buttonfriends:hover {
     background-color:#7B0202;
+    color: white;
 }
 
 #buttonstudents {
@@ -108,6 +109,7 @@ h1 {
 
 #buttonstudents:hover {
     background-color:#7B0202;
+    color:white;
 }
 
 #neuerbeitrag {
@@ -312,6 +314,7 @@ h1 {
 
 .listitem a:hover {
     background-color: #7B0202;
+    color: white;
 
 }
 

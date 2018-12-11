@@ -88,6 +88,7 @@ body {
 
 #buttonlogin:hover {
     background-color:#7B0202;
+    color:white;
 }
 
 #buttonregister {
@@ -116,4 +117,5 @@ body {
 
 #buttonregister:hover {
     background-color: #7B0202;
+    color:white;
 }
