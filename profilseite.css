@@ -1,30 +1,3 @@
-body {
-    background-color: white;
-    text-align: center;
-}
-
-#header {
-    width: 100%;
-    height: 40px;
-    background-color: #5A342F;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    padding-left: 10px;
-    padding-top: 10px;
-    padding-bottom: 25px;
-
-}
-
-h1 {
-    font-family: "Helvetica Neue";
-    font-size: 150%;
-    color: white;
-    text-align: left;
-    left: 15px;
-    top: 50%;
-    font-weight: 100;
-}
 h3 {
     font-size: 150%;
     color: white;
@@ -362,56 +335,8 @@ border-radius: 30px;
 
 
 
-#searcharea {
-    width: 85px;
-    hight: 30px;
-    font-family: "Helvetica Neue";
-    font-size: 100%;
-    position: fixed;
-    padding-left: 10px;
-    padding-top: 8px;
-    padding-bottom: 25px;
-    color: white;
-    font-weight: 100;
 
 
-
-}
-
-#searchbox {
-    height: 25px;
-    width: 250px;
-    position: fixed;
-    top: 25px;
-    right: 340px;
-    border-radius: 60px;
-    -moz-border-radius:60px;
-    -webkit-border-radius: 60px;
-    -o-border-radius: 60px;
-
-}
-
-#notificationneu {
-    position: fixed;
-    top: 25px;
-    right: 220px;
-
-}
-
-#messageneu {
-    position: fixed;
-    top: 25px;
-    right: 170px;
-
-}
-#settingneu {
-    position: fixed;
-    top: 25px;
-    right: 120px;
-
-
-
-}
 
 
 

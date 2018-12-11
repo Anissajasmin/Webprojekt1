@@ -6,6 +6,9 @@
     <link rel="stylesheet" type="text/css" href="profilseite.css">
     <meta name = "viewport" content="width-device-width, initial-scale=1.0, maximum-scale=1.0, user scalelable=no">
 </head>
+<?php
+include "hauptdesign.php";
+?>
 
 <?php
 session_start();
@@ -21,31 +24,6 @@ if (!isset($_SESSION['login-id'])) {
 
 
 <body>
-
-
-<div id="profilseite">
-
-    <div class id="header">
-        <h1>TOUCH </h1>
-
-
-        <div id = "searcharea" class ="header"><input placeholder= "Search here..." type="text" id="searchbox"/></div>
-        <a style="text-decoration:none;" href="">
-            <div id="notificationneu"><img src="notificationneu.png"/><div>
-        </a>
-
-
-        <a style="text-decoration:none;" href="">
-            <div id="messageneu"><img src="messageneu.png"/><div>
-        </a>
-
-
-        <a style="text-decoration:none;" href="">
-            <div id="settingneu"><img src="settingneu.png"/><div>
-        </a>
-
-
-    </div>
 
      <div class="header1"
         </div>
