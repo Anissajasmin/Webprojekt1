@@ -90,11 +90,11 @@ ul li:hover ul li{
 
 }
 #searchbox {
-    height: 35px;
-    width: 250px;
+    height: 20px;
+    width: 200px;
     position: fixed;
-    top: 25px;
-    right: 340px;
+    top: 7px;
+    right: 300px;
     border-radius: 60px;
     -moz-border-radius:60px;
     -webkit-border-radius: 60px;
@@ -104,22 +104,21 @@ ul li:hover ul li{
 
 #notificationneu {
     position: fixed;
-    top: 30px;
-    right: 220px;
+    top: 5px;
+    right: 237px;
     color:black;
-
 }
 
 #messageneu {
     position: fixed;
-    top: 30px;
-    right: 170px;
-
+    top: 5px;
+    right: 195px;
 }
+
 #settingneu {
     position: fixed;
-    top: 30px;
-    right: 120px;
+    top: 5px;
+    right: 150px;
 
 }
 
@@ -135,7 +134,7 @@ ul li:hover ul li{
     -o-border-radius: 30px;
     float:right;
     margin-right:15px;
-    margin-top: 5px;
+    margin-top: -37px;
     color: white;
     font-family: "Helvetica Neue";
     font-size: 120%;

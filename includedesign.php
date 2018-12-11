@@ -24,20 +24,7 @@ if (!isset($_SESSION['login-id'])) {
 
 
 
-        <div id = "searcharea" class ="header"><input placeholder= "Search here..." type="text" id="searchbox"/></div>
-        <a style="text-decoration:none;" href="">
-            <div id="notificationneu"><img src="notificationneu.png"/><div>
-        </a>
 
-
-        <a style="text-decoration:none;" href="">
-            <div id="messageneu"><img src="messageneu.png"/><div>
-        </a>
-
-
-        <a style="text-decoration:none;" href="">
-            <div id="settingneu"><img src="settingneu.png"/><div>
-        </a>
 
 
     <div id="header">
@@ -56,6 +43,21 @@ if (!isset($_SESSION['login-id'])) {
             <li class="listitem"><a href="#">Meine Freunde</a></li>
 
         </ul>
+
+        <div id = "searcharea" class ="header"><input placeholder= "Search here..." type="text" id="searchbox"/></div>
+        <a style="text-decoration:none;" href="">
+            <div id="notificationneu"><img src="notificationneu.png"/><div>
+        </a>
+
+
+        <a style="text-decoration:none;" href="">
+            <div id="messageneu"><img src="messageneu.png"/><div>
+        </a>
+
+
+        <a style="text-decoration:none;" href="">
+            <div id="settingneu"><img src="settingneu.png"/><div>
+        </a>
 
 
     </div>
