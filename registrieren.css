@@ -1,5 +1,5 @@
 body {
-    background-image: url(startseite-bild1.jpg);
+    background-image: url(startseite_bild.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     text-align: center;
@@ -48,7 +48,7 @@ body {
 
 #main {
 
-    width: 300px;
+    width: 350px;
     height: 450px;
     background-color: #2C2C2C;
     margin-left: auto;
@@ -68,7 +68,7 @@ body {
     font-size: 120%;
     font-weight: 200;
     position:relative;
-    top: 5px;
+    top: 3px;
 
 }
 
@@ -81,6 +81,7 @@ body {
     -o-border-radius: 100px;
 
     position: relative;
+    align-items: center;
     top:-12px;
 }
 
@@ -100,7 +101,7 @@ body {
 
 }
 #loginbutton:hover {
-    background-color: #B9877E;
+    background-color: #7B0202;
 }
 
 #meldung {

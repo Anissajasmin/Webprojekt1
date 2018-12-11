@@ -6,7 +6,7 @@ echo "Logout erfolgreich";
 ?>
 <html>
 <br><br>
-<a href ="Startseite.php.php"> Hier geht's zur Startseite</a>
+<a href ="Startseite.php"> Hier geht's zur Startseite</a>
 
 
 </html>

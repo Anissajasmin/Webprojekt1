@@ -26,6 +26,7 @@
 
             <p class="beschriftung"> Passwort: </p>
             <input class= "beschriftung3" type="password" size="25"  maxlength="250" name="passwort" placeholder = "Passwort" value = "">
+            <br>
 
             <input type="hidden" name="ueberpruefen" value="1">
             <input id=loginbutton type="submit" name = "registrieren" value="Registrieren">
@@ -86,8 +87,6 @@ session_start();
 
     }
 
-
-
        //Registrierung nur dann erfolgreich, wenn alle Felder ausgefüllt sind!
 
        $errorfelder = array();
@@ -122,9 +121,7 @@ session_start();
            }
        }
 
-
-
-
+       
 ?>
 </body>
 </html>
