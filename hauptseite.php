@@ -48,6 +48,8 @@
     }
     ?>
 
+
+
 </head>
 
 
@@ -58,7 +60,7 @@
 
     <div id="header">
         <h1>TOUCH</h1>
-
+        <div id="logoutbutton"> <a href="logout.php">Log Out</a></div>
         <ul id="navigation">
 
             <li class="listitem"><a href="hauptseite.php">Mein Feed</a></li>
@@ -176,7 +178,7 @@
 
 <br>
 <br>
-<div> Hier kannst du dich <a href="logout.php">ausloggen</a></div>
+
 
 <?php
 }
