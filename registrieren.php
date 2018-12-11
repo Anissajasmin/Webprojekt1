@@ -75,19 +75,20 @@ session_start();
 
         //Ist die Mailadresse von der HdM?
 
+            if(isset($_POST['ueberpruefen'])) {
+                $mail_teile = explode("@", $mail);
 
-    if (isset($_POST['ueberpruefen'])) {
-        $mail_teile = explode("@", $mail);
-
-            if ($mail_teile[1]!=="hdm-stuttgart.de") {
-                echo '<p id="meldung"><br> Benutze eine gültige HdM-Mail</p>';
-                return true;
+                 if ($mail_teile[1] !== 'hdm-stuttgart.de') {
+                    echo '<p id="meldung"><br><br>Bitte benutze eine gülitge HdM-Mail!</p>';
+                    return true;
+                 }
             }
-    }
 
-// Benutzername zu kurz/lang?
 
-if(isset($_POST['benutzername'])) {
+        // Benutzername zu kurz/lang?
+
+            if(isset($_POST['benutzername'])) {
+
                 if (strlen($benutzername) <= 3){
                     echo '<div id= "meldung"><br><br>Dieser Benutzername ist zu kurz. Bitte wähle einen anderen.<br></div>';
                     return true;
