@@ -40,8 +40,8 @@ session_start();
     $mail = $_POST['hdm_mail'];
     $passwort = $_POST['passwort'];
     $passworthash = password_hash($passwort, PASSWORD_DEFAULT);
-
     $fehler = false;
+
 
         //Wurde der Benutzername schon registriert?
 
@@ -59,11 +59,11 @@ session_start();
 
 
         //Wurde die Mailadresse schon registriert?
+
             if (!$fehler) {
                 $statement = $pdo->prepare("SELECT hdm_mail FROM login WHERE hdm_mail = :hdm_mail");
                 $result = $statement->execute(array(':hdm_mail' => $mail));
                 $mailadress = $statement->fetch();
-
 
                 if ($mailadress !== false) {
                     echo '<div id="meldung"><br>Diese E-Mail-Adresse ist bereits vergeben<br></div>';
@@ -71,20 +71,48 @@ session_start();
                 }
             }
 
+
         //Ist die Mailadresse von der HdM?
 
-if(isset($_POST['ueberpruefen'])) {
-    $fehler = false;
-    $mail_teile = explode( "@", $mail);
-    $mail_endung= $mail_teile [count($mail_teile) - 1];
-    $mailmail = substr ($mail_endung, -16);
-    $hdmmail = $mailmail == 'hdm-stuttgart.de';
+            if(isset($_POST['ueberpruefen'])) {
+                $mail_teile = explode("@", $mail);
 
-  if($hdmmail == false){
-            echo '<p id="meldung">Bitte benutze eine HdM-Mailadresse!</p>';
-            $fehler = true;
-        }
-    }
+                 if ($mail_teile[1] !== 'hdm-stuttgart.de') {
+                    echo '<p id="meldung"><br><br>Bitte benutze eine HdM-Mailadresse!</p>';
+                    return true;
+                 }
+            }
+
+
+        // Benutzername zu kurz/lang?
+
+            if(isset($_POST['benutzername'])) {
+
+                if (strlen($benutzername) <= 3){
+                    echo '<div id= "meldung"><br><br>Dieser Benutzername ist zu kurz. Bitte wähle einen anderen.<br></div>';
+                    return true;
+                }
+                if (strlen($benutzername) >= 32) {
+                    echo '<div id="meldung"><br><br>Dieser Benutzername ist zu lang. Bitte wähle einen anderen.<br></div>';
+                    return true;
+                }
+            }
+
+
+        // Passwort zu kurz/lang?
+
+            if(isset($_POST['passwort'])) {
+
+                if (strlen($passwort) <= 7){
+                    echo '<div id= "meldung"><br><br>Das Passwort ist zu kurz. Es muss mindestens 8 Zeichen und maximal 20 Zeichen beinhalten.<br></div>';
+                    return true;
+                }
+                if (strlen($passwort) >= 21) {
+                    echo '<div id="meldung"><br><br>Das Passwort ist zu lang. Es muss mindestens 8 Zeichen und maximal 20 Zeichen beinhalten.<br></div>';
+                    return true;
+                }
+            }
+
 
         //Registrierung nur dann erfolgreich, wenn alle Felder ausgefüllt sind!
 
@@ -115,12 +143,8 @@ if(isset($_POST['ueberpruefen'])) {
                 if ($fehler === true) {
                     echo '<div id="meldung"> <br><br>Bitte fülle alle Felder aus<br> </div>';
                 }
-                if (strlen($benutzername) <= 3 && strlen($benutzername) >= 32) {
-                echo '<div id="meldung"><br><br>Dieser Benutzername ist ungültig<br></div>';
-                }
+
             }
-
-
 
 ?>
 </body>

@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Beitrag Posten</title>
-    <link rel="stylesheet" type="text/css" href="hauptseite.css">
 
     <?php
     session_start();
@@ -102,27 +101,49 @@
 
 //Einfügen Bild
 
-if (array_key_exists('upfile',$_FILES)) {
+$upload_ordner = 'bilder/'; //Das Upload-Verzeichnis
 
-    $tmpname = $_FILES['upfile']['tmp_name'];
+$tmpname = $_FILES["upfile"] ["name"];
+        $tmpname_teile = explode( ".", $tmpname);
+        $endung = $tmpname_teile [count($tmpname_teile) - 1];
 
-    $type = $_FILES['upfile']['type'];
+//Überprüfung der Bildendung
+$erlaubte_endungen = array('png', 'jpg', 'jpeg', 'gif');
+if(!in_array($endung, $erlaubte_endungen)) {
+    die("Es sind nur png, jpg, jpeg und gif-Dateien erlaubt.");
+} else {
+    $bildname = "post_" . date("YmdHis") . $endung;
 
-    $hndFile = fopen($tmpname, "r");
+    //In DB einfügen
 
-    $data = addslashes(fread($hndFile, filesize($tmpname)));
-
-    $statement = $pdo->prepare("INSERT INTO beitrag (bild, bildtext, user_id) VALUES ('$data', '$type', '$user_id')");
+    $statement = $pdo->prepare("INSERT INTO beitrag (bildtext, user_id) VALUES ('$bildname', '$user_id')");
     $result = $statement->execute();
-
+}
+//Überprüfung der Dateigröße, nicht größer als 500 kB
+$max_size = 500*1024;
+if($_FILES['upfile']['size'] > $max_size) {
+    die("Bitte keine Dateien größer 500kb hochladen.");
 }
 
-else {
-    echo "<p> Bild wurde nicht hochgeladen, muss vom Typ JPG sein!</p>";
+//Überprüfung dass das Bild keine Fehler enthält
+if(function_exists('exif_imagetype')) {
+    $erlaubte_typen = array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF);
+    $geschuetzte_typen = exif_imagetype($_FILES['upfile']['tmp_name']);
+    if(!in_array($geschuetzte_typen, $erlaubte_typen)) {
+        die("Nur der Upload von Bilddateien ist gestattet");
+    }
 }
 
+//Pfad zum Upload
+$new_path = $upload_ordner.$bildname.'.'.$endung;
 
+
+//Alles okay, verschiebe Bild an neuen Pfad
+move_uploaded_file($_FILES['upfile']['tmp_name'], $new_path);
+echo 'Bild erfolgreich hochgeladen: <a href="'.$new_path.'">'.$new_path.'</a>';
 ?>
+
+
 <div>
     <table>
         <tr>
@@ -141,7 +162,7 @@ else {
             echo "<tr>";
             echo "<td>" . $row["benutzername"] . "</td>";
 
-            echo "<td><img src='" . $row["bild"] . "'></td>";
+            echo "<td><img src='" .$row['bildtext']. "'></td>";
             echo "</tr>";
         }
         ?>
@@ -154,7 +175,7 @@ else {
 <div> Hier kannst du dich <a href="logout.php">ausloggen</a></div>
 
 <?php
-}
+    }
 
 
 
