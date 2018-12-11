@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <title>Profilseite</title>
@@ -7,7 +7,7 @@
     <meta name = "viewport" content="width-device-width, initial-scale=1.0, maximum-scale=1.0, user scalelable=no">
 </head>
 <?php
-include "hauptdesign.php";
+include "includedesign.php";
 ?>
 
 <?php
@@ -16,7 +16,13 @@ include_once "logincheck.php";
 if (!isset($_SESSION['login-id'])) {
     echo "Bitte logge dich ein oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
 }else{
+    include ("datenbankpasswort.php");
 ?>
+
+
+
+
+
 <body>
 
      <div class="header1"
@@ -61,8 +67,48 @@ if (!isset($_SESSION['login-id'])) {
         <div class="button5">Touches</div>
 
 
-    <div class="button6">Your Name</div>
-    <div class="button7">Your E-Mail</div>
+
+        <div id="tabellename">
+            <table class="tabelle1">
+
+
+            <?php
+            $benutzername = $_POST["benutzername"];
+                $stmt = $pdo->prepare("SELECT * FROM login WHERE benutzername = '". $_SESSION['login-id']."'");
+                $result = $stmt->execute();
+            while ($row = $stmt->fetch()) {
+                echo "<tr>";
+                echo "<td>" . $row["benutzername"] . "</td>"; }
+            ?>
+
+
+
+
+            </table>
+
+            </div>
+
+
+        <div id="tabelleemail">
+         <table class="tabelle2">
+             <thead>
+          <tr>
+          <th>E-Mail</th>
+           </tr>
+             </thead>
+
+                        <?php
+                        $mail = $_POST["hdm_mail"];
+                        $stmt = $pdo->prepare("SELECT * FROM login WHERE mail = :hdm_mail");
+                        $result = $stmt->execute(array(':hdm_mail' => $mail));
+                        while ($row = $stmt->fetch()) {
+                            echo "<tr>";
+                            echo "<td>" . $row["hdm_mail"] . "</td>"; }
+                        ?>
+        </table>
+
+        </div>
+
 
 
     <a style="..." href="">
@@ -76,18 +122,23 @@ if (!isset($_SESSION['login-id'])) {
     </div>
 
 
-    <form id=postbox2 action="login.php" method="post">
+    <form id=postbox2 action="" method="post">
         <textarea id="text" name="text" placeholder="Write something..." cols="40" rows="4">
         </textarea>
         <br>
-        <input type="submit">
+        <input id="sendenbutton"  type="submit" value="senden">
+
     </form>
 
 
 
 
+
+</div>
 </body>
+</html>
     <?php
 }
 ?>
-</html>
+
+

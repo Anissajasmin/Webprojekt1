@@ -102,6 +102,7 @@ body {
 }
 #loginbutton:hover {
     background-color: #7B0202;
+    color:white;
 }
 
 #meldung {
