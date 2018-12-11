@@ -13,7 +13,13 @@ include_once "logincheck.php";
 if (!isset($_SESSION['login-id'])) {
     echo "Bitte logge dich ein oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
 }else{
+    include ("datenbankpasswort.php");
 ?>
+
+
+
+
+
 <body>
 
 
@@ -83,8 +89,48 @@ if (!isset($_SESSION['login-id'])) {
         <div class="button5">Touches</div>
 
 
-    <div class="button6">Your Name</div>
-    <div class="button7">Your E-Mail</div>
+
+        <div id="tabellename">
+            <table class="tabelle1">
+
+
+            <?php
+            $benutzername = $_POST["benutzername"];
+                $stmt = $pdo->prepare("SELECT * FROM login WHERE benutzername = :benutzername ");
+                $result = $stmt->execute(array(':benutzername' => $benutzername));
+            while ($row = $stmt->fetch()) {
+                echo "<tr>";
+                echo "<td>" . $row["benutzername"] . "</td>"; }
+            ?>
+
+
+
+
+            </table>
+
+            </div>
+
+
+        <div id="tabelleemail">
+         <table class="tabelle2">
+             <thead>
+          <tr>
+          <th>E-Mail</th>
+           </tr>
+             </thead>
+
+                        <?php
+                        $mail = $_POST["hdm_mail"];
+                        $stmt = $pdo->prepare("SELECT * FROM login WHERE mail = :hdm_mail");
+                        $result = $stmt->execute(array(':hdm_mail' => $mail));
+                        while ($row = $stmt->fetch()) {
+                            echo "<tr>";
+                            echo "<td>" . $row["hdm_mail"] . "</td>"; }
+                        ?>
+        </table>
+
+        </div>
+
 
 
     <a style="..." href="">
@@ -108,8 +154,12 @@ if (!isset($_SESSION['login-id'])) {
 
 
 
+
+</div>
 </body>
+</html>
     <?php
 }
 ?>
-</html>
+
+

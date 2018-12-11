@@ -15,6 +15,11 @@ if (!isset($_SESSION['login-id'])) {
     echo "Bitte logge dich ein oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
 }else{
     ?>
+
+    <?php
+
+    if (isset)
+    ?>
     <body>
 
 
@@ -62,15 +67,14 @@ if (!isset($_SESSION['login-id'])) {
                 <div class="button1">Save</div>
             </a>
 
-            <a style="..." href="">
-                <div class="button2"></div>
-            </a>
+
 
             <div id="ueberschrift">
                 <h3> Settings</h3>
             </div>
 
 
+        </div>
 
     </body>
 
