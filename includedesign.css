@@ -123,3 +123,32 @@ ul li:hover ul li{
 
 }
 
+#logoutbutton {
+
+    width: 90px;
+    height: 30px;
+    justify-content: center;
+    background-color: white;
+    border-radius: 30px;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -o-border-radius: 30px;
+    float:right;
+    margin-right:15px;
+    margin-top: 5px;
+    color: white;
+    font-family: "Helvetica Neue";
+    font-size: 120%;
+    line-height:30px;
+    font-weight: 300;
+
+}
+#logoutbutton a {
+    text-decoration: none;
+    color: black;
+}
+
+#logoutbutton :hover {
+    text-decoration: none;
+    color: #7B0202;
+}
