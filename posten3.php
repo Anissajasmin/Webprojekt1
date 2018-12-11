@@ -83,7 +83,7 @@
         <?php
         //Chronik - wo die geposteten Beiträge auftauchen
 
-            $stmt = $pdo->prepare("SELECT * FROM vlj_beitraglogin ORDER BY zeitstempel DESC ");
+            $stmt = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE posts IS NOT NULL ORDER BY beitrag_id DESC ");
 
             $result = $stmt->execute();
             while ($row = $stmt->fetch()) {
@@ -109,16 +109,20 @@ $tmpname = $_FILES["upfile"] ["name"];
 
 //Überprüfung der Bildendung
 $erlaubte_endungen = array('png', 'jpg', 'jpeg', 'gif');
+if (isset($_POST['bildgesendet'])){
 if(!in_array($endung, $erlaubte_endungen)) {
     die("Es sind nur png, jpg, jpeg und gif-Dateien erlaubt.");
 } else {
     $bildname = "post_" . date("YmdHis") . $endung;
 
+    //Pfad zum Upload
+    $new_path = $upload_ordner.$bildname.'.'.$endung;
+
     //In DB einfügen
 
-    $statement = $pdo->prepare("INSERT INTO beitrag (bildtext, user_id) VALUES ('$bildname', '$user_id')");
+    $statement = $pdo->prepare("INSERT INTO beitrag (bildtext, user_id) VALUES ('$new_path', '$user_id')");
     $result = $statement->execute();
-}
+}}
 //Überprüfung der Dateigröße, nicht größer als 500 kB
 $max_size = 500*1024;
 if($_FILES['upfile']['size'] > $max_size) {
@@ -126,21 +130,20 @@ if($_FILES['upfile']['size'] > $max_size) {
 }
 
 //Überprüfung dass das Bild keine Fehler enthält
-if(function_exists('exif_imagetype')) {
-    $erlaubte_typen = array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF);
-    $geschuetzte_typen = exif_imagetype($_FILES['upfile']['tmp_name']);
-    if(!in_array($geschuetzte_typen, $erlaubte_typen)) {
-        die("Nur der Upload von Bilddateien ist gestattet");
+if(isset($_POST["bildgesendet"])) {
+    if (function_exists('exif_imagetype')) {
+        $erlaubte_typen = array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF);
+        $geschuetzte_typen = exif_imagetype($_FILES['upfile']['tmp_name']);
+        if (!in_array($geschuetzte_typen, $erlaubte_typen)) {
+            die("Nur der Upload von Bilddateien ist gestattet");
+        }
     }
 }
-
-//Pfad zum Upload
-$new_path = $upload_ordner.$bildname.'.'.$endung;
 
 
 //Alles okay, verschiebe Bild an neuen Pfad
 move_uploaded_file($_FILES['upfile']['tmp_name'], $new_path);
-echo 'Bild erfolgreich hochgeladen: <a href="'.$new_path.'">'.$new_path.'</a>';
+//echo 'Bild erfolgreich hochgeladen: <a href="'.$new_path.'">'.$new_path.'</a>';
 ?>
 
 
@@ -155,7 +158,7 @@ echo 'Bild erfolgreich hochgeladen: <a href="'.$new_path.'">'.$new_path.'</a>';
         //Chronik - wo die geposteten Bilder auftauchen
 
 
-        $stmt = $pdo->prepare("SELECT * FROM vlj_beitraglogin ORDER BY zeitstempel DESC");
+        $stmt = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE bildtext IS NOT NULL ORDER BY beitrag_id DESC");
 
         $result = $stmt->execute();
         while ($row = $stmt->fetch()) {
