@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <title>Profilseite</title>
@@ -74,8 +74,8 @@ if (!isset($_SESSION['login-id'])) {
 
             <?php
             $benutzername = $_POST["benutzername"];
-                $stmt = $pdo->prepare("SELECT * FROM login WHERE benutzername = :benutzername ");
-                $result = $stmt->execute(array(':benutzername' => $benutzername));
+                $stmt = $pdo->prepare("SELECT * FROM login WHERE benutzername = '". $_SESSION['login-id']."'");
+                $result = $stmt->execute();
             while ($row = $stmt->fetch()) {
                 echo "<tr>";
                 echo "<td>" . $row["benutzername"] . "</td>"; }
@@ -122,11 +122,12 @@ if (!isset($_SESSION['login-id'])) {
     </div>
 
 
-    <form id=postbox2 action="login.php" method="post">
+    <form id=postbox2 action="" method="post">
         <textarea id="text" name="text" placeholder="Write something..." cols="40" rows="4">
         </textarea>
         <br>
-        <input type="submit">
+        <input id="sendenbutton"  type="submit" value="senden">
+
     </form>
 
 
