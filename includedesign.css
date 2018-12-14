@@ -28,7 +28,7 @@ h1 {
 
 }
 #navigation {
-    margin-top: 15px;
+    margin-top: 25px;
     padding:0;
     list-style: none;
 }
@@ -58,6 +58,7 @@ h1 {
 
 .listitem a:hover {
     background-color: #7B0202;
+    color: white;
 
 }
 

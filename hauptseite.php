@@ -68,7 +68,7 @@
                 <ul>
                     <li><a href="#"> Meine Daten</a></li>
                     <li><a href="#"> Meine Beiträge</a></li>
-                    <li><a href="#"> Einstellungen</a></li>
+                    <li class =“listitem"><a href="settings.php"> Einstellungen</a></li>
                 </ul>
             </li>
             <li class="listitem"><a href="#">Meine Freunde</a></li>

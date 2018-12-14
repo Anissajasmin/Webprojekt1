@@ -1,3 +1,4 @@
+
 body {
     background-image: url(hintergrundbild.jpg);
     background-repeat: no-repeat;
@@ -337,17 +338,13 @@ ul li:hover ul li{
     color: black;
     font-family: "Helvetica Neue";
     font-size: 90%;
-
-
-}
-#tabelleposts {
     width:450px;
     height: auto;
     background-color: white;
-    margin-top: 20px;
+    margin-top: 3px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 20px;
+    margin-bottom: 3px;
     display: flex;
     align-items: center;
     border-radius: 15px;
@@ -378,7 +375,7 @@ ul li:hover ul li{
     -o-border-radius: 30px;
     float:right;
     margin-right:15px;
-    margin-top: 5px;
+    margin-top: -46px;
     color: white;
     font-family: "Helvetica Neue";
     font-size: 120%;
@@ -395,3 +392,4 @@ ul li:hover ul li{
     text-decoration: none;
     color: #7B0202;
 }
+
