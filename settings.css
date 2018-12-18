@@ -85,6 +85,32 @@ h1 {
 }
 
 
+.button9 {
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    top: 35px;
+    left: 35px;
+    background: #eee;
+    color: #707070;
+    font-family: "Helvetica Neue";
+    box-sizing: border-box;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -o-border-radius: 15px;
+
+}
+
+.button9:hover {
+    background-color:#7B0202;
+}
+
+
 .button2 {
 
 }
@@ -162,3 +188,48 @@ h1 {
     font-size: 130%;
     font-weight: 300;
 }
+
+#tabellename {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    position:absolute;
+    top:100px;
+    right: 35px;
+    width: 200px;
+    height: 35px;
+    background: #eee;
+    color: #707070;
+    font-family: "Helvetica Neue";
+    box-sizing: border-box;
+    border-radius: 40px;
+    -moz-border-radius: 40px;
+    -webkit-border-radius: 40px;
+    -o-border-radius: 40px;
+}
+
+
+#tabelleemail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    position: absolute;
+    top:180px;
+    right: 35px;
+    width:200px;
+    height: 35px;
+    background: #eee;
+    color: #707070;
+    font-family: "Helvetica Neue";
+    box-sizing: border-box;
+    border-radius: 40px;
+    -moz-border-radius: 40px;
+    -webkit-border-radius: 40px;
+    -o-border-radius: 40px;
+
+
+
+}
+

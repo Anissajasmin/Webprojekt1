@@ -13,6 +13,10 @@ include "includedesign.php";
 ?>
 
 <?php
+include "checkbox.php";
+?>
+
+<?php
 session_start();
 include_once "logincheck.php";
 if (!isset($_SESSION['login-id'])) {
@@ -78,6 +82,35 @@ if (!isset($_SESSION['login-id'])) {
 
             <div class = "center">
                 <input type = "checkbox">
+
+                <a style="..." href="">
+                    <div class="button9">Upload picture</div>
+                </a>
+
+
+                <div id="tabellename">
+
+
+                    <?php
+                    echo $_SESSION["username"];
+                    ?>
+
+                </div>
+
+
+                <div id="tabelleemail">
+
+                    <?php
+                    echo $_SESSION["mail"];
+                    ?>
+
+                </div>
+                <div id = "center">
+                </div>
+
+                <div id = "checkbox1">
+                </div>
+
 
 
         </div>
