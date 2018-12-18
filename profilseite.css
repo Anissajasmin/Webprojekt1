@@ -23,7 +23,7 @@ h3 {
 
 width: 500px;
 height: 2000px;
-background-color: #905A53;
+background-color: #888483;
 margin-top: 65px;
 position: fixed;
 margin-right: auto;
@@ -60,7 +60,7 @@ border-radius: 30px;
     -o-border-radius: 70px;
 }
 .button1:hover {
-     background-color:#B9877E;
+     background-color:#7B0202;
  }
 
 .button2 {
@@ -84,7 +84,7 @@ border-radius: 30px;
 }
 
 .button2:hover {
-    background-color:#B9877E;
+    background-color:#7B0202;
 }
 
 .button3 {
@@ -244,32 +244,8 @@ border-radius: 30px;
     background-color:#D86763;
 }
 
-.button9 {
-    float: left;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    width: 90px;
-    height: 90px;
-    top: 350px;
-    right:35px;
-    background: #eee;
-    color: #707070;
-    font-family: "Helvetica Neue";
-    box-sizing: border-box;
-    border-radius: 15px;
-    -moz-border-radius: 15px;
-    -webkit-border-radius: 15px;
-    -o-border-radius: 15px;
 
-}
-
-.button9:hover {
-    background-color:#B9877E;
-}
-
-.button10{
+.ueberschrift{
     float: left;
     display: flex;
     align-items: center;
@@ -310,10 +286,10 @@ border-radius: 30px;
 }
 
 
-#recommondation {
+#recommendation {
     width: 200px;
     height: 300px;
-    background-color: #B9877E;
+    background-color: #888483;
     margin-top: 65px;
     position: fixed;
     top:40px;

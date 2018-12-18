@@ -10,6 +10,7 @@
 include "includedesign.php";
 ?>
 
+
 <?php
 session_start();
 include_once "logincheck.php";
@@ -85,12 +86,6 @@ if (!isset($_SESSION['login-id'])) {
           ?>
 
         </div>
-
-
-
-    <a style="..." href="">
-        <div class="button9">Upload picture</div>
-    </a>
 
 
     <div class = "button10"></div>
