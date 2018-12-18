@@ -6,7 +6,6 @@
 </head>
 <body>
 
-<body>
 <div id="startseite">
     <div id="header">
         <h1 id="ueberschrift"> TOUCH </h1>

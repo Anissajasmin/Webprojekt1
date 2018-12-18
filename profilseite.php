@@ -16,7 +16,7 @@ include_once "logincheck.php";
 if (!isset($_SESSION['login-id'])) {
     echo "Bitte logge dich ein oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
 }else{
-include ("datenbankpasswort.php");
+    include ("datenbankpasswort.php");
 ?>
 
 
@@ -25,23 +25,23 @@ include ("datenbankpasswort.php");
 
 <body>
 
-<div class="header1"
-</div>
-<div class="coverpad">
-</div>
+     <div class="header1"
+        </div>
+      <div class="coverpad">
+      </div>
 
 
 
-<div id="main">
+    <div id="main">
 
-    <div id="recommondation">
-        <h2 class="ueberschriftenmain"> Recommondations
-        </h2>
+        <div id="recommondation">
+            <h2 class="ueberschriftenmain"> Recommondations
+            </h2>
+        </div>
+        <a style="..." href="">
+            <div class="button8">Touches</div>
+        </a>
     </div>
-    <a style="..." href="">
-        <div class="button8">Touches</div>
-    </a>
-</div>
 
 
 
@@ -56,58 +56,35 @@ include ("datenbankpasswort.php");
     </a>
 
 
-    <div class="button3">Friends</div>
+        <div class="button3">Friends</div>
 
 
 
-    <div class="button4">Posts</div>
+        <div class="button4">Posts</div>
 
 
 
-    <div class="button5">Touches</div>
+        <div class="button5">Touches</div>
 
 
 
-    <div id="tabellename">
-        <table class="tabelle1">
+        <div id="tabellename">
 
 
             <?php
-            $benutzername = $_POST["benutzername"];
-            $stmt = $pdo->prepare("SELECT * FROM login WHERE benutzername = '". $_SESSION['login-id']."'");
-            $result = $stmt->execute();
-            while ($row = $stmt->fetch()) {
-                echo "<tr>";
-                echo "<td>" . $row["benutzername"] . "</td>"; }
+            echo $_SESSION["username"];
             ?>
 
+            </div>
 
 
+        <div id="tabelleemail">
 
-        </table>
+          <?php
+          echo $_SESSION["mail"];
+          ?>
 
-    </div>
-
-
-    <div id="tabelleemail">
-        <table class="tabelle2">
-            <thead>
-            <tr>
-                <th>E-Mail</th>
-            </tr>
-            </thead>
-
-            <?php
-            $mail = $_POST["hdm_mail"];
-            $stmt = $pdo->prepare("SELECT * FROM login WHERE mail = :hdm_mail");
-            $result = $stmt->execute(array(':hdm_mail' => $mail));
-            while ($row = $stmt->fetch()) {
-                echo "<tr>";
-                echo "<td>" . $row["hdm_mail"] . "</td>"; }
-            ?>
-        </table>
-
-    </div>
+        </div>
 
 
 
@@ -137,7 +114,7 @@ include ("datenbankpasswort.php");
 </div>
 </body>
 </html>
-<?php
+    <?php
 }
 ?>
 

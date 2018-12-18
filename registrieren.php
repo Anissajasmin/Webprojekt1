@@ -133,7 +133,7 @@ session_start();
 
             if($fehler === false) {
 
-                $statement = $pdo->prepare("INSERT INTO login (benutzername, hdm_mail, passwort, hash) VALUES (:benutzername, :hdm_mail, :passwort, :hash)");
+                $statement = $pdo->prepare("INSERT INTO login (benutzername, hdm_mail, passwort, hash, aktiviert) VALUES (:benutzername, :hdm_mail, :passwort, :hash, 0)");
                 $ergebnis = $statement->execute(array(':benutzername' => $benutzername, ':hdm_mail' => $mail, ':passwort' => $passworthash, ':hash' => $hash));
 
                 if ($ergebnis) {

@@ -3,18 +3,6 @@ body {
     text-align: center;
 }
 
-#header {
-    width: 100%;
-    height: 40px;
-    background-color: #5A342F;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    padding-left: 10px;
-    padding-top: 10px;
-    padding-bottom: 25px;
-
-}
 
 h1 {
     font-family: "Helvetica Neue";
@@ -30,7 +18,7 @@ h1 {
 
     width: 500px;
     height: 2000px;
-    background-color: #905A53;
+    background-color: #888483;
     margin-top: 65px;
     position: fixed;
     margin-right: auto;
@@ -63,6 +51,15 @@ h1 {
 
 }
 
+.ueberschriftenmain1 {
+    color: white;
+    float: left;
+    left: 50px;
+    font-family: "Helvetica Neue";
+    font-size: 130%;
+    font-weight: 300;
+}
+
 .button1 {
     float: left;
     display: flex;
@@ -70,8 +67,9 @@ h1 {
     justify-content: center;
     position: absolute;
     left: 35px;
+    right: 35px;
     top: 490px;
-    width: 850px;
+    width: 425px;
     height: 35px;
     background: #eee;
     color: #707070;
@@ -83,7 +81,7 @@ h1 {
     -o-border-radius: 70px;
 }
 .button1:hover {
-    background-color:#B9877E;
+    background-color:#7B0202;
 }
 
 
@@ -145,7 +143,7 @@ h1 {
 #recommondation {
     width: 200px;
     height: 300px;
-    background-color: #B9877E;
+    background-color: #888483;
     margin-top: 65px;
     position: fixed;
     top:40px;
@@ -156,4 +154,11 @@ h1 {
     -webkit-border-radius: 30px;
     -o-border-radius: 30px;
 
+}
+
+.ueberschriftenmain {
+    color: white;
+    font-family: "Helvetica Neue";
+    font-size: 130%;
+    font-weight: 300;
 }
