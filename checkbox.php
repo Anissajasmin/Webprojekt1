@@ -7,9 +7,13 @@
 
 </head>
 <body>
-    <div class = "center">
-        <input type = "checkbox" name="">
+    <div id = "center">
     </div>
+
+    <div id = "checkbox1">
+    </div>
+
+
 </body>
 
 </html>
