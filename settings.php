@@ -4,9 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Profilseite</title>
-    <link rel="stylesheet" type="text/css" href="profilseite.css">
+    <link rel="stylesheet" type="text/css" href="settings.css">
     <meta name = "viewport" content="width-device-width, initial-scale=1.0, maximum-scale=1.0, user scalelable=no">
 </head>
+
+<?php
+include "includedesign.php";
+?>
 
 <?php
 session_start();
@@ -16,10 +20,7 @@ if (!isset($_SESSION['login-id'])) {
 }else{
     ?>
 
-    <?php
 
-    if (isset)
-    ?>
     <body>
 
 
@@ -61,6 +62,7 @@ if (!isset($_SESSION['login-id'])) {
 
 
 
+
         <div id="background">
 
             <a style="..." href="">
@@ -70,8 +72,12 @@ if (!isset($_SESSION['login-id'])) {
 
 
             <div id="ueberschrift">
-                <h3> Settings</h3>
+                <h2 class="ueberschriftenmain1"> Settings
+                </h2>
             </div>
+
+            <div class = "center">
+                <input type = "checkbox">
 
 
         </div>
