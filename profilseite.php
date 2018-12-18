@@ -69,43 +69,20 @@ if (!isset($_SESSION['login-id'])) {
 
 
         <div id="tabellename">
-            <table class="tabelle1">
 
 
             <?php
-            $benutzername = $_POST["benutzername"];
-                $stmt = $pdo->prepare("SELECT * FROM login WHERE benutzername = '". $_SESSION['login-id']."'");
-                $result = $stmt->execute();
-            while ($row = $stmt->fetch()) {
-                echo "<tr>";
-                echo "<td>" . $row["benutzername"] . "</td>"; }
+            echo $_SESSION["username"];
             ?>
-
-
-
-
-            </table>
 
             </div>
 
 
         <div id="tabelleemail">
-         <table class="tabelle2">
-             <thead>
-          <tr>
-          <th>E-Mail</th>
-           </tr>
-             </thead>
 
-                        <?php
-                        $mail = $_POST["hdm_mail"];
-                        $stmt = $pdo->prepare("SELECT * FROM login WHERE mail = :hdm_mail");
-                        $result = $stmt->execute(array(':hdm_mail' => $mail));
-                        while ($row = $stmt->fetch()) {
-                            echo "<tr>";
-                            echo "<td>" . $row["hdm_mail"] . "</td>"; }
-                        ?>
-        </table>
+          <?php
+          echo $_SESSION["mail"];
+          ?>
 
         </div>
 
