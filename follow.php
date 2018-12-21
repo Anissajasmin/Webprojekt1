@@ -9,9 +9,14 @@
 <?php
 
 include("datenbankpasswort.php");
-$user_id = $_GET['user_id'];
+include ("logincheck.php");
+
+$user_id= $_GET['user_id'];
 $follow_id = $_SESSION['login-id'];
-$benutzername = $_SESSION ['login-id'];
+$benutzername = $_SESSION ['username'];
+$benutzername2 =$pdo->prepare("SELECT benutzername FROM login WHERE login_id= '" . $user_id . "'") ->execute();
+
+
 
 // Ist es ein fremdes Profil?
 if ($user_id != $_SESSION['login-id']) {
@@ -25,9 +30,6 @@ if ($user_id != $_SESSION['login-id']) {
     if (!$notfollowing > 0) {
         ?>
 
-        <form action="profilseite.php?user_id=<?php echo $user_id ?>" method="post">
-            <input type="submit" name="follow" value="Folgen">
-        </form>
 
         <?php
 
@@ -47,9 +49,11 @@ if ($user_id != $_SESSION['login-id']) {
 }
 
 ?>
-<h1> <?php echo $benutzername; ?> ´s Profil </h1>
+<h1> <?php echo $benutzername2; ?> ´s Profil </h1>
 
 
-
+<form action="profilseite.php?user_id=<?php echo $user_id ?>" method="post">
+    <input type="submit" name="follow" value="Folgen">
+</form>
 </body>
 </html>
