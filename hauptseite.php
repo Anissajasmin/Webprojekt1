@@ -193,34 +193,21 @@ $title = $visit_user ->fetch();
             <div>
 
 
-                <?php
-                //Chronik - wo die geposteten Beiträge auftauchen
+                    <?php
+        //Chronik - wo die geposteten Beiträge auftauchen
 
-                $stmt = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE posts IS NOT NULL ORDER BY beitrag_id DESC ");
+            $stmt = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE posts IS NOT NULL OR bildtext IS NOT NULL ORDER BY zeitstempel DESC");
 
-                $result = $stmt->execute();
-                while ($row = $stmt->fetch()) {
-                    echo "<div id=\"tabelleposts\">";
-                    echo $row["benutzername"];
-                    echo "<div id=\"poststext\">" . $row['posts'] . "</div>";
-                    echo "</div>";
-                }
-                ?>
-                <?php
-                //Chronik - wo die geposteten Bilder auftauchen
+            $result = $stmt->execute();
+            while ($row = $stmt->fetch()) {
+                echo "<div id=\"tabelleposts\">";
+                echo $row["benutzername"];
+                echo "<div id=\"poststext\">" . $row['posts'] . "</div>";
+                echo "<img src='" .$row['bildtext']. "'height='200'>";
+                echo "</div>";
+            }
+        ?>
 
-
-                $stmt = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE bildtext IS NOT NULL ORDER BY beitrag_id DESC");
-
-                $result = $stmt->execute();
-                while ($row = $stmt->fetch()) {
-                    echo "<div id=\"tabelleposts\">";
-                    echo $row["benutzername"];
-                    echo "<br>";
-                    echo "<img src='" .$row['bildtext']. "'height='200'>";
-                    echo "</div>";
-                }
-                ?>
 
 
             </div>
