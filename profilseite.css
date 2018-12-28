@@ -176,7 +176,7 @@ h3 {
     float: left;
     position:absolute;
     top:90px;
-    right: 35px;
+    right: 50px;
     width: 200px;
     height: 35px;
     background: #eee;
@@ -342,7 +342,6 @@ h3 {
     font-weight:400;
 
 }
-
 
 
 #recommendation {

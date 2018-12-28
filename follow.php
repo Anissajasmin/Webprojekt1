@@ -51,8 +51,9 @@ if ($user_id != $_SESSION['login-id']) {
     }
 
     else {
+        //Unfollow
         ?>
-//Unfollow
+
 <form action="profilseite.php?user_id=<?php echo $user_id?>" method="post">
     <input type="submit" name="unfollow" value="Entfolgen">
 </form>
@@ -74,7 +75,6 @@ if ($user_id != $_SESSION['login-id']) {
 }
 
 ?>
-<h1> <?php echo $benutzername; ?> ´s Profil </h1>
 
 
 </body>

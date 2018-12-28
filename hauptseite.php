@@ -112,7 +112,7 @@
         <ul id="navigation">
 
             <li class="listitem"><a href="hauptseite.php">Mein Feed</a></li>
-            <li class="listitem"><a href="profilseite.php">Mein Profil</a>
+            <li class="listitem"><a href="profilseite.php?user_id=<?php echo $user_id; ?>">Mein Profil</a>
                 <ul>
                     <li><a href="#"> Meine Daten</a></li>
                     <li><a href="#"> Meine Beiträge</a></li>
