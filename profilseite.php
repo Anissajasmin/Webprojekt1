@@ -20,17 +20,6 @@ if (!isset($_SESSION['login-id'])) {
     include ("datenbankpasswort.php");
 ?>
 
-<?php
-$my_id = $_SESSION['login-id'];
-$user_id= $_GET['user_id'];
-
-
-//Profildaten der unterschiedlichen Nutzer
-$visit_user = $pdo ->prepare ("SELECT * FROM login WHERE login_id=$user_id");
-$visit_user ->execute();
-$title = $visit_user ->fetch();
-?>
-
 
 
 
