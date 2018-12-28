@@ -68,7 +68,7 @@
                 <ul>
                     <li><a href="#"> Meine Daten</a></li>
                     <li><a href="#"> Meine Beiträge</a></li>
-                    <li><a href="#"> Einstellungen</a></li>
+                    <li class =“listitem"><a href="settings.php">Einstellungen</a></li>
                 </ul>
             </li>
             <li class="listitem"><a href="#">Meine Freunde</a></li>
@@ -85,8 +85,8 @@
 
     <div id="main">
 
-        <div id="recommondation">
-            <h2 class="ueberschriftenmain"> Recommondations
+        <div id="recommendation">
+            <h2 class="ueberschriftenmain"> Recommendations
             </h2>
         </div>
 
@@ -129,12 +129,9 @@
             <br>
             <hr class="strich">
 
-            <div id="tabelleposts">
-                <table class="tabelle1">
-                    <tr>
-                        <th>Benutzername</th>
-                        <th>Text</th>
-                    </tr>
+            <div>
+
+
 
 
 
@@ -145,14 +142,20 @@
 
                     $result = $stmt->execute();
                     while ($row = $stmt->fetch()) {
-                        echo "<tr>";
-                        echo "<td>" . $row["benutzername"] . "</td>";
-                        echo "<td>" . $row["posts"] . "</td>";
-                        echo "</tr>";
+                        ?>
+                <div id="tabelleposts">
+                    <div id="tabelle1">
+                    <?php
+                        echo $row["benutzername"];
+                        echo $row["posts"]  ;
+                        ?>
+                    </div>
+                </div>
+                <?php
                     }
                     ?>
 
-                </table>
+
             </div>
 
 

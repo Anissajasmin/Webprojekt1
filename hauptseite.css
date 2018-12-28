@@ -234,7 +234,7 @@ h1 {
 
 
 
-#recommondation {
+#recommendation {
     width: 200px;
     height: 300px;
     background-color: #888483;
@@ -333,8 +333,8 @@ ul li:hover ul li{
 }
 
 
-.tabelle1 {
-    color: black;
+#tabelle1 {
+    color: red;
     font-family: "Helvetica Neue";
     font-size: 90%;
 
@@ -342,7 +342,7 @@ ul li:hover ul li{
 }
 #tabelleposts {
     width:450px;
-    height: auto;
+    height:100px;
     background-color: white;
     margin-top: 20px;
     margin-left: auto;
@@ -395,3 +395,5 @@ ul li:hover ul li{
     text-decoration: none;
     color: #7B0202;
 }
+
+
