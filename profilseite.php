@@ -46,6 +46,30 @@ $title = $visit_user ->fetch();
 
 </div>
 
+<?php
+//Posts des Nutzers der Profilseite anzeigen
+$posts = $pdo->prepare("SELECT * FROM beitrag WHERE user_id= $user_id  ORDER BY zeitstempel DESC");
+$postsergebnis= $posts->execute(array(':user_id' => $user_id));
+if ($postsergebnis) {
+    while ($row = $posts->fetch()) {
+        ?>
+
+<div id="postsdernutzer">
+    <small><?php echo $row['posts']?></small><br>
+    <small><?php echo $row['bildtext']?></small><br>
+</div>
+
+<?php
+    }
+
+}
+?>
+
+
+
+
+
+
 
 <body>
 
@@ -132,3 +156,4 @@ $title = $visit_user ->fetch();
 <?php
 include_once "follow.php";
 ?>
+
