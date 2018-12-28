@@ -25,36 +25,33 @@ if (!isset($_SESSION['login-id'])) {
 
 
 <body>
-
-     <div class="header1"
-        </div>
-      <div class="coverpad">
-      </div>
-
-
-
     <div id="main">
 
-        <div id="recommondation">
-            <h2 class="ueberschriftenmain"> Recommondations
+        <div id="recommendation">
+            <h2 class="ueberschriftenmain"> Recommendations
             </h2>
         </div>
+
         <a style="..." href="">
             <div class="button8">Touches</div>
         </a>
-    </div>
 
 
 
-<div id="background">
 
-    <a style="..." href="">
-        <div class="button1">Save</div>
-    </a>
+            <div id="background">
 
-    <a style="..." href="">
-        <div class="button2">Settings</div>
-    </a>
+                <a style="..." href="">
+                    <div class="button9">Bild was hochgeladen wurde, soll hier angezeigt werden</div>
+                </a>
+
+                <a style="..." href="">
+                <div class="button1">Save</div>
+                </a>
+
+                <a style="..." href="">
+                 <div class="button2">Settings</div>
+                </a>
 
 
         <div class="button3">Friends</div>
@@ -63,9 +60,6 @@ if (!isset($_SESSION['login-id'])) {
 
         <div class="button4">Posts</div>
 
-
-
-        <div class="button5">Touches</div>
 
 
 
@@ -81,11 +75,14 @@ if (!isset($_SESSION['login-id'])) {
 
         <div id="tabelleemail">
 
-          <?php
-          echo $_SESSION["mail"];
-          ?>
+            <?php
+            echo $_SESSION["mail"];
+            ?>
 
         </div>
+
+    <br>
+    <hr class="strich">
 
 
     <div class = "button10"></div>
@@ -98,14 +95,14 @@ if (!isset($_SESSION['login-id'])) {
         <textarea id="text" name="text" placeholder="Write something..." cols="40" rows="4">
         </textarea>
         <br>
-        <input id="sendenbutton"  type="submit" value="senden">
-
+        <input id="sendenbutton"  type="submit" value="Senden">
+        <input id = "abbruchbutton" type="reset" value ="Abbruch">
     </form>
 
 
 
 
-
+    </div>
 </div>
 </body>
 </html>

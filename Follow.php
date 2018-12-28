@@ -1,34 +1,43 @@
+<!DOCTYPE html>
 <html>
-<head></head>
+<head>
+    <title>Follow</title>
+</head>
 <body>
-<form action="" method="post">
-    <input type="submit" name="folgen" value="folgen">
-</form>
+
 <?php
-session_start();
+include("datenbankpasswort.php");
+$user_id = $_GET['user_id'];
+$follow_id = $_SESSION['login-id'];
+$benutzername = $_SESSION ['login-id'];
+// Ist es ein fremdes Profil?
+if ($user_id != $_SESSION['login-id']) {
+// Wird dem Benutzer bereits gefolgt?
+    $checkfollow = $pdo->prepare("SELECT follow_id FROM follow WHERE user_id='" . $user_id . "' AND follow_id='" . $follow_id . "'");
+    $checkfollow->execute();
+    $notfollowing = $checkfollow->rowCount();
+    if (!$notfollowing > 0) {
+        ?>
 
-if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
+        <form action="profilseite.php?user_id=<?php echo $user_id ?>" method="post">
+            <input type="submit" name="follow" value="Folgen">
+        </form>
 
-    header ("Location: login.php");
-}
-include ("datenbankpasswort.php");
-
-
- if (isset($_POST['folgen'])) {
-                        $login_id = $pdo->query('SELECT login_id FROM login WHERE benutzername = :benutzername')[0]['login_id'];
-                        $follow_id = $pdo->query('SELECT status FROM login WHERE status = "online" ORDER BY benutzername');
-
-                        if (!$pdo->query('SELECT follow_id FROM follow WHERE login_id = :login_id')) {
-
-                                $pdo->query('INSERT INTO follow VALUES (\'\', :login_id, :follow_id)');
-                        } else {
-                                echo 'Du folgst diesem User bereits';
-                        }
-                } else {
-                die('Benutzer wurde nicht gefunden!');
+        <?php
+        if (isset($_POST['follow'])) {
+            $follow = $pdo->prepare("INSERT INTO follow (user_id, follow_id) VALUES (:user_id, :follow_id)");
+            $follow->bindParam(':user_id,', $user_id);
+            $follow->bindParam(':follow_id,', $follow_id);
+            if ($follow->execute()) {
+                echo '<script> window.location.href="profilseite.php?user_id=' . $user_id . '"</script>';
+            }
         }
-
-
+    }
+}
 ?>
+<h1> <?php echo $benutzername; ?> ´s Profil </h1>
+
+
+
 </body>
 </html>

@@ -25,3 +25,4 @@ if(isset($_GET['mail']) && !empty($_GET['mail']) AND isset($_GET['hash']) && !em
     // Zuerst muss Account aktiviert werden
     echo '<div>Bitte nutze den Link, den wir dir an deine HdM-Mail geschickt haben</div>';
 }
+?>

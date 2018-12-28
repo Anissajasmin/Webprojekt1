@@ -14,12 +14,25 @@ h1 {
     font-weight: 100;
 }
 
+h3 {
+    font-size: 150%;
+    color: white;
+    text-align: left;
+    position: absolute;
+    font-family: "Helvetica Neue";
+    top: 15px;
+    left: 25px;
+    font-weight: 100;
+
+}
+
+
 #background {
 
     width: 500px;
     height: 2000px;
     background-color: #888483;
-    margin-top: 65px;
+    margin-top: 135px;
     position: fixed;
     margin-right: auto;
     margin-left:auto;
@@ -93,7 +106,7 @@ h1 {
     position: absolute;
     width: 120px;
     height: 120px;
-    top: 35px;
+    top: 100px;
     left: 35px;
     background: #eee;
     color: #707070;
@@ -107,7 +120,28 @@ h1 {
 }
 
 .button9:hover {
-    background-color:#7B0202;
+    background-color: transparent;
+}
+
+.ueberschrift{
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 25px;
+    top: 80px;
+    width: 140px;
+    height: 140px;
+    background: #eee;
+    color: #707070;
+    font-family: "Helvetica Neue";
+    box-sizing: border-box;
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -o-border-radius: 25px;
+
 }
 
 
@@ -166,11 +200,11 @@ h1 {
 
 }
 
-#recommondation {
+#recommendation {
     width: 200px;
     height: 300px;
     background-color: #888483;
-    margin-top: 65px;
+    margin-top: 135px;
     position: fixed;
     top:40px;
     text-align: center ;
@@ -195,7 +229,7 @@ h1 {
     justify-content: center;
     float: left;
     position:absolute;
-    top:100px;
+    top:90px;
     right: 35px;
     width: 200px;
     height: 35px;
@@ -210,13 +244,14 @@ h1 {
 }
 
 
+
 #tabelleemail {
     display: flex;
     align-items: center;
     justify-content: center;
     float: left;
     position: absolute;
-    top:180px;
+    top:150px;
     right: 35px;
     width:200px;
     height: 35px;
@@ -232,4 +267,86 @@ h1 {
 
 
 }
+
+.button9 {
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    top: 80px;
+    left: 35px;
+    background: #eee;
+    color: #707070;
+    font-family: "Helvetica Neue";
+    box-sizing: border-box;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -o-border-radius: 15px;
+
+}
+.strich {
+    margin-top: 200px;
+
+}
+
+
+
+input[type=checkbox]{
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+label {
+    float:left;
+    top: 350px;
+    left:400px;
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 50px;
+    height: 25px;
+    background: lightgrey;
+    display: block;
+    border-radius: 100px;
+    position: relative;
+}
+
+label:after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right:0;
+    width: 25px;
+    height: 25px;
+    background: #fff;
+    border-radius: 90px;
+    transition: 0.3s;
+}
+
+input:checked + label {
+    background: #bada55;
+}
+
+input:checked + label:after {
+    left: calc(100% );
+    transform: translateX(-100%);
+}
+
+label:active:after {
+    width: 130px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
 
