@@ -1,3 +1,13 @@
+body {
+    background-image: url(hintergrundbild.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    text-align: center;
+}
+
+
+
 h3 {
     font-size: 150%;
     color: white;
@@ -19,26 +29,31 @@ h3 {
     align-items: flex-start;
 
 }
+
+
+
 #background {
 
-width: 500px;
-height: 2000px;
-background-color: #905A53;
-margin-top: 150px;
-position: fixed;
-margin-right: auto;
-margin-left:auto;
-top: 40px;
-left: 25%;
-right:25%;
-border-radius: 30px;
--moz-border-radius: 30px;
--webkit-border-radius: 30px;
--o-border-radius: 30px;
+    width: 500px;
+    height: 2000px;
+    background-color: #888483;
+    margin-top: 135px;
+    position: fixed;
+    margin-right: auto;
+    margin-left:auto;
+    top: 40px;
+    left: 25%;
+    right:25%;
+    border-radius: 30px;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -o-border-radius: 30px;
 }
 .wrapper{
 
 }
+
+
 
 .button1 {
     float: left;
@@ -47,7 +62,7 @@ border-radius: 30px;
     justify-content: center;
     position: absolute;
     left: 35px;
-    top: 490px;
+    top: 510px;
     width: 150px;
     height: 35px;
     background: #eee;
@@ -60,7 +75,7 @@ border-radius: 30px;
     -o-border-radius: 70px;
 }
 .button1:hover {
-     background-color:#B9877E;
+     background-color:#7B0202;
  }
 
 .button2 {
@@ -70,7 +85,7 @@ border-radius: 30px;
     justify-content: center;
     position: absolute;
     right: 35px;
-    top: 490px;
+    top: 510px;
     width: 150px;
     height: 35px;
     background: #eee;
@@ -84,7 +99,7 @@ border-radius: 30px;
 }
 
 .button2:hover {
-    background-color:#B9877E;
+    background-color:#7B0202;
 }
 
 .button3 {
@@ -93,8 +108,7 @@ border-radius: 30px;
     align-items: center;
     justify-content: center;
     position: absolute;
-    left: 210px;
-    right: 125px;
+    left: 130px;
     top: 245px;
     width: 85px;
     height: 85px;
@@ -118,7 +132,7 @@ border-radius: 30px;
     align-items: center;
     justify-content: center;
     position: absolute;
-    left: 20%;
+    right: 130px;
     top: 245px;
     width: 85px;
     height: 85px;
@@ -155,15 +169,13 @@ border-radius: 30px;
 
 }
 
-
-
 #tabellename {
     display: flex;
     align-items: center;
     justify-content: center;
     float: left;
     position:absolute;
-    top:100px;
+    top:90px;
     right: 35px;
     width: 200px;
     height: 35px;
@@ -179,22 +191,13 @@ border-radius: 30px;
 
 
 
-
-.tabelle1 {
-    color: white;
-    font-family: "Helvetica Neue";
-    font-size: 90%;
-
-
-}
-
 #tabelleemail {
     display: flex;
     align-items: center;
     justify-content: center;
     float: left;
     position: absolute;
-    top:180px;
+    top:150px;
     right: 35px;
     width:200px;
     height: 35px;
@@ -210,14 +213,11 @@ border-radius: 30px;
 
 
 }
-
-.tabelle2 {
-    color: white;
-    font-family: "Helvetica Neue";
-    font-size: 90%;
-
+.strich {
+    margin-top: 200px;
 
 }
+
 
 .button8 {
     display: flex;
@@ -250,10 +250,10 @@ border-radius: 30px;
     align-items: center;
     justify-content: center;
     position: absolute;
-    width: 90px;
-    height: 90px;
-    top: 350px;
-    right:35px;
+    width: 120px;
+    height: 120px;
+    top: 80px;
+    left: 35px;
     background: #eee;
     color: #707070;
     font-family: "Helvetica Neue";
@@ -265,11 +265,7 @@ border-radius: 30px;
 
 }
 
-.button9:hover {
-    background-color:#B9877E;
-}
-
-.button10{
+.ueberschrift{
     float: left;
     display: flex;
     align-items: center;
@@ -295,11 +291,13 @@ border-radius: 30px;
 
 
 #text {
+    text-align: center;
     position: absolute;
-    width:250px;
-    height: 90px;
+    height: 100px;
+    width: 440px;
     top: 350px;
-    left: 25px;
+    left: 30px;
+    right:30px;
     color: #707070;
     border-radius: 15px;
     -moz-border-radius: 15px;
@@ -309,12 +307,49 @@ border-radius: 30px;
 
 }
 
+#sendenbutton {
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    float: right;
+    position:absolute;
+    right: 30px;
+    top: 465px;
+    width: 80px;
+    height:20px;
+    background-color:white;
+    color: black;
+    font-family: "Helvetica Neue";
+    font-size: 90%;
+    font-weight:400;
 
-#recommondation {
+}
+
+#abbruchbutton {
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    float: right;
+    position:absolute;
+    right: 120px;
+    top: 465px;
+    width: 80px;
+    height:20px;
+    background-color:white;
+    color: black;
+    font-family: "Helvetica Neue";
+    font-size: 90%;
+    font-weight:400;
+
+}
+
+
+
+#recommendation {
     width: 200px;
     height: 300px;
-    background-color: #B9877E;
-    margin-top: 150px;
+    background-color: #888483;
+    margin-top: 135px;
     position: fixed;
     top:40px;
     text-align: center ;
@@ -325,7 +360,6 @@ border-radius: 30px;
     -o-border-radius: 30px;
 
 }
-
 
 
 .ueberschriftenmain {

@@ -45,6 +45,7 @@ if (!isset($_SESSION['login-id'])) {
         </ul>
 
         <div id = "searcharea" class ="header"><input placeholder= "Search here..." type="text" id="searchbox"/></div>
+
         <a style="text-decoration:none;" href="">
             <div id="notificationneu"><img src="notificationneu.png"/><div>
         </a>

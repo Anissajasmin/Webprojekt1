@@ -12,6 +12,7 @@
 include "includedesign.php";
 ?>
 
+
 <?php
 session_start();
 include_once "logincheck.php";
@@ -55,29 +56,60 @@ if (!isset($_SESSION['login-id'])) {
 
     <div id="main">
 
-        <div id="recommondation">
-            <h2 class="ueberschriftenmain"> Recommondations
+        <div id="recommendation">
+            <h2 class="ueberschriftenmain"> Recommendations
             </h2>
         </div>
+    </div>
 
 
 
 
-        <div id="background">
+<div id="background">
 
             <a style="..." href="">
                 <div class="button1">Save</div>
             </a>
 
+    <br>
+    <hr class="strich">
 
-
+            <div class = "button10"></div>
             <div id="ueberschrift">
-                <h2 class="ueberschriftenmain1"> Settings
-                </h2>
+                <h3> Settings </h3>
             </div>
 
-            <div class = "center">
-                <input type = "checkbox">
+
+                <a style="..." href="">
+                    <div class="button9">Upload picture</div>
+                </a>
+
+    <label class="switch">
+        <input class="switch-input" type="checkbox" />
+        <span class="switch-label" data-on="On" data-off="Off"></span>
+        <span class="switch-handle"></span>
+    </label>
+
+        <div id="tabellename">
+
+
+                    <?php
+                    echo $_SESSION["username"];
+                    ?>
+
+                </div>
+
+
+                <div id="tabelleemail">
+
+                    <?php
+                    echo $_SESSION["mail"];
+                    ?>
+
+
+
+
+
 
 
         </div>
@@ -87,4 +119,3 @@ if (!isset($_SESSION['login-id'])) {
     <?php
 }
 ?>
-</html>
