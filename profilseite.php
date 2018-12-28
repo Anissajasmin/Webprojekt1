@@ -19,8 +19,32 @@ if (!isset($_SESSION['login-id'])) {
     include ("datenbankpasswort.php");
 ?>
 
+<?php
+$my_id = $_SESSION['login-id'];
+$user_id= $_GET['user_id'];
 
 
+//Profildaten der unterschiedlichen Nutzer
+$visit_user = $pdo ->prepare ("SELECT * FROM login WHERE login_id=$user_id");
+$visit_user ->execute();
+$title = $visit_user ->fetch();
+?>
+<div id="tabellename">
+
+
+    <?php
+    echo $title['benutzername'];
+    ?>
+
+</div>
+
+<div id="tabelleemail">
+
+    <?php
+    echo $title['hdm_mail'];
+    ?>
+
+</div>
 
 
 <body>
@@ -68,23 +92,10 @@ if (!isset($_SESSION['login-id'])) {
 
 
 
-        <div id="tabellename">
 
 
-            <?php
-            echo $_SESSION["username"];
-            ?>
-
-            </div>
 
 
-        <div id="tabelleemail">
-
-          <?php
-          echo $_SESSION["mail"];
-          ?>
-
-        </div>
 
 
 
@@ -118,4 +129,6 @@ if (!isset($_SESSION['login-id'])) {
 }
 ?>
 
-
+<?php
+include_once "follow.php";
+?>
