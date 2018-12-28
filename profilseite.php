@@ -10,17 +10,18 @@
 include "includedesign.php";
 ?>
 
+
 <?php
 session_start();
 include_once "logincheck.php";
 if (!isset($_SESSION['login-id'])) {
     echo "Bitte logge dich ein oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
 }else{
-include ("datenbankpasswort.php");
+    include ("datenbankpasswort.php");
 ?>
 
 <?php
-$follow_id = $_SESSION['login-id'];
+$my_id = $_SESSION['login-id'];
 $user_id= $_GET['user_id'];
 
 
@@ -48,47 +49,40 @@ $title = $visit_user ->fetch();
 
 
 <body>
+    <div id="main">
 
-<div class="header1"
-</div>
-<div class="coverpad">
-</div>
+        <div id="recommendation">
+            <h2 class="ueberschriftenmain"> Recommendations
+            </h2>
+        </div>
 
-
-
-<div id="main">
-
-    <div id="recommondation">
-        <h2 class="ueberschriftenmain"> Recommondations
-        </h2>
-    </div>
-    <a style="..." href="">
-        <div class="button8">Touches</div>
-    </a>
-</div>
+        <a style="..." href="">
+            <div class="button8">Touches</div>
+        </a>
 
 
 
-<div id="background">
 
-    <a style="..." href="">
-        <div class="button1">Save</div>
-    </a>
+            <div id="background">
 
-    <a style="..." href="">
-        <div class="button2">Settings</div>
-    </a>
+                <a style="..." href="">
+                    <div class="button9">Bild was hochgeladen wurde, soll hier angezeigt werden</div>
+                </a>
 
+                <a style="..." href="">
+                <div class="button1">Save</div>
+                </a>
 
-    <div class="button3">Friends</div>
-
-
-
-    <div class="button4">Posts</div>
+                <a style="..." href="">
+                 <div class="button2">Settings</div>
+                </a>
 
 
+        <div class="button3">Friends</div>
 
-    <div class="button5">Touches</div>
+
+
+        <div class="button4">Posts</div>
 
 
 
@@ -98,10 +92,8 @@ $title = $visit_user ->fetch();
 
 
 
-
-    <a style="..." href="">
-        <div class="button9">Upload picture</div>
-    </a>
+    <br>
+    <hr class="strich">
 
 
     <div class = "button10"></div>
@@ -114,21 +106,21 @@ $title = $visit_user ->fetch();
         <textarea id="text" name="text" placeholder="Write something..." cols="40" rows="4">
         </textarea>
         <br>
-        <input id="sendenbutton"  type="submit" value="senden">
-
+        <input id="sendenbutton"  type="submit" value="Senden">
+        <input id = "abbruchbutton" type="reset" value ="Abbruch">
     </form>
 
 
 
 
-
+    </div>
 </div>
 </body>
 </html>
-<?php
+    <?php
 }
 ?>
 
 <?php
 include_once "follow.php";
-
+?>

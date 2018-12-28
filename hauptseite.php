@@ -116,7 +116,8 @@
                 <ul>
                     <li><a href="#"> Meine Daten</a></li>
                     <li><a href="#"> Meine Beiträge</a></li>
-                    <li class =“listitem"><a href="settings.php"> Einstellungen</a></li>
+                    <li class =“listitem"><a href="settings.php">Einstellungen</a></li>
+
                 </ul>
             </li>
             <li class="listitem"><a href="#">Meine Freunde</a></li>
@@ -133,8 +134,8 @@
 
     <div id="main">
 
-        <div id="recommondation">
-            <h2 class="ueberschriftenmain"> Recommondations
+        <div id="recommendation">
+            <h2 class="ueberschriftenmain"> Recommendations
             </h2>
         </div>
 
