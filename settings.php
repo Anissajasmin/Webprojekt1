@@ -87,7 +87,7 @@ if (!isset($_SESSION['login-id'])) {
 
 
     <form enctype="multipart/form-data"
-          name="uploadformular" action="profilseite.php?user_id=<?php echo $user_id;?>" method="post">
+          name="uploadformular" action="" method="post">
         <p><input id=dateiauswahl name="upfile" type="file"></p>
         <p><input id="button9" type="submit" name="bildgesendet" value="Hochladen">
     </form>
@@ -140,10 +140,10 @@ if (isset($_POST['bildgesendet'])) {
 
 //Pfad zum Upload
         $new_path = $upload_ordner . $bildname . '.' . $endung;
-
+echo $new_path;
 //In DB einfügen
 
-        $statement = $pdo->prepare("INSERT INTO profilbild (profilbildtext, user_id) VALUES ('$new_path', '$user_id')");
+        $statement = $pdo->prepare("INSERT INTO profilbild (profilbildtext, user_id) VALUES ('$new_path', '$my_id')");
         $result = $statement->execute();
     }
 }
@@ -168,22 +168,10 @@ if (isset($_POST["bildgesendet"])) {
 //Alles okay, verschiebe Bild an neuen Pfad
 move_uploaded_file($_FILES['upfile']['tmp_name'], $new_path);
 //echo 'Bild erfolgreich hochgeladen: <a href="'.$new_path.'">'.$new_path.'</a>';
-
+}
 ?>
 
 <div>
-    <?php //Chronik - wo die geposteten Bilder auftauchen
 
-
-    $stmt = $pdo->prepare("SELECT * FROM profilbildlogin WHERE profilbildtext IS NOT NULL ");
-
-    $result = $stmt->execute();
-    while ($row = $stmt->fetch()) {
-        echo "<div id=\"button9\">";
-        echo "<img src='" . $row['profilbildtext'] . "'height='120' 'weight: 120'>";
-        echo "</div>";
-    }
-    }
-    ?>
 
 </div>
