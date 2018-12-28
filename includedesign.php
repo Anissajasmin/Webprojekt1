@@ -13,6 +13,15 @@ if (!isset($_SESSION['login-id'])) {
 }else {
     include("datenbankpasswort.php");
 }
+$my_id = $_SESSION['login-id'];
+$user_id= $_GET['user_id'];
+
+
+//Profildaten der unterschiedlichen Nutzer
+$visit_user = $pdo ->prepare ("SELECT * FROM login WHERE login_id=$user_id");
+$visit_user ->execute();
+$title = $visit_user ->fetch();
+
 ?>
 
 
@@ -32,8 +41,8 @@ if (!isset($_SESSION['login-id'])) {
         <div id="logoutbutton"> <a href="logout.php">Log Out</a></div>
         <ul id="navigation">
 
-            <li class="listitem"><a href="hauptseite.php">Mein Feed</a></li>
-            <li class="listitem"><a href="profilseite.php">Mein Profil</a>
+            <li class="listitem"><a href="hauptseite.php?user_id=<?php echo $user_id; ?>">Mein Feed</a></li>
+            <li class="listitem"><a href="profilseite.php?user_id=<?php echo $user_id; ?>">Mein Profil</a>
                 <ul>
                     <li><a href="#"> Meine Daten</a></li>
                     <li><a href="#"> Meine Beiträge</a></li>

@@ -30,44 +30,6 @@ $visit_user = $pdo ->prepare ("SELECT * FROM login WHERE login_id=$user_id");
 $visit_user ->execute();
 $title = $visit_user ->fetch();
 ?>
-<div id="tabellename">
-
-
-    <?php
-    echo $title['benutzername'];
-    ?>
-
-</div>
-
-<div id="tabelleemail">
-
-    <?php
-    echo $title['hdm_mail'];
-    ?>
-
-</div>
-
-<?php
-//Posts des Nutzers der Profilseite anzeigen
-$posts = $pdo->prepare("SELECT * FROM beitrag WHERE user_id= $user_id  ORDER BY zeitstempel DESC");
-$postsergebnis= $posts->execute(array(':user_id' => $user_id));
-if ($postsergebnis) {
-    while ($row = $posts->fetch()) {
-        ?>
-
-<div id="postsdernutzer">
-    <small><?php echo $row['posts']?></small><br>
-    <small><?php echo $row['bildtext']?></small><br>
-</div>
-
-<?php
-    }
-
-}
-?>
-
-
-
 
 
 
@@ -93,9 +55,19 @@ if ($postsergebnis) {
                     <div class="button9">Bild was hochgeladen wurde, soll hier angezeigt werden</div>
                 </a>
 
-                <a style="..." href="">
-                <div class="button1">Save</div>
-                </a>
+                <div id="tabellename">
+                    <?php
+                    echo $title['benutzername'];
+                    ?>
+                </div>
+
+                <div id="tabelleemail">
+                    <?php
+                    echo $title['hdm_mail'];
+                    ?>
+
+                </div>
+
 
                 <a style="..." href="">
                  <div class="button2">Settings</div>
@@ -109,7 +81,8 @@ if ($postsergebnis) {
         <div class="button4">Posts</div>
 
 
-
+                <br>
+                <hr class="strich">
 
 
 
@@ -126,15 +99,27 @@ if ($postsergebnis) {
     </div>
 
 
-    <form id=postbox2 action="" method="post">
-        <textarea id="text" name="text" placeholder="Write something..." cols="40" rows="4">
-        </textarea>
-        <br>
-        <input id="sendenbutton"  type="submit" value="Senden">
-        <input id = "abbruchbutton" type="reset" value ="Abbruch">
-    </form>
+
+                <?php
+                //Posts des Nutzers der Profilseite anzeigen
+                $posts = $pdo->prepare("SELECT * FROM beitrag WHERE user_id= $user_id  ORDER BY zeitstempel DESC");
+                $postsergebnis= $posts->execute(array(':user_id' => $user_id));
+                if ($postsergebnis) {
+                    while ($row = $posts->fetch()) {
+                        ?>
+
+                        <div id="postsdernutzer">
+                            <small><?php echo $row['posts']?></small><br>
+                            <small><?php echo $row['bildtext']?></small><br>
+                        </div>
 
 
+
+                        <?php
+                    }
+
+                }
+                ?>
 
 
     </div>
