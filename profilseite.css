@@ -85,7 +85,7 @@ h3 {
     justify-content: center;
     position: absolute;
     right: 35px;
-    top: 510px;
+    top: 400px;
     width: 150px;
     height: 35px;
     background: #eee;
@@ -198,7 +198,7 @@ h3 {
     float: left;
     position: absolute;
     top:150px;
-    right: 35px;
+    right: 50px;
     width:200px;
     height: 35px;
     background: #eee;
@@ -372,7 +372,22 @@ h3 {
 
 
 
+#postsdernutzer {
+    width:450px;
+    height: auto;
+    background-color: white;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -o-border-radius: 15px;
 
+}
 
 
 

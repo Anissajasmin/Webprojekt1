@@ -250,10 +250,11 @@ h1 {
 
 
 #profile {
-    width: 200px;
+    width: 220px;
     height: 300px;
     background-color: #888483;
     margin-top: 150px;
+    horiz-align: center;
     border-radius: 30px;
     -moz-border-radius: 30px;
     -webkit-border-radius: 30px;
@@ -413,6 +414,48 @@ ul li:hover ul li{
     -moz-border-radius: 15px;
     -webkit-border-radius: 15px;
     -o-border-radius: 15px;
+
+
+}
+
+#tabellename {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position:absolute;
+    top:230px;
+
+    width: 200px;
+    height: 35px;
+    background: #eee;
+    color: #707070;
+    font-family: "Helvetica Neue";
+    box-sizing: border-box;
+    border-radius: 40px;
+    -moz-border-radius: 40px;
+    -webkit-border-radius: 40px;
+    -o-border-radius: 40px;
+}
+
+
+
+#tabelleemail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top:280px;
+    width:200px;
+    height: 35px;
+    background: #eee;
+    color: #707070;
+    font-family: "Helvetica Neue";
+    box-sizing: border-box;
+    border-radius: 40px;
+    -moz-border-radius: 40px;
+    -webkit-border-radius: 40px;
+    -o-border-radius: 40px;
+
 
 
 }
