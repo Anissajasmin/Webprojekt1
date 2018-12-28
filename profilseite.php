@@ -16,32 +16,56 @@ include_once "logincheck.php";
 if (!isset($_SESSION['login-id'])) {
     echo "Bitte logge dich ein oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
 }else{
-    include ("datenbankpasswort.php");
+include ("datenbankpasswort.php");
 ?>
 
+<?php
+$follow_id = $_SESSION['login-id'];
+$user_id= $_GET['user_id'];
 
 
+//Profildaten der unterschiedlichen Nutzer
+$visit_user = $pdo ->prepare ("SELECT * FROM login WHERE login_id=$user_id");
+$visit_user ->execute();
+$title = $visit_user ->fetch();
+?>
+<div id="tabellename">
+
+
+    <?php
+    echo $title['benutzername'];
+    ?>
+
+</div>
+
+<div id="tabelleemail">
+
+    <?php
+    echo $title['hdm_mail'];
+    ?>
+
+</div>
 
 
 <body>
 
-     <div class="header1"
-        </div>
-      <div class="coverpad">
-      </div>
+<div class="header1"
+</div>
+<div class="coverpad">
+</div>
 
 
 
-    <div id="main">
+<div id="main">
 
-        <div id="recommondation">
-            <h2 class="ueberschriftenmain"> Recommondations
-            </h2>
-        </div>
-        <a style="..." href="">
-            <div class="button8">Touches</div>
-        </a>
+    <div id="recommondation">
+        <h2 class="ueberschriftenmain"> Recommondations
+        </h2>
     </div>
+    <a style="..." href="">
+        <div class="button8">Touches</div>
+    </a>
+</div>
 
 
 
@@ -56,35 +80,22 @@ if (!isset($_SESSION['login-id'])) {
     </a>
 
 
-        <div class="button3">Friends</div>
+    <div class="button3">Friends</div>
 
 
 
-        <div class="button4">Posts</div>
+    <div class="button4">Posts</div>
 
 
 
-        <div class="button5">Touches</div>
+    <div class="button5">Touches</div>
 
 
 
-        <div id="tabellename">
 
 
-            <?php
-            echo $_SESSION["username"];
-            ?>
-
-            </div>
 
 
-        <div id="tabelleemail">
-
-          <?php
-          echo $_SESSION["mail"];
-          ?>
-
-        </div>
 
 
 
@@ -114,8 +125,10 @@ if (!isset($_SESSION['login-id'])) {
 </div>
 </body>
 </html>
-    <?php
+<?php
 }
 ?>
 
+<?php
+include_once "follow.php";
 
