@@ -392,3 +392,26 @@ ul li:hover ul li{
     color: #7B0202;
 }
 
+#poststext {
+    max-width: 445px;
+    display: block;
+
+}
+
+#tabelleposts {
+    width:450px;
+    height: auto;
+    background-color: white;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -o-border-radius: 15px;
+
+
+}
