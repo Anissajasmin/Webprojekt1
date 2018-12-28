@@ -128,7 +128,7 @@ $title = $visit_user ->fetch();
                 <ul>
                     <li><a href="#"> Meine Daten</a></li>
                     <li><a href="#"> Meine Beiträge</a></li>
-                    <li class =“listitem"><a href="settings.php">Einstellungen</a></li>
+                    <li class =“listitem"><a href="settings.php?user_id=<?php echo $user_id;?>">Einstellungen</a></li>
 
                 </ul>
             </li>
