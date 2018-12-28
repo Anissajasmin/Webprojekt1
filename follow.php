@@ -74,7 +74,7 @@ if ($user_id != $_SESSION['login-id']) {
 }
 
 ?>
-<h1> <?php echo $benutzername; ?> ´s Profil </h1>
+
 
 
 </body>
