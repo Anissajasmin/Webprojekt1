@@ -66,7 +66,22 @@ $title = $visit_user ->fetch();
             <div id="background">
 
                 <a style="..." href="">
-                    <div class="button9">Bild was hochgeladen wurde, soll hier angezeigt werden</div>
+                    <div class="button9"><div>
+    <?php //Profilbild soll hier angezeigt werden
+
+
+    $stmt = $pdo->prepare("SELECT * FROM profilbildlogin WHERE profilbildtext IS NOT NULL ");
+
+    $result = $stmt->execute();
+    while ($row = $stmt->fetch()) {
+        echo "<div id=\"button9\">";
+        echo "<img src='" . $row['profilbildtext'] . "'height='120' 'weight: 120'>";
+        echo "</div>";
+    }
+
+    ?>
+
+</div></div>
                 </a>
 
                 <a style="..." href="">
