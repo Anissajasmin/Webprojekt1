@@ -120,7 +120,7 @@ if (!isset($_SESSION['login-id'])) {
 </body>
 
 <?php
-$user_id = $_SESSION["login-id"];
+    $user_id= $_GET['user_id'];
 
 //Einfügen Bild
 

@@ -73,7 +73,7 @@ if (!isset($_SESSION['login-id'])) {
                 </div>
 
 
-                <a style="..." href="">
+                <a style="..." href="settings.php?user_id=<?php echo $user_id;?>">
                  <div class="button2">Settings</div>
                 </a>
 
