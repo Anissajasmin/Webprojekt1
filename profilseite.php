@@ -7,21 +7,15 @@
     <meta name = "viewport" content="width-device-width, initial-scale=1.0, maximum-scale=1.0, user scalelable=no">
 </head>
 <?php
-include "includedesign.php";
+    include "includedesign.php";
+
+    session_start();
+    include_once "logincheck.php";
+            if (!isset($_SESSION['login-id'])) {
+                 echo "Bitte logge dich ein oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
+            }else{
+                include ("datenbankpasswort.php");
 ?>
-
-
-<?php
-session_start();
-include_once "logincheck.php";
-if (!isset($_SESSION['login-id'])) {
-    echo "Bitte logge dich ein oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
-}else{
-    include ("datenbankpasswort.php");
-?>
-
-
-
 
 <body>
     <div id="main">
@@ -35,17 +29,16 @@ if (!isset($_SESSION['login-id'])) {
             <div class="button8">Touches</div>
         </a>
 
+        <div id="background">
 
+            <a style="..." href="">
+                <div class="button9">
+                    <div>
 
+    <?php
+    //Profilbild soll hier angezeigt werden
 
-            <div id="background">
-
-                <a style="..." href="">
-                    <div class="button9"><div>
-    <?php //Profilbild soll hier angezeigt werden
-
-
-    $stmt = $pdo->prepare("SELECT * FROM profilbildlogin WHERE profilbildtext IS NOT NULL ");
+    $stmt = $pdo->prepare("SELECT * FROM profilbildlogin WHERE user_id = $user_id ");
 
     $result = $stmt->execute();
     while ($row = $stmt->fetch()) {
@@ -55,82 +48,68 @@ if (!isset($_SESSION['login-id'])) {
     }
 
     ?>
-
-</div></div>
-                </a>
-
-                <div id="tabellename">
-                    <?php
-                    echo $title['benutzername'];
-                    ?>
+                    </div>
                 </div>
+            </a>
 
-                <div id="tabelleemail">
-                    <?php
+        <div id="tabellename">
+    <?php
+        echo $title['benutzername'];
+    ?>
+        </div>
+
+            <div id="tabelleemail">
+
+                <?php
                     echo $title['hdm_mail'];
-                    ?>
+                ?>
 
-                </div>
+            </div>
 
-
-                <a style="..." href="settings.php?user_id=<?php echo $user_id;?>">
-                 <div class="button2">Settings</div>
-                </a>
-
+        <a style="..." href="settings.php?user_id=<?php echo $user_id;?>">
+             <div class="button2">Settings</div>
+        </a>
 
         <div class="button3">Friends</div>
 
-
-
         <div class="button4">Posts</div>
 
+            <br>
+        <hr class="strich">
 
-                <br>
-                <hr class="strich">
+            <br>
+        <hr class="strich">
 
-
-
-
-
-
-    <br>
-    <hr class="strich">
-
-
-    <div class = "button10"></div>
-    <div id="ueberschrift">
-        <h3> Your Profile</h3>
-    </div>
+        <div class = "button10"></div>
+        <div id="ueberschrift">
+            <h3> Your Profile</h3>
+        </div>
 
 
+        <?php
+        //Posts des Nutzers der Profilseite anzeigen
+        $posts = $pdo->prepare("SELECT * FROM beitrag WHERE user_id= $user_id  ORDER BY zeitstempel DESC");
+        $postsergebnis= $posts->execute(array(':user_id' => $user_id));
+            if ($postsergebnis) {
+                while ($row = $posts->fetch()) {
+        ?>
+        <div id="postsdernutzer">
+            <small><?php echo $row['posts']?></small><br>
+            <small><img src=<?php echo $row['bildtext']?>height='200'></small><br>
+        </div>
 
-                <?php
-                //Posts des Nutzers der Profilseite anzeigen
-                $posts = $pdo->prepare("SELECT * FROM beitrag WHERE user_id= $user_id  ORDER BY zeitstempel DESC");
-                $postsergebnis= $posts->execute(array(':user_id' => $user_id));
-                if ($postsergebnis) {
-                    while ($row = $posts->fetch()) {
-                        ?>
-
-                        <div id="postsdernutzer">
-                            <small><?php echo $row['posts']?></small><br>
-                            <small><?php echo $row['bildtext']?></small><br>
-                        </div>
-
-
-
-                        <?php
-                    }
-
+        <?php
                 }
-                ?>
 
+            }
+        ?>
 
+        </div>
     </div>
-</div>
 </body>
 </html>
-    <?php
+
+<?php
 }
 ?>
 
