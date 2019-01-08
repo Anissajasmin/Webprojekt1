@@ -35,7 +35,7 @@ h3 {
 #background {
 
     width: 500px;
-    height: 2000px;
+    height: auto;
     background-color: #888483;
     margin-top: 135px;
     position: fixed;
