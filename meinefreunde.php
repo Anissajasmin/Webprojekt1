@@ -40,13 +40,13 @@ include ("follow.php")
         <h2 class="ueberschriftenmain"> Profile
         </h2>
 
-        <div id="tabellename">
+        <div id="tabellename1">
             <?php
             echo $title['benutzername'];
             ?>
         </div>
 
-        <div id="tabelleemail">
+        <div id="tabelleemail1">
             <?php
             echo $title['hdm_mail'];
             ?>
@@ -54,20 +54,6 @@ include ("follow.php")
         </div>
 
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </body>
