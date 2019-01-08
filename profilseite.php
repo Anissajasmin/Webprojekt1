@@ -10,6 +10,7 @@
 
     session_start();
 include "includedesign.php";
+
     include_once "logincheck.php";
             if (!isset($_SESSION['login-id'])) {
                  echo "Bitte logge dich ein oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
