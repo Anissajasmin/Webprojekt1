@@ -236,11 +236,12 @@ h1 {
 
 
 
-#recommondation {
+#recommendation {
     width: 200px;
     height: 300px;
     background-color: #888483;
     margin-top: 150px;
+    horiz-align: center;
     border-radius: 30px;
     -moz-border-radius: 30px;
     -webkit-border-radius: 30px;
@@ -286,9 +287,10 @@ h1 {
 }
 
 #navigation {
-    margin-top: 15px;
-    padding:0;
     list-style: none;
+    float:left;
+    margin-left:70px;
+    margin-top: -46px;
 }
 
 .listitem {
@@ -315,7 +317,7 @@ h1 {
 }
 
 .listitem a:hover {
-    background-color: #7B0202;
+    background-color: #888483;
     color: white;
 
 }
@@ -424,7 +426,7 @@ ul li:hover ul li{
     justify-content: center;
     position:absolute;
     top:230px;
-
+    margin-left:10px;
     width: 200px;
     height: 35px;
     background: #eee;
@@ -445,6 +447,7 @@ ul li:hover ul li{
     justify-content: center;
     position: absolute;
     top:280px;
+    margin-left:10px;
     width:200px;
     height: 35px;
     background: #eee;
@@ -457,5 +460,28 @@ ul li:hover ul li{
     -o-border-radius: 40px;
 
 
+
+}
+
+
+#searchbox {
+    height: 20px;
+    width: 200px;
+    position: fixed;
+    top: 7px;
+    right: 300px;
+    border-radius: 60px;
+    -moz-border-radius:60px;
+    -webkit-border-radius: 60px;
+    -o-border-radius: 60px;
+
+}
+
+#suchebutton {
+    height: 20px;
+    width: 50px;
+    position: fixed;
+    top: 10px;
+    right: 240px;
 
 }

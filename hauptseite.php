@@ -120,6 +120,36 @@ $title = $visit_user ->fetch();
 
     <div id="header">
         <h1>TOUCH</h1>
+        <form action="" id = "searcharea" class ="header" method="post">
+            <input placeholder= "Search here..." type="text" name="suche" id="searchbox"/>
+            <input type="hidden" name="suchegesendet" value="1">
+            <input id="suchebutton" type="submit" value="Suchen">
+        </form>
+        <?php
+        //Suchfunktion
+
+        if (isset($_POST["suche"])) {
+            $allebenutzername = $_POST["suche"];
+
+            $benutzersuche = $pdo->prepare("SELECT * FROM vlj_loginprofilbild WHERE benutzername = '$allebenutzername' AND aktiviert = 1");
+            if ($benutzersuche->execute()) {
+
+                while ($row = $benutzersuche->fetch()) {
+                    $userid = $row ['login_id'];
+                    ?>
+                    <h3>
+                        <a href="profilseite.php?user_id=<?php echo $userid ?>"><img src="<?php echo $row['profilbildtext'] ?>"></a>
+                        <a href="profilseite.php?user_id=<?php echo $userid ?>"><?php echo $row['benutzername'] ?></a>
+                    </h3>
+
+                    <?php
+                }
+            } else {
+                echo "<div>No user found</div>";
+            }
+        }
+        ?>
+
         <div id="logoutbutton"> <a href="logout.php">Log Out</a></div>
         <ul id="navigation">
 
@@ -132,13 +162,12 @@ $title = $visit_user ->fetch();
 
                 </ul>
             </li>
-            <li class="listitem"><a href="#">Meine Freunde</a></li>
+            <li class="listitem"><a href="meinefreunde.php?user_id=<?php echo $user_id;?>">Meine Freunde</a></li>
 
         </ul>
 
 
-        <label id="suche1" for="suche">Search</label>
-        <input type="search" id="suche" placeholder="Profile, ...">
+
 
 
     </div>
@@ -150,6 +179,7 @@ $title = $visit_user ->fetch();
             <h2 class="ueberschriftenmain"> Recommendations
             </h2>
         </div>
+
 
         <div id="background">
 
@@ -215,6 +245,7 @@ $title = $visit_user ->fetch();
 
 
         </div>
+
 
 
 
