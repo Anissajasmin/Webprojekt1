@@ -33,13 +33,10 @@ if($match) {
                 $_SESSION["username"] = $row ["benutzername"];
                 $_SESSION["mail"] = $row ["hdm_mail"];
 
-                if ($_SESSION["login-id"] !== $row ["login_id"]) {
-                    $_SESSION["user_id"] = $row ["login_id"];
                 }
                 header('Location: hauptseite.php');
             }
         }
     }
-}
 
 ?>

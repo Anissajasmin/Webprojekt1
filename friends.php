@@ -13,6 +13,7 @@
     }else{
     include("datenbankpasswort.php");
 
+
 $my_id = $_SESSION['login-id'];
 $user_id= $_GET['user_id'];
 
@@ -119,36 +120,6 @@ $title = $visit_user ->fetch();
 
     <div id="header">
         <h1>TOUCH</h1>
-        <form action="" id = "searcharea" class ="header" method="post">
-            <input placeholder= "Search here..." type="text" name="suche" id="searchbox"/>
-            <input type="hidden" name="suchegesendet" value="1">
-            <input id="suchebutton" type="submit" value="Suchen">
-        </form>
-        <?php
-        //Suchfunktion
-
-        if (isset($_POST["suche"])) {
-            $allebenutzername = $_POST["suche"];
-
-            $benutzersuche = $pdo->prepare("SELECT * FROM vlj_loginprofilbild WHERE benutzername = '$allebenutzername' AND aktiviert = 1");
-            if ($benutzersuche->execute()) {
-
-                while ($row = $benutzersuche->fetch()) {
-                    $userid = $row ['login_id'];
-                    ?>
-                    <h3>
-                        <a href="profilseite.php?user_id=<?php echo $userid ?>"><img src="<?php echo $row['profilbildtext'] ?>"></a>
-                        <a href="profilseite.php?user_id=<?php echo $userid ?>"><?php echo $row['benutzername'] ?></a>
-                    </h3>
-
-                    <?php
-                }
-            } else {
-                echo "<div>No user found</div>";
-            }
-        }
-        ?>
-
         <div id="logoutbutton"> <a href="logout.php">Log Out</a></div>
         <ul id="navigation">
 
@@ -161,15 +132,40 @@ $title = $visit_user ->fetch();
 
                 </ul>
             </li>
-            <li class="listitem"><a href="meinefreunde.php?user_id=<?php echo $user_id;?>">Meine Freunde</a></li>
+            <li class="listitem"><a href="#">Meine Freunde</a></li>
 
         </ul>
 
-
-
-
-
+        <form action="" id = "searcharea" class ="header" method="post">
+            <input placeholder= "Search here..." type="text" name="suche" id="searchbox"/>
+            <input type="hidden" name="suchegesendet" value="1">
+            <input id="" type="submit" value="Suchen">
+        </form>
     </div>
+        <?php
+        //Suchfunktion
+
+        if (isset($_POST["suche"])) {
+        $allebenutzername = $_POST["suche"];
+
+        $benutzersuche = $pdo->prepare("SELECT * FROM vlj_loginprofilbild WHERE benutzername = '$allebenutzername' AND aktiviert = 1");
+        if ($benutzersuche->execute()) {
+
+        while ($row = $benutzersuche->fetch()) {
+        $userid = $row ['login_id'];
+        ?>
+        <h3>
+            <a href="profilseite.php?user_id=<?php echo $userid ?>"><img src="<?php echo $row['profilbildtext'] ?>"></a>
+            <a href="profilseite.php?user_id=<?php echo $userid ?>"><?php echo $row['benutzername'] ?></a>
+        </h3>
+
+        <?php
+        }
+    } else {
+        echo "<div>No user found</div>";
+    }
+}
+?>
 
 
     <div id="main">
@@ -179,13 +175,12 @@ $title = $visit_user ->fetch();
             </h2>
         </div>
 
-
         <div id="background">
 
-            <a style="text-decoration:none;" href="friends.php?user_id=<?php echo $user_id; ?>">
-                <div id="buttonfriends">Friends</div>
-            </a>
 
+            <a style="text-decoration: none;" href="hauptseite.php?user_id=<?php echo $user_id; ?>">
+                <div id="buttonstudents">Students</div>
+            </a>
 
             <hr class="strich">
 
@@ -215,26 +210,59 @@ $title = $visit_user ->fetch();
             <div>
 
                     <?php
-        //Chronik - wo die geposteten Beiträge auftauchen
+                    //Chronik wo die geposteten Beiträge der Freunde angezeigt werden sollen
+                    //Es wird zuerst geschaut, ob man jemandem folgt
 
-            $stmt = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE posts IS NOT NULL OR bildtext IS NOT NULL ORDER BY zeitstempel DESC");
+    $checkfollow=$pdo->prepare("SELECT * FROM follow WHERE follow_id=$my_id");
+    $checkfollow->execute();
+    $nofollower=$checkfollow->rowCount();
+        if(!$nofollower > 0) {
+            //Wenn man niemandem folgt
+            echo "<div id=\"tabelleposts\">";
+            echo "Du hast noch keine Freunde. Folge erstmal einem Nutzer hier bei Touch!";
+            echo "</div>";
+        }
+        else {
+            //Wenn man jemandem folgt, werden die Posts von sich und die der User, denen man folgt, angezeigt
+            while($row = $checkfollow->fetch()) {
+                    $userid = $row['user_id'];
+                    $show_posts = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE user_id= $userid OR user_id= $my_id
+                                                ORDER BY zeitstempel DESC");
+                    $show_posts->execute();
 
-            $result = $stmt->execute();
-            while ($row = $stmt->fetch()) {
-                echo "<div id=\"tabelleposts\">";
-                echo $row["benutzername"];
-                echo "<div id=\"poststext\">" . $row['posts'] . "</div>";
-                echo "<img src='" .$row['bildtext']. "'height='200'>";
-                echo "</div>";
+                while ($row3 = $show_posts->fetch()) {
+
+                    echo "<div id=\"tabelleposts\">";
+                    echo "<span>";
+                    echo $row3["benutzername"];
+                    echo "</span>";
+                    echo "<div id=\"poststext\">" . $row3['posts'] . "</div>";
+                    echo "<img src='" . $row3['bildtext'] . "'height='200'>";
+                    echo "</div>";
+                }
             }
-        ?>
+        }
 
-            </div>
+       /** $show_myposts = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE user_id = $my_id ORDER BY zeitstempel DESC");
+        $show_myposts->execute();
+        var_dump($show_myposts);
+        while ($row2 = $show_myposts->fetch()) {
+
+            echo "<div id=\"tabelleposts\">";
+            echo "<span>";
+            echo $row2["benutzername"];
+            echo "</span>";
+            echo "<div id=\"poststext\">" . $row2['posts'] . "</div>";
+            echo "<img src='" . $row2['bildtext'] . "'height='200'>";
+            echo "</div>";
+        }
+
+}
+**/
+                ?>
 
         </div>
-
-
-
+        </div>
 
         <div id="profile">
             <h2 class="ueberschriftenmain"> Profile

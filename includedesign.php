@@ -24,7 +24,6 @@ $title = $visit_user ->fetch();
 
 ?>
 
-
 </head>
 
 <body>
@@ -71,7 +70,7 @@ $title = $visit_user ->fetch();
                 <ul>
                     <li><a href="#"> Meine Daten</a></li>
                     <li><a href="#"> Meine Beiträge</a></li>
-                    <li><a href="#"> Einstellungen</a></li>
+                    <li><a href="settings.php?user_id=<?php echo $user_id; ?>"> Einstellungen</a></li>
                 </ul>
             </li>
             <li class="listitem"><a href="meinefreunde.php?user_id=<?php echo $user_id; ?>">Meine Freunde</a></li>
