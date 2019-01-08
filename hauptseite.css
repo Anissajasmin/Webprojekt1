@@ -269,21 +269,32 @@ h1 {
     font-weight:300;
 }
 
-#suche {
-    border: 2px solid white;
-    border-radius: 30px;
-    font-size: 15px;
-    width: 150px;
-
-}
-
-#suche1 {
+#searcharea {
+    width: 85px;
+    hight: 30px;
     font-family: "Helvetica Neue";
     font-size: 100%;
-    color: black;
-    position: relative;
+    position: fixed;
+    padding-left: 10px;
+    padding-top: 8px;
+    padding-bottom: 25px;
+    color: white;
     font-weight: 100;
+
 }
+#searchbox {
+    height: 20px;
+    width: 200px;
+    position: fixed;
+    top: 7px;
+    right: 300px;
+    border-radius: 60px;
+    -moz-border-radius:60px;
+    -webkit-border-radius: 60px;
+    -o-border-radius: 60px;
+
+}
+
 
 #navigation {
     margin-top: 15px;

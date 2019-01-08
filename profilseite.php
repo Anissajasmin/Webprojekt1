@@ -7,15 +7,15 @@
     <meta name = "viewport" content="width-device-width, initial-scale=1.0, maximum-scale=1.0, user scalelable=no">
 </head>
 <?php
-    include "includedesign.php";
 
     session_start();
+include "includedesign.php";
     include_once "logincheck.php";
             if (!isset($_SESSION['login-id'])) {
                  echo "Bitte logge dich ein oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
             }else{
                 include ("datenbankpasswort.php");
-?>
+                ?>
 
 <body>
     <div id="main">
@@ -66,8 +66,15 @@
 
             </div>
 
-        <a style="..." href="">
-             <div class="button2">Settings</div>
+        <a style="" href="settings.php?user_id=<?php echo $user_id; ?>">
+            <?php
+            if ($my_id == $user_id) {
+
+                ?>
+                <div class="button2">Settings</div>
+                <?php
+            }
+            ?>
         </a>
 
         <div class="button3">Friends</div>
@@ -88,14 +95,16 @@
 
         <?php
         //Posts des Nutzers der Profilseite anzeigen
-        $posts = $pdo->prepare("SELECT * FROM beitrag WHERE user_id= $user_id  ORDER BY zeitstempel DESC");
+
+
+        $posts = $pdo->prepare("SELECT * FROM beitrag WHERE user_id = :user_id AND posts IS NOT NULL OR user_id = :user_id AND bildtext IS NOT NULL ORDER BY zeitstempel DESC");
         $postsergebnis= $posts->execute(array(':user_id' => $user_id));
             if ($postsergebnis) {
                 while ($row = $posts->fetch()) {
         ?>
         <div id="postsdernutzer">
             <small><?php echo $row['posts']?></small><br>
-            <small><img src=<?php echo $row['bildtext']?>height='200'></small><br>
+            <small><?php echo "<img src='" .$row['bildtext']. "'height='200'>";?></small><br>
         </div>
 
         <?php
@@ -110,10 +119,8 @@
 </html>
 
 <?php
+include_once "follow.php";
 }
 ?>
 
-<?php
-include_once "follow.php";
-?>
 

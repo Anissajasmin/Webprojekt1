@@ -106,34 +106,40 @@
         }
         if($fehler === false) {
             $statement = $pdo->prepare("INSERT INTO login (benutzername, hdm_mail, passwort, hash, aktiviert) VALUES (:benutzername, :hdm_mail, :passwort, :hash, 0)");
+            $statement->bindParam(':benutzername', $benutzername);
+            $statement->bindParam(':hdm_mail', $mail);
+            $statement->bindParam(':passwort', $passwort);
+            $statement->bindParam(':hash', $hash);
             $ergebnis = $statement->execute(array(':benutzername' => $benutzername, ':hdm_mail' => $mail, ':passwort' => $passworthash, ':hash' => $hash));
             if ($ergebnis) {
                 echo '<div id="meldung"> <br><br>Du wurdest erfolgreich registriert. Du hast eine EMail bekommen. Bitte aktiviere deinen Account</a> </div>';
+
+                // Email Verifizieren lassen
+                $to      = $mail; // Empfänger der Mail
+                $subject = 'Email wurde verifiziert'; // Betreff
+                $message = '
+ 
+                Danke, dass du dich bei Touch registriert hast!
+                Dein Account wurde bei uns angelegt. Mit deinem Benutzernamen und Passwort kannst du dich einloggen, sobald du den untenstehenden Link zur Aktivierung deines Accounts geklickt hast!
+ 
+                ------------------------
+                Benutzername: '.$benutzername.'
+                Passwort: '.$passwort.'
+                ------------------------
+ 
+                Bitte klicke auf den Link, um deinen Account bei uns zu aktivieren:
+                https://mars.iuk.hdm-stuttgart.de/~nk093/Webprojekt1/aktivierung.php?mail='.$mail.'&hash='.$hash.'
+ 
+                '; // Die Nachricht der Email
+                $headers = 'From:deinteam@touch.de' . "\r\n"; // Von wem wirds verschickt?
+                mail($to, $subject, $message, $headers); // Die Email wird gesendet
             }
         } else {
             if ($fehler === true) {
                 echo '<div id="meldung"> <br><br>Bitte fülle alle Felder aus<br> </div>';
             }
-        }
-        // Email Verifizieren lassen
-        $to      = $mail; // Empfänger der Mail
-        $subject = 'Email wurde verifiziert'; // Betreff
-        $message = '
- 
-Danke, dass du dich bei Touch registriert hast!
-Dein Account wurde bei uns angelegt. Mit deinem Benutzernamen und Passwort kannst du dich einloggen, sobald du den untenstehenden Link zur Aktivierung deines Accounts geklickt hast!
- 
-------------------------
-Benutzername: '.$benutzername.'
-Passwort: '.$passwort.'
-------------------------
- 
-Bitte klicke auf den Link, um deinen Account bei uns zu aktivieren:
-https://mars.iuk.hdm-stuttgart.de/~nk093/Webprojekt1/aktivierung.php?mail='.$mail.'&hash='.$hash.'
- 
-'; // Die Nachricht der Email
-        $headers = 'From:deinteam@touch.de' . "\r\n"; // Von wem wirds verschickt?
-        mail($to, $subject, $message, $headers); // Die Email wird gesendet
+            }
+
         ?>
 </body>
 </html>

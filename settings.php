@@ -59,7 +59,7 @@ include_once "logincheck.php";
 
 <div id="background">
 
-    <a style="..." href="">
+    <a style="..." href="profilseite.php?user_id=<?php echo $user_id; ?>"">
         <div class="button1">Save</div>
     </a>
 
@@ -146,6 +146,8 @@ include_once "logincheck.php";
         } }else {
 
             $statement = $pdo->prepare("INSERT INTO profilbild (profilbildtext, user_id) VALUES ('$new_path', '$my_id')");
+            $statement->bindParam(':profilbildtext', $new_path);
+            $statement->bindParam(':user_id', $my_id);
             $result = $statement->execute();
             echo "Dein Bild wurde erfolgreich hochgeladen";
         }

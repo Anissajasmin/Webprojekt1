@@ -13,11 +13,8 @@
     }else{
     include("datenbankpasswort.php");
 
-
-
 $my_id = $_SESSION['login-id'];
 $user_id= $_GET['user_id'];
-
 
 //Profildaten der unterschiedlichen Nutzer
 $visit_user = $pdo ->prepare ("SELECT * FROM login WHERE login_id=$user_id");
@@ -46,6 +43,8 @@ $title = $visit_user ->fetch();
     if ($error === false) {
 
         $statement = $pdo->prepare("INSERT INTO beitrag (posts, user_id) VALUES ('$posts', '$user_id')");
+        $statement->bindParam('posts', $posts);
+        $statement->bindParam('user_id', $user_id);
         $result = $statement->execute();
 
 
@@ -84,15 +83,19 @@ $title = $visit_user ->fetch();
             //In DB einfügen
 
             $statement = $pdo->prepare("INSERT INTO beitrag (bildtext, user_id) VALUES ('$new_path', '$user_id')");
+            $statement->bindParam('bildtext', $new_path);
+            $statement->bindParam('user_id', $user_id);
             $result = $statement->execute();
-        }}
+        }
+    }
+
     //Überprüfung der Dateigröße, nicht größer als 500 kB
     $max_size = 500*1024;
     if($_FILES['upfile']['size'] > $max_size) {
         die("Bitte keine Dateien größer 500kb hochladen.");
     }
 
-    //Überprüfung dass das Bild keine Fehler enthält
+    //Überprüfung, dass das Bild keine Fehler enthält
     if(isset($_POST["bildgesendet"])) {
         if (function_exists('exif_imagetype')) {
             $erlaubte_typen = array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF);
@@ -103,20 +106,16 @@ $title = $visit_user ->fetch();
         }
     }
 
-
     //Alles okay, verschiebe Bild an neuen Pfad
     move_uploaded_file($_FILES['upfile']['tmp_name'], $new_path);
     //echo 'Bild erfolgreich hochgeladen: <a href="'.$new_path.'">'.$new_path.'</a>';
     ?>
 
-
 </head>
-
 
 <body>
 
 <div id="hauptseite">
-
 
     <div id="header">
         <h1>TOUCH</h1>
@@ -128,7 +127,7 @@ $title = $visit_user ->fetch();
                 <ul>
                     <li><a href="#"> Meine Daten</a></li>
                     <li><a href="#"> Meine Beiträge</a></li>
-                    <li class =“listitem"><a href="settings.php">Einstellungen</a></li>
+                    <li class =“listitem"><a href="settings.php?user_id=<?php echo $user_id; ?>">Einstellungen</a></li>
 
                 </ul>
             </li>
@@ -136,14 +135,37 @@ $title = $visit_user ->fetch();
 
         </ul>
 
-
-        <label id="suche1" for="suche">Search</label>
-        <input type="search" id="suche" placeholder="Profile, ...">
-
+        <form action="" id = "searcharea" class ="header" method="post">
+            <input placeholder= "Search here..." type="text" name="suche" id="searchbox"/>
+            <input type="hidden" name="suchegesendet" value="1">
+            <input id="" type="submit" value="Suchen">
+        </form>
 
     </div>
+    <?php
+    //Suchfunktion
 
+if (isset($_POST["suche"])) {
+    $allebenutzername = $_POST["suche"];
 
+    $benutzersuche = $pdo->prepare("SELECT * FROM vlj_loginprofilbild WHERE benutzername = '$allebenutzername' AND aktiviert = 1");
+    if ($benutzersuche->execute()) {
+
+        while ($row = $benutzersuche->fetch()) {
+            $userid = $row ['login_id'];
+            ?>
+            <h3>
+                <a href="profilseite.php?user_id=<?php echo $userid ?>"><img src="<?php echo $row['profilbildtext'] ?>"></a>
+                <a href="profilseite.php?user_id=<?php echo $userid ?>"><?php echo $row['benutzername'] ?></a>
+            </h3>
+
+            <?php
+        }
+    } else {
+        echo "<div>No user found</div>";
+    }
+}
+?>
     <div id="main">
 
         <div id="recommendation">
@@ -153,15 +175,10 @@ $title = $visit_user ->fetch();
 
         <div id="background">
 
-            <a style="text-decoration:none;" href="">
+            <a style="text-decoration:none;" href="friends.php?user_id=<?php echo $user_id; ?>">
                 <div id="buttonfriends">Friends</div>
             </a>
 
-
-
-            <a style="text-decoration: none;" href="">
-                <div id="buttonstudents">Students</div>
-            </a>
 
             <hr class="strich">
 
@@ -176,8 +193,6 @@ $title = $visit_user ->fetch();
                     <input id="button3" type="reset" value="Abbruch"></p>
             </form>
 
-
-
             <form enctype="multipart/form-data"
                   name = "uploadformular" action="hauptseite.php" method="post">
                 <input type="hidden" name="picture" value="1">
@@ -191,7 +206,6 @@ $title = $visit_user ->fetch();
             <hr class="strich">
 
             <div>
-
 
                     <?php
         //Chronik - wo die geposteten Beiträge auftauchen
@@ -208,15 +222,9 @@ $title = $visit_user ->fetch();
             }
         ?>
 
-
-
             </div>
 
-
-
         </div>
-
-
 
         <div id="profile">
             <h2 class="ueberschriftenmain"> Profile
@@ -235,26 +243,17 @@ $title = $visit_user ->fetch();
 
             </div>
 
-
-
-
-
-
         </div>
 
     </div>
-
-
 
 </div>
 
 </body>
 </html>
 
-
 <br>
 <br>
-
 
 <?php
 }

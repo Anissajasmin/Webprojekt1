@@ -24,16 +24,11 @@ $title = $visit_user ->fetch();
 
 ?>
 
-
 </head>
 
 <body>
 
 <div id="hauptseite">
-
-
-
-
 
 
     <div id="header">
@@ -46,14 +41,43 @@ $title = $visit_user ->fetch();
                 <ul>
                     <li><a href="#"> Meine Daten</a></li>
                     <li><a href="#"> Meine Beiträge</a></li>
-                    <li><a href="#"> Einstellungen</a></li>
+                    <li><a href="settings.php?user_id=<?php echo $user_id; ?>"> Einstellungen</a></li>
                 </ul>
             </li>
             <li class="listitem"><a href="#">Meine Freunde</a></li>
 
         </ul>
 
-        <div id = "searcharea" class ="header"><input placeholder= "Search here..." type="text" id="searchbox"/></div>
+        <form action="" id = "searcharea" class ="header" method="post">
+            <input placeholder= "Search here..." type="text" name="suche" id="searchbox"/>
+            <input type="hidden" name="suchegesendet" value="1">
+            <input id="" type="submit" value="Suchen">
+        </form>
+
+         <?php
+    //Suchfunktion
+
+if (isset($_POST["suche"])) {
+    $allebenutzername = $_POST["suche"];
+
+    $benutzersuche = $pdo->prepare("SELECT * FROM vlj_loginprofilbild WHERE benutzername = '$allebenutzername' AND aktiviert = 1");
+    if ($benutzersuche->execute()) {
+
+        while ($row = $benutzersuche->fetch()) {
+            $userid = $row ['login_id'];
+            ?>
+            <h3>
+                <a href="profilseite.php?user_id=<?php echo $userid ?>"><img src="<?php echo $row['profilbildtext'] ?>"></a>
+                <a href="profilseite.php?user_id=<?php echo $userid ?>"><?php echo $row['benutzername'] ?></a>
+            </h3>
+
+            <?php
+        }
+    } else {
+        echo "<div>No user found</div>";
+    }
+}
+?>
 
         <a style="text-decoration:none;" href="">
             <div id="notificationneu"><img src="notificationneu.png"/><div>
