@@ -2,6 +2,7 @@ body {
     background-image: url(hintergrundbild.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     text-align: center;
 }
 
@@ -28,9 +29,10 @@ h1 {
 
 }
 #navigation {
-    margin-top: 25px;
-    padding:0;
     list-style: none;
+    float:left;
+    margin-left:70px;
+    margin-top: -37px;
 }
 
 .listitem {
@@ -57,7 +59,7 @@ h1 {
 }
 
 .listitem a:hover {
-    background-color: #7B0202;
+    background-color: #888483;
     color: white;
 
 }
@@ -70,6 +72,7 @@ ul li ul li {
     border-style:solid;
     margin-top:1px;
     margin-bottom:2px;
+    position: absolute;
 
 }
 
@@ -151,4 +154,27 @@ ul li:hover ul li{
 #logoutbutton :hover {
     text-decoration: none;
     color: #7B0202;
+}
+
+
+#searchbox {
+    height: 20px;
+    width: 200px;
+    position: fixed;
+    top: 7px;
+    right: 300px;
+    border-radius: 60px;
+    -moz-border-radius:60px;
+    -webkit-border-radius: 60px;
+    -o-border-radius: 60px;
+
+}
+
+#suchebutton {
+    height: 20px;
+    width: 50px;
+    position: fixed;
+    top: 10px;
+    right: 240px;
+
 }

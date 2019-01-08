@@ -32,12 +32,37 @@ $title = $visit_user ->fetch();
 <div id="hauptseite">
 
 
-
-
-
-
     <div id="header">
         <h1>TOUCH</h1>
+        <form action="" id = "searcharea" class ="header" method="post">
+            <input placeholder= "Search here..." type="text" name="suche" id="searchbox"/>
+            <input type="hidden" name="suchegesendet" value="1">
+            <input id="suchebutton" type="submit" value="Suchen">
+        </form>
+        <?php
+        //Suchfunktion
+
+        if (isset($_POST["suche"])) {
+            $allebenutzername = $_POST["suche"];
+
+            $benutzersuche = $pdo->prepare("SELECT * FROM vlj_loginprofilbild WHERE benutzername = '$allebenutzername' AND aktiviert = 1");
+            if ($benutzersuche->execute()) {
+
+                while ($row = $benutzersuche->fetch()) {
+                    $userid = $row ['login_id'];
+                    ?>
+                    <h3>
+                        <a href="profilseite.php?user_id=<?php echo $userid ?>"><img src="<?php echo $row['profilbildtext'] ?>"></a>
+                        <a href="profilseite.php?user_id=<?php echo $userid ?>"><?php echo $row['benutzername'] ?></a>
+                    </h3>
+
+                    <?php
+                }
+            } else {
+                echo "<div>No user found</div>";
+            }
+        }
+        ?>
         <div id="logoutbutton"> <a href="logout.php">Log Out</a></div>
         <ul id="navigation">
 
@@ -49,25 +74,12 @@ $title = $visit_user ->fetch();
                     <li><a href="#"> Einstellungen</a></li>
                 </ul>
             </li>
-            <li class="listitem"><a href="#">Meine Freunde</a></li>
+            <li class="listitem"><a href="meinefreunde.php?user_id=<?php echo $user_id; ?>">Meine Freunde</a></li>
 
         </ul>
 
-        <div id = "searcharea" class ="header"><input placeholder= "Search here..." type="text" id="searchbox"/></div>
-
-        <a style="text-decoration:none;" href="">
-            <div id="notificationneu"><img src="notificationneu.png"/><div>
-        </a>
 
 
-        <a style="text-decoration:none;" href="">
-            <div id="messageneu"><img src="messageneu.png"/><div>
-        </a>
-
-
-        <a style="text-decoration:none;" href="">
-            <div id="settingneu"><img src="settingneu.png"/><div>
-        </a>
 
 
     </div>
