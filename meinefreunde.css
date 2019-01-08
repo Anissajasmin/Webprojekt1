@@ -8,3 +8,43 @@
     margin-left: 30px;
     margin-top:10px;
 }
+#tabellename1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position:absolute;
+    top:230px;
+    margin-left:10px;
+    width: 200px;
+    height: 35px;
+    background: #eee;
+    color: #707070;
+    font-family: "Helvetica Neue";
+    box-sizing: border-box;
+    border-radius: 40px;
+    -moz-border-radius: 40px;
+    -webkit-border-radius: 40px;
+    -o-border-radius: 40px;
+
+}
+
+#tabelleemail1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top:280px;
+    margin-left:10px;
+    width:200px;
+    height: 35px;
+    background: #eee;
+    color: #707070;
+    font-family: "Helvetica Neue";
+    box-sizing: border-box;
+    border-radius: 40px;
+    -moz-border-radius: 40px;
+    -webkit-border-radius: 40px;
+    -o-border-radius: 40px;
+
+
+}

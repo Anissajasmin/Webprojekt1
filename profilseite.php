@@ -7,64 +7,63 @@
     <meta name = "viewport" content="width-device-width, initial-scale=1.0, maximum-scale=1.0, user scalelable=no">
 </head>
 <?php
-
-    session_start();
 include "includedesign.php";
-    include_once "logincheck.php";
-            if (!isset($_SESSION['login-id'])) {
-                 echo "Bitte logge dich ein oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
-            }else{
-                include ("datenbankpasswort.php");
-                ?>
+
+session_start();
+include_once "logincheck.php";
+if (!isset($_SESSION['login-id'])) {
+    echo "Bitte logge dich ein oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
+}else{
+include ("datenbankpasswort.php");
+?>
 
 <body>
-    <div id="main">
+<div id="main">
 
-        <div id="recommendation">
-            <h2 class="ueberschriftenmain"> Recommendations
-            </h2>
-        </div>
+    <div id="recommendation">
+        <h2 class="ueberschriftenmain"> Recommendations
+        </h2>
+    </div>
 
+
+
+    <div id="background">
         <a style="..." href="">
-            <div class="button8">Touches</div>
+            <div class="button9">
+                <div>
+                    <?php
+                    //Profilbild soll hier angezeigt werden
+
+                    $stmt = $pdo->prepare("SELECT * FROM profilbildlogin WHERE user_id = $user_id ");
+
+                    $result = $stmt->execute();
+                    while ($row = $stmt->fetch()) {
+                        echo "<div id=\"button9\">";
+                        echo "<img src='" . $row['profilbildtext'] . "'height='120' 'weight: 120'>";
+                        echo "</div>";
+                    }
+
+                    ?>
+                </div>
+            </div>
         </a>
 
-        <div id="background">
 
-            <a style="..." href="">
-                <div class="button9">
-                    <div>
 
-    <?php
-    //Profilbild soll hier angezeigt werden
-
-    $stmt = $pdo->prepare("SELECT * FROM profilbildlogin WHERE user_id = $user_id ");
-
-    $result = $stmt->execute();
-    while ($row = $stmt->fetch()) {
-        echo "<div id=\"button9\">";
-        echo "<img src='" . $row['profilbildtext'] . "'height='120' 'weight: 120'>";
-        echo "</div>";
-    }
-
-    ?>
-                    </div>
-                </div>
-            </a>
 
         <div id="tabellename">
-    <?php
-        echo $title['benutzername'];
-    ?>
+            <?php
+            echo $title['benutzername'];
+            ?>
         </div>
 
-            <div id="tabelleemail">
+        <div id="tabelleemail">
 
-                <?php
-                    echo $title['hdm_mail'];
-                ?>
+            <?php
+            echo $title['hdm_mail'];
+            ?>
 
-            </div>
+        </div>
 
         <a style="" href="settings.php?user_id=<?php echo $user_id; ?>">
             <?php
@@ -81,46 +80,88 @@ include "includedesign.php";
 
         <div class="button4">Posts</div>
 
-            <br>
+        <br>
         <hr class="strich">
 
-            <br>
+        <br>
         <hr class="strich">
 
         <div class = "button10"></div>
-        <div id="ueberschrift">
-            <h3> Your Profile</h3>
-        </div>
+
+
+
+
+
 
 
         <?php
         //Posts des Nutzers der Profilseite anzeigen
-
-
         $posts = $pdo->prepare("SELECT * FROM beitrag WHERE user_id = :user_id AND posts IS NOT NULL OR user_id = :user_id AND bildtext IS NOT NULL ORDER BY zeitstempel DESC");
         $postsergebnis= $posts->execute(array(':user_id' => $user_id));
-            if ($postsergebnis) {
-                while ($row = $posts->fetch()) {
-        ?>
-        <div id="postsdernutzer">
-            <small><?php echo $row['posts']?></small><br>
-            <small><?php echo "<img src='" .$row['bildtext']. "'height='200'>";?></small><br>
-        </div>
+        if ($postsergebnis) {
+            while ($row = $posts->fetch()) {
+                ?>
+                <div id="postsdernutzer">
+                    <small><?php echo $row['posts']?></small><br>
+                    <small><?php echo "<img src='" .$row['bildtext']. "'height='200'>";?></small><br>
+                </div>
 
-        <?php
-                }
 
+                <?php
             }
+
+        }
         ?>
 
-        </div>
+
+
+
+
     </div>
+
+
+
+    <div id="profile">
+        <h2 class="ueberschriftenmain"> Profile
+        </h2>
+
+        <div id="tabellename1">
+            <?php
+            echo $title['benutzername'];
+            ?>
+        </div>
+
+        <div id="tabelleemail1">
+            <?php
+            echo $title['hdm_mail'];
+            ?>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
 
 <?php
-include_once "follow.php";
 }
 ?>
 
-
+<?php
+include_once "follow.php";
+?>
