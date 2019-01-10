@@ -68,8 +68,7 @@ $title = $visit_user ->fetch();
             <li class="listitem"><a href="hauptseite.php?user_id=<?php echo $user_id; ?>">Mein Feed</a></li>
             <li class="listitem"><a href="profilseite.php?user_id=<?php echo $user_id; ?>">Mein Profil</a>
                 <ul>
-                    <li><a href="#"> Meine Daten</a></li>
-                    <li><a href="#"> Meine Beiträge</a></li>
+
                     <li><a href="settings.php?user_id=<?php echo $user_id; ?>"> Einstellungen</a></li>
                 </ul>
             </li>
