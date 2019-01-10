@@ -16,7 +16,6 @@ if (!isset($_SESSION['login-id'])) {
 }else{
 include ("datenbankpasswort.php");
 ?>
-
 <body>
 <div id="main">
 
@@ -24,8 +23,6 @@ include ("datenbankpasswort.php");
         <h2 class="ueberschriftenmain"> Recommendations
         </h2>
     </div>
-
-
 
     <div id="background">
         <a style="..." href="">
@@ -47,10 +44,6 @@ include ("datenbankpasswort.php");
                 </div>
             </div>
         </a>
-
-
-
-
         <div id="tabellename">
             <?php
             echo $title['benutzername'];
@@ -89,11 +82,6 @@ include ("datenbankpasswort.php");
         <div class = "button10"></div>
 
 
-
-
-
-
-
         <?php
         //Posts des Nutzers der Profilseite anzeigen
         $posts = $pdo->prepare("SELECT * FROM beitrag WHERE user_id = :user_id AND posts IS NOT NULL OR user_id = :user_id AND bildtext IS NOT NULL ORDER BY zeitstempel DESC");
@@ -113,13 +101,7 @@ include ("datenbankpasswort.php");
         }
         ?>
 
-
-
-
-
     </div>
-
-
 
     <div id="profile">
         <h2 class="ueberschriftenmain"> Profile
@@ -141,27 +123,14 @@ include ("datenbankpasswort.php");
     </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>
 
 <?php
+include_once "follow.php";
 }
 ?>
 
 <?php
-include_once "follow.php";
+
 ?>
