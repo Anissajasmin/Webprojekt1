@@ -9,6 +9,7 @@
 <?php
 include "includedesign.php";
 
+
 session_start();
 include_once "logincheck.php";
 if (!isset($_SESSION['login-id'])) {
@@ -48,8 +49,10 @@ include ("datenbankpasswort.php");
             </div>
         </a>
 
-
-
+        <div id="followbutton"> <?php
+            include"follow.php";
+            ?>
+        </div>
 
         <div id="tabellename">
             <?php
@@ -141,27 +144,11 @@ include ("datenbankpasswort.php");
     </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>
 
-<?php
-}
-?>
+
 
 <?php
-include_once "follow.php";
+}
 ?>
