@@ -2,13 +2,13 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Meine Freund</title>
+    <title>Meine Freunde</title>
     <link rel="stylesheet" type="text/css" href="meinefreunde.css">
     <link rel="stylesheet" type="text/css" href="profilseite.css">
     <meta name = "viewport" content="width-device-width, initial-scale=1.0, maximum-scale=1.0, user scalelable=no">
 </head>
 <?php
-include "includedesign.php";
+
 
 
 session_start();
@@ -16,6 +16,7 @@ include_once "logincheck.php";
 if (!isset($_SESSION['login-id'])) {
     echo "Bitte logge dich ein oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
 }else{
+include "includedesign.php";
 include ("datenbankpasswort.php");
 include ("follow.php")
 
@@ -50,7 +51,7 @@ include ("follow.php")
             //Wenn man jemandem folgt, werden die Namen der Personen, denen man folgt, in dieser Liste angezeigt
             while($row = $checkfollow->fetch()) {
                 $userid = $row['user_id'];
-                $show_profilepic = $pdo->prepare ("SELECT * FROM vlj_loginprofilbild WHERE login_id = $userid");
+                $show_profilepic = $pdo->prepare ("SELECT * FROM profilbildlogin WHERE login_id = $userid");
                 $show_profilepic->execute();
                 $show_friends = $pdo->prepare("SELECT * FROM vlj_loginfollow WHERE login_id= $userid");
                 $show_friends->execute();
@@ -99,7 +100,7 @@ include ("follow.php")
         </div>
 
     </div>
-
+</div>
 
 </body>
 </html>

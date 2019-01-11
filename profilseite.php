@@ -35,7 +35,7 @@ include ("datenbankpasswort.php");
                     <?php
                     //Profilbild soll hier angezeigt werden
 
-                    $stmt = $pdo->prepare("SELECT * FROM profilbildlogin WHERE user_id = $user_id ");
+                    $stmt = $pdo->prepare("SELECT * FROM profilbildlogin WHERE profil_user_id = $user_id ");
 
                     $result = $stmt->execute();
                     while ($row = $stmt->fetch()) {
@@ -99,8 +99,8 @@ include ("datenbankpasswort.php");
 
         <?php
         //Posts des Nutzers der Profilseite anzeigen
-        $posts = $pdo->prepare("SELECT * FROM beitrag WHERE user_id = :user_id AND posts IS NOT NULL OR user_id = :user_id AND bildtext IS NOT NULL ORDER BY zeitstempel DESC");
-        $postsergebnis= $posts->execute(array(':user_id' => $user_id));
+        $posts = $pdo->prepare("SELECT * FROM beitrag WHERE beitrag_user_id = :beitrag_user_id AND posts IS NOT NULL OR beitrag_user_id = :beitrag_user_id AND bildtext IS NOT NULL ORDER BY zeitstempel DESC");
+        $postsergebnis= $posts->execute(array(':beitrag_user_id' => $user_id));
         if ($postsergebnis) {
             while ($row = $posts->fetch()) {
                 ?>
