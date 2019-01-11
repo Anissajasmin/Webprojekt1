@@ -5,6 +5,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     text-align: center;
+
 }
 
 #header {
@@ -318,6 +319,7 @@ h1 {
     line-height: 30px;
     text-align: center;
     font-size: 18px;
+
 }
 
 .listitem a {
@@ -334,13 +336,15 @@ h1 {
 }
 
 ul li ul li {
+    position:absolute;
     display: none;
     background-color: white;
     border-color: #7B0202;
     border-width:1px;
     border-style:solid;
-    margin-top:1px;
+    margin-top:2px;
     margin-bottom:2px;
+
 
 }
 

@@ -113,12 +113,14 @@ $title = $visit_user ->fetch();
 
 </head>
 
+
 <body>
 
 <div id="hauptseite">
 
     <div id="header">
         <h1>TOUCH</h1>
+
         <form action="" id = "searcharea" class ="header" method="post">
             <input placeholder= "Search here..." type="text" name="suche" id="searchbox"/>
             <input type="hidden" name="suchegesendet" value="1">
@@ -150,13 +152,14 @@ $title = $visit_user ->fetch();
         ?>
 
         <div id="logoutbutton"> <a href="logout.php">Log Out</a></div>
+
+
         <ul id="navigation">
 
             <li class="listitem"><a href="hauptseite.php?user_id=<?php echo $user_id; ?>">Mein Feed</a></li>
             <li class="listitem"><a href="profilseite.php?user_id=<?php echo $user_id; ?>">Mein Profil</a>
                 <ul>
-                    <li><a href="#"> Meine Daten</a></li>
-                    <li><a href="#"> Meine Beiträge</a></li>
+
                     <li class =“listitem"><a href="settings.php?user_id=<?php echo $user_id; ?>">Einstellungen</a></li>
 
                 </ul>
@@ -167,12 +170,11 @@ $title = $visit_user ->fetch();
 
 
 
-
-
     </div>
 
 
     <div id="main">
+
 
         <div id="recommendation">
             <h2 class="ueberschriftenmain"> Recommendations

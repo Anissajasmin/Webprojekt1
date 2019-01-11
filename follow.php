@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>Follow</title>
+    <link rel="stylesheet" type="text/css" href="profilseite.css">
 </head>
 <body>
 
@@ -10,6 +11,7 @@
 
 include("datenbankpasswort.php");
 include ("logincheck.php");
+
 
 
 $user_id= $_GET['user_id'];
@@ -30,8 +32,17 @@ if ($user_id != $_SESSION['login-id']) {
     if (!$notfollowing > 0) {
         ?>
         <form action="profilseite.php?user_id=<?php echo $user_id ?>" method="post">
-            <input type="submit" name="follow" value="Folgen">
-        </form>
+            <input id="followbutton" type="submit" name="follow" value="Folgen">
+                <style media="screen">
+                    #followbutton {
+                        float:right;
+                        margin-top: 20px;
+                    }
+
+
+                </style>
+
+                </form>
 
         <?php
 

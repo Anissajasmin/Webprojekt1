@@ -18,6 +18,7 @@ if (!isset($_SESSION['login-id'])) {
 }else{
 include ("datenbankpasswort.php");
 include ("follow.php")
+
 ?>
 <body>
 <div id="main">
@@ -31,6 +32,50 @@ include ("follow.php")
 
     <div id="background">
         <p id="meinefreunde"> Meine Freunde</p>
+
+        <?php
+        //Liste mit den Namen der Personen, denen man folgt
+        //Es wird zuerst geschaut, ob man jemandem folgt
+
+        $checkfollow=$pdo->prepare("SELECT * FROM follow WHERE follow_id=$my_id");
+        $checkfollow->execute();
+        $nofollower=$checkfollow->rowCount();
+        if(!$nofollower > 0) {
+            //Wenn man niemandem folgt
+            echo "<div id=\"tabelleposts\">";
+            echo "Du hast noch keine Freunde. Folge einem Nutzer, um ihn in deiner Liste angezeigt zu bekommen!";
+            echo "</div>";
+        }
+        else {
+            //Wenn man jemandem folgt, werden die Namen der Personen, denen man folgt, in dieser Liste angezeigt
+            while($row = $checkfollow->fetch()) {
+                $userid = $row['user_id'];
+                $show_profilepic = $pdo->prepare ("SELECT * FROM vlj_loginprofilbild WHERE login_id = $userid");
+                $show_profilepic->execute();
+                $show_friends = $pdo->prepare("SELECT * FROM vlj_loginfollow WHERE login_id= $userid");
+                $show_friends->execute();
+
+                while ($row3 = $show_friends->fetch() AND $row4 = $show_profilepic->fetch()) {
+
+                    echo "<div id=\"tabelleposts\">";
+                    echo "<span>";
+                    ?>
+<div id="kasten">
+    <a href="profilseite.php?user_id=<?php echo $userid ?>"><img src="<?php echo $row4['profilbildtext'] ?>"></a>
+    <a style="text-decoration:none;" href="profilseite.php?user_id=<?php echo $userid ?>"><div id="kastentext"><?php echo $row3['benutzername'] ?></div></a>
+
+</div>
+                    <?php
+                    echo "</span>";
+                    echo "</div>";
+                }
+            }
+        }
+
+        ?>
+
+
+
 
     </div>
 
