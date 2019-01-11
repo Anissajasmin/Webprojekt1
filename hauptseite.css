@@ -414,6 +414,7 @@ ul li:hover ul li{
 #poststext {
     max-width: 445px;
     display: block;
+    height:auto;
 
 }
 
@@ -421,10 +422,10 @@ ul li:hover ul li{
     width:450px;
     height: auto;
     background-color: white;
-    margin-top: 20px;
+    margin-top: 5px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     display: flex;
     align-items: center;
     border-radius: 15px;
