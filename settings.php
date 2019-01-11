@@ -21,33 +21,7 @@ include_once "logincheck.php";
 <body>
 <div id="settings">
 
-    <div class id="header">
-        <h1>TOUCH </h1>
 
-        <div id="searcharea" class="header"><input placeholder="Search here..." type="text" id="searchbox"/></div>
-
-        <a style="text-decoration:none;" href="">
-            <div id="notificationneu"><img src="notificationneu.png"/>
-            </div>
-        </a>
-
-        <a style="text-decoration:none;" href="">
-            <div id="messageneu"><img src="messageneu.png"/>
-            </div>
-        </a>
-
-        <a style="text-decoration:none;" href="">
-            <div id="settingneu"><img src="settingneu.png"/>
-            </div>
-        </a>
-
-    </div>
-
-    <div class="header1"
-</div>
-
-<div class="coverpad">
-</div>
 
 <div id="main">
 
