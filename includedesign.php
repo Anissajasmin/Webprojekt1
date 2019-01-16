@@ -14,6 +14,7 @@ if (!isset($_SESSION['login-id'])) {
     include("datenbankpasswort.php");
 }
 $my_id = $_SESSION['login-id'];
+$meine_id = $SESSION['login-id'];
 $user_id= $_GET['user_id'];
 
 
@@ -63,6 +64,7 @@ $title = $visit_user ->fetch();
         }
         ?>
         <div id="logoutbutton"> <a href="logout.php">Log Out</a></div>
+
         <ul id="navigation">
 
             <li class="listitem"><a href="hauptseite.php?user_id=<?php echo $user_id; ?>">Mein Feed</a></li>
@@ -77,8 +79,9 @@ $title = $visit_user ->fetch();
         </ul>
 
 
-
-
+        <?php
+        include "notification.php";
+        ?>
 
     </div>
 

@@ -132,7 +132,7 @@ $title = $visit_user ->fetch();
         if (isset($_POST["suche"])) {
             $allebenutzername = $_POST["suche"];
 
-            $benutzersuche = $pdo->prepare("SELECT * FROM vlj_loginprofilbild WHERE benutzername = '$allebenutzername' AND aktiviert = 1");
+            $benutzersuche = $pdo->prepare("SELECT * FROM profilbildlogin WHERE benutzername = '$allebenutzername' AND aktiviert = 1");
             if ($benutzersuche->execute()) {
 
                 while ($row = $benutzersuche->fetch()) {
@@ -168,7 +168,9 @@ $title = $visit_user ->fetch();
 
         </ul>
 
-
+        <?php
+        include "notification.php";
+        ?>
 
     </div>
 
