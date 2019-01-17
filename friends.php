@@ -216,6 +216,7 @@ $title = $visit_user ->fetch();
     $checkfollow=$pdo->prepare("SELECT * FROM follow WHERE follow_id=$my_id");
     $checkfollow->execute();
     $nofollower=$checkfollow->rowCount();
+    echo $nofollower;
         if(!$nofollower > 0) {
             //Wenn man niemandem folgt
             echo "<div id=\"tabelleposts\">";
@@ -226,11 +227,13 @@ $title = $visit_user ->fetch();
             //Wenn man jemandem folgt, werden die Posts von sich und die der User, denen man folgt, angezeigt
             while($row = $checkfollow->fetch()) {
                     $userid = $row['user_id'];
-                    $show_posts = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE user_id= $userid OR user_id= $my_id
+                    $show_posts = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE beitrag_user_id= $userid OR beitrag_user_id= $my_id
                                                 ORDER BY zeitstempel DESC");
                     $show_posts->execute();
 
                 while ($row3 = $show_posts->fetch()) {
+
+
 
                     echo "<div id=\"tabelleposts\">";
                     echo "<span>";
@@ -243,7 +246,7 @@ $title = $visit_user ->fetch();
             }
         }
 
-       /** $show_myposts = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE user_id = $my_id ORDER BY zeitstempel DESC");
+       /** $show_myposts = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE beitrag_user_id = $my_id ORDER BY zeitstempel DESC");
         $show_myposts->execute();
         var_dump($show_myposts);
         while ($row2 = $show_myposts->fetch()) {

@@ -105,23 +105,23 @@ include_once "logincheck.php";
 //In DB einfügen bzw. updaten, falls ein Profilbild bereits hochgeladen wurde
         }
     }
-    $stmt = $pdo->prepare("SELECT user_id FROM profilbild WHERE user_id = :user_id");
-    $result = $stmt->execute(array(':user_id' => $my_id));
+    $stmt = $pdo->prepare("SELECT profil_user_id FROM profilbild WHERE profil_user_id = :profil_user_id");
+    $result = $stmt->execute(array(':profil_user_id' => $my_id));
     $ergebnis = $stmt->fetch();
 
     if (isset($_POST['bildgesendet'])) {
 
         if ($ergebnis !== false){
-        $update = $pdo->prepare("UPDATE profilbild SET profilbildtext = :profilbildtext WHERE user_id = :user_id");
+        $update = $pdo->prepare("UPDATE profilbild SET profilbildtext = :profilbildtext WHERE profil_user_id = :profil_user_id");
         $update->bindParam(':profilbildtext', $new_path);
-        $update->bindParam(':user_id', $my_id);
+        $update->bindParam(':profil_user_id', $my_id);
         if ($update->execute()) {
             echo "Dein Profilbild wurde erfolgreich geändert";
         } }else {
 
-            $statement = $pdo->prepare("INSERT INTO profilbild (profilbildtext, user_id) VALUES ('$new_path', '$my_id')");
+            $statement = $pdo->prepare("INSERT INTO profilbild (profilbildtext, profil_user_id) VALUES ('$new_path', '$my_id')");
             $statement->bindParam(':profilbildtext', $new_path);
-            $statement->bindParam(':user_id', $my_id);
+            $statement->bindParam(':profil_user_id', $my_id);
             $result = $statement->execute();
             echo "Dein Bild wurde erfolgreich hochgeladen";
         }

@@ -42,7 +42,7 @@ $title = $visit_user ->fetch();
 
     if ($error === false) {
 
-        $statement = $pdo->prepare("INSERT INTO beitrag (posts, user_id) VALUES ('$posts', '$user_id')");
+        $statement = $pdo->prepare("INSERT INTO beitrag (posts, beitrag_user_id) VALUES ('$posts', '$user_id')");
         $statement->bindParam('posts', $posts);
         $statement->bindParam('user_id', $user_id);
         $result = $statement->execute();
@@ -82,7 +82,7 @@ $title = $visit_user ->fetch();
 
             //In DB einfügen
 
-            $statement = $pdo->prepare("INSERT INTO beitrag (bildtext, user_id) VALUES ('$new_path', '$user_id')");
+            $statement = $pdo->prepare("INSERT INTO beitrag (bildtext, beitrag_user_id) VALUES ('$new_path', '$user_id')");
             $statement->bindParam('bildtext', $new_path);
             $statement->bindParam('user_id', $user_id);
             $result = $statement->execute();
@@ -226,7 +226,7 @@ $title = $visit_user ->fetch();
                 echo "<div id=\"tabelleposts\">";
                 echo $row["benutzername"];
                 echo "<div id=\"poststext\">" . $row['posts'] . "</div>";
-                echo "<img src='" .$row['bildtext']. "'height='200'>";
+                echo "<img src='" .$row['bildtext']. "'height='150'>";
                 echo "</div>";
             }
         ?>
