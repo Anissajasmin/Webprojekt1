@@ -33,7 +33,7 @@ session_start();
 
 include_once ("logincheck.php");
 if (isset($_SESSION['login-id'])) {
-
+    header("Location: hauptseite.php?user_id=$user_id");
 }
 
 
