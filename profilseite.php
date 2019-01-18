@@ -7,15 +7,13 @@
     <meta name = "viewport" content="width-device-width, initial-scale=1.0, maximum-scale=1.0, user scalelable=no">
 </head>
 <?php
-include "includedesign.php";
-
-
+include_once "header.php";
 session_start();
 include_once "logincheck.php";
 if (!isset($_SESSION['login-id'])) {
     echo "Bitte logge dich ein oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
-}else{
-include ("datenbankpasswort.php");
+}else {
+include("datenbankpasswort.php");
 ?>
 
 <body>
@@ -25,7 +23,6 @@ include ("datenbankpasswort.php");
         <h2 class="ueberschriftenmain"> Recommendations
         </h2>
     </div>
-
 
 
     <div id="background">
@@ -39,7 +36,7 @@ include ("datenbankpasswort.php");
 
                     $result = $stmt->execute();
                     while ($row = $stmt->fetch()) {
-                        echo "<div id=\"button9\">";
+                        echo "<div";
                         echo "<img src='" . $row['profilbildtext'] . "'height='120' 'weight: 120'>";
                         echo "</div>";
                     }
@@ -50,7 +47,7 @@ include ("datenbankpasswort.php");
         </a>
 
         <div id="followbutton"> <?php
-            include"follow.php";
+            include "follow.php";
             ?>
         </div>
 
@@ -67,6 +64,31 @@ include ("datenbankpasswort.php");
             ?>
 
         </div>
+
+        <?php // Profilangaben
+        ?>
+
+        <table id="profildaten">
+
+            <tr>
+                <td class="benennung">Vorname:</td>
+            </tr>
+
+
+            <tr>
+                <td class="benennung">Nachname:</td>
+            </tr>
+
+            <tr>
+                <td class="benennung">Studiengang:</td>
+            </tr>
+
+            <tr>
+                <td class="benennung">Semester:</td>
+
+            </tr>
+
+        </table>
 
         <a style="" href="settings.php?user_id=<?php echo $user_id; ?>">
             <?php
@@ -89,24 +111,21 @@ include ("datenbankpasswort.php");
         <br>
         <hr class="strich">
 
-        <div class = "button10"></div>
-
-
-
-
-
+        <div class="button10"></div>
 
 
         <?php
         //Posts des Nutzers der Profilseite anzeigen
         $posts = $pdo->prepare("SELECT * FROM beitrag WHERE beitrag_user_id = :beitrag_user_id AND posts IS NOT NULL OR beitrag_user_id = :beitrag_user_id AND bildtext IS NOT NULL ORDER BY zeitstempel DESC");
-        $postsergebnis= $posts->execute(array(':beitrag_user_id' => $user_id));
+        $postsergebnis = $posts->execute(array(':beitrag_user_id' => $user_id));
         if ($postsergebnis) {
             while ($row = $posts->fetch()) {
                 ?>
                 <div id="postsdernutzer">
-                    <small><?php echo $row['posts']?></small><br>
-                    <small><?php echo "<img src='" .$row['bildtext']. "'height='200'>";?></small><br>
+                    <small><?php echo $row['posts'] ?></small>
+                    <br>
+                    <small><?php echo "<img src='" . $row['bildtext'] . "'height='200'>"; ?></small>
+                    <br>
                 </div>
 
 
@@ -117,11 +136,7 @@ include ("datenbankpasswort.php");
         ?>
 
 
-
-
-
     </div>
-
 
 
     <div id="profile">
@@ -142,12 +157,10 @@ include ("datenbankpasswort.php");
         </div>
 
     </div>
-
+</div>
 
 </body>
 </html>
-
-
 
 <?php
 }

@@ -131,9 +131,9 @@ h3 {
 
 #tabellename {
     float:right;
-    top:90px;
+
     right: 50px;
-    width: 200px;
+    width: 300px;
     height: 35px;
     background: #eee;
     color: #707070;
@@ -149,9 +149,9 @@ h3 {
 
 #tabelleemail {
     float:right;
-    top:200px;
+    margin-top:50px;
     right: 20px;
-    width:200px;
+    width:300px;
     height: 35px;
     background: #eee;
     color: #707070;
@@ -397,3 +397,18 @@ margin-right:20px;
 
 
 
+.benennung {
+
+    color:white;
+    font-family: "Helvetica Neue";
+    font-weight: 200;
+    float:left;
+    margin-left:20px;
+}
+
+
+#profildaten {
+    margin-top: 200px;
+
+
+}

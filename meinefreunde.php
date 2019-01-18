@@ -1,3 +1,6 @@
+<?php
+include_once "header.php";
+?>
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -8,15 +11,11 @@
     <meta name = "viewport" content="width-device-width, initial-scale=1.0, maximum-scale=1.0, user scalelable=no">
 </head>
 <?php
-
-
-
 session_start();
 include_once "logincheck.php";
 if (!isset($_SESSION['login-id'])) {
     echo "Bitte logge dich ein oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
 }else{
-include "includedesign.php";
 include ("datenbankpasswort.php");
 include ("follow.php")
 

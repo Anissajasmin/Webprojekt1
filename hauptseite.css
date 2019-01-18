@@ -1,37 +1,4 @@
 
-body {
-    background-image: url(hintergrundbild.jpg);
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-    text-align: center;
-
-}
-
-#header {
-    width: 100%;
-    height: 40px;
-    background-color: #7B0202;
-    position:fixed;
-    top: 0;
-    left: 0;
-
-}
-
-
-h1 {
-    font-family: "Helvetica Neue";
-    font-size: 150%;
-    color: white;
-    text-align: left;
-    margin-top: 7px;
-    padding-left:15px;
-    font-weight: 100;
-    vertical-align:middle;
-
-}
-
-
 #main {
     display: flex;
     flex-direction: row;
@@ -42,35 +9,40 @@ h1 {
 }
 
 #background {
-
-
-    width: 500px;
+    position: relative;
     height: auto;
     background-color: #888483;
     margin-top: 150px;
+    margin-left: 15px;
+    margin-right: 15px;
     border-radius: 30px;
     -moz-border-radius: 30px;
     -webkit-border-radius: 30px;
     -o-border-radius: 30px;
 
 }
-
+.bg-dunkel{
+    background-color: #888483;
+}
 
 
 #buttonfriends {
     display:flex;
     align-items: center;
     justify-content: center;
+    position:absolute;
     width: 150px;
     height:35px;
+    margin-top: 30px;
+    margin-left:20px;
     background-color:white;
     color: black;
     font-family: "Helvetica Neue";
     font-size: 130%;
     font-weight:300;
     float: left;
-    margin-left: 70px;
-    margin-top:40px;
+
+
 
 
     border-radius: 70px;
@@ -114,14 +86,15 @@ h1 {
     color:white;
 }
 
+
 #neuerbeitrag {
     color: white;
     font-family: "Helvetica Neue";
     font-size: 130%;
     font-weight:500;
     float: left;
-    margin-left: 30px;
-    margin-top:10px;
+    margin-left: 25px;
+    margin-top:70px;
 }
 
 #text1 {
@@ -130,8 +103,8 @@ h1 {
     font-size: 80%;
     font-weight:300;
     float:right;
-    margin-right: 233px;
-    margin-top:-20px;
+    margin-right:233px;
+    margin-top:20px;
 
 }
 
@@ -149,7 +122,6 @@ h1 {
     float:right;
     margin-right: 233px;
     margin-top:-5px;
-
     font-family: "Helvetica Neue";
     font-size: 80%;
     font-weight:300;
@@ -158,9 +130,8 @@ h1 {
 }
 
 #post {
-    width:450px;
     height: 100px;
-    margin-top: -5px;
+    width: 300px;
     border-radius: 15px;
     -moz-border-radius: 15px;
     -webkit-border-radius: 15px;
@@ -238,11 +209,11 @@ h1 {
 
 
 #recommendation {
-    width: 200px;
     height: 300px;
     background-color: #888483;
     margin-top: 150px;
     horiz-align: center;
+    position:relative;
     border-radius: 30px;
     -moz-border-radius: 30px;
     -webkit-border-radius: 30px;
@@ -252,10 +223,10 @@ h1 {
 
 
 #profile {
-    width: 220px;
     height: 300px;
     background-color: #888483;
     margin-top: 150px;
+    position:relative;
     horiz-align: center;
     border-radius: 30px;
     -moz-border-radius: 30px;
@@ -267,12 +238,15 @@ h1 {
 .ueberschriftenmain {
     color: white;
     font-family: "Helvetica Neue";
-    font-size: 130%;
     font-weight:300;
+    font-size: 130%;
+    justify-content: center;
+    margin-top:20px;
+    margin-left: 20px;
+    position:absolute;
 }
 
 #searcharea {
-    width: 85px;
     hight: 30px;
     font-family: "Helvetica Neue";
     font-size: 100%;
@@ -286,7 +260,6 @@ h1 {
 }
 #searchbox {
     height: 20px;
-    width: 200px;
     position: fixed;
     top: 7px;
     right: 300px;
@@ -381,51 +354,22 @@ ul li:hover ul li{
     right: 100px;
 }
 
-#logoutbutton {
 
-    width: 90px;
-    height: 30px;
-    justify-content: center;
-    background-color: white;
-    border-radius: 30px;
-    -moz-border-radius: 30px;
-    -webkit-border-radius: 30px;
-    -o-border-radius: 30px;
-    float:right;
-    margin-right:15px;
-    margin-top: -46px;
-    color: white;
-    font-family: "Helvetica Neue";
-    font-size: 120%;
-    line-height:30px;
-    font-weight: 300;
-
-}
-#logoutbutton a {
-    text-decoration: none;
-    color: black;
-}
-
-#logoutbutton :hover {
-    text-decoration: none;
-    color: #7B0202;
-}
 
 #poststext {
     max-width: 445px;
     display: block;
-    height:auto;
 
 }
 
 #tabelleposts {
-    width:450px;
+    width:300px;
     height: auto;
     background-color: white;
-    margin-top: 5px;
+    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
     border-radius: 15px;
@@ -441,9 +385,8 @@ ul li:hover ul li{
     align-items: center;
     justify-content: center;
     position:absolute;
-    top:230px;
     margin-left:10px;
-    width: 200px;
+    width:200px;
     height: 35px;
     background: #eee;
     color: #707070;
@@ -464,7 +407,7 @@ ul li:hover ul li{
     position: absolute;
     top:280px;
     margin-left:10px;
-    width:200px;
+    width:200px;px;
     height: 35px;
     background: #eee;
     color: #707070;
@@ -480,24 +423,15 @@ ul li:hover ul li{
 }
 
 
-#searchbox {
-    height: 20px;
-    width: 200px;
-    position: fixed;
-    top: 7px;
-    right: 300px;
-    border-radius: 60px;
-    -moz-border-radius:60px;
-    -webkit-border-radius: 60px;
-    -o-border-radius: 60px;
 
+.name{
+    position: absolute;
+    margin-top: 60px;
+    margin-left: 15px;
 }
 
-#suchebutton {
-    height: 20px;
-    width: 50px;
-    position: fixed;
-    top: 10px;
-    right: 240px;
-
+.neuemail{
+    position: absolute;
+    margin-top: 100px;
+    margin-left:5px;
 }
