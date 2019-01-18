@@ -25,7 +25,7 @@ if($match) {
     if ($stmt->execute(array(':benutzername' => $benutzername))) {
         if ($row = $stmt->fetch()) {
             $user_id = $row['login_id'];
-            $passwortdatenbank = $row["passwort"];
+            $passworthash = $row["passwort"];
             password_verify($passwort, $passworthash);
 
             if (password_verify($passwort, $passworthash)) {
@@ -35,7 +35,7 @@ if($match) {
                 $_SESSION["mail"] = $row ["hdm_mail"];
 
                 }
-                header("Location: hauptseite.php?user_id=$user_id");
+
 
 
             }
