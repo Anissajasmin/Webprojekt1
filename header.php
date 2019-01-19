@@ -11,8 +11,8 @@ include_once "logincheck.php";
 include("datenbankpasswort.php");
 
 $my_id = $_SESSION['login-id'];
-$meine_id = $_SESSION['login-id'];
 $user_id = $_GET['user_id'];
+$user_id = $_SESSION["login-id"];
 
 
 //Profildaten der unterschiedlichen Nutzer

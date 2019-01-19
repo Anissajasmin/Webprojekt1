@@ -16,7 +16,6 @@
         </h2>
 
 
-
         <form action="hauptseite.php?user_id=<?php echo $user_id; ?>" method="post">
             <p class="beschriftung"> Benutzername: </p>
             <input class="beschriftung2" type="text" size="25" maxlength="250" name="benutzername" ><br><br>
@@ -28,16 +27,13 @@
         </form>
     </div>
 
-<?php
-session_start();
-
-include_once ("logincheck.php");
-if (isset($_SESSION['login-id'])) {
-    header("Location: hauptseite.php?user_id=$user_id");
-}
-
-
-
-?>
+    <?php
+    session_start();
+    include_once ("logincheck.php");
+    $user_id = $_SESSION["login-id"];
+    if (isset($_SESSION['login-id'])) {
+        header("Location: hauptseite.php?user_id=$user_id");
+    }
+    ?>
 </body>
 </html>
