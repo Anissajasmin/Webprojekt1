@@ -1,6 +1,4 @@
-<?php
-include_once "header.php";
-?>
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -17,7 +15,8 @@ if (!isset($_SESSION['login-id'])) {
     echo "Bitte logge dich ein oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
 }else{
 include ("datenbankpasswort.php");
-include ("follow.php")
+include ("follow.php");
+include_once "header.php";
 
 ?>
 <body>

@@ -7,13 +7,15 @@
     <meta name = "viewport" content="width-device-width, initial-scale=1.0, maximum-scale=1.0, user scalelable=no">
 </head>
 <?php
-include_once "header.php";
 session_start();
 include_once "logincheck.php";
 if (!isset($_SESSION['login-id'])) {
     echo "Bitte logge dich ein oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
 }else {
 include("datenbankpasswort.php");
+include_once "header.php";
+include "follow.php";
+
 ?>
 
 <body>
@@ -46,10 +48,7 @@ include("datenbankpasswort.php");
             </div>
         </a>
 
-        <div id="followbutton"> <?php
-            include "follow.php";
-            ?>
-        </div>
+
 
         <div id="tabellename">
             <?php

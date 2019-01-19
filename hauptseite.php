@@ -8,11 +8,11 @@
     <?php
     session_start();
     include_once "logincheck.php";
-    include_once"header.php";
     if (!isset($_SESSION['login-id'])) {
         echo "Aktiviere zuerst deinen Account mittels der Email, die wir dir geschickt haben oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
     }else{
     include("datenbankpasswort.php");
+    include_once"header.php";
 
     $my_id = $_SESSION['login-id'];
     $user_id = $_GET['user_id'];
