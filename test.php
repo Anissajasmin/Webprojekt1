@@ -5,25 +5,21 @@
     <title>Hauptseite</title>
     <link rel="stylesheet" type="text/css" href="includedesign.css">
 
-<?php
-session_start();
-include_once "logincheck.php";
-if (!isset($_SESSION['login-id'])) {
-    echo "Bitte logge dich ein oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
-}else {
-    include("datenbankpasswort.php");
-}
-$my_id = $_SESSION['login-id'];
-$meine_id = $SESSION['login-id'];
-$user_id= $_GET['user_id'];
-
-
-//Profildaten der unterschiedlichen Nutzer
-$visit_user = $pdo ->prepare ("SELECT * FROM login WHERE login_id=$user_id");
-$visit_user ->execute();
-$title = $visit_user ->fetch();
-
-?>
+    <?php
+    session_start();
+    include_once "logincheck.php";
+    if (!isset($_SESSION['login-id'])) {
+        echo "Bitte logge dich ein oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
+    }else {
+        include("datenbankpasswort.php");
+    }
+    $my_id = $_SESSION['login-id'];
+    $user_id= $_GET['user_id'];
+    //Profildaten der unterschiedlichen Nutzer
+    $visit_user = $pdo ->prepare ("SELECT * FROM login WHERE login_id=$user_id");
+    $visit_user ->execute();
+    $title = $visit_user ->fetch();
+    ?>
 
 </head>
 
@@ -41,13 +37,10 @@ $title = $visit_user ->fetch();
         </form>
         <?php
         //Suchfunktion
-
         if (isset($_POST["suche"])) {
             $allebenutzername = $_POST["suche"];
-
             $benutzersuche = $pdo->prepare("SELECT * FROM vlj_loginprofilbild WHERE benutzername = '$allebenutzername' AND aktiviert = 1");
             if ($benutzersuche->execute()) {
-
                 while ($row = $benutzersuche->fetch()) {
                     $userid = $row ['login_id'];
                     ?>
@@ -64,7 +57,6 @@ $title = $visit_user ->fetch();
         }
         ?>
         <div id="logoutbutton"> <a href="logout.php">Log Out</a></div>
-
         <ul id="navigation">
 
             <li class="listitem"><a href="hauptseite.php?user_id=<?php echo $user_id; ?>">Mein Feed</a></li>
@@ -79,9 +71,8 @@ $title = $visit_user ->fetch();
         </ul>
 
 
-        <?php
-        include "notification.php";
-        ?>
+
+
 
     </div>
 
@@ -91,5 +82,3 @@ $title = $visit_user ->fetch();
 </div>
 
 </body>
-</html>
-
