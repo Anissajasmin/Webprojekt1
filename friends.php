@@ -1,7 +1,3 @@
-<?php
-include_once"header.php";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,10 +8,12 @@ include_once"header.php";
     <?php
     session_start();
     include_once "logincheck.php";
+
     if (!isset($_SESSION['login-id'])) {
         echo "Aktiviere zuerst deinen Account mittels der Email, die wir dir geschickt haben oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
     }else{
     include("datenbankpasswort.php");
+        include_once"header.php";
 
 
 $my_id = $_SESSION['login-id'];
@@ -120,32 +118,6 @@ $title = $visit_user ->fetch();
 
 <body>
 
-<div id="hauptseite">
-
-    <div id="header">
-        <h1>TOUCH</h1>
-        <div id="logoutbutton"> <a href="logout.php">Log Out</a></div>
-        <ul id="navigation">
-
-            <li class="listitem"><a href="hauptseite.php?user_id=<?php echo $user_id; ?>">Mein Feed</a></li>
-            <li class="listitem"><a href="profilseite.php?user_id=<?php echo $user_id; ?>">Mein Profil</a>
-                <ul>
-                    <li><a href="#"> Meine Daten</a></li>
-                    <li><a href="#"> Meine Beiträge</a></li>
-                    <li class =“listitem"><a href="settings.php?user_id=<?php echo $user_id; ?>">Einstellungen</a></li>
-
-                </ul>
-            </li>
-            <li class="listitem"><a href="#">Meine Freunde</a></li>
-
-        </ul>
-
-        <form action="" id = "searcharea" class ="header" method="post">
-            <input placeholder= "Search here..." type="text" name="suche" id="searchbox"/>
-            <input type="hidden" name="suchegesendet" value="1">
-            <input id="" type="submit" value="Suchen">
-        </form>
-    </div>
         <?php
         //Suchfunktion
 

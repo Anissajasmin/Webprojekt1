@@ -56,10 +56,10 @@ $title = $visit_user->fetch();
 </head>
 
 
-<body>
-
+</bod>
+<div id="navbar">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">TOUCH</a>
+    <a class="navbar-brand">TOUCH</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -82,6 +82,10 @@ $title = $visit_user->fetch();
                 </div>
 
             </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="meinefreunde.php?user_id=<?php echo $user_id; ?>">Meine Freunde <span
+                            class="sr-only">(current)</span></a>
+            </li>
         </ul>
         <div>
             <ul class="navbar-nav mr-auto">
@@ -89,83 +93,10 @@ $title = $visit_user->fetch();
                     <a class="nav-link" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false">Notifications
 
+<?php
+include_once"notification.php"
+?>
 
-                        <?php
-
-                        $checkfollow = $pdo->prepare("SELECT * FROM follow WHERE follow_id=$meine_id");
-                        $checkfollow->execute();
-                        $follower = $checkfollow->rowCount();
-
-                        if ($follower > 0) {
-
-                        //Wenn man jemandem folgt, werden die Posts der User, denen man folgt, angezeigt
-                        while ($row = $checkfollow->fetch()) {
-                            $userid = $row['user_id'];
-                            $show_posts = $pdo->prepare("SELECT * FROM beitrag WHERE beitrag_user_id  = $userid");
-
-                            $show_posts->execute();
-                            $numberbeitrag = $show_posts->rowCount();
-
-
-                            if ($numberbeitrag > 0) {
-
-                                $insertnotification = $pdo->prepare("INSERT INTO notification (meine_id, posts_id, message, follow_user_id, status, datum) VALUES ($meine_id, $beitrag_id, 'message', $user_id, 'unread', $date)");
-                                $insertnotification->bindParam(':meine_id', $meine_id);
-                                $insertnotification->bindParam(':posts_id', $beitrag_id);
-                                $insertnotification->bindParam(':follow_user_id', $userid);
-                                $insertnotification->bindParam(':datum', $date);
-                                $insertnotification->execute();
-                                while ($row3 = $insertnotification->fetch()) {
-
-                                    $notification = $pdo->prepare("SELECT * FROM vlj_notification WHERE status = 'unread' AND beitrag_user_id = $userid ORDER BY 'date' DESC");
-                                    $notification->execute();
-                                    $donotification = $notification->rowCount();
-
-                                    if ($donotification > 0) {
-
-                                        ?>              <span
-                                            class="badge-badge-light"><?php echo $donotification; ?></span></span>
-                                        <?php
-                                    }
-                                }
-                            }
-                        }
-
-                        ?>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <?php
-                        $notification2 = $pdo->prepare("SELECT * FROM vlj_notification ORDER BY 'date' DESC");
-                        if ($donotification > 0) {
-                            $row = $notification2->fetch();
-                            $datum = $row['datum'];
-                            $message = $row['message'];
-                            $benutzername = $row['benutzername'];
-                            ?>
-                            <a style="
-                    <?php
-                            if ($message == "message") {
-                                echo "font-weight:bold;";
-                            }
-                            ?>" class="dropdown-item" href="hauptseite.php?user_id=<?php echo $user_id; ?>">
-                                <small><i><?php echo date('F j, Y, g:i, a', strtotime($datum)); ?></i></small>
-                                <br/>
-                                <?php
-                                if ($message == "message") {
-                                    echo $benutzername;
-                                    echo "hat was Neues gepostet";
-                                }
-                                ?>
-
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <?php
-                        } else {
-                            echo "Es ist noch nichts Neues gepostet worden.";
-                        }
-                        }
-
-                        ?>
                     </div>
 
 
@@ -199,15 +130,15 @@ $title = $visit_user->fetch();
         </div>
 
         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" name="suche" type="search" placeholder="Suchen" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Suche</button>
+            <input class="form-control mr-sm-2"  name="suche" type="search" placeholder="Suchen" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" id="suchebutton" type="submit">Suche</button>
         </form>
 
 
         <button type="button" class="btn btn-dark"><a href="logout.php">Log Out</a></button>
-    </div>
-</nav>
 
+</nav>
+</div>
 
 </body>
 </html>

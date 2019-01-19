@@ -19,7 +19,7 @@ if (!isset($_SESSION['login-id'])) {
   <br>
   <div>
   <?php
-    include "includedesign.php";
+    include "header.php";
 
 $user_id = $_GET['user_id'];
     $n_id = $_GET['n_id'];
