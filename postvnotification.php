@@ -3,7 +3,7 @@ session_start();
 include_once "logincheck.php";
 if (!isset($_SESSION['login-id'])) {
     echo "Aktiviere zuerst deinen Account mittels der Email, die wir dir geschickt haben oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
-}else {
+}else {include "header.php";
     ?>
     <!doctype html>
 <html lang="en">
@@ -11,6 +11,7 @@ if (!isset($_SESSION['login-id'])) {
       <title>TOUCH</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" type="text/css" href="postvnotification.css">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   </head>
   <body>
@@ -19,7 +20,6 @@ if (!isset($_SESSION['login-id'])) {
   <br>
   <div>
   <?php
-    include "header.php";
 
 $user_id = $_GET['user_id'];
     $n_id = $_GET['n_id'];
@@ -42,19 +42,28 @@ $user_id = $_GET['user_id'];
             $post = $row['posts'];
             $postbild = $row ['bildtext'];
             $benutzername = $row['benutzername'];
+            ?>
 
-            echo $benutzername;
-            echo '&nbsp';
-            echo "hat was Neues gepostet:";
-            echo '&nbsp';
-            echo $post;
-            echo "<img src='" . $postbild . "'>";
 
-        }
+
+         <div id="postnotkasten">
+
+         <p id="postnotname">  <?php echo $benutzername;
+             echo '&nbsp';
+             echo "hat etwas Neues gepostet:"; ?>
+         </p>
+             <?php echo '&nbsp'; ?>
+             <div id="postnotkasten2">
+             <p id="postnotpost">  <?php echo $post; ?>
+           <?php echo "<img src='" . $postbild . "'>"; ?>
+             </p>
+         </div>
+        <?php
+            }
     }
     ?>
   <br/>
-  <a href="hauptseite.php?user_id=<?php echo $user_id; ?>">Zurück zum Feed</a>
+  <button id="postnotbutton" href="hauptseite.php?user_id=<?php echo $user_id; ?>">Zurück zum Feed</button>
   </div>
   </body>
     </html>

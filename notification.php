@@ -8,6 +8,7 @@ $user_id = $_GET['user_id'];
 <html lang="en">
   <head>
     <meta charset="utf-8">
+      <link rel="stylesheet" type="text/css" href="postvnotification.css">
   </head>
   <body>
 
@@ -73,7 +74,7 @@ if ($holebeitragid = $pdo->prepare("SELECT * FROM beitrag WHERE beitrag_user_id 
                         echo "font-weight:bold;";
                     }
                     ?>" class="dropdown-item" href="postvnotification.php?n_id=<?php echo $n_id; ?>">
-                        <small></small><?php echo date('F j, Y, g:i, a', strtotime($date)); ?></small>
+                        <small><?php echo date('F j, Y, g:i, a', strtotime($date)); ?></small>
                         <br/>
                         <?php
                         if ($status == $row3['status']) {
@@ -86,10 +87,13 @@ if ($holebeitragid = $pdo->prepare("SELECT * FROM beitrag WHERE beitrag_user_id 
                     <div class="dropdown-divider"></div>
                     <?php
                 } }else {
-                    echo "Es ist noch nichts Neues gepostet worden.";
+                    ?>
+                <p id="not1">
+                   <?php echo "Es ist noch nichts Neues gepostet worden.";
                 }
 
 ?>
+                </p>
     </div>
   </body>
 </html>

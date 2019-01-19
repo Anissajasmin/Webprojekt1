@@ -1,0 +1,57 @@
+#postnotkasten{
+    height:400px;
+    width:400px;
+    margin-left:200px;
+    background-color: #888483;
+    border-radius: 30px;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -o-border-radius: 30px;
+}
+
+#postnotname {
+    color:white;
+    font-family:"Helvetica Neue";
+    font-size:130%;
+    padding-top:35px;
+    font-weight: 200;
+    text-align: center;
+
+}
+
+
+#postnotkasten2 {
+    height:auto;
+    width:375px;
+    margin-left:auto;
+    margin-right:auto;
+    background-color: white;
+    border-radius: 30px;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -o-border-radius: 30px;
+}
+
+#postnotpost {
+    color:black;
+    font-family:"Helvetica Neue";
+    font-size:150%;
+    padding-top:10px;
+    padding-bottom:10px;
+    font-weight: 200;
+    text-align: center;
+
+
+}
+
+#postnotbutton {
+
+    float:right;
+    margin-right:15px;
+}
+
+#not1 {
+    text-align:center;
+
+
+}
