@@ -213,7 +213,13 @@ $title = $visit_user ->fetch();
 
                     echo "<div id=\"tabelleposts\">";
                     echo "<span>";
-                    echo $row3["benutzername"];
+                    $userid = $row3['login_id'];
+                    $show_profilepic = $pdo->prepare ("SELECT * FROM profilbildlogin WHERE login_id = $userid");
+                    $show_profilepic->execute();
+                    $row4 = $show_profilepic->fetch();?>
+                    <a href="profilseite.php?user_id=<?php echo $userid ?>"><img id="postsprofilbild" src="<?php echo $row4['profilbildtext'] ?>"></a>
+                        <a href="profilseite.php?user_id=<?php echo $userid ?>"><?php echo $row3['benutzername'] ?></a>
+                    <?php
                     echo "</span>";
                     echo "<div id=\"poststext\">" . $row3['posts'] . "</div>";
                     echo "<img src='" . $row3['bildtext'] . "'height='200'>";

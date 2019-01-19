@@ -435,3 +435,10 @@ ul li:hover ul li{
     margin-top: 100px;
     margin-left:5px;
 }
+
+
+#postsprofilbild {
+    height:50px;
+    width:50px;
+
+}

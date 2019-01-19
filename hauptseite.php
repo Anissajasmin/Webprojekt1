@@ -169,7 +169,13 @@
                     $result = $stmt->execute();
                     while ($row = $stmt->fetch()) {
                         echo "<div id=\"tabelleposts\">";
-                        echo $row["benutzername"];
+                        $userid = $row['login_id'];
+                        $show_profilepic = $pdo->prepare ("SELECT * FROM profilbildlogin WHERE login_id = $userid");
+                        $show_profilepic->execute();
+                        $row4 = $show_profilepic->fetch();?>
+                        <a href="profilseite.php?user_id=<?php echo $userid ?>"><img id="postsprofilbild" src="<?php echo $row4['profilbildtext'] ?>"></a>
+                        <a href="profilseite.php?user_id=<?php echo $userid ?>"><?php echo $row['benutzername'] ?></a>
+                       <?php
                         echo "<div id=\"poststext\">" . $row['posts'] . "</div>";
                         echo "<img src='" . $row['bildtext'] . "'height='150'>";
                         echo "</div>";
