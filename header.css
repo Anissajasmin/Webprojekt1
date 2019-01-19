@@ -49,10 +49,56 @@
 #suchebutton{
 margin-right:20px;
     color:black;
-}
 
+
+}
+#suchebutton:hover {
+    color:white;
+}
 
 #dropdown01 {
     margin-right:20px;
+
+
+}
+
+
+#fonttouch {
+    color:black;
+    font-family:"Helvetica Neue";
+    font-weight:300;
+    font-size:160%;
+
+}
+
+#fontfeed {color:black;
+    font-family:"Helvetica Neue";
+    font-weight:200;
+    font-size:130%;
+
+}
+#navbarDropdown {color:black;
+    font-family:"Helvetica Neue";
+    font-weight:200;
+    font-size:130%;
+
+}
+
+#fontprofil {color:black;
+    font-family:"Helvetica Neue";
+    font-weight:200;
+    font-size:100%;
+
+}
+#fonteinstellungen {color:black;
+    font-family:"Helvetica Neue";
+    font-weight:200;
+    font-size:100%;
+
+}
+#fontfreunde {color:black;
+    font-family:"Helvetica Neue";
+    font-weight:200;
+    font-size:130%;
 
 }

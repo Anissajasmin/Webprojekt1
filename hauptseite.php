@@ -12,12 +12,13 @@
         echo "Aktiviere zuerst deinen Account mittels der Email, die wir dir geschickt haben oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
     }else{
     include("datenbankpasswort.php");
+    include("header.php");
 
     $my_id = $_SESSION['login-id'];
     $user_id = $_GET['user_id'];
 
     //Profildaten der unterschiedlichen Nutzer
-    $visit_user = $pdo->prepare("SELECT * FROM login WHERE login_id=$user_id");
+    $visit_user = $pdo->prepare("SELECT * FROM login WHERE login_id=$my_id");
     $visit_user->execute();
     $title = $visit_user->fetch();
     ?>
