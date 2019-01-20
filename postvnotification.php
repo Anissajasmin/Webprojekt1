@@ -12,7 +12,6 @@ if (!isset($_SESSION['login-id'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <link rel="stylesheet" type="text/css" href="postvnotification.css">
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   </head>
   <body>
   <br>
@@ -64,7 +63,32 @@ $user_id = $_GET['user_id'];
     ?>
   <br/>
              <a style="text-decoration:none; color:white;" href="hauptseite.php?user_id=<?php echo $user_id; ?>">
-                 <div id="postnotbutton">Zurück zum Feed</div>
+                 <div id="postnotbutton">Zurück zum Feed
+                     <style media="screen">
+                         #postnotbutton {
+                             height:25px;
+                             width:130px;
+                             float:right;
+                             margin-right:15px;
+                             background-color:white;
+                             color:black;
+                             font-family: "Helvetica Neue";
+                             text-align: center;
+                             font-weight: 300;
+                             border-radius: 15px;
+                             -moz-border-radius: 15px;
+                             -webkit-border-radius: 15px;
+                             -o-border-radius: 15px;
+
+                         }
+
+
+                     </style>
+
+
+
+
+                 </div>
              </a>
   </div>
   </body>

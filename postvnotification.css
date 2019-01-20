@@ -3,10 +3,10 @@
     width:400px;
     margin-left:200px;
     background-color: #888483;
-    border-radius: 30px;
-    -moz-border-radius: 30px;
-    -webkit-border-radius: 30px;
-    -o-border-radius: 30px;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -o-border-radius: 15px;
 }
 
 #postnotname {
@@ -26,10 +26,10 @@
     margin-left:auto;
     margin-right:auto;
     background-color: white;
-    border-radius: 30px;
-    -moz-border-radius: 30px;
-    -webkit-border-radius: 30px;
-    -o-border-radius: 30px;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -o-border-radius: 15px;
 }
 
 #postnotpost {
@@ -44,13 +44,6 @@
 
 }
 
-#postnotbutton {
-height:auto;
-    width:auto;
-    float:right;
-    margin-right:15px;
-    background-color:black;
-}
 
 #not1 {
     text-align:center;

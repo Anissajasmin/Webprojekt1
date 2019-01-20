@@ -171,12 +171,9 @@
                     <hr class="strich">
 
                     <div>
-
                         <?php
                         //Chronik - wo die geposteten Beiträge auftauchen
-
                         $stmt = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE posts IS NOT NULL OR bildtext IS NOT NULL ORDER BY zeitstempel DESC");
-
                         $result = $stmt->execute();
                         while ($row = $stmt->fetch()) {
                             echo "<div id=\"tabelleposts\">";
@@ -194,6 +191,7 @@
                             echo "</div>";
                         }
                         ?>
+<br>
 
                     </div>
                 </div>

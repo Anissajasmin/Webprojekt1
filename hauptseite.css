@@ -21,7 +21,7 @@ body {
     position: relative;
     height: auto;
     background-color: #888483;
-    margin-top: 150px;
+    margin-top: 80px;
     margin-left: 15px;
     margin-right: 15px;
     border-radius: 15px;
@@ -43,7 +43,7 @@ body {
     width: 150px;
     height:35px;
     margin-top: 30px;
-    margin-left:20px;
+    margin-left:300px;
     background-color:white;
     color: black;
     font-family: "Helvetica Neue";
@@ -65,35 +65,32 @@ body {
 }
 
 .strich {
-    margin-top: 70px;
-background-color:white;
-}
+    margin-top: 70px; }
 
 
 #buttonstudents {
     display:flex;
-    align-items:center;
+    align-items: center;
     justify-content: center;
+    position:absolute;
     width: 150px;
     height:35px;
+    margin-top: 30px;
+    float: right;
+    margin-left: 50px;
     background-color:white;
     color: black;
     font-family: "Helvetica Neue";
     font-size: 130%;
     font-weight:300;
     float: right;
-    margin-right: 70px;
-    margin-top: 40px;
-
 
     border-radius: 70px;
     -moz-border-radius: 70px;
     -webkit-border-radius: 70px;
     -o-border-radius: 70px;
 
-
 }
-
 #buttonstudents:hover {
     background-color:#7B0202;
     color:white;
@@ -110,7 +107,6 @@ background-color:white;
     margin-left: 15px;
     margin-top:10px;
 }
-
 #text1 {
     position:absolute;
     color: white;
@@ -118,8 +114,9 @@ background-color:white;
     font-size: 80%;
     font-weight:300;
     float:left;
-    margin-left:25px;
+    margin-left:17px;
     margin-top:20px;
+
 
 }
 
@@ -127,8 +124,9 @@ background-color:white;
 #post {
     height: 100px;
     width: 300px;
-    margin-top:15px;
-    margin-left:10px;
+    margin-top:20px;
+    margin-left:15px;
+    margin-right:15px;
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -163,6 +161,8 @@ background-color:white;
     justify-content: center;
 
 }
+
+
 #text2 {
     color: white;
     font-family: "Helvetica Neue";
@@ -217,7 +217,7 @@ background-color:white;
 #recommendation {
     height: 300px;
     background-color: #888483;
-    margin-top: 150px;
+    margin-top: 80px;
     horiz-align: center;
     position:relative;
     border-radius: 15px;
@@ -231,7 +231,7 @@ background-color:white;
 #profile {
     height: 200px;
     background-color: #888483;
-    margin-top: 150px;
+    margin-top: 80px;
     position:relative;
     horiz-align: center;
     border-radius: 15px;
@@ -241,11 +241,13 @@ background-color:white;
 
 }
 
+
 .ueberschriftenmain {
     position: absolute;
     color: white;
+    text-align: center;
     font-family: "Helvetica Neue";
-    font-weight:400;
+    font-weight: 300;
     font-size: 130%;
     justify-content: center;
     margin-top:20px;
@@ -349,15 +351,20 @@ background-color:white;
     -webkit-border-radius: 40px;
     -o-border-radius: 40px;
 
+
+
 }
 
-
 #postsprofilbild {
-   position: absolute;
+    position: absolute;
     margin-top: -65px;
     margin-left:10px;
     height:50px;
     width:50px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
 
 }
 
@@ -394,8 +401,9 @@ background-color:white;
     font-size:120%;
     font-weight: 300;
     text-decoration: none;
-    text-align:center;
+
     margin-top: 20px;
+    margin-right:40px;
     margin-left:80px;
 
 }
@@ -406,9 +414,331 @@ background-color:white;
     margin-left: 80px;
     margin-bottom: 10px;
     margin-top: 50px;
-width:50px;
+    width:50px;
     height:50px;
+
+}
+
+/*Css Profilseite */
+
+
+.zumeintragen{
+    position:absolute;
+    float:left;
+    margin-top: 40px;
+    margin-left:30px;
+}
+
+
+
+
+#recommendationsprofilseite {
+    height: 300px;
+    background-color: #888483;
+    margin-top: 80px;
+    horiz-align: center;
+    position:relative;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -o-border-radius: 15px;
+
+}
+
+#backgroundprofilseite {
+    position: relative;
+    height: auto;
+    background-color: #888483;
+    margin-top: 80px;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -o-border-radius: 15px;
+
+}
+.bg-dunkel{
+    background-color: #888483;
+}
+
+
+#anzeigederbeiträgeundfreunde {
+    height: 300px;
+    background-color: #888483;
+    margin-top: 80px;
+    horiz-align: center;
+    position:relative;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -o-border-radius: 15px;
+
+}
+
+#profilbildanzeige {
+    position:absolute;
+    float:left;
+    height:120px;
+    width:120px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+#ueberschrift {
+    position: absolute;
+    color: white;
+    font-family: "Helvetica Neue";
+    font-weight:300;
+    font-size: 130%;
+    justify-content: center;
+    margin-top:20px;
+    margin-left: 20px;
+}
+
+#profilbild1 {
+    position:absolute;
+    width:120px;
+    height:120px;
+    background-color: white;
+    margin-left:20px;
+    margin-top:70px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+
+}
+#tabellename1 {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float:right;
+    margin-top: 30px;
+    margin-left:170px;
+    width:173px;
+    height: 45px;
+    background: #eee;
+    color: #707070;
+    font-family: "Helvetica Neue";
+    box-sizing: border-box;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+
+
+
+#tabelleemail1 {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:140px;
+    margin-left:170px;
+    width:173px;
+    height: 45px;
+    background: #eee;
+    color: #707070;
+    font-family: "Helvetica Neue";
+    box-sizing: border-box;
+    border-radius: 40px;
+    -moz-border-radius: 40px;
+    -webkit-border-radius: 40px;
+    -o-border-radius: 40px;
 
 
 
 }
+
+
+#profildatenneu {
+    position:absolute;
+    margin-top: 230px;
+    margin-left: 20px;
+    width: 300px;
+    height: 70px;
+    background: #9999;
+    box-sizing: border-box;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+
+
+}
+
+.benennung {
+    font-family: "Helvetica Neue";
+    color:white;
+    float:left;
+    margin-top:10px;
+    margin-left:10px;
+}
+
+.strich1 {
+    margin-top:320px;
+}
+
+.neubuttonsettings {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position:absolute;
+    width: 150px;
+    height:35px;
+    margin-top: 420px;
+    margin-left: 170px;
+    background-color:white;
+    color: black;
+    font-family: "Helvetica Neue";
+    font-size: 130%;
+    font-weight:300;
+    float: left;
+    border-radius: 70px;
+    -moz-border-radius: 70px;
+    -webkit-border-radius: 70px;
+    -o-border-radius: 70px;
+
+}
+
+.neubuttonsettings:hover {
+    background-color:#7B0202;
+    color: white;
+}
+
+.ueberschrift1 {
+
+    position: absolute;
+    color: white;
+    text-align: center;
+    font-family: "Helvetica Neue";
+    font-weight: 300;
+    font-size: 110%;
+    justify-content: center;
+    margin-top:30px;
+    margin-left: 20px;
+    margin-right:20px;
+
+
+}
+
+
+#buttonfriendsneu {
+position:absolute;
+    width:80px;
+    height:60px;
+    margin-top:60px;
+    background-color: white;
+    margin-left:27%;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -o-border-radius: 15px;
+
+}
+
+.ueberschrift2 {
+    position: absolute;
+    float:left;
+    color: white;
+    font-family: "Helvetica Neue";
+    font-weight:300;
+    font-size: 110%;
+    margin-top:145px;
+    margin-left: -5px;
+    margin-right:20px;
+
+
+}
+
+#buttonpostsneu {
+    position:absolute;
+    width:80px;
+    height:60px;
+    margin-top:190px;
+    background-color: white;
+    margin-left:27%;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+
+.strich3 {
+    margin-top: 470px;
+    color:white;
+}
+
+.anzahl {
+    text-align:center;
+    font-family: "Helvetica Neue";
+    font-size:90%;
+    font-weight:300;
+    margin-top:13px;
+
+
+
+}
+
+
+/* meine freunde */
+
+
+#ueberschriftmeinefreunde {
+    position: absolute;
+    color: white;
+    font-family: "Helvetica Neue";
+    font-weight:300;
+    font-size: 130%;
+    justify-content: center;
+    margin-top:20px;
+    margin-left: 20px;
+}
+
+#kasten {
+    width:auto;
+    margin-left:20px;
+    margin-right:20px;
+    height: 15px;
+    background-color: white;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -o-border-radius: 15px;
+
+}
+
+#kastentext {
+    color:black;
+    font-family: "Helvetica Neue";
+    font-size: 130%;
+    font-weight:300;
+    float: left;
+    margin-left: 30px;
+
+
+
+}
+
+#meinefreundeprofilbild {
+
+    height:50px;
+    width:50px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+
+
+
+}
+
+
+
