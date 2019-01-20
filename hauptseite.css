@@ -1,3 +1,12 @@
+body {
+    background-image: url(hintergrundbild.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+
+}
+
 
 #main {
     display: flex;
@@ -15,10 +24,10 @@
     margin-top: 150px;
     margin-left: 15px;
     margin-right: 15px;
-    border-radius: 30px;
-    -moz-border-radius: 30px;
-    -webkit-border-radius: 30px;
-    -o-border-radius: 30px;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -o-border-radius: 15px;
 
 }
 .bg-dunkel{
@@ -42,9 +51,6 @@
     font-weight:300;
     float: left;
 
-
-
-
     border-radius: 70px;
     -moz-border-radius: 70px;
     -webkit-border-radius: 70px;
@@ -52,10 +58,17 @@
 
 }
 
+
 #buttonfriends:hover {
     background-color:#7B0202;
     color: white;
 }
+
+.strich {
+    margin-top: 70px;
+background-color:white;
+}
+
 
 #buttonstudents {
     display:flex;
@@ -93,116 +106,109 @@
     font-size: 130%;
     font-weight:500;
     float: left;
-    margin-left: 25px;
-    margin-top:70px;
+    position: absolute;
+    margin-left: 15px;
+    margin-top:10px;
 }
 
 #text1 {
+    position:absolute;
     color: white;
     font-family: "Helvetica Neue";
     font-size: 80%;
     font-weight:300;
-    float:right;
-    margin-right:233px;
+    float:left;
+    margin-left:25px;
     margin-top:20px;
 
 }
 
+
+#post {
+    height: 100px;
+    width: 300px;
+    margin-top:15px;
+    margin-left:10px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+
+}
+
+
+#button2 {
+    position: absolute;
+    float:left;
+    width: 80px;
+    height:20px;
+    margin-left: 105px;
+    margin-top: -15px;
+    justify-content: center;
+    font-family: "Helvetica Neue";
+    font-size: 75%;
+    font-weight:400;
+
+}
+#button3 {
+    position: absolute;
+    float:left;
+    width: 80px;
+    height:20px;
+    margin-left: 15px;
+    margin-top:-15px;
+    font-family: "Helvetica Neue";
+    font-size: 75%;
+    font-weight:400;
+    justify-content: center;
+
+}
 #text2 {
     color: white;
     font-family: "Helvetica Neue";
     font-size: 90%;
     font-weight:400;
     float:left;
-    margin-left: 30px;
+    margin-left: 10px;
     margin-top:20px;
 }
 
+
 #dateiauswahl {
-    float:right;
-    margin-right: 233px;
-    margin-top:-5px;
+    position: absolute;
+    float:left;
+    margin-left: -220px;
+    margin-top:25px;
     font-family: "Helvetica Neue";
     font-size: 80%;
     font-weight:300;
 
-
-}
-
-#post {
-    height: 100px;
-    width: 300px;
-    border-radius: 15px;
-    -moz-border-radius: 15px;
-    -webkit-border-radius: 15px;
-    -o-border-radius: 15px;
-
-}
-
-
-.strich {
-    margin-top: 100px;
-
-}
-
-#button2 {
-    float:right;
-    margin-right: 30px;
-    margin-top: -5px;
-    justify-content: center;
-    width: 80px;
-    height:20px;
-    background-color:white;
-    color: black;
-    font-family: "Helvetica Neue";
-    font-size: 90%;
-    font-weight:400;
-
-}
-
-#button3 {
-    float:right;
-    margin-right: 10px;
-    margin-top: -5px;
-    justify-content: center;
-    width: 80px;
-    height:20px;
-    background-color:white;
-    color: black;
-    font-family: "Helvetica Neue";
-    font-size: 90%;
-    font-weight:400;
-
 }
 
 #button4 {
+    position: absolute;
     float:left;
-    margin-left: 25px;
-    margin-top: 10px;
-    justify-content: center;
     width: 80px;
     height:20px;
-    background-color:white;
-    color: black;
+    margin-left:-220px;
+    margin-top: 40px;
+    justify-content: center;
     font-family: "Helvetica Neue";
-    font-size: 90%;
+    font-size: 75%;
     font-weight:400;
 
 }
-
-
 #button5 {
+    position: absolute;
     float:left;
-    margin-left: 10px;
-    margin-top: 10px;
-    justify-content: center;
     width: 80px;
     height:20px;
-    background-color:white;
-    color: black;
+    margin-left: -130px;
+    margin-top:40px;
     font-family: "Helvetica Neue";
-    font-size: 90%;
+    font-size: 75%;
     font-weight:400;
+    justify-content: center;
 
 }
 
@@ -214,115 +220,55 @@
     margin-top: 150px;
     horiz-align: center;
     position:relative;
-    border-radius: 30px;
-    -moz-border-radius: 30px;
-    -webkit-border-radius: 30px;
-    -o-border-radius: 30px;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -o-border-radius: 15px;
 
 }
 
 
 #profile {
-    height: 300px;
+    height: 200px;
     background-color: #888483;
     margin-top: 150px;
     position:relative;
     horiz-align: center;
-    border-radius: 30px;
-    -moz-border-radius: 30px;
-    -webkit-border-radius: 30px;
-    -o-border-radius: 30px;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -o-border-radius: 15px;
 
 }
 
 .ueberschriftenmain {
+    position: absolute;
     color: white;
     font-family: "Helvetica Neue";
-    font-weight:300;
+    font-weight:400;
     font-size: 130%;
     justify-content: center;
     margin-top:20px;
     margin-left: 20px;
-    position:absolute;
+
 }
 
-#searcharea {
-    hight: 30px;
+.name{
+    position: absolute;
+    margin-top: 60px;
+    margin-left: 5%;
+    color: white;
     font-family: "Helvetica Neue";
-    font-size: 100%;
-    position: fixed;
-    padding-left: 10px;
-    padding-top: 8px;
-    padding-bottom: 25px;
+    font-weight:300;
+}
+
+.adresseneu{
+    position: absolute;
+    margin-top:70px;
+    margin-left:5%;
     color: white;
-    font-weight: 100;
-
-}
-#searchbox {
-    height: 20px;
-    position: fixed;
-    top: 7px;
-    right: 300px;
-    border-radius: 60px;
-    -moz-border-radius:60px;
-    -webkit-border-radius: 60px;
-    -o-border-radius: 60px;
-
-}
-
-
-#navigation {
-    list-style: none;
-    float:left;
-    margin-left:70px;
-    margin-top: -46px;
-}
-
-.listitem {
-    float: left;
-    width: 170px;
-    height: 30px;
-    background-color: white;
-    border-color: #70202F;
-    border-width:1px;
-    border-style:solid;
-    margin-right:2px;
-    font-family:"Helvetica Neue";
-    font-weight: 200;
-    line-height: 30px;
-    text-align: center;
-    font-size: 18px;
-
-}
-
-.listitem a {
-    text-decoration: none;
-    color:black;
-    display: block;
-
-}
-
-.listitem a:hover {
-    background-color: #888483;
-    color: white;
-
-}
-
-ul li ul li {
-    position:absolute;
-    display: none;
-    background-color: white;
-    border-color: #7B0202;
-    border-width:1px;
-    border-style:solid;
-    margin-top:2px;
-    margin-bottom:2px;
-
-
-}
-
-ul li:hover ul li{
-    display:block;
+    font-family: "Helvetica Neue";
+    font-weight:300;
 }
 
 
@@ -347,35 +293,20 @@ ul li:hover ul li{
 
 }
 
-
-#notificationneu {
-    position: fixed;
-    top: 10px;
-    right: 100px;
-}
-
-
-
-#poststext {
-    max-width: 445px;
-    display: block;
-
-}
-
 #tabelleposts {
-    width:300px;
+    width:auto;
+    margin-left:20px;
+    margin-right:20px;
     height: auto;
     background-color: white;
     margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
     margin-bottom: 20px;
     display: flex;
     align-items: center;
-    border-radius: 15px;
-    -moz-border-radius: 15px;
-    -webkit-border-radius: 15px;
-    -o-border-radius: 15px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
 
 
 }
@@ -418,27 +349,66 @@ ul li:hover ul li{
     -webkit-border-radius: 40px;
     -o-border-radius: 40px;
 
-
-
-}
-
-
-
-.name{
-    position: absolute;
-    margin-top: 60px;
-    margin-left: 15px;
-}
-
-.neuemail{
-    position: absolute;
-    margin-top: 100px;
-    margin-left:5px;
 }
 
 
 #postsprofilbild {
+   position: absolute;
+    margin-top: -65px;
+    margin-left:10px;
     height:50px;
     width:50px;
+
+}
+
+#postsbenutzername {
+    position: absolute;
+    color: black;
+    font-family: "Helvetica Neue";
+    font-size:130%;
+    font-weight: 400;
+    text-decoration: none;
+    float:left;
+    margin-left: 80px;
+    margin-top: -50px;
+
+
+}
+#postszeit {
+    position: absolute;
+    color: black;
+    font-family: "Helvetica Neue";
+    font-size:80%;
+    font-weight: 200;
+    text-decoration: none;
+    float:left;
+    margin-left: 80px;
+    margin-top: -25px;
+
+}
+
+#poststext {
+    position: absolute;
+    color: black;
+    font-family: "Helvetica Neue";
+    font-size:120%;
+    font-weight: 300;
+    text-decoration: none;
+    text-align:center;
+    margin-top: 20px;
+    margin-left:80px;
+
+}
+
+
+#postsbild {
+
+    margin-left: 80px;
+    margin-bottom: 10px;
+    margin-top: 50px;
+width:50px;
+    height:50px;
+
+
 
 }

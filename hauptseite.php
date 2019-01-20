@@ -1,8 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hauptseite</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="hauptseite.css">
 
     <?php
@@ -18,12 +20,11 @@
     $user_id = $_GET['user_id'];
 
     //Profildaten der unterschiedlichen Nutzer
-    $visit_user = $pdo->prepare("SELECT * FROM login WHERE login_id=$my_id");
+    $visit_user = $pdo->prepare("SELECT * FROM login WHERE login_id=$user_id");
     $visit_user->execute();
     $title = $visit_user->fetch();
-    ?>
 
-    <?php
+
     $textbox = array('posts');
     $posts = $_POST['posts'];
     $user_id = $_SESSION["login-id"];
@@ -118,99 +119,117 @@
 <body>
 
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-3">
-            <div id="recommendation">
-                <h2 class="ueberschriftenmain"> Recommendations
-                </h2>
-            </div>
-
-        </div>
-        <div class="col-sm-6">
-            <div id="background">
-                <a style="text-decoration:none;" href="friends.php?user_id=<?php echo $user_id; ?>">
-                    <div id="buttonfriends">Friends</div>
-                </a>
 
 
-                <hr class="strich">
 
-                <div id=neuerbeitrag> Neuer Beitrag</div>
-                <br>
+<div id="hauptseite">
 
-                <form id=postbox2 action="hauptseite.php" method="post">
-                    <input type="hidden" name="text" value="1">
-                    <p id="text1"> Schreibe einen Beitrag (max. 1000 Zeichen):</p>
-                    <p><textarea id="post" name="posts" rows="5" cols="80" value=""></textarea></p>
-                    <p><input id="button2" type="submit" name="textgesendet" value="Senden">
-                        <input id="button3" type="reset" value="Abbruch"></p>
-                </form>
-
-                <form enctype="multipart/form-data"
-                      name="uploadformular" action="hauptseite.php" method="post">
-                    <input type="hidden" name="picture" value="1">
-                    <p id="text2"> Auswahl und Absenden des Bildes:</p>
-                    <p><input id=dateiauswahl name="upfile" type="file"></p>
-                    <p><input id="button4" type="submit" name="bildgesendet" value="Hochladen">
-                        <input id="button5" type="reset" value="Abbruch"></p>
-                </form>
-
-                <br>
-                <hr class="strich">
-
-                <div>
-
-                    <?php
-                    //Chronik - wo die geposteten Beiträge auftauchen
-
-                    $stmt = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE posts IS NOT NULL OR bildtext IS NOT NULL ORDER BY zeitstempel DESC");
-
-                    $result = $stmt->execute();
-                    while ($row = $stmt->fetch()) {
-                        echo "<div id=\"tabelleposts\">";
-                        $userid = $row['login_id'];
-                        $show_profilepic = $pdo->prepare ("SELECT * FROM profilbildlogin WHERE login_id = $userid");
-                        $show_profilepic->execute();
-                        $row4 = $show_profilepic->fetch();?>
-                        <a href="profilseite.php?user_id=<?php echo $userid ?>"><img id="postsprofilbild" src="<?php echo $row4['profilbildtext'] ?>"></a>
-                        <a href="profilseite.php?user_id=<?php echo $userid ?>"><?php echo $row['benutzername'] ?></a>
-                       <?php
-                        echo "<div id=\"poststext\">" . $row['posts'] . "</div>";
-                        echo "<img src='" . $row['bildtext'] . "'height='150'>";
-                        echo "</div>";
-                    }
-                    ?>
-
+<div id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div id="recommendation">
+                    <h2 class="ueberschriftenmain"> Recommendations
+                    </h2>
                 </div>
             </div>
-        </div>
 
+            <div class="col-sm-6">
+                <div id="background">
+                    <a style="text-decoration:none;" href="friends.php?user_id=<?php echo $user_id; ?>">
+                        <div id="buttonfriends">Friends</div>
+                    </a>
 
-        <div class="col-sm-3">
-            <div id="profile">
-                <h2 class="ueberschriftenmain"> Profile
-                </h2>
-
-                <div class="name"> Benutzername:
-                    <?php
-                    echo $title['benutzername'];
-                    ?>
-                </div>
-
-                <div class= "neuemail"> E-Mail Adresse:
                     <br>
-                    <?php
-                    echo $title['hdm_mail'];
-                    ?>
+                    <hr class="strich">
 
+                    <div id=neuerbeitrag> Neuer Beitrag</div>
+                    <br>
+
+
+                    <form id=postbox2 action="hauptseite.php" method="post">
+                        <input type="hidden" name="text" value="1">
+                        <p id="text1"> Schreibe einen Beitrag (max. 1000 Zeichen):</p>
+                        <br>
+                        <p><textarea id="post" name="posts" rows="5" cols="80" value=""></textarea></p>
+                        <p><input id="button2" type="submit" name="textgesendet" value="Senden">
+                            <input id="button3" type="reset" value="Abbruch"></p>
+                    </form>
+                    <hr class="strich">
+
+                    <form enctype="multipart/form-data"
+                          name="uploadformular" action="hauptseite.php" method="post">
+                        <input type="hidden" name="picture" value="1">
+                        <p id="text2"> Auswahl und Absenden des Bildes:</p>
+                        <br>
+                        <p><input id=dateiauswahl name="upfile" type="file"></p>
+                        <p><input id="button4" type="submit" name="bildgesendet" value="Hochladen">
+                            <input id="button5" type="reset" value="Abbruch"></p>
+                    </form>
+
+                    <br>
+                    <hr class="strich">
+
+                    <div>
+
+                        <?php
+                        //Chronik - wo die geposteten Beiträge auftauchen
+
+                        $stmt = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE posts IS NOT NULL OR bildtext IS NOT NULL ORDER BY zeitstempel DESC");
+
+                        $result = $stmt->execute();
+                        while ($row = $stmt->fetch()) {
+                            echo "<div id=\"tabelleposts\">";
+                            $userid = $row['login_id'];
+                            $show_profilepic = $pdo->prepare ("SELECT * FROM profilbildlogin WHERE login_id = $userid");
+                            $show_profilepic->execute();
+                            $row4 = $show_profilepic->fetch();?>
+                            <a href="profilseite.php?user_id=<?php echo $userid ?>"><img id="postsprofilbild" src="<?php echo $row4['profilbildtext'] ?>"></a>
+                            <a id="postsbenutzername" href="profilseite.php?user_id=<?php echo $userid ?>"><?php echo $row['benutzername'] ?> </a>
+
+
+                            <div id="postszeit"> <?php echo $row['zeitstempel']?> </div>
+                           <div id="poststext"> <?php echo  $row['posts']?></div>
+                            <?php echo "<img src='" . $row['bildtext'] . "' height='150'>";
+                            echo "</div>";
+                        }
+                        ?>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-3">
+                <div id="profile">
+                    <h2 class="ueberschriftenmain"> Profile
+                    </h2>
+
+                    <div class="name">
+                        Benutzername:
+                        <?php
+                        echo $title['benutzername'];
+                        ?>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class= "adresseneu">
+                        E-Mail Adresse:
+                        <br>
+                        <?php
+                        echo $title['hdm_mail'];
+                        ?>
+
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 </div>
-
-
+</div>
 </body>
 </html>
 
