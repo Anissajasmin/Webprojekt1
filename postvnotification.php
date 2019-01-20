@@ -63,7 +63,9 @@ $user_id = $_GET['user_id'];
     }
     ?>
   <br/>
-  <button id="postnotbutton" href="hauptseite.php?user_id=<?php echo $user_id; ?>">Zurück zum Feed</button>
+             <a style="text-decoration:none; color:white;" href="hauptseite.php?user_id=<?php echo $user_id; ?>">
+                 <div id="postnotbutton">Zurück zum Feed</div>
+             </a>
   </div>
   </body>
     </html>

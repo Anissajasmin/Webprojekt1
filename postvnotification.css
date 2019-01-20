@@ -45,9 +45,11 @@
 }
 
 #postnotbutton {
-
+height:auto;
+    width:auto;
     float:right;
     margin-right:15px;
+    background-color:black;
 }
 
 #not1 {

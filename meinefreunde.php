@@ -61,7 +61,7 @@ include_once "header.php";
                     echo "<span>";
                     ?>
                     <div id="kasten">
-                        <a href="profilseite.php?user_id=<?php echo $userid ?>"><img src="<?php echo $row4['profilbildtext'] ?>"></a>
+                        <a href="profilseite.php?user_id=<?php echo $userid ?>"><img id="meinefreundeprofilbild" src="<?php echo $row4['profilbildtext'] ?>"></a>
                         <a style="text-decoration:none;" href="profilseite.php?user_id=<?php echo $userid ?>"><div id="kastentext"><?php echo $row3['benutzername'] ?></div></a>
 
                     </div>
