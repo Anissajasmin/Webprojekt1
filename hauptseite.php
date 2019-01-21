@@ -8,12 +8,12 @@
     <?php
     session_start();
     include_once "logincheck.php";
-    include_once"header.php";
+
     if (!isset($_SESSION['login-id'])) {
         echo "Aktiviere zuerst deinen Account mittels der Email, die wir dir geschickt haben oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
     }else{
     include("datenbankpasswort.php");
-
+    include_once"header.php";
     $my_id = $_SESSION['login-id'];
     $user_id = $_GET['user_id'];
 
@@ -26,7 +26,6 @@
     <?php
     $textbox = array('posts');
     $posts = $_POST['posts'];
-    $user_id = $_SESSION["login-id"];
 
     $fehlerfelder = array();
 
@@ -44,9 +43,9 @@
 
     if ($error === false) {
 
-        $statement = $pdo->prepare("INSERT INTO beitrag (posts, beitrag_user_id) VALUES ('$posts', '$user_id')");
+        $statement = $pdo->prepare("INSERT INTO beitrag (posts, beitrag_user_id) VALUES ('$posts', '$my_id')");
         $statement->bindParam('posts', $posts);
-        $statement->bindParam('user_id', $user_id);
+        $statement->bindParam('user_id', $my_id);
         $result = $statement->execute();
 
 
@@ -84,9 +83,9 @@
 
             //In DB einfügen
 
-            $statement = $pdo->prepare("INSERT INTO beitrag (bildtext, beitrag_user_id) VALUES ('$new_path', '$user_id')");
+            $statement = $pdo->prepare("INSERT INTO beitrag (bildtext, beitrag_user_id) VALUES ('$new_path', '$my_id')");
             $statement->bindParam('bildtext', $new_path);
-            $statement->bindParam('user_id', $user_id);
+            $statement->bindParam('user_id', $my_id);
             $result = $statement->execute();
         }
     }
@@ -124,6 +123,61 @@
             <div id="recommendation">
                 <h2 class="ueberschriftenmain"> Recommendations
                 </h2>
+                <br>
+                <br>
+        <?php
+
+        //Nutzer, denen man noch nicht folgt werden hier angezeigt
+        //Wird dem Benutzer bereits gefolgt?
+
+        $checkfollow = $pdo->prepare("SELECT * FROM follow WHERE follow_id='" . $my_id . "'");
+        $checkfollow->execute();
+
+        $notfollowing = $checkfollow->rowCount();
+
+        if (!$notfollowing > 0) {
+            $showallusers = $pdo->prepare ("SELECT * FROM login WHERE NOT login_id = $my_id");
+            $showallusers->execute();
+                while ($row1 = $showallusers->fetch()){
+                    $allusers = $row1['login_id'];
+                    echo "<div id=\"tabelleposts\">";
+                    echo "<span>";
+        ?>
+                    <div id="kasten">
+                        <a style="text-decoration:none;" href="profilseite.php?user_id=<?php echo $allusers ?>"><div id="kastentext"><?php echo $row1['benutzername'] ?></div></a>
+
+                    </div>
+        <?php
+                        echo "</span>";
+                        echo "</div>";
+
+                    }
+                }else{
+            $row = $checkfollow->fetch();
+            $userid = $row['user_id'];
+            $my_id = $row ['follow_id'];
+                    //Wenn man jemandem nicht folgt, werden die Namen der Personen, denen man nicht folgt, in dieser Liste angezeigt
+            $show_users = $pdo->prepare("SELECT * FROM login WHERE NOT login_id = $my_id AND NOT login_id = $userid");
+            $show_users->execute();
+
+                    while($row3 = $show_users->fetch()) {
+                        $users = $row3['login_id'];
+                        echo "<div id=\"tabelleposts\">";
+                        echo "<span>";
+                        ?>
+                        <div id="kasten">
+                            <a style="text-decoration:none;" href="profilseite.php?user_id=<?php echo $users ?>"><div id="kastentext"><?php echo $row3['benutzername'] ?></div></a>
+
+                        </div>
+                        <?php
+                        echo "</span>";
+                        echo "</div>";
+
+                    }
+                }
+
+                ?>
+
             </div>
 
         </div>
@@ -179,6 +233,9 @@
                 </div>
             </div>
         </div>
+
+
+
 
 
         <div class="col-sm-3">

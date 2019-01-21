@@ -24,7 +24,7 @@ if($match) {
 
     if ($stmt->execute(array(':benutzername' => $benutzername))) {
         if ($row = $stmt->fetch()) {
-            $user_id = $row['login_id'];
+
             $passworthash = $row["passwort"];
             password_verify($passwort, $passworthash);
 
@@ -33,6 +33,7 @@ if($match) {
                 $_SESSION["login-id"] = $row["login_id"];
                 $_SESSION["username"] = $row ["benutzername"];
                 $_SESSION["mail"] = $row ["hdm_mail"];
+                $user_id = $row["login_id"];
 
                 }
 

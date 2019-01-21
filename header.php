@@ -3,14 +3,9 @@
 <link rel="stylesheet" type="text/css" href="header.css">
 
 
-
-
 <?php
 session_start();
 include_once "logincheck.php";
-if (!isset($_SESSION['login-id'])) {
-    echo "Bitte logge dich ein oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
-}else {
 include("datenbankpasswort.php");
 
 $my_id = $_SESSION['login-id'];
@@ -91,6 +86,9 @@ $title = $visit_user->fetch();
 
 
                         <?php
+                        $status = 'unread';
+                        $message = 'message';
+                        $fehler = false;
 
                         $checkfollow = $pdo->prepare("SELECT * FROM follow WHERE follow_id=$meine_id");
                         $checkfollow->execute();
@@ -114,7 +112,8 @@ $title = $visit_user->fetch();
                                 $insertnotification->bindParam(':posts_id', $beitrag_id);
                                 $insertnotification->bindParam(':follow_user_id', $userid);
                                 $insertnotification->bindParam(':datum', $date);
-                                $insertnotification->execute();
+                                $inserted = $insertnotification->execute();
+                                var_dump($inserted);
                                 while ($row3 = $insertnotification->fetch()) {
 
                                     $notification = $pdo->prepare("SELECT * FROM vlj_notification WHERE status = 'unread' AND beitrag_user_id = $userid ORDER BY 'date' DESC");
@@ -169,39 +168,39 @@ $title = $visit_user->fetch();
                     </div>
 
 
-                    <?php
-                    //Suchfunktion
-
-                    if (isset($_POST["suche"])) {
-                        $allebenutzername = $_POST["suche"];
-
-                        $benutzersuche = $pdo->prepare("SELECT * FROM vlj_loginprofilbild WHERE benutzername = '$allebenutzername' AND aktiviert = 1");
-                        if ($benutzersuche->execute()) {
-
-                            while ($row = $benutzersuche->fetch()) {
-                                $userid = $row ['login_id'];
-                                ?>
-                                <h3>
-                                    <a href="profilseite.php?user_id=<?php echo $userid ?>"><img
-                                            src="<?php echo $row['profilbildtext'] ?>"></a>
-                                    <a href="profilseite.php?user_id=<?php echo $userid ?>"><?php echo $row['benutzername'] ?></a>
-                                </h3>
-
-                                <?php
-                            }
-                        } else {
-                            echo "<div>No user found</div>";
-                        }
-                    }
-                    ?>
 
 
         </div>
 
-        <form class="form-inline my-2 my-lg-0">
+        <form class="form-inline my-2 my-lg-0" method = "post">
             <input class="form-control mr-sm-2" name="suche" type="search" placeholder="Suchen" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Suche</button>
         </form>
+        <?php
+        //Suchfunktion
+
+        if (isset($_POST["suche"])) {
+            $allebenutzername = $_POST["suche"];
+
+            $benutzersuche = $pdo->prepare("SELECT * FROM profilbildlogin WHERE benutzername = '$allebenutzername' AND aktiviert = 1");
+            if ($benutzersuche->execute()) {
+
+                while ($row = $benutzersuche->fetch()) {
+                    $userid = $row ['login_id'];
+                    ?>
+                    <h3>
+                        <a href="profilseite.php?user_id=<?php echo $userid ?>"><img
+                                    src="<?php echo $row['profilbildtext'] ?>"></a>
+                        <a href="profilseite.php?user_id=<?php echo $userid ?>"><?php echo $row['benutzername'] ?></a>
+                    </h3>
+
+                    <?php
+                }
+            } else {
+                echo "<div>No user found</div>";
+            }
+        }
+        ?>
 
 
         <button type="button" class="btn btn-dark"><a href="logout.php">Log Out</a></button>
@@ -212,6 +211,3 @@ $title = $visit_user->fetch();
 </body>
 </html>
 
-<?php
-}
-?>
