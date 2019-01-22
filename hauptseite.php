@@ -231,8 +231,8 @@
                         //Chronik - wo die geposteten Beiträge auftauchen
                         $stmt = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE posts IS NOT NULL OR bildtext IS NOT NULL ORDER BY zeitstempel DESC");
                         $result = $stmt->execute();
-                        while ($row = $stmt->fetch()) {
-                            echo "<div id=\"tabelleposts\">";
+                        while ($row = $stmt->fetch()) {?>
+                            <div id="tabelleposts"> <?php
                             $userid = $row['login_id'];
                             $show_profilepic = $pdo->prepare ("SELECT * FROM profilbildlogin WHERE login_id = $userid");
                             $show_profilepic->execute();
@@ -240,11 +240,11 @@
                             <a href="profilseite.php?user_id=<?php echo $userid ?>"><img id="postsprofilbild" src="<?php echo $row4['profilbildtext'] ?>"></a>
                             <a id="postsbenutzername" href="profilseite.php?user_id=<?php echo $userid ?>"><?php echo $row['benutzername'] ?> </a>
 
-
                             <div id="postszeit"> <?php echo $row['zeitstempel']?> </div>
                            <div id="poststext"> <?php echo  $row['posts']?></div>
-                            <?php echo "<img src='" . $row['bildtext'] . "' height='150'>";
-                            echo "</div>";
+                                <?php echo "<img id=\"postsbild\" src='" . $row['bildtext'] . "'>";?>
+                            </div>
+                            <?php
                         }
                         ?>
 <br>

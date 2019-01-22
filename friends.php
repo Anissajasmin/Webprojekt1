@@ -128,6 +128,62 @@
                     <div id="recommendation">
                         <h2 class="ueberschriftenmain"> Recommendations
                         </h2>
+
+                        <br>
+                        <br>
+                        <?php
+
+                        //Nutzer, denen man noch nicht folgt werden hier angezeigt
+                        //Wird dem Benutzer bereits gefolgt?
+
+                        $checkfollow = $pdo->prepare("SELECT * FROM follow WHERE follow_id='" . $my_id . "'");
+                        $checkfollow->execute();
+
+                        $notfollowing = $checkfollow->rowCount();
+
+                        if (!$notfollowing > 0) {
+                            $showallusers = $pdo->prepare ("SELECT * FROM login WHERE NOT login_id = $my_id");
+                            $showallusers->execute();
+                            while ($row1 = $showallusers->fetch()){
+                                $allusers = $row1['login_id'];
+                                echo "<div id=\"tabelleposts\">";
+                                echo "<span>";
+                                ?>
+                                <div id="kasten">
+                                    <a style="text-decoration:none;" href="profilseite.php?user_id=<?php echo $allusers ?>"><div id="kastentext"><?php echo $row1['benutzername'] ?></div></a>
+
+                                </div>
+                                <?php
+                                echo "</span>";
+                                echo "</div>";
+
+                            }
+                        }else{
+                            $row = $checkfollow->fetch();
+                            $userid = $row['user_id'];
+                            $my_id = $row ['follow_id'];
+                            //Wenn man jemandem nicht folgt, werden die Namen der Personen, denen man nicht folgt, in dieser Liste angezeigt
+                            $show_users = $pdo->prepare("SELECT * FROM login WHERE NOT login_id = $my_id AND NOT login_id = $userid");
+                            $show_users->execute();
+
+                            while($row3 = $show_users->fetch()) {
+                                $users = $row3['login_id'];
+                                echo "<div id=\"tabelleposts\">";
+                                echo "<span>";
+                                ?>
+                                <div id="kasten">
+                                    <a style="text-decoration:none;" href="profilseite.php?user_id=<?php echo $users ?>"><div id="kastentext"><?php echo $row3['benutzername'] ?></div></a>
+
+                                </div>
+                                <?php
+                                echo "</span>";
+                                echo "</div>";
+
+                            }
+                        }
+
+                        ?>
+
                     </div>
                 </div>
 
@@ -175,24 +231,27 @@
                             $checkfollow = $pdo->prepare("SELECT * FROM follow WHERE follow_id=$my_id");
                             $checkfollow->execute();
                             $nofollower = $checkfollow->rowCount();
-                            echo $nofollower;
                             if (!$nofollower > 0) {
                                 //Wenn man niemandem folgt
                                 echo "<div id=\"tabelleposts\">";
                                 echo "Du hast noch keine Freunde. Folge erstmal einem Nutzer hier bei Touch!";
                                 echo "</div>";
                             } else {
-                                //Wenn man jemandem folgt, werden die Posts von sich und die der User, denen man folgt, angezeigt
+                                //Wenn man jemandem folgt, werden die Posts der User, denen man folgt, angezeigt
                                 while ($row = $checkfollow->fetch()) {
                                     $userid = $row['user_id'];
-                                    $show_posts = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE beitrag_user_id= $userid OR beitrag_user_id= $my_id ORDER BY zeitstempel DESC");
+                                    $show_posts = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE beitrag_user_id= $userid ORDER BY zeitstempel DESC");
                                     $show_posts->execute();
+                                    $row3 = $show_posts->fetch();
+                                    echo "<div id=\"tabelleposts\">";
+                                    echo "Alle Beiträge von "; echo $row3['benutzername']; echo ":";echo "</div>";
                                     while ($row3 = $show_posts->fetch()) {
                                         echo "<div id=\"tabelleposts\">";
                                         $userid = $row3['login_id'];
                                         $show_profilepic = $pdo->prepare("SELECT * FROM profilbildlogin WHERE login_id = $userid");
                                         $show_profilepic->execute();
-                                        $row4 = $show_profilepic->fetch(); ?>
+                                        $row4 = $show_profilepic->fetch();
+                                        ?>
                                         <a href="profilseite.php?user_id=<?php echo $userid ?>"><img
                                                     id="postsprofilbild"
                                                     src="<?php echo $row4['profilbildtext'] ?>"></a>
@@ -202,8 +261,9 @@
                                         echo "</span>"; ?>
                                         <div id="postszeit"> <?php echo $row3['zeitstempel'] ?> </div>
                                         <div id="poststext"> <?php echo $row3['posts'] ?></div>
-                                        <?php echo "<img src='" . $row3['bildtext'] . "'height='150'>";
+                                        <?php echo "<img id=\"postsbild\" src='" . $row3['bildtext'] . "'>";
                                         echo "</div>";
+
                                     }
                                 }
                             }

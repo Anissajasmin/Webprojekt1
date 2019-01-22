@@ -104,9 +104,9 @@ $title = $visit_user->fetch();
 
         </div>
 
-        <form class="form-inline my-2 my-lg-0 ">
+        <form action="sucheergebnis.php?user_id=<?php echo $my_id ?>" class="form-inline my-2 my-lg-0 " method = "post">
             <input class="form-control mr-sm-2 "
-                   style="font-family: 'Helvetica Neue'; font-size:120%; font-weight: 200;" name="suche"
+                   style="font-family: 'Helvetica Neue'; font-size:120%; font-weight: 200;" name="suchen"
                    type="search" placeholder="Suchen" aria-label="Search">
             <button class="btn btn-outline-dark my-2 my-sm-0"
                     style="font-family: 'Helvetica Neue'; font-size:120%; font-weight: 200;" name="suche" id="suchebutton"
@@ -114,34 +114,7 @@ $title = $visit_user->fetch();
             </button>
 
 
-        <?php
-        //Suchfunktion
-
-        if (isset($_POST["suche"])) {
-            $allebenutzername = $_POST["suche"];
-
-            $benutzersuche = $pdo->prepare("SELECT * FROM profilbildlogin WHERE benutzername ='$allebenutzername' AND aktiviert = 1");
-            if ($benutzersuche->execute()) {
-
-                while ($row = $benutzersuche->fetch()) {
-                    $userid = $row['login_id'];
-                    ?>
-                    <h3>
-                        <a class="bla" href="profilseite.php?user_id=<?php echo $userid ?>"><img src="<?php echo $row['profilbildtext'] ?>"></a>
-                        <a class="bla" href="profilseite.php?user_id=<?php echo $userid ?>"><?php echo $row['benutzername'] ?></a>
-                    </h3>
-
-                    <?php
-                }
-            } else {
-                echo "<div>No user found</div>";
-            }
-        }
-        ?>
         </form>
-
-
-
 
 
 
