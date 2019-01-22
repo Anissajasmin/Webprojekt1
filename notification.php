@@ -8,15 +8,9 @@ $user_id = $_GET['user_id'];
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+      <link rel="stylesheet" type="text/css" href="postvnotification.css">
   </head>
   <body>
-  <nav>
-      <div>
-    <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown">
-            <a class="nav-link" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Notifications
 
 <?php
 $status = 'unread';
@@ -80,7 +74,7 @@ if ($holebeitragid = $pdo->prepare("SELECT * FROM beitrag WHERE beitrag_user_id 
                         echo "font-weight:bold;";
                     }
                     ?>" class="dropdown-item" href="postvnotification.php?n_id=<?php echo $n_id; ?>">
-                        <small></small><?php echo date('F j, Y, g:i, a', strtotime($date)); ?></small>
+                        <small><?php echo date('F j, Y, g:i, a', strtotime($date)); ?></small>
                         <br/>
                         <?php
                         if ($status == $row3['status']) {
@@ -93,17 +87,13 @@ if ($holebeitragid = $pdo->prepare("SELECT * FROM beitrag WHERE beitrag_user_id 
                     <div class="dropdown-divider"></div>
                     <?php
                 } }else {
-                    echo "Es ist noch nichts Neues gepostet worden.";
+                    ?>
+                <p id="not1">
+                   <?php echo "Es ist noch nichts Neues gepostet worden.";
                 }
 
 ?>
+                </p>
     </div>
-    </li>
-    </ul>
-  </div>
-</nav>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-</body>
+  </body>
 </html>

@@ -12,13 +12,8 @@
 include("datenbankpasswort.php");
 include ("logincheck.php");
 
-
-
 $user_id= $_GET['user_id'];
 $follow_id = $_SESSION['login-id'];
-
-
-
 
 // Ist es ein fremdes Profil?
 if ($user_id != $_SESSION['login-id']) {

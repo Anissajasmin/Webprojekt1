@@ -1,19 +1,21 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hauptseite</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="hauptseite.css">
 
     <?php
     session_start();
     include_once "logincheck.php";
-
     if (!isset($_SESSION['login-id'])) {
         echo "Aktiviere zuerst deinen Account mittels der Email, die wir dir geschickt haben oder registriere dich zuerst. <a href=\"Startseite.php\">Zur Startseite</a>";
     }else{
     include("datenbankpasswort.php");
-    include_once"header.php";
+    include("header.php");
+
     $my_id = $_SESSION['login-id'];
     $user_id = $_GET['user_id'];
 
@@ -21,11 +23,11 @@
     $visit_user = $pdo->prepare("SELECT * FROM login WHERE login_id=$user_id");
     $visit_user->execute();
     $title = $visit_user->fetch();
-    ?>
 
-    <?php
+
     $textbox = array('posts');
     $posts = $_POST['posts'];
+    $user_id = $_SESSION["login-id"];
 
     $fehlerfelder = array();
 
@@ -43,9 +45,9 @@
 
     if ($error === false) {
 
-        $statement = $pdo->prepare("INSERT INTO beitrag (posts, beitrag_user_id) VALUES ('$posts', '$my_id')");
+        $statement = $pdo->prepare("INSERT INTO beitrag (posts, beitrag_user_id) VALUES ('$posts', '$user_id')");
         $statement->bindParam('posts', $posts);
-        $statement->bindParam('user_id', $my_id);
+        $statement->bindParam('user_id', $user_id);
         $result = $statement->execute();
 
 
@@ -83,9 +85,9 @@
 
             //In DB einfügen
 
-            $statement = $pdo->prepare("INSERT INTO beitrag (bildtext, beitrag_user_id) VALUES ('$new_path', '$my_id')");
+            $statement = $pdo->prepare("INSERT INTO beitrag (bildtext, beitrag_user_id) VALUES ('$new_path', '$user_id')");
             $statement->bindParam('bildtext', $new_path);
-            $statement->bindParam('user_id', $my_id);
+            $statement->bindParam('user_id', $user_id);
             $result = $statement->execute();
         }
     }
@@ -117,151 +119,171 @@
 <body>
 
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-3">
-            <div id="recommendation">
-                <h2 class="ueberschriftenmain"> Recommendations
-                </h2>
-                <br>
-                <br>
-        <?php
-
-        //Nutzer, denen man noch nicht folgt werden hier angezeigt
-        //Wird dem Benutzer bereits gefolgt?
-
-        $checkfollow = $pdo->prepare("SELECT * FROM follow WHERE follow_id='" . $my_id . "'");
-        $checkfollow->execute();
-
-        $notfollowing = $checkfollow->rowCount();
-
-        if (!$notfollowing > 0) {
-            $showallusers = $pdo->prepare ("SELECT * FROM login WHERE NOT login_id = $my_id");
-            $showallusers->execute();
-                while ($row1 = $showallusers->fetch()){
-                    $allusers = $row1['login_id'];
-                    echo "<div id=\"tabelleposts\">";
-                    echo "<span>";
-        ?>
-                    <div id="kasten">
-                        <a style="text-decoration:none;" href="profilseite.php?user_id=<?php echo $allusers ?>"><div id="kastentext"><?php echo $row1['benutzername'] ?></div></a>
-
-                    </div>
-        <?php
-                        echo "</span>";
-                        echo "</div>";
-
-                    }
-                }else{
-            $row = $checkfollow->fetch();
-            $userid = $row['user_id'];
-            $my_id = $row ['follow_id'];
-                    //Wenn man jemandem nicht folgt, werden die Namen der Personen, denen man nicht folgt, in dieser Liste angezeigt
-            $show_users = $pdo->prepare("SELECT * FROM login WHERE NOT login_id = $my_id AND NOT login_id = $userid");
-            $show_users->execute();
-
-                    while($row3 = $show_users->fetch()) {
-                        $users = $row3['login_id'];
-                        echo "<div id=\"tabelleposts\">";
-                        echo "<span>";
-                        ?>
-                        <div id="kasten">
-                            <a style="text-decoration:none;" href="profilseite.php?user_id=<?php echo $users ?>"><div id="kastentext"><?php echo $row3['benutzername'] ?></div></a>
-
-                        </div>
-                        <?php
-                        echo "</span>";
-                        echo "</div>";
-
-                    }
-                }
-
-                ?>
-
-            </div>
-
-        </div>
-        <div class="col-sm-6">
-            <div id="background">
-                <a style="text-decoration:none;" href="friends.php?user_id=<?php echo $user_id; ?>">
-                    <div id="buttonfriends">Friends</div>
-                </a>
-
-
-                <hr class="strich">
-
-                <div id=neuerbeitrag> Neuer Beitrag</div>
-                <br>
-
-                <form id=postbox2 action="hauptseite.php" method="post">
-                    <input type="hidden" name="text" value="1">
-                    <p id="text1"> Schreibe einen Beitrag (max. 1000 Zeichen):</p>
-                    <p><textarea id="post" name="posts" rows="5" cols="80" value=""></textarea></p>
-                    <p><input id="button2" type="submit" name="textgesendet" value="Senden">
-                        <input id="button3" type="reset" value="Abbruch"></p>
-                </form>
-
-                <form enctype="multipart/form-data"
-                      name="uploadformular" action="hauptseite.php" method="post">
-                    <input type="hidden" name="picture" value="1">
-                    <p id="text2"> Auswahl und Absenden des Bildes:</p>
-                    <p><input id=dateiauswahl name="upfile" type="file"></p>
-                    <p><input id="button4" type="submit" name="bildgesendet" value="Hochladen">
-                        <input id="button5" type="reset" value="Abbruch"></p>
-                </form>
-
-                <br>
-                <hr class="strich">
-
-                <div>
-
-                    <?php
-                    //Chronik - wo die geposteten Beiträge auftauchen
-
-                    $stmt = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE posts IS NOT NULL OR bildtext IS NOT NULL ORDER BY zeitstempel DESC");
-
-                    $result = $stmt->execute();
-                    while ($row = $stmt->fetch()) {
-                        echo "<div id=\"tabelleposts\">";
-                        echo $row["benutzername"];
-                        echo "<div id=\"poststext\">" . $row['posts'] . "</div>";
-                        echo "<img src='" . $row['bildtext'] . "'height='150'>";
-                        echo "</div>";
-                    }
-                    ?>
-
-                </div>
-            </div>
-        </div>
 
 
 
+<div id="hauptseite">
 
+<div id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div id="recommendation">
+                    <h2 class="ueberschriftenmain"> Recommendations
+                    </h2>
 
-        <div class="col-sm-3">
-            <div id="profile">
-                <h2 class="ueberschriftenmain"> Profile
-                </h2>
-
-                <div class="name"> Benutzername:
-                    <?php
-                    echo $title['benutzername'];
-                    ?>
-                </div>
-
-                <div class= "neuemail"> E-Mail Adresse:
+                    <br>
                     <br>
                     <?php
-                    echo $title['hdm_mail'];
+
+                    //Nutzer, denen man noch nicht folgt werden hier angezeigt
+                    //Wird dem Benutzer bereits gefolgt?
+
+                    $checkfollow = $pdo->prepare("SELECT * FROM follow WHERE follow_id='" . $my_id . "'");
+                    $checkfollow->execute();
+
+                    $notfollowing = $checkfollow->rowCount();
+
+                    if (!$notfollowing > 0) {
+                        $showallusers = $pdo->prepare ("SELECT * FROM login WHERE NOT login_id = $my_id");
+                        $showallusers->execute();
+                        while ($row1 = $showallusers->fetch()){
+                            $allusers = $row1['login_id'];
+                            echo "<div id=\"tabelleposts\">";
+                            echo "<span>";
+                            ?>
+                            <div id="kasten">
+                                <a style="text-decoration:none;" href="profilseite.php?user_id=<?php echo $allusers ?>"><div id="kastentext"><?php echo $row1['benutzername'] ?></div></a>
+
+                            </div>
+                            <?php
+                            echo "</span>";
+                            echo "</div>";
+
+                        }
+                    }else{
+                        $row = $checkfollow->fetch();
+                        $userid = $row['user_id'];
+                        $my_id = $row ['follow_id'];
+                        //Wenn man jemandem nicht folgt, werden die Namen der Personen, denen man nicht folgt, in dieser Liste angezeigt
+                        $show_users = $pdo->prepare("SELECT * FROM login WHERE NOT login_id = $my_id AND NOT login_id = $userid");
+                        $show_users->execute();
+
+                        while($row3 = $show_users->fetch()) {
+                            $users = $row3['login_id'];
+                            echo "<div id=\"tabelleposts\">";
+                            echo "<span>";
+                            ?>
+                            <div id="kasten">
+                                <a style="text-decoration:none;" href="profilseite.php?user_id=<?php echo $users ?>"><div id="kastentext"><?php echo $row3['benutzername'] ?></div></a>
+
+                            </div>
+                            <?php
+                            echo "</span>";
+                            echo "</div>";
+
+                        }
+                    }
+
                     ?>
 
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div id="background">
+                    <a style="text-decoration:none;" href="friends.php?user_id=<?php echo $user_id; ?>">
+                        <div id="buttonfriends">Friends</div>
+                    </a>
+
+                    <br>
+                    <hr class="strich">
+
+                    <div id=neuerbeitrag> Neuer Beitrag</div>
+                    <br>
+
+
+                    <form id=postbox2 action="hauptseite.php" method="post">
+                        <input type="hidden" name="text" value="1">
+                        <p id="text1"> Schreibe einen Beitrag (max. 1000 Zeichen):</p>
+                        <br>
+                        <p><textarea id="post" name="posts" rows="5" cols="80" value=""></textarea></p>
+                        <p><input id="button2" type="submit" name="textgesendet" value="Senden">
+                            <input id="button3" type="reset" value="Abbruch"></p>
+                    </form>
+                    <hr class="strich">
+
+                    <form enctype="multipart/form-data"
+                          name="uploadformular" action="hauptseite.php" method="post">
+                        <input type="hidden" name="picture" value="1">
+                        <p id="text2"> Auswahl und Absenden des Bildes:</p>
+                        <br>
+                        <p><input id=dateiauswahl name="upfile" type="file"></p>
+                        <p><input id="button4" type="submit" name="bildgesendet" value="Hochladen">
+                            <input id="button5" type="reset" value="Abbruch"></p>
+                    </form>
+
+                    <br>
+                    <hr class="strich">
+
+                    <div>
+                        <?php
+                        //Chronik - wo die geposteten Beiträge auftauchen
+                        $stmt = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE posts IS NOT NULL OR bildtext IS NOT NULL ORDER BY zeitstempel DESC");
+                        $result = $stmt->execute();
+                        while ($row = $stmt->fetch()) {
+                            echo "<div id=\"tabelleposts\">";
+                            $userid = $row['login_id'];
+                            $show_profilepic = $pdo->prepare ("SELECT * FROM profilbildlogin WHERE login_id = $userid");
+                            $show_profilepic->execute();
+                            $row4 = $show_profilepic->fetch();?>
+                            <a href="profilseite.php?user_id=<?php echo $userid ?>"><img id="postsprofilbild" src="<?php echo $row4['profilbildtext'] ?>"></a>
+                            <a id="postsbenutzername" href="profilseite.php?user_id=<?php echo $userid ?>"><?php echo $row['benutzername'] ?> </a>
+
+
+                            <div id="postszeit"> <?php echo $row['zeitstempel']?> </div>
+                           <div id="poststext"> <?php echo  $row['posts']?></div>
+                            <?php echo "<img src='" . $row['bildtext'] . "' height='150'>";
+                            echo "</div>";
+                        }
+                        ?>
+<br>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-3">
+                <div id="profile">
+                    <h2 class="ueberschriftenmain"> Profile
+                    </h2>
+
+                    <div class="name">
+                        Benutzername:
+                        <?php
+                        echo $title['benutzername'];
+                        ?>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class= "adresseneu">
+                        E-Mail Adresse:
+                        <br>
+                        <?php
+                        echo $title['hdm_mail'];
+                        ?>
+
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 </div>
-
-
+</div>
 </body>
 </html>
 

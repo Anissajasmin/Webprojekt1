@@ -42,3 +42,69 @@
     .col-l-11 {width: 91.66%; padding-left: 10px; padding-right: 10px;}
     .col-l-12 {width: 100%; padding-left: 10px; padding-right: 10px;}
 }
+
+.bla {
+
+    float:left;
+    margin-top: 100px;
+
+
+}
+
+
+#suchebutton{
+margin-right:20px;
+    color:black;
+
+
+}
+#suchebutton:hover {
+    color:white;
+}
+
+#dropdown01 {
+    margin-right:20px;
+
+
+}
+
+
+#fonttouch {
+    color:black;
+    font-family:"Helvetica Neue";
+    font-weight:300;
+    font-size:160%;
+
+}
+
+#fontfeed {color:black;
+    font-family:"Helvetica Neue";
+    font-weight:200;
+    font-size:130%;
+
+}
+#navbarDropdown {color:black;
+    font-family:"Helvetica Neue";
+    font-weight:200;
+    font-size:130%;
+
+}
+
+#fontprofil {color:black;
+    font-family:"Helvetica Neue";
+    font-weight:200;
+    font-size:100%;
+
+}
+#fonteinstellungen {color:black;
+    font-family:"Helvetica Neue";
+    font-weight:200;
+    font-size:100%;
+
+}
+#fontfreunde {color:black;
+    font-family:"Helvetica Neue";
+    font-weight:200;
+    font-size:130%;
+
+}

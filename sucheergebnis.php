@@ -131,47 +131,50 @@
                     <div id="recommendation">
                         <h2 class="ueberschriftenmain"> Recommendations
                         </h2>
-                    </div>
-                </div>
-
-                <div class="col-sm-6">
-                    <div id="background">
-                        <div id="ueberschriftmeinefreunde"> Meine Freunde</div>
                         <br>
                         <br>
-
-
                         <?php
-                        //Liste mit den Namen der Personen, denen man folgt
-                        //Es wird zuerst geschaut, ob man jemandem folgt
 
-                        $checkfollow=$pdo->prepare("SELECT * FROM follow WHERE follow_id=$my_id");
+                        //Nutzer, denen man noch nicht folgt werden hier angezeigt
+                        //Wird dem Benutzer bereits gefolgt?
+
+                        $checkfollow = $pdo->prepare("SELECT * FROM follow WHERE follow_id='" . $my_id . "'");
                         $checkfollow->execute();
-                        $nofollower=$checkfollow->rowCount();
-                        if(!$nofollower > 0) {
-                            //Wenn man niemandem folgt
-                            echo "<div id=\"tabelleposts\">";
-                            echo "Du hast noch keine Freunde. Folge einem Nutzer, um ihn in deiner Liste angezeigt zu bekommen!";
-                            echo "</div>";
-                        }
-                        else {
-                            //Wenn man jemandem folgt, werden die Namen der Personen, denen man folgt, in dieser Liste angezeigt
-                            while($row = $checkfollow->fetch()) {
-                                $userid = $row['user_id'];
-                                $show_profilepic = $pdo->prepare ("SELECT * FROM profilbildlogin WHERE login_id = $userid");
-                                $show_profilepic->execute();
-                                $show_friends = $pdo->prepare("SELECT * FROM vlj_loginfollow WHERE login_id= $userid");
-                                $show_friends->execute();
 
-                                $row3 = $show_friends->fetch();
-                                $row4 = $show_profilepic->fetch();
+                        $notfollowing = $checkfollow->rowCount();
 
+                        if (!$notfollowing > 0) {
+                            $showallusers = $pdo->prepare ("SELECT * FROM login WHERE NOT login_id = $my_id");
+                            $showallusers->execute();
+                            while ($row1 = $showallusers->fetch()){
+                                $allusers = $row1['login_id'];
                                 echo "<div id=\"tabelleposts\">";
                                 echo "<span>";
                                 ?>
                                 <div id="kasten">
-                                    <a href="profilseite.php?user_id=<?php echo $userid ?>"><img id="meinefreundeprofilbild" src="<?php echo $row4['profilbildtext'] ?>"></a>
-                                    <a style="text-decoration:none;" href="profilseite.php?user_id=<?php echo $userid ?>"><div id="kastentext"><?php echo $row3['benutzername'] ?></div></a>
+                                    <a style="text-decoration:none;" href="profilseite.php?user_id=<?php echo $allusers ?>"><div id="kastentext"><?php echo $row1['benutzername'] ?></div></a>
+
+                                </div>
+                                <?php
+                                echo "</span>";
+                                echo "</div>";
+
+                            }
+                        }else{
+                            $row = $checkfollow->fetch();
+                            $userid = $row['user_id'];
+                            $my_id = $row ['follow_id'];
+                            //Wenn man jemandem nicht folgt, werden die Namen der Personen, denen man nicht folgt, in dieser Liste angezeigt
+                            $show_users = $pdo->prepare("SELECT * FROM login WHERE NOT login_id = $my_id AND NOT login_id = $userid");
+                            $show_users->execute();
+
+                            while($row3 = $show_users->fetch()) {
+                                $users = $row3['login_id'];
+                                echo "<div id=\"tabelleposts\">";
+                                echo "<span>";
+                                ?>
+                                <div id="kasten">
+                                    <a style="text-decoration:none;" href="profilseite.php?user_id=<?php echo $users ?>"><div id="kastentext"><?php echo $row3['benutzername'] ?></div></a>
 
                                 </div>
                                 <?php
@@ -182,8 +185,50 @@
                         }
 
                         ?>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div id="background">
+                        <div id="ueberschriftmeinefreunde"> Dein Suchergebnis</div>
+                        <br>
                         <br>
 
+
+                        <?php
+                        //Suchfunktion - Ergebnisse der Suche
+                        if (isset($_POST["suche"])) {
+                            $allebenutzername = $_POST["suchen"];
+
+                            $benutzersuche = $pdo->prepare("SELECT * FROM profilbildlogin WHERE benutzername ='$allebenutzername' AND aktiviert = 1");
+                            if ($benutzersuche->execute()) {
+
+                                while ($row = $benutzersuche->fetch()) {
+                                    $userid = $row['login_id'];
+                                    echo "<div id=\"tabelleposts\">";
+                                    ?>
+
+                                    <div id="kasten">
+                                        <a class="" href="profilseite.php?user_id=<?php echo $userid ?>"><img src="<?php echo $row['profilbildtext'] ?>"></a>
+                                        <a class="" href="profilseite.php?user_id=<?php echo $userid ?>"><?php echo $row['benutzername'] ?></a>
+                                    </div>
+
+                                    <?php
+                                    echo "</div>";
+                                }
+                            } else {
+                                echo "<div id=\"tabelleposts\">";
+                                ?>
+                        <div id="kasten">
+                                <p> "No user found" </p>
+                        </div>
+                                <?php
+                                echo "</div>";
+                            }
+                        }
+                        ?>
+
+                        <br>
 
                     </div>
                 </div>

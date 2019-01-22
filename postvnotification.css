@@ -1,0 +1,52 @@
+#postnotkasten{
+    height:400px;
+    width:400px;
+    margin-left:200px;
+    background-color: #888483;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+
+#postnotname {
+    color:white;
+    font-family:"Helvetica Neue";
+    font-size:130%;
+    padding-top:35px;
+    font-weight: 200;
+    text-align: center;
+
+}
+
+
+#postnotkasten2 {
+    height:auto;
+    width:375px;
+    margin-left:auto;
+    margin-right:auto;
+    background-color: white;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+
+#postnotpost {
+    color:black;
+    font-family:"Helvetica Neue";
+    font-size:150%;
+    padding-top:10px;
+    padding-bottom:10px;
+    font-weight: 200;
+    text-align: center;
+
+
+}
+
+
+#not1 {
+    text-align:center;
+
+
+}
