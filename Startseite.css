@@ -2,11 +2,12 @@ body {
     background-image: url(startseite_bild.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     text-align: center;
 }
 
 #startseite {
-    width: 1000px;
     margin-left: auto;
     margin-right: auto;
 
@@ -16,6 +17,7 @@ body {
 #ueberschrift {
 
     font-family: "Helvetica Neue";
+    position: absolute;
     font-size: 500%;
     color: white;
     font-weight: 100;
@@ -23,13 +25,71 @@ body {
 }
 
 #unterueberschrift {
-    display:block;
-    padding-top: 80px;
+   display:flex;
+    text-align:center;
+    position: absolute;
     font-family: "Helvetica Neue";
     color: white;
     font-size: 130%;
     font-weight: 200;
+    margin-top:70px;
+    margin-left:60px;
+
 }
+
+#buttonlogin {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height:35px;
+    background-color:white;
+    color: black;
+    font-family: "Helvetica Neue";
+    font-size: 130%;
+    font-weight:300;
+    margin-left: 28%;
+    margin-top: 50%;
+    border-radius: 70px;
+    -moz-border-radius: 70px;
+    -webkit-border-radius: 70px;
+    -o-border-radius: 70px;
+    top:30px;
+}
+
+#buttonlogin:hover {
+    background-color:#7B0202;
+    color:white;
+}
+
+#buttonregister {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height:35px;
+    background-color:white;
+    color: black;
+    font-family: "Helvetica Neue";
+    font-size: 130%;
+    font-weight: 300;
+    margin-left: 28%;
+    margin-top: 40px;
+    border-radius: 70px;
+    -moz-border-radius: 70px;
+    -webkit-border-radius: 70px;
+    -o-border-radius: 70px;
+    top:10px;
+
+}
+
+#buttonregister:hover {
+    background-color: #7B0202;
+    color:white;
+}
+
+
+
 
 #header {
     display:flex;
@@ -63,59 +123,18 @@ body {
 
 }
 
-#buttonlogin {
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    width: 150px;
-    height:35px;
-    background-color:white;
-    color: black;
-    font-family: "Helvetica Neue";
-    font-size: 130%;
-    font-weight:300;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
-    border-radius: 70px;
-    -moz-border-radius: 70px;
-    -webkit-border-radius: 70px;
-    -o-border-radius: 70px;
 
-    position:relative;
-    top:30px;
+
+.row-centered {
+    text-align:center;
 }
-
-#buttonlogin:hover {
-    background-color:#7B0202;
-    color:white;
+.col-centered {
+    display:inline-block;
+    float:none;
+    text-align:left;
+    margin-right:-4px;
 }
-
-#buttonregister {
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    width: 150px;
-    height:35px;
-    background-color:white;
-    color: black;
-    font-family: "Helvetica Neue";
-    font-size: 130%;
-    font-weight: 300;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
-    border-radius: 70px;
-    -moz-border-radius: 70px;
-    -webkit-border-radius: 70px;
-    -o-border-radius: 70px;
-
-    position:relative;
-    top:10px;
-
-}
-
-#buttonregister:hover {
-    background-color: #7B0202;
-    color:white;
+.pos{
+    position: relative;
+    top: 240px;
 }
