@@ -43,7 +43,7 @@ body {
     width: 150px;
     height:35px;
     margin-top: 30px;
-    margin-left:300px;
+    margin-left:280px;
     background-color:white;
     color: black;
     font-family: "Helvetica Neue";
@@ -76,8 +76,8 @@ body {
     width: 150px;
     height:35px;
     margin-top: 30px;
-    float: right;
-    margin-left: 50px;
+    float: left;
+    margin-left: 70px;
     background-color:white;
     color: black;
     font-family: "Helvetica Neue";
@@ -414,8 +414,7 @@ body {
     margin-left: 80px;
     margin-bottom: 10px;
     margin-top: 50px;
-    width:50px;
-    height:50px;
+    height:100px;
 
 }
 
@@ -509,7 +508,8 @@ body {
     -o-border-radius: 10px;
 
 }
-#tabellename1 {
+
+#benutzernameprofil {
     position: absolute;
     display: flex;
     align-items: center;
@@ -531,7 +531,7 @@ body {
 
 
 
-#tabelleemail1 {
+#benutzernamemail {
     position: absolute;
     display: flex;
     align-items: center;
@@ -590,13 +590,12 @@ body {
     width: 150px;
     height:35px;
     margin-top: 420px;
-    margin-left: 170px;
+    margin-left: 250px;
     background-color:white;
     color: black;
     font-family: "Helvetica Neue";
     font-size: 130%;
     font-weight:300;
-    float: left;
     border-radius: 70px;
     -moz-border-radius: 70px;
     -webkit-border-radius: 70px;
@@ -736,9 +735,199 @@ position:absolute;
     -webkit-border-radius: 10px;
     -o-border-radius: 10px;
 
+}
+
+
+/* Einstellungen*/
+
+.strich4 {
+    margin-top:190px;
+    background-color: white;
+}
+
+#profildatenneu1 {
+    position:absolute;
+    margin-top: 130px;
+    margin-left: 20px;
+    width: 300px;
+    height: 70px;
+    background: #9999;
+    box-sizing: border-box;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
 
 
 }
 
+.benennung1 {
+    font-family: "Helvetica Neue";
+    color:white;
+    float:left;
+    margin-top:10px;
+    margin-left:10px;
+}
+
+#dateiauswahlneu {
+    position: absolute;
+    float:left;
+    margin-left: -210px;
+    margin-top:50px;
+    font-family: "Helvetica Neue";
+    font-size: 80%;
+    font-weight:300;
+
+}
+
+#button4neu {
+    position: absolute;
+    float:left;
+    width: 80px;
+    height:20px;
+    margin-left:-250px;
+    margin-top: 40px;
+    justify-content: center;
+    font-family: "Helvetica Neue";
+    font-size: 75%;
+    font-weight:400;
+
+}
 
 
+#button5neu {
+    position: absolute;
+    float:left;
+    width: 80px;
+    height:20px;
+    margin-left: -160px;
+    margin-top:40px;
+    font-family: "Helvetica Neue";
+    font-size: 75%;
+    font-weight:400;
+    justify-content: center;
+
+}
+#ueberschriftneu {
+    position: absolute;
+    color: white;
+    font-family: "Helvetica Neue";
+    font-weight:300;
+    font-size: 110%;
+    justify-content: center;
+    margin-top:15px;
+    margin-left: 40px;
+}
+
+#text3{
+    color: white;
+    font-family: "Helvetica Neue";
+    font-size: 90%;
+    font-weight:400;
+    float:left;
+    margin-left: 30px;
+    margin-top:20px;
+}
+
+#profildatenneu1 {
+    position:absolute;
+    margin-top: 50px;
+    margin-left: 20px;
+    width: 300px;
+    height: auto;
+    box-sizing: border-box;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+
+
+}
+
+.benennung {
+    font-family: "Helvetica Neue";
+    color:white;
+    float:left;
+    margin-top:10px;
+    margin-left:10px;
+}
+
+
+.strich5{
+    margin-top:110px;
+    background-color: white;
+}
+
+
+#speichern {
+    position: absolute;
+    float:left;
+    margin-top:10px;
+    margin-left:-40px;
+    font-family: "Helvetica Neue";
+    font-size: 80%;
+    font-weight:300;
+}
+
+#speichern:hover {
+    background-color:#7B0202;
+    color: white;
+}
+
+.buttonsavesettings {
+    position:absolute;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    width: 80px;
+    height:35px;
+    margin-top: 210px;
+    margin-left:230px;
+    background-color:white;
+    color: black;
+    font-family: "Helvetica Neue";
+    font-size: 110%;
+    font-weight:400;
+
+}
+
+.buttonsavesettings :hover {
+    background-color:#7B0202;
+    color: white;
+}
+
+
+.buttonsavesettings {
+    position: absolute;
+    float:left;
+    margin-top:280px;
+    margin-left:240px;
+    width: 80px;
+    height:35px;
+    font-family: "Helvetica Neue";
+    font-size: 80%;
+    font-weight:300;
+}
+
+.buttonsavesettings:hover {
+    background-color:#7B0202;
+    color: white;
+}
+
+
+#backgroundneu {
+
+    position: relative;
+    height: auto;
+    background-color: #888483;
+    margin-top: 80px;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -o-border-radius: 15px;
+
+
+}

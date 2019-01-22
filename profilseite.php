@@ -57,13 +57,13 @@ include "follow.php";
                         ?>
                     </div>
 
-                    <div id="tabellename1">
+                    <div id="benutzernameprofil">
                         <?php
                         echo $title['benutzername'];
                         ?>
                     </div>
 
-                    <div id="tabelleemail1">
+                    <div id="benutzernamemail">
 
                         <?php
                         echo $title['hdm_mail'];

@@ -175,7 +175,6 @@
                             $checkfollow = $pdo->prepare("SELECT * FROM follow WHERE follow_id=$my_id");
                             $checkfollow->execute();
                             $nofollower = $checkfollow->rowCount();
-                            echo $nofollower;
                             if (!$nofollower > 0) {
                                 //Wenn man niemandem folgt
                                 echo "<div id=\"tabelleposts\">";

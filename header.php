@@ -114,30 +114,6 @@ $title = $visit_user->fetch();
             </button>
 
 
-        <?php
-        //Suchfunktion
-
-        if (isset($_POST["suche"])) {
-            $allebenutzername = $_POST["suche"];
-
-            $benutzersuche = $pdo->prepare("SELECT * FROM profilbildlogin WHERE benutzername ='$allebenutzername' AND aktiviert = 1");
-            if ($benutzersuche->execute()) {
-
-                while ($row = $benutzersuche->fetch()) {
-                    $userid = $row['login_id'];
-                    ?>
-                    <h3>
-                        <a class="bla" href="profilseite.php?user_id=<?php echo $userid ?>"><img src="<?php echo $row['profilbildtext'] ?>"></a>
-                        <a class="bla" href="profilseite.php?user_id=<?php echo $userid ?>"><?php echo $row['benutzername'] ?></a>
-                    </h3>
-
-                    <?php
-                }
-            } else {
-                echo "<div>No user found</div>";
-            }
-        }
-        ?>
         </form>
 
 
