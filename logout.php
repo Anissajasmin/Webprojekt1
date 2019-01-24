@@ -4,7 +4,7 @@ session_destroy();
 echo "Logout erfolgreich";
 
 ?>
-<html>
+<html lang="de">
 <br><br>
 <a href ="Startseite.php"> Hier geht's zur Startseite</a>
 

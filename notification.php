@@ -5,10 +5,10 @@ $meine_id = $_SESSION["login-id"];
 $user_id = $_GET['user_id'];
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="utf-8">
-      <link rel="stylesheet" type="text/css" href="postvnotification.css">
+      <link rel="stylesheet" type="text/css" href="unnötig/postvnotification.css">
   </head>
   <body>
 

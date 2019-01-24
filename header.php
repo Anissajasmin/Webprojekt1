@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <link rel="stylesheet" type="text/css" href="header.css">
 
 
@@ -96,7 +96,7 @@ $title = $visit_user->fetch();
                     <a class="btn btn-outline-dark"
                        style="font-family: 'Helvetica Neue'; font-size:120%; font-weight: 200;" href="#"
                        id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false"> Notifications
+                       aria-expanded="false"> Benachrichtigungen
 
                         <?php
                         include_once "notification.php"
@@ -104,9 +104,9 @@ $title = $visit_user->fetch();
 
         </div>
 
-        <form class="form-inline my-2 my-lg-0 ">
+        <form action="sucheergebnis.php?user_id=<?php echo $my_id ?>" class="form-inline my-2 my-lg-0 " method = "post">
             <input class="form-control mr-sm-2 "
-                   style="font-family: 'Helvetica Neue'; font-size:120%; font-weight: 200;" name="suche"
+                   style="font-family: 'Helvetica Neue'; font-size:120%; font-weight: 200;" name="suchen"
                    type="search" placeholder="Suchen" aria-label="Search">
             <button class="btn btn-outline-dark my-2 my-sm-0"
                     style="font-family: 'Helvetica Neue'; font-size:120%; font-weight: 200;" name="suche" id="suchebutton"

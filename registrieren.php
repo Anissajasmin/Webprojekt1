@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
     <title>Registrierung</title>
     <link rel="stylesheet" type="text/css" href="registrieren.css">
