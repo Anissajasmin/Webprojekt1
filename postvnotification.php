@@ -116,7 +116,7 @@
                                 <?php echo '&nbsp'; ?>
                                 <div id="postnotkasten2">
                                     <p id="postnotpost">  <?php echo $post; ?>
-                                        <?php echo "<img src='" . $postbild . "'>"; ?>
+                                        <?php echo "<img id= postnotpostbild src='" . $postbild . "'>"; ?>
                                     </p>
                                 </div>
                                 <a style="text-decoration:none; color:white;" href="hauptseite.php?user_id=<?php echo $user_id; ?>">

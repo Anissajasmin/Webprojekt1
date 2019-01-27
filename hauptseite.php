@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hauptseite</title>
+    <title>Mein Feed</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="touch.css">
 
@@ -109,7 +109,7 @@
 
                     <form id=postbox2 action="hauptseite.php?user_id=<?php echo $my_id; ?>" method="post">
                         <input type="hidden" name="text" value="1">
-                        <p id="text1"> Schreibe einen Beitrag (max. 1000 Zeichen):</p>
+                        <p id="text1"> Schreibe einen Beitrag :</p>
                         <br>
                         <p><textarea id="post" name="posts" rows="5" cols="80" value=""></textarea></p>
                         <p><input id="button2" type="submit" name="textgesendet" value="Senden">
@@ -226,31 +226,55 @@
                     <br>
                     <hr class="strich">
                     <div id="friendsbeiträge">Alle Beiträge</div>
-
+<br>
                     <div>
                         <?php
                         //Chronik - wo die geposteten Beiträge auftauchen
                         $stmt = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE posts IS NOT NULL OR bildtext IS NOT NULL ORDER BY zeitstempel DESC");
                         $result = $stmt->execute();
-                        while ($row = $stmt->fetch()) {?>
-                            <div id="tabelleposts"> <?php
+                        while ($row = $stmt->fetch()) {
                                 $userid = $row['login_id'];
                                 $show_profilepic = $pdo->prepare ("SELECT * FROM profilbildlogin WHERE login_id = $userid");
                                 $show_profilepic->execute();
                                 $row4 = $show_profilepic->fetch();
                                 ?>
 
-                                <a href="profilseite.php?user_id=<?php echo $userid ?>"><img id="postsprofilbild" src="<?php echo $row4['profilbildtext'] ?>"></a>
-                                <a id="postsbenutzername" href="profilseite.php?user_id=<?php echo $userid ?>"><?php echo $row['benutzername'] ?> </a>
+                                <?php
+                                if(empty($row['bildtext'])) {
+                                    ?>
+                                    <div id="postskasten">
+                                        <a href="profilseite.php?user_id=<?php echo $userid ?>"><img id="postsprofilbild" src="<?php echo $row4['profilbildtext'] ?>"></a>
+                                        <a id="postsbenutzername" href="profilseite.php?user_id=<?php echo $userid ?>"><?php echo $row['benutzername'] ?> </a>
+                                        <br>
+                                        <div id="postszeit"> <?php echo $row['zeitstempel'] ?> </div>
+                                        <br>
+                                        <p id="poststext"> <?php echo $row['posts'] ?></p>
+                                    </div>
 
-                                <div id="postszeit"> <?php echo $row['zeitstempel']?> </div>
-                                <div id="poststext"> <?php echo  $row['posts']?></div>
-                                <?php echo "<img id=\"postsbild\" src='" . $row['bildtext'] . "'>";?>
-                            </div>
-                            <?php
-                        }
-                        ?>
-<br>
+
+                                    <?php
+                                }else {
+                                    ?>
+                                    <div id="postskasten">
+                                        <a href="profilseite.php?user_id=<?php echo $userid ?>"><img id="postsprofilbild" src="<?php echo $row4['profilbildtext'] ?>"></a>
+                                        <a id="postsbenutzername" href="profilseite.php?user_id=<?php echo $userid ?>"><?php echo $row['benutzername'] ?> </a>
+                                        <br>
+                                        <div id="postszeit"> <?php echo $row['zeitstempel'] ?> </div>
+                                        <br>
+                                        <img id="postsbild" src="<?php echo $row['bildtext'] ?>">
+                                    </div>
+
+                                    <?php
+                                }
+
+                                }
+
+                                ?>
+
+
+
+
+                                <br>
 
                     </div>
                 </div>

@@ -83,7 +83,7 @@ include_once "header.php";
             <div class="col-md-6">
                 <div id="backgroundneu">
                     <a style="..." href="profilseite.php?user_id=<?php echo $user_id; ?>"">
-                    <div class="neubuttonsave">Sichern</div>
+                    <div class="neubuttonsave">Zurück zum Profil</div>
                     </a>
                     <div id="ueberschrift">
                         Einstellungen
@@ -263,7 +263,7 @@ include_once "header.php";
                         <br>
                         <br>
 
-                        <p><input id="speichern" type="submit" name="newchanges" value="Speichern"></p>
+                        <p><input id="speichern" type="submit" name="newchanges" value="Sichern"></p>
                     </form>
                     <?php
                     // Profildaten bearbeiten
@@ -331,7 +331,7 @@ include_once "header.php";
 
             <div class="col-sm-3">
                 <div id="anzeigederbeiträgeundfreunde">
-                    <h2 class="ueberschrift1"> Anzahl deiner Freunde:
+                    <h2 class="ueberschrift11"> Anzahl deiner Freunde:
                         <h2 id="buttonfriendsneu">
                             <div class="anzahl">
                                 <?php
@@ -343,7 +343,7 @@ include_once "header.php";
                             </div>
                         </h2>
                     </h2>
-                    <h3 class="ueberschrift2"> Anzahl deiner Beiträge:
+                    <h3 class="ueberschrift21"> Anzahl deiner Beiträge:
                         <h2 id="buttonpostsneu">
                             <div class="anzahl">
                                 <?php

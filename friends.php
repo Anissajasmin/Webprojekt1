@@ -234,42 +234,72 @@
                                 echo "</div>";
                             } else {
                                 //Wenn man jemandem folgt, werden die Posts der User, denen man folgt, angezeigt
-                                while ($row = $checkfollow->fetch()) {
+                               while ($row = $checkfollow->fetch()) {
                                     $userid = $row['user_id'];
-                                    $show_posts = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE beitrag_user_id= $userid ORDER BY zeitstempel DESC");
-                                    $show_posts->execute();
-                                    $row3 = $show_posts->fetch();
-                                    echo "<div id=\"tabelleposts5\">";
+                                    $show_name = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE beitrag_user_id= $userid ORDER BY zeitstempel DESC");
+                                    $show_name->execute();
+                                    $row5 = $show_name->fetch();
                                     ?>
-                                    <div id="friendsbeiträge">
-                                    <?php
-                                    echo "Alle Beiträge von "; echo $row3['benutzername']; echo ":";echo "</div>";?>
-                                    </div>
+                                   <div id="friendsbeiträge">
+                                       <?php
+                                       echo "<div id=\"tabelleposts5\">";
+                                       echo "Alle Beiträge von "; echo $row5['benutzername']; echo ":";echo "</div>";?>
+                                   </div>
+                                   <br>
+                                   <?php
+
+                                    $show_posts = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE beitrag_user_id = $userid AND posts IS NOT NULL OR beitrag_user_id = $userid AND bildtext IS NOT NULL ORDER BY zeitstempel DESC");
+                                    $show_posts->execute();
+
+                                    ?>
+
                                     <?php
                                     while ($row3 = $show_posts->fetch()) {
-                                        echo "<div id=\"tabelleposts\">";
                                         $userid = $row3['login_id'];
                                         $show_profilepic = $pdo->prepare("SELECT * FROM profilbildlogin WHERE login_id = $userid");
                                         $show_profilepic->execute();
                                         $row4 = $show_profilepic->fetch();
-                                        ?>
-                                        <a href="profilseite.php?user_id=<?php echo $userid ?>"><img
-                                                    id="postsprofilbild"
-                                                    src="<?php echo $row4['profilbildtext'] ?>"></a>
-                                        <a id="postsbenutzername"
-                                           href="profilseite.php?user_id=<?php echo $userid ?>"><?php echo $row3['benutzername'] ?></a>
-                                        <?php
-                                        echo "</span>"; ?>
-                                        <div id="postszeit"> <?php echo $row3['zeitstempel'] ?> </div>
-                                        <div id="poststext"> <?php echo $row3['posts'] ?></div>
-                                        <?php echo "<img id=\"postsbild\" src='" . $row3['bildtext'] . "'>";
-                                        echo "</div>";
+
+                                        if (empty($row3['bildtext'])) {
+                                            ?>
+                                            <div id="postskasten">
+                                                <a href="profilseite.php?user_id=<?php echo $userid ?>"><img id="postsprofilbild" src="<?php echo $row4['profilbildtext'] ?>"></a>
+                                                <a id="postsbenutzername" href="profilseite.php?user_id=<?php echo $userid ?>"><?php echo $row3['benutzername'] ?> </a>
+                                                <br>
+                                                <br>
+                                                <div id="postszeitfriends"> <?php echo $row3['zeitstempel'] ?> </div>
+                                                <br>
+                                                <p id="poststextfriends"> <?php echo $row3['posts'] ?></p>
+                                            </div>
+
+
+                                            <?php
+                                        } else {
+                                            ?>
+                                            <div id="postskasten">
+                                                <a href="profilseite.php?user_id=<?php echo $userid ?>"><img id="postsprofilbild" src="<?php echo $row4['profilbildtext'] ?>"></a>
+                                                <a id="postsbenutzername" href="profilseite.php?user_id=<?php echo $userid ?>"><?php echo $row3['benutzername'] ?> </a>
+                                                <br>
+                                                <div id="postszeitfriends1"> <?php echo $row3['zeitstempel'] ?> </div>
+                                                <br>
+                                                <img id="postsbildfriends" src="<?php echo $row3['bildtext'] ?>">
+                                            </div>
+
+                                            <?php
+                                        }
                                     }
                                 }
+
+                                ?>
+
+
+                                <br>
+
+                           <?php
                             }
 
                             ?>
-                            <br>
+
                         </div>
                     </div>
                 </div>

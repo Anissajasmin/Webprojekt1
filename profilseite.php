@@ -37,36 +37,44 @@ include_once "header.php";
                     $checkfollow->execute();
                     $notfollowing = $checkfollow->rowCount();
                     if (!$notfollowing > 0) {
-                        $showallusers = $pdo->prepare ("SELECT * FROM profilbildlogin WHERE NOT login_id = $my_id");
+                        $showallusers = $pdo->prepare("SELECT * FROM profilbildlogin WHERE NOT login_id = $my_id");
                         $showallusers->execute();
-                        while ($row1 = $showallusers->fetch()){
+                        while ($row1 = $showallusers->fetch()) {
                             $allusers = $row1['login_id'];
                             echo "<div id=\"tabelleposts\">";
                             echo "<span>";
                             ?>
                             <div id="kasten">
-                                <a href="profilseite.php?user_id=<?php echo $allusers ?>"><img id="recommendationprofilbild" src="<?php echo $row1['profilbildtext'] ?>"></a>
-                                <a style="text-decoration:none;" href="profilseite.php?user_id=<?php echo $allusers ?>"><div id="kastentext"><?php echo $row1['benutzername'] ?></div></a>
+                                <a href="profilseite.php?user_id=<?php echo $allusers ?>"><img
+                                            id="recommendationprofilbild"
+                                            src="<?php echo $row1['profilbildtext'] ?>"></a>
+                                <a style="text-decoration:none;" href="profilseite.php?user_id=<?php echo $allusers ?>">
+                                    <div id="kastentext"><?php echo $row1['benutzername'] ?></div>
+                                </a>
                             </div>
                             <?php
                             echo "</span>";
                             echo "</div>";
                         }
-                    }else{
+                    } else {
                         $row = $checkfollow->fetch();
                         $userid = $row['user_id'];
                         $my_id = $row ['follow_id'];
                         //Wenn man jemandem nicht folgt, werden die Namen der Personen, denen man nicht folgt, in dieser Liste angezeigt
                         $show_users = $pdo->prepare("SELECT * FROM profilbildlogin WHERE NOT login_id = $my_id AND NOT login_id = $userid");
                         $show_users->execute();
-                        while($row3 = $show_users->fetch()) {
+                        while ($row3 = $show_users->fetch()) {
                             $users = $row3['login_id'];
                             echo "<div id=\"tabelleposts\">";
                             echo "<span>";
                             ?>
                             <div id="kasten">
-                                <a href="profilseite.php?user_id=<?php echo $users ?>"><img id="recommendationprofilbild" src="<?php echo $row3['profilbildtext'] ?>"></a>
-                                <a style="text-decoration:none;" href="profilseite.php?user_id=<?php echo $users ?>"><div id="kastentext"><?php echo $row3['benutzername'] ?></div></a>
+                                <a href="profilseite.php?user_id=<?php echo $users ?>"><img
+                                            id="recommendationprofilbild"
+                                            src="<?php echo $row3['profilbildtext'] ?>"></a>
+                                <a style="text-decoration:none;" href="profilseite.php?user_id=<?php echo $users ?>">
+                                    <div id="kastentext"><?php echo $row3['benutzername'] ?></div>
+                                </a>
 
                             </div>
                             <?php
@@ -84,20 +92,19 @@ include_once "header.php";
 
                     <?php
 
-                    if($user_id==$my_id) {
+                    if ($user_id == $my_id) {
                         ?>
-                    <div id="ueberschrift">
-                        Mein Profil
-                    </div>
-                    <?php
-                    } else {?>
                         <div id="ueberschrift">
-                        Benutzerprofil
+                            Mein Profil
+                        </div>
+                        <?php
+                    } else { ?>
+                        <div id="ueberschrift">
+                            Benutzerprofil
                         </div>
                         <?php
                     }
                     ?>
-
 
 
                     <div>
@@ -131,66 +138,63 @@ include_once "header.php";
 
                     </div>
                     <br>
-<?php
-$follow_id = $_SESSION['login-id'];
-// Ist es ein fremdes Profil?
-if ($user_id != $_SESSION['login-id']) {
+                    <?php
+                    $follow_id = $_SESSION['login-id'];
+                    // Ist es ein fremdes Profil?
+                    if ($user_id != $_SESSION['login-id']) {
 
-    // Wird dem Benutzer bereits gefolgt?
-    $checkfollow = $pdo->prepare("SELECT follow_id FROM follow WHERE user_id='" . $user_id . "' AND follow_id='" . $follow_id . "'");
-    $checkfollow->execute();
+                        // Wird dem Benutzer bereits gefolgt?
+                        $checkfollow = $pdo->prepare("SELECT follow_id FROM follow WHERE user_id='" . $user_id . "' AND follow_id='" . $follow_id . "'");
+                        $checkfollow->execute();
 
-    $notfollowing = $checkfollow->rowCount();
+                        $notfollowing = $checkfollow->rowCount();
 
-    if (!$notfollowing > 0) {
-        ?>
-        <form action="profilseite.php?user_id=<?php echo $user_id ?>" method="post">
-            <input class="followbutton" type="submit" name="follow" value="Folgen">
+                        if (!$notfollowing > 0) {
+                            ?>
+                            <form action="profilseite.php?user_id=<?php echo $user_id ?>" method="post">
+                                <input class="followbutton" type="submit" name="follow" value="Folgen">
 
-        </form>
+                            </form>
 
-        <?php
+                            <?php
 
-        if (isset($_POST["follow"])) {
-            $follow = $pdo->prepare('INSERT INTO follow (follow_id, user_id) VALUES (:follow_id, :user_id)');
-            $follow->bindParam(':follow_id,', $follow_id);
-            $follow->bindParam(':user_id,', $user_id);
-            $followergebnis = $follow->execute(array(':follow_id' => $follow_id, ':user_id' => $user_id));
+                            if (isset($_POST["follow"])) {
+                                $follow = $pdo->prepare('INSERT INTO follow (follow_id, user_id) VALUES (:follow_id, :user_id)');
+                                $follow->bindParam(':follow_id,', $follow_id);
+                                $follow->bindParam(':user_id,', $user_id);
+                                $followergebnis = $follow->execute(array(':follow_id' => $follow_id, ':user_id' => $user_id));
 
-            if ($followergebnis) {
+                                if ($followergebnis) {
 
-                echo '<script>window.location.href="profilseite.php?user_id=' . $user_id . '"</script>';
-            }
-        }
-
-
-    }
-
-    else {
-        //Unfollow
-        ?>
-
-        <form action="profilseite.php?user_id=<?php echo $user_id?>" method="post">
-            <input class="followbutton" type="submit" name="unfollow" value="Entfolgen">
-        </form>
-
-        <?php
-        if (isset($_POST['unfollow'])) {
-            $unfollow = $pdo -> prepare("DELETE FROM follow WHERE user_id='" . $user_id . "' AND follow_id='" . $follow_id . "'");
-            if ($unfollow->execute()) {
-                echo '<script>window.location.href="profilseite.php?user_id='.$user_id.'"</script>';
-            }
-
-        }
+                                    echo '<script>window.location.href="profilseite.php?user_id=' . $user_id . '"</script>';
+                                }
+                            }
 
 
-    }
+                        } else {
+                            //Unfollow
+                            ?>
+
+                            <form action="profilseite.php?user_id=<?php echo $user_id ?>" method="post">
+                                <input class="followbutton" type="submit" name="unfollow" value="Entfolgen">
+                            </form>
+
+                            <?php
+                            if (isset($_POST['unfollow'])) {
+                                $unfollow = $pdo->prepare("DELETE FROM follow WHERE user_id='" . $user_id . "' AND follow_id='" . $follow_id . "'");
+                                if ($unfollow->execute()) {
+                                    echo '<script>window.location.href="profilseite.php?user_id=' . $user_id . '"</script>';
+                                }
+
+                            }
 
 
+                        }
 
-}
 
-?>
+                    }
+
+                    ?>
 
                     <br>
                     <hr class="strich4">
@@ -203,7 +207,6 @@ if ($user_id != $_SESSION['login-id']) {
                     if ($benutzerdaten) {
                         while ($row8 = $statement->fetch()) {
                             ?>
-
 
 
                             <table id="profildatenneu">
@@ -228,55 +231,55 @@ if ($user_id != $_SESSION['login-id']) {
 
                             </table>
                             <?php
-                        }} elseif($my_id == $user_id) { ?>
+                        }
+                    } elseif ($my_id == $user_id) { ?>
 
                         <p class="benennung4"> Lege deine Benutzerdaten in deinen Einstellungen an!</p>
 
                         <?php
-                    } elseif($my_id != $user_id) { ?>
+                    } elseif ($my_id != $user_id) { ?>
                         <div id="profildatenneu">
-                        <p class="benennung4"> Dieser Benutzer hat noch keine Daten angelegt!</p>
+                            <p class="benennung4"> Dieser Benutzer hat noch keine Daten angelegt!</p>
                         </div>
                         <?php
                     }
                     ?>
 
                     <?php
-                    if($user_id != $my_id) {
+                    if ($user_id != $my_id) {
                         ?>
 
                         <p id="ueberschriftneuneufreunde"> Anzahl Freunde
                         <div id="buttonfriendsneuneu">
                             <div class="anzahlneuneu">
-                            <?php
-                            $anzahlfriends = $pdo->prepare("SELECT ALL * FROM follow WHERE follow_id = $user_id ");
-                            $anzahlfriends->execute();
-                            $showanzahlfriends = $anzahlfriends->rowCount();
-                            echo $showanzahlfriends;
-                            ?>
+                                <?php
+                                $anzahlfriends = $pdo->prepare("SELECT ALL * FROM follow WHERE follow_id = $user_id ");
+                                $anzahlfriends->execute();
+                                $showanzahlfriends = $anzahlfriends->rowCount();
+                                echo $showanzahlfriends;
+                                ?>
                             </div>
-                            </div>
+                        </div>
                         </p>
 
-                          <p id="ueberschriftneuneubeiträge"> Anzahl Beiträge
+                        <p id="ueberschriftneuneubeiträge"> Anzahl Beiträge
                         <div id="buttonbeiträgeneuneu">
                             <div class="anzahlneuneu">
-                            <?php
-                            $anzahlposts = $pdo->prepare("SELECT ALL * FROM beitrag WHERE beitrag_user_id = $user_id ");
-                            $anzahlposts->execute();
-                            $showanzahlposts = $anzahlposts->rowCount();
-                            echo $showanzahlposts;
-                            ?>
+                                <?php
+                                $anzahlposts = $pdo->prepare("SELECT ALL * FROM beitrag WHERE beitrag_user_id = $user_id ");
+                                $anzahlposts->execute();
+                                $showanzahlposts = $anzahlposts->rowCount();
+                                echo $showanzahlposts;
+                                ?>
                             </div>
                         </div>
                         </p>
 
                         <?php
                     }
-                            ?>
+                    ?>
                     <br>
                     <br>
-
 
 
                     <a style="" href="settings.php?user_id=<?php echo $user_id; ?>">
@@ -296,7 +299,8 @@ if ($user_id != $_SESSION['login-id']) {
 
                     <hr class="strich3">
 
-                    <div>
+
+
 
                         <?php
                         //Posts des Nutzers der Profilseite anzeigen
@@ -304,57 +308,75 @@ if ($user_id != $_SESSION['login-id']) {
                         $postsergebnis = $statement->execute();
                         while ($row = $statement->fetch()) {
                             $userid = $row['login_id'];
+                            $show_profilepic = $pdo->prepare("SELECT * FROM profilbildlogin WHERE login_id = $user_id");
+                            $show_profilepic->execute();
+                            $row4 = $show_profilepic->fetch();
                             ?>
-                            <div id="tabelleposts">
-                                <?php
-                                $show_profilepic = $pdo->prepare("SELECT * FROM profilbildlogin WHERE login_id = $user_id");
-                                $show_profilepic->execute();
-                                $row4 = $show_profilepic->fetch();
-                                ?>
-                                <a><img id="postsprofilbild" src="<?php echo $row4['profilbildtext'] ?>"></a>
-                                <a id="postsbenutzername"><?php echo $row['benutzername'] ?> </a>
-                                <?php echo "</span>"; ?>
-                                <div id="postszeit"> <?php echo $row['zeitstempel'] ?> </div>
-                                <?php echo "</span>"; ?>
-                                <div id="poststext"> <?php echo $row['posts'] ?></div>
-                                <?php echo "</span>"; ?>
 
-                                <img id="postsbild" src="<?php echo $row['bildtext'] ?>">
 
-                            </div>
-                            <?php
-                        }
+                    <?php
+                    if(empty($row['bildtext'])) {
                         ?>
-<br>
+                        <div id="postskasten">
+                            <a><img id="postsprofilbild" src="<?php echo $row4['profilbildtext'] ?>"></a>
+                            <a id="postsbenutzername"><?php echo $row['benutzername'] ?> </a>
+                            <br>
+                            <div id="postszeit"> <?php echo $row['zeitstempel'] ?> </div>
+                            <br>
+                        <p id="poststext"> <?php echo $row['posts'] ?></p>
+                        </div>
 
-                    </div>
+
+                        <?php
+                    }else {
+                        ?>
+                        <div id="postskasten">
+                            <a><img id="postsprofilbild" src="<?php echo $row4['profilbildtext'] ?>"></a>
+                            <a id="postsbenutzername"><?php echo $row['benutzername'] ?> </a>
+                            <br>
+                            <div id="postszeit"> <?php echo $row['zeitstempel'] ?> </div>
+                            <br>
+                        <img id="postsbild" src="<?php echo $row['bildtext'] ?>">
+                        </div>
+
+                        <?php
+                    }
+
+                        }
+
+                        ?>
+
+
+
+
+<br>
                 </div>
             </div>
 
 
             <div class="col-sm-3">
                 <div id="anzeigederbeiträgeundfreunde">
-                    <h2 class="ueberschrift1"> Anzahl deiner Freunde:
+                    <h2 class="ueberschrift11"> Anzahl deiner Freunde:
                         <h2 id="buttonfriendsneu">
                             <div class="anzahl">
-                            <?php
-                            $anzahlfriends = $pdo->prepare("SELECT ALL * FROM follow WHERE follow_id = $my_id ");
-                            $anzahlfriends->execute();
-                            $showanzahlfriends= $anzahlfriends->rowCount();
-                            echo $showanzahlfriends;
-                            ?>
+                                <?php
+                                $anzahlfriends = $pdo->prepare("SELECT ALL * FROM follow WHERE follow_id = $my_id ");
+                                $anzahlfriends->execute();
+                                $showanzahlfriends = $anzahlfriends->rowCount();
+                                echo $showanzahlfriends;
+                                ?>
                             </div>
                         </h2>
                     </h2>
                     <h3 class="ueberschrift21"> Anzahl deiner Beiträge:
                         <h2 id="buttonpostsneu">
                             <div class="anzahl">
-                            <?php
-                            $anzahlposts = $pdo->prepare("SELECT ALL * FROM beitrag WHERE beitrag_user_id = $my_id ");
-                            $anzahlposts->execute();
-                            $showanzahlposts= $anzahlposts->rowCount();
-                            echo $showanzahlposts;
-                            ?>
+                                <?php
+                                $anzahlposts = $pdo->prepare("SELECT ALL * FROM beitrag WHERE beitrag_user_id = $my_id ");
+                                $anzahlposts->execute();
+                                $showanzahlposts = $anzahlposts->rowCount();
+                                echo $showanzahlposts;
+                                ?>
                             </div>
                         </h2>
                     </h3>
@@ -369,7 +391,6 @@ if ($user_id != $_SESSION['login-id']) {
 
 <br>
 <br>
-
 <?php
 }
 ?>

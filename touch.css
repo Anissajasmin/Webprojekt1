@@ -1,8 +1,9 @@
 body {
     background-image: url(hintergrundbild.jpg);
-    background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     text-align: center;
 
 }
@@ -347,22 +348,37 @@ body {
 }
 
 #tabelleposts {
-    width:auto;
+     width:auto;
+     margin-left:20px;
+     margin-right:20px;
+     height: content-box;
+     background-color: white;
+     margin-top: 20px;
+     padding-bottom: 10px;
+     display: flex;
+     align-items: center;
+     border-radius: 5px;
+     -moz-border-radius: 5px;
+     -webkit-border-radius: 5px;
+     -o-border-radius: 5px;
+
+
+ }
+
+#postskasten {
+    width: auto;
     margin-left:20px;
     margin-right:20px;
-    height: auto;
-    background-color: white;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
+    height:auto;
+    background-color:white;
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     -o-border-radius: 5px;
-
+    margin-top:10px;
 
 }
+
 
 #tabellename {
     display: flex;
@@ -407,8 +423,8 @@ body {
 }
 
 #postsprofilbild {
-    position: absolute;
-    margin-top: -65px;
+    margin-top: 10px;
+    float:left;
     margin-left:10px;
     height:50px;
     width:50px;
@@ -420,55 +436,98 @@ body {
 }
 
 #postsbenutzername {
-    position: absolute;
     color: black;
     font-family: "Helvetica Neue";
     font-size:130%;
     font-weight: 400;
     text-decoration: none;
     float:left;
-    margin-left: 80px;
-    margin-top: -50px;
+    margin-left: 15px;
+    margin-top: 5px;
 
 
 }
 #postszeit {
-    position: absolute;
+    position:absolute;
     color: black;
     font-family: "Helvetica Neue";
     font-size:80%;
     font-weight: 200;
     text-decoration: none;
     float:left;
-    margin-left: 80px;
-    margin-top: -25px;
-
-
+    margin-left: 75px;
+    margin-top: 10px;
 
 }
+#postszeitfriends {
+    color: black;
+    font-family: "Helvetica Neue";
+    font-size: 80%;
+    font-weight: 200;
+    text-decoration: none;
+    float: left;
+    margin-left: 17px;
+    margin-top: -10px;
+}
+#postszeitfriends1 {
+    color: black;
+    font-family: "Helvetica Neue";
+    font-size: 80%;
+    font-weight: 200;
+    text-decoration: none;
+    float: left;
+    margin-left:-60px;
+    margin-top: 10px;
+}
+
 
 #poststext {
-    position: absolute;
     color: black;
     font-family: "Helvetica Neue";
     font-size:120%;
     font-weight: 300;
     text-decoration: none;
+    margin-left:75px;
+    margin-right:10px;
+    margin-top:15px;
+    padding-bottom:15px;
 
-    margin-top: 20px;
-    margin-right:40px;
-    margin-left:80px;
-    padding-bottom:10px;
+
+}
+#poststextfriends {
+    color: black;
+    font-family: "Helvetica Neue";
+    font-size:120%;
+    font-weight: 300;
+    text-decoration: none;
+    margin-left:75px;
+    margin-right:10px;
+    margin-top:-5px;
+    padding-bottom:15px;
+
 
 }
 
-
 #postsbild {
+display:flex;
+    justify-content: center;
+   margin-left:auto;
+    margin-right:auto;
+    padding-bottom:20px;
+    margin-bottom: 15px;
+    margin-top: 20px;
+    height:200px;
 
-    margin-left: 80px;
-    margin-bottom: 20px;
-    margin-top: 50px;
-    height:100px;
+}
+#postsbildfriends {
+    display:flex;
+    justify-content: center;
+    margin-left:auto;
+    margin-right:auto;
+    padding-bottom:20px;
+    margin-bottom: 15px;
+    margin-top: 20px;
+    height:200px;
 
 }
 
@@ -480,7 +539,7 @@ body {
     float:left;
     margin-left:-15px;
     margin-right:8px;
-    margin-top:3px;
+    margin-top:15px;
     margin-bottom:4px;
     border-radius: 10px;
     -moz-border-radius: 10px;
@@ -686,30 +745,31 @@ body {
     color: white;
 }
 
-.ueberschrift1 {
+.ueberschrift11 {
 
-    position: absolute;
+    display:flex;
+    justify-content:center;
+    margin-left:auto;
+    margin-right:auto;
     color: white;
-    text-align: center;
     font-family: "Helvetica Neue";
     font-weight: 300;
     font-size: 110%;
-    justify-content: center;
-    margin-top:30px;
-    margin-left: 20px;
-    margin-right:20px;
+    padding-top:30px;
+
 
 
 }
 
-
 #buttonfriendsneu {
-position:absolute;
+    display:flex;
+    justify-content:center;
+    margin-left:auto;
+    margin-right:auto;
     width:80px;
     height:60px;
-    margin-top:60px;
+    margin-top:15px;
     background-color: white;
-    margin-left:27%;
     border-radius: 15px;
     -moz-border-radius: 15px;
     -webkit-border-radius: 15px;
@@ -731,26 +791,28 @@ position:absolute;
 
 }
 .ueberschrift21 {
-    position: absolute;
-    float:left;
+    display:flex;
+    justify-content:center;
+    margin-left:auto;
+    margin-right:auto;
     color: white;
     font-family: "Helvetica Neue";
-    font-weight:300;
+    font-weight: 300;
     font-size: 110%;
-    margin-top:145px;
-    margin-left: 20px;
-    margin-right:20px;
+    margin-top:30px;
 
 
 }
 
 #buttonpostsneu {
-    position:absolute;
+    display:flex;
+    justify-content:center;
+    margin-left:auto;
+    margin-right:auto;
     width:80px;
     height:60px;
-    margin-top:190px;
+    margin-top:20px;
     background-color: white;
-    margin-left:27%;
     border-radius: 15px;
     -moz-border-radius: 15px;
     -webkit-border-radius: 15px;
@@ -819,6 +881,7 @@ position:absolute;
     font-weight:300;
     float: left;
     margin-left: 30px;
+    margin-top:10px;
 
 
 
@@ -1051,7 +1114,7 @@ position:absolute;
     align-items: center;
     justify-content: center;
     position:absolute;
-    width: 150px;
+    width: 180px;
     height:35px;
     margin-top:700px;
     margin-left:20px;
@@ -1150,6 +1213,18 @@ position:absolute;
     font-weight: 200;
     text-align: center;
 
+
+}
+#postnotpostbild {
+    display:flex;
+    justify-content:center;
+    margin-left:auto;
+    margin-right:auto;
+    height:200px;
+    padding-top:10px;
+    padding-bottom:10px;
+    font-weight: 200;
+    text-align: center;
 
 }
 
@@ -1266,5 +1341,181 @@ position: absolute;
  margin-bottom:-15px;
 
 
+
+}
+
+/* login*/
+
+#ueberschriftlogin {
+
+    font-family: "Helvetica Neue";
+    position: absolute;
+    font-size: 500%;
+    color: white;
+    font-weight: 100;
+
+}
+
+
+
+#headerlogin {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    height:130px;
+    background-color: #2C2C2C;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -o-border-radius: 100px;
+
+}
+
+#unterueberschriftlogin {
+    display:flex;
+    justify-content:center;
+    font-family: "Helvetica Neue";
+    color: white;
+    font-size: 190%;
+    font-weight: 200;
+    margin-top:30px;
+
+
+
+}
+
+
+.beschriftungbenutzername {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: "Helvetica Neue";
+    color: white;
+    font-size: 120%;
+    font-weight: 200;
+    margin-top: 50px;
+
+}
+
+.beschriftungpasswort {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: "Helvetica Neue";
+    color: white;
+    font-size: 120%;
+    font-weight: 200;
+    margin-top: 10px;
+
+}
+
+.beschriftung2 {
+    display:flex;
+    justify-content:center;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:10px;
+    font-family: "Helvetica Neue";
+    font-size: 90%;
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -o-border-radius: 100px;
+
+
+}
+
+
+/* Registrieren */
+
+#unterueberschriftregistrieren {
+    display:flex;
+    justify-content:center;
+    font-family: "Helvetica Neue";
+    color: white;
+    font-size: 190%;
+    font-weight: 200;
+    margin-top:50px;
+    margin-bottom:-85px;
+
+
+
+}
+
+
+.beschriftung {
+    display:flex;
+    justify-content:center;
+    color: white;
+    font-family: "Helvetica Neue";
+    color: white;
+    font-size: 120%;
+    font-weight: 200;
+ position:relative;
+    margin-top:20px;
+
+}
+
+.beschriftung3 {
+    display:flex;
+    justify-content:center;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:15px;
+    font-family: "Helvetica Neue";
+    font-size: 90%;
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -o-border-radius: 100px;
+
+}
+
+
+#loginbutton {
+    display:flex;
+    justify-content:center;
+    margin-left:auto;
+    margin-right:auto;
+    font-family: "Helvetica Neue";
+    font-weight: 200;
+    font-size: 130%;
+    background-color: white;
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -o-border-radius: 100px;
+    margin-top:15px;
+
+
+}
+#loginbutton:hover {
+    background-color:#7B0202;
+    color:white;
+}
+
+#meldung {
+    color: white;
+    margin-top:5px;
+    background: #9999;
+}
+
+#main2 {
+    width: 350px;
+    height: 450px;
+    background-color: #2C2C2C;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -o-border-radius: 100px;
 
 }
