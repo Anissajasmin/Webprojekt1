@@ -239,13 +239,35 @@
                                     $show_name = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE beitrag_user_id= $userid ORDER BY zeitstempel DESC");
                                     $show_name->execute();
                                     $row5 = $show_name->fetch();
+                                    $keinbeitrag =$show_name->rowCount();
+
+                                    if (!$keinbeitrag > 0 ){
+                                        $kein_name = $pdo->prepare("SELECT * FROM login WHERE login_id= $userid");
+                                        $kein_name->execute();
+                                        $row6 = $kein_name->fetch();
                                     ?>
-                                   <div id="friendsbeiträge">
+                                    <div id="friendsbeiträge">
                                        <?php
                                        echo "<div id=\"tabelleposts5\">";
-                                       echo "Alle Beiträge von "; echo $row5['benutzername']; echo ":";echo "</div>";?>
+                                       echo $row6['benutzername']; echo " hat noch keine Beiträge";echo "</div>";?>
                                    </div>
                                    <br>
+                                   <?php
+                                    }else {
+
+                                        ?>
+                                        <div id="friendsbeiträge">
+                                            <?php
+                                            echo "<div id=\"tabelleposts5\">";
+                                            echo "Alle Beiträge von ";
+                                            echo $row5['benutzername'];
+                                            echo ":";
+                                            echo "</div>"; ?>
+                                        </div>
+                                        <br>
+                                        <?php
+                                    }
+ ?>
                                    <?php
 
                                     $show_posts = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE beitrag_user_id = $userid AND posts IS NOT NULL OR beitrag_user_id = $userid AND bildtext IS NOT NULL ORDER BY zeitstempel DESC");
