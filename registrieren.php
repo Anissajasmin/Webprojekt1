@@ -7,11 +7,8 @@
     <link href="bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="bootstrap.min.js"></script>
     <script src="jquery-3.2.1.slim.min.js"></script>
-
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
@@ -21,19 +18,15 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
             integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
             crossorigin="anonymous"></script>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 
-
 <body>
-
 <div class="container">
     <div class="row">
         <div class="col-xs-3">
         </div>
-
         <div class="col-xs-6"
         <div id="headerlogin">
             <h1 id="ueberschriftlogin"> TOUCH </h1>
@@ -50,38 +43,30 @@
         <div class="col-xs-3">
         </div>
 
-
         <div class="col-xs-6"
-        <div id="main2">
-
-            <h2 id="unterueberschriftregistrieren"> Registrierung</h2>
-
-            <form action="" method="post">
-
-                <br>
-                <br>
-                <br>
-                <br>
-
-                <p class="beschriftung"> Benutzername: </p>
+         <div id="main2">
+             <h2 id="unterueberschriftregistrieren"> Registrierung</h2>
+                    <form action="" method="post">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <p class="beschriftung"> Benutzername: </p>
                 <input class="beschriftung3" type="text" size="25" maxlength="250" name="benutzername" placeholder= "Benutzername" value = "">
 
-
-                <p class="beschriftung"> HdM E-Mail: </p>
+                        <p class="beschriftung"> HdM E-Mail: </p>
                 <input class= "beschriftung3" type="email" size="25" maxlength="250" name="hdm_mail" placeholder= "Hdm E-Mail" value = "">
 
-
-                <p class="beschriftung"> Passwort: </p>
+                        <p class="beschriftung"> Passwort: </p>
                 <input class= "beschriftung3" type="password" size="25"  maxlength="250" name="passwort" placeholder = "Passwort" value = "">
-                <br>
+                        <br>
 
                 <input type="hidden" name="ueberpruefen" value="1">
                 <input id=loginbutton type="submit" name = "registrieren" value="Registrieren">
+                     </form>
 
-            </form>
-
+         </div>
         </div>
-    </div>
 
     <?php
     session_start();
@@ -189,7 +174,7 @@
             echo '<div id="meldung"> <br><br>Bitte fülle alle Felder aus<br> </div>';
         }
     }
-
     ?>
+
 </body>
 </html>

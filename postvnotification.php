@@ -17,11 +17,8 @@
     ?>
 
 </head>
-
 <body>
-
 <div id="hauptseite">
-
     <div id="main">
         <div class="container">
             <div class="row">
@@ -52,8 +49,8 @@
                                 <?php
                                 echo "</span>";
                                 echo "</div>";
-                            }
-                        }else{
+                                }
+                            }else{
                             $row = $checkfollow->fetch();
                             $userid = $row['user_id'];
                             $my_id = $row ['follow_id'];
@@ -82,36 +79,32 @@
                 <div class="col-sm-6">
                     <div id="background">
                         <?php
-
                         $user_id = $_GET['user_id'];
                         $n_id = $_GET['n_id'];
                         $status1 = 'unread';
                         $status = 'read';
-
                         $searchnotification = $pdo->prepare("SELECT * FROM notification WHERE notification_id ='" . $n_id . "' AND status='" . $status1 . "'");
                         $match = $searchnotification->execute();
+
                         if ($match > 0) {
-
-
                             $updatenotification = $pdo->prepare("UPDATE notification SET status = 'read' WHERE notification_id= '" .$n_id . "'");
                             $updatenotification->bindParam(':notification_id', $n_id);
                             $updatenotification->execute();
-
                             $notification = $pdo->prepare("SELECT * FROM vlj_notification WHERE notification_id = $n_id");
                             $notification->execute();
-                            while ($row = $notification->fetch()) {
 
+                            while ($row = $notification->fetch()) {
                                 $post = $row['posts'];
                                 $postbild = $row ['bildtext'];
                                 $benutzername = $row['benutzername'];
                                 ?>
 
-
-
-
-                                <p id="postnotname">  <?php echo $benutzername;
+                                <p id="postnotname">
+                                    <?php
+                                    echo $benutzername;
                                     echo '&nbsp';
-                                    echo "hat etwas Neues gepostet:"; ?>
+                                    echo "hat etwas Neues gepostet:";
+                                    ?>
                                 </p>
                                 <?php echo '&nbsp'; ?>
                                 <div id="postnotkasten2">
@@ -121,7 +114,6 @@
                                 </div>
                                 <a style="text-decoration:none; color:white;" href="hauptseite.php?user_id=<?php echo $user_id; ?>">
                                     <div id="postnotbutton">Zurück zum Feed
-
                                     </div>
                                 </a>
                                 <?php
@@ -132,16 +124,11 @@
                         <br>
                         <br>
 
-
                     </div>
                 </div>
-
-
                 <div class="col-sm-3">
                     <div id="profile">
-                        <h2 class="ueberschriftenmain"> Profile
-                        </h2>
-
+                        <h2 class="ueberschriftenmain"> Profile </h2>
                         <div class="name">
                             Benutzername:
                             <?php
@@ -150,15 +137,12 @@
                         </div>
                         <br>
                         <br>
-
                         <div class= "adresseneu">
                             E-Mail Adresse:
                             <br>
                             <?php
                             echo $title['hdm_mail'];
                             ?>
-
-
                         </div>
                     </div>
                 </div>

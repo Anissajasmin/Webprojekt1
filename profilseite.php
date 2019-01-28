@@ -1,4 +1,4 @@
-<!<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -16,9 +16,7 @@ if (!isset($_SESSION['login-id'])) {
 }else {
 include("datenbankpasswort.php");
 include_once "header.php";
-
 ?>
-
 
 <body>
 <div id="main">
@@ -45,9 +43,7 @@ include_once "header.php";
                             echo "<span>";
                             ?>
                             <div id="kasten">
-                                <a href="profilseite.php?user_id=<?php echo $allusers ?>"><img
-                                            id="recommendationprofilbild"
-                                            src="<?php echo $row1['profilbildtext'] ?>"></a>
+                                <a href="profilseite.php?user_id=<?php echo $allusers ?>"><img id="recommendationprofilbild" src="<?php echo $row1['profilbildtext'] ?>"></a>
                                 <a style="text-decoration:none;" href="profilseite.php?user_id=<?php echo $allusers ?>">
                                     <div id="kastentext"><?php echo $row1['benutzername'] ?></div>
                                 </a>
@@ -55,8 +51,8 @@ include_once "header.php";
                             <?php
                             echo "</span>";
                             echo "</div>";
-                        }
-                    } else {
+                            }
+                            } else {
                         $row = $checkfollow->fetch();
                         $userid = $row['user_id'];
                         $my_id = $row ['follow_id'];
@@ -69,9 +65,7 @@ include_once "header.php";
                             echo "<span>";
                             ?>
                             <div id="kasten">
-                                <a href="profilseite.php?user_id=<?php echo $users ?>"><img
-                                            id="recommendationprofilbild"
-                                            src="<?php echo $row3['profilbildtext'] ?>"></a>
+                                <a href="profilseite.php?user_id=<?php echo $users ?>"><img id="recommendationprofilbild" src="<?php echo $row3['profilbildtext'] ?>"></a>
                                 <a style="text-decoration:none;" href="profilseite.php?user_id=<?php echo $users ?>">
                                     <div id="kastentext"><?php echo $row3['benutzername'] ?></div>
                                 </a>
@@ -80,19 +74,17 @@ include_once "header.php";
                             <?php
                             echo "</span>";
                             echo "</div>";
-                        }
-                    }
-                    ?>
+                                 }
+                             }
+                            ?>
                 </div>
             </div>
 
 
             <div class="col-sm-6">
                 <div id="backgroundprofilseite">
-
-                    <?php
-
-                    if ($user_id == $my_id) {
+                        <?php
+                         if ($user_id == $my_id) {
                         ?>
                         <div id="ueberschrift">
                             Mein Profil
@@ -103,24 +95,19 @@ include_once "header.php";
                             Benutzerprofil
                         </div>
                         <?php
-                    }
-                    ?>
-
+                         }
+                     ?>
 
                     <div>
-
                         <?php
                         //Profilbild soll hier angezeigt werden
-
                         $stmt = $pdo->prepare("SELECT * FROM profilbildlogin WHERE profil_user_id = $user_id ");
-
                         $result = $stmt->execute();
                         while ($row = $stmt->fetch()) {
                             ?>
                             <a><img id="profilbild1" src="<?php echo $row['profilbildtext'] ?>"></a>
                             <?php
-                        }
-
+                             }
                         ?>
                     </div>
 
@@ -131,33 +118,27 @@ include_once "header.php";
                     </div>
 
                     <div id="benutzernamemail">
-
                         <?php
                         echo $title['hdm_mail'];
                         ?>
-
                     </div>
                     <br>
                     <?php
                     $follow_id = $_SESSION['login-id'];
                     // Ist es ein fremdes Profil?
                     if ($user_id != $_SESSION['login-id']) {
-
                         // Wird dem Benutzer bereits gefolgt?
                         $checkfollow = $pdo->prepare("SELECT follow_id FROM follow WHERE user_id='" . $user_id . "' AND follow_id='" . $follow_id . "'");
                         $checkfollow->execute();
-
                         $notfollowing = $checkfollow->rowCount();
 
                         if (!$notfollowing > 0) {
                             ?>
                             <form action="profilseite.php?user_id=<?php echo $user_id ?>" method="post">
                                 <input class="followbutton" type="submit" name="follow" value="Folgen">
-
                             </form>
 
                             <?php
-
                             if (isset($_POST["follow"])) {
                                 $follow = $pdo->prepare('INSERT INTO follow (follow_id, user_id) VALUES (:follow_id, :user_id)');
                                 $follow->bindParam(':follow_id,', $follow_id);
@@ -165,35 +146,25 @@ include_once "header.php";
                                 $followergebnis = $follow->execute(array(':follow_id' => $follow_id, ':user_id' => $user_id));
 
                                 if ($followergebnis) {
-
                                     echo '<script>window.location.href="profilseite.php?user_id=' . $user_id . '"</script>';
                                 }
                             }
 
-
                         } else {
                             //Unfollow
                             ?>
-
                             <form action="profilseite.php?user_id=<?php echo $user_id ?>" method="post">
                                 <input class="followbutton" type="submit" name="unfollow" value="Entfolgen">
                             </form>
-
                             <?php
                             if (isset($_POST['unfollow'])) {
                                 $unfollow = $pdo->prepare("DELETE FROM follow WHERE user_id='" . $user_id . "' AND follow_id='" . $follow_id . "'");
                                 if ($unfollow->execute()) {
                                     echo '<script>window.location.href="profilseite.php?user_id=' . $user_id . '"</script>';
                                 }
-
                             }
-
-
                         }
-
-
                     }
-
                     ?>
 
                     <br>
@@ -208,27 +179,19 @@ include_once "header.php";
                         while ($row8 = $statement->fetch()) {
                             ?>
 
-
                             <table id="profildatenneu">
-
                                 <tr>
                                     <td class="benennung">Vorname: <?php echo $row8['vorname']; ?></td>
                                 </tr>
-
-
                                 <tr>
                                     <td class="benennung">Nachname: <?php echo $row8['nachname']; ?></td>
                                 </tr>
-
                                 <tr>
                                     <td class="benennung">Studiengang: <?php echo $row8['studiengang']; ?></td>
                                 </tr>
-
                                 <tr>
                                     <td class="benennung">Semester: <?php echo $row8['semester']; ?> </td>
-
                                 </tr>
-
                             </table>
                             <?php
                         }
@@ -248,7 +211,6 @@ include_once "header.php";
                     <?php
                     if ($user_id != $my_id) {
                         ?>
-
                         <p id="ueberschriftneuneufreunde"> Anzahl Freunde
                         <div id="buttonfriendsneuneu">
                             <div class="anzahlneuneu">
@@ -280,29 +242,20 @@ include_once "header.php";
                     ?>
                     <br>
                     <br>
-
-
                     <a style="" href="settings.php?user_id=<?php echo $user_id; ?>">
                         <?php
                         if ($my_id == $user_id) {
-
                             ?>
 
                             <div class="neubuttonsettings">Einstellungen</div>
-
                             <?php
                         }
                         ?>
                     </a>
-
                     <br>
-
                     <hr class="strich3">
 
-
-
-
-                        <?php
+                    <?php
                         //Posts des Nutzers der Profilseite anzeigen
                         $statement = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE beitrag_user_id = $user_id AND posts IS NOT NULL OR beitrag_user_id = $user_id AND bildtext IS NOT NULL ORDER BY zeitstempel DESC");
                         $postsergebnis = $statement->execute();
@@ -311,11 +264,8 @@ include_once "header.php";
                             $show_profilepic = $pdo->prepare("SELECT * FROM profilbildlogin WHERE login_id = $user_id");
                             $show_profilepic->execute();
                             $row4 = $show_profilepic->fetch();
-                            ?>
 
-
-                    <?php
-                    if(empty($row['bildtext'])) {
+                        if(empty($row['bildtext'])) {
                         ?>
                         <div id="postskasten">
                             <a><img id="postsprofilbild" src="<?php echo $row4['profilbildtext'] ?>"></a>
@@ -326,9 +276,8 @@ include_once "header.php";
                         <p id="poststext"> <?php echo $row['posts'] ?></p>
                         </div>
 
-
                         <?php
-                    }else {
+                             }else {
                         ?>
                         <div id="postskasten">
                             <a><img id="postsprofilbild" src="<?php echo $row4['profilbildtext'] ?>"></a>
@@ -338,21 +287,14 @@ include_once "header.php";
                             <br>
                         <img id="postsbild" src="<?php echo $row['bildtext'] ?>">
                         </div>
+                            <?php
+                                     }
+                                }
+                            ?>
 
-                        <?php
-                    }
-
-                        }
-
-                        ?>
-
-
-
-
-<br>
+                    <br>
                 </div>
             </div>
-
 
             <div class="col-sm-3">
                 <div id="anzeigederbeiträgeundfreunde">
@@ -380,7 +322,6 @@ include_once "header.php";
                             </div>
                         </h2>
                     </h3>
-
                 </div>
             </div>
         </div>
@@ -391,6 +332,7 @@ include_once "header.php";
 
 <br>
 <br>
+
 <?php
 }
 ?>

@@ -1,3 +1,4 @@
+/* Hauptseite*/
 body {
     background-image: url(hintergrundbild.jpg);
     background-repeat: no-repeat;
@@ -5,9 +6,7 @@ body {
     background-position: center;
     background-attachment: fixed;
     text-align: center;
-
 }
-
 
 #main {
     display: flex;
@@ -15,7 +14,6 @@ body {
     flex-wrap: nowrap;
     justify-content: space-evenly;
     align-items: flex-start;
-
 }
 
 #background {
@@ -29,36 +27,31 @@ body {
     -moz-border-radius: 15px;
     -webkit-border-radius: 15px;
     -o-border-radius: 15px;
-
 }
+
 .bg-dunkel{
     background-color: #888483;
 }
-
 
 #buttonfriends {
     display:flex;
     align-items: center;
     justify-content: center;
-    position:absolute;
+    float: right;
     width: 150px;
     height:35px;
     margin-top: 30px;
-    margin-left:280px;
+    margin-right:40px;
     background-color:white;
     color: black;
     font-family: "Helvetica Neue";
     font-size: 130%;
     font-weight:300;
-    float: left;
-
     border-radius: 70px;
     -moz-border-radius: 70px;
     -webkit-border-radius: 70px;
     -o-border-radius: 70px;
-
 }
-
 
 #buttonfriends:hover {
     background-color:#7B0202;
@@ -79,8 +72,6 @@ body {
     position: absolute;
     margin-left: 15px;
     margin-top:15px;
-
-
 }
 
 #buttonstudents {
@@ -92,25 +83,23 @@ body {
     height:35px;
     margin-top: 30px;
     float: left;
-    margin-left: 70px;
+    margin-left: 40px;
     background-color:white;
     color: black;
     font-family: "Helvetica Neue";
     font-size: 130%;
     font-weight:300;
     float: right;
-
     border-radius: 70px;
     -moz-border-radius: 70px;
     -webkit-border-radius: 70px;
     -o-border-radius: 70px;
-
 }
+
 #buttonstudents:hover {
     background-color:#7B0202;
     color:white;
 }
-
 
 #neuerbeitrag {
     color: white;
@@ -122,6 +111,7 @@ body {
     margin-left: 15px;
     margin-top:-5px;
 }
+
 #text1 {
     position:absolute;
     color: white;
@@ -131,10 +121,7 @@ body {
     float:left;
     margin-left:15px;
     margin-top:5px;
-
-
 }
-
 
 #post {
     height: 100px;
@@ -146,10 +133,7 @@ body {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     -o-border-radius: 5px;
-
 }
-
-
 
 #button2 {
     position: absolute;
@@ -162,8 +146,8 @@ body {
     font-family: "Helvetica Neue";
     font-size: 75%;
     font-weight:400;
-
 }
+
 #button3 {
     position: absolute;
     float:left;
@@ -175,9 +159,7 @@ body {
     font-size: 75%;
     font-weight:400;
     justify-content: center;
-
 }
-
 
 #text2 {
     color: white;
@@ -198,7 +180,6 @@ body {
     font-family: "Helvetica Neue";
     font-size: 80%;
     font-weight:300;
-
 }
 
 #button4 {
@@ -212,8 +193,8 @@ body {
     font-family: "Helvetica Neue";
     font-size: 75%;
     font-weight:400;
-
 }
+
 #button5 {
     position: absolute;
     float:left;
@@ -225,8 +206,8 @@ body {
     font-size: 75%;
     font-weight:400;
     justify-content: center;
-
 }
+
 #dateiauswahlneuneu {
     float:left;
     margin-left: -100px;
@@ -234,11 +215,9 @@ body {
     font-family: "Helvetica Neue";
     font-size: 80%;
     font-weight:300;
-
 }
 
 #button4neuneu {
-
     float:left;
     width: 80px;
     height:20px;
@@ -248,10 +227,9 @@ body {
     font-family: "Helvetica Neue";
     font-size: 75%;
     font-weight:400;
-
 }
-#button5neuneu {
 
+#button5neuneu {
     float:left;
     width: 80px;
     height:20px;
@@ -261,10 +239,7 @@ body {
     font-size: 75%;
     font-weight:400;
     justify-content: center;
-
 }
-
-
 
 #recommendation {
     height: 300px;
@@ -276,9 +251,7 @@ body {
     -moz-border-radius: 15px;
     -webkit-border-radius: 15px;
     -o-border-radius: 15px;
-
 }
-
 
 #profile {
     height: 200px;
@@ -290,9 +263,7 @@ body {
     -moz-border-radius: 15px;
     -webkit-border-radius: 15px;
     -o-border-radius: 15px;
-
 }
-
 
 .ueberschriftenmain {
     position: absolute;
@@ -304,7 +275,6 @@ body {
     justify-content: center;
     margin-top:20px;
     margin-left: 20px;
-
 }
 
 .name{
@@ -325,7 +295,6 @@ body {
     font-weight:300;
 }
 
-
 .tabelle1 {
     color: black;
     font-family: "Helvetica Neue";
@@ -343,8 +312,6 @@ body {
     -moz-border-radius: 15px;
     -webkit-border-radius: 15px;
     -o-border-radius: 15px;
-
-
 }
 
 #tabelleposts {
@@ -361,8 +328,6 @@ body {
      -moz-border-radius: 5px;
      -webkit-border-radius: 5px;
      -o-border-radius: 5px;
-
-
  }
 
 #postskasten {
@@ -376,9 +341,7 @@ body {
     -webkit-border-radius: 5px;
     -o-border-radius: 5px;
     margin-top:10px;
-
 }
-
 
 #tabellename {
     display: flex;
@@ -398,8 +361,6 @@ body {
     -o-border-radius: 40px;
 }
 
-
-
 #tabelleemail {
     display: flex;
     align-items: center;
@@ -417,9 +378,6 @@ body {
     -moz-border-radius: 40px;
     -webkit-border-radius: 40px;
     -o-border-radius: 40px;
-
-
-
 }
 
 #postsprofilbild {
@@ -432,7 +390,6 @@ body {
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -o-border-radius: 10px;
-
 }
 
 #postsbenutzername {
@@ -444,9 +401,8 @@ body {
     float:left;
     margin-left: 15px;
     margin-top: 5px;
-
-
 }
+
 #postszeit {
     position:absolute;
     color: black;
@@ -457,8 +413,8 @@ body {
     float:left;
     margin-left: 75px;
     margin-top: 10px;
-
 }
+
 #postszeitfriends {
     color: black;
     font-family: "Helvetica Neue";
@@ -469,6 +425,7 @@ body {
     margin-left: 17px;
     margin-top: -10px;
 }
+
 #postszeitfriends1 {
     color: black;
     font-family: "Helvetica Neue";
@@ -479,8 +436,6 @@ body {
     margin-left:-60px;
     margin-top: 10px;
 }
-
-
 #poststext {
     color: black;
     font-family: "Helvetica Neue";
@@ -491,9 +446,8 @@ body {
     margin-right:10px;
     margin-top:15px;
     padding-bottom:15px;
-
-
 }
+
 #poststextfriends {
     color: black;
     font-family: "Helvetica Neue";
@@ -504,8 +458,6 @@ body {
     margin-right:10px;
     margin-top:-5px;
     padding-bottom:15px;
-
-
 }
 
 #postsbild {
@@ -517,8 +469,8 @@ display:flex;
     margin-bottom: 15px;
     margin-top: 20px;
     height:200px;
-
 }
+
 #postsbildfriends {
     display:flex;
     justify-content: center;
@@ -528,12 +480,9 @@ display:flex;
     margin-bottom: 15px;
     margin-top: 20px;
     height:200px;
-
 }
 
-
 #recommendationprofilbild {
-
     height:50px;
     width:50px;
     float:left;
@@ -545,12 +494,9 @@ display:flex;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -o-border-radius: 10px;
-
 }
 
-
-/*Css Profilseite */
-
+/*Profilseite */
 
 .zumeintragen{
     position:absolute;
@@ -558,9 +504,6 @@ display:flex;
     margin-top: 40px;
     margin-left:30px;
 }
-
-
-
 
 #recommendationsprofilseite {
     height: 300px;
@@ -572,7 +515,6 @@ display:flex;
     -moz-border-radius: 15px;
     -webkit-border-radius: 15px;
     -o-border-radius: 15px;
-
 }
 
 #backgroundprofilseite {
@@ -586,12 +528,11 @@ display:flex;
     -moz-border-radius: 15px;
     -webkit-border-radius: 15px;
     -o-border-radius: 15px;
-
 }
+
 .bg-dunkel{
     background-color: #888483;
 }
-
 
 #anzeigederbeiträgeundfreunde {
     height: 300px;
@@ -603,7 +544,6 @@ display:flex;
     -moz-border-radius: 15px;
     -webkit-border-radius: 15px;
     -o-border-radius: 15px;
-
 }
 
 #profilbildanzeige {
@@ -637,7 +577,6 @@ display:flex;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -o-border-radius: 10px;
-
 }
 
 #benutzernameprofil {
@@ -662,8 +601,6 @@ display:flex;
     -o-border-radius: 15px;
 }
 
-
-
 #benutzernamemail {
     position: absolute;
     display: flex;
@@ -685,10 +622,7 @@ display:flex;
     -webkit-border-radius: 15px;
     -o-border-radius: 15px;
 
-
-
 }
-
 
 #profildatenneu {
     position:absolute;
@@ -702,8 +636,6 @@ display:flex;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -o-border-radius: 10px;
-
-
 }
 
 .benennung {
@@ -713,7 +645,6 @@ display:flex;
     margin-top: 5px;
     margin-left: 10px;
 }
-
 
 .strich1 {
     margin-top:330px;
@@ -737,7 +668,6 @@ display:flex;
     -moz-border-radius: 70px;
     -webkit-border-radius: 70px;
     -o-border-radius: 70px;
-
 }
 
 .neubuttonsettings:hover {
@@ -746,7 +676,6 @@ display:flex;
 }
 
 .ueberschrift11 {
-
     display:flex;
     justify-content:center;
     margin-left:auto;
@@ -756,9 +685,6 @@ display:flex;
     font-weight: 300;
     font-size: 110%;
     padding-top:30px;
-
-
-
 }
 
 #buttonfriendsneu {
@@ -774,7 +700,6 @@ display:flex;
     -moz-border-radius: 15px;
     -webkit-border-radius: 15px;
     -o-border-radius: 15px;
-
 }
 
 .ueberschrift2 {
@@ -787,9 +712,8 @@ display:flex;
     margin-top:145px;
     margin-left: -5px;
     margin-right:20px;
-
-
 }
+
 .ueberschrift21 {
     display:flex;
     justify-content:center;
@@ -800,8 +724,6 @@ display:flex;
     font-weight: 300;
     font-size: 110%;
     margin-top:30px;
-
-
 }
 
 #buttonpostsneu {
@@ -822,13 +744,11 @@ display:flex;
 .strich3 {
     margin-top: 180px;
     background-color:white;
-
 }
 
 .strich4 {
     margin-top: 80px;
     background-color:white;
-
 }
 
 .anzahl {
@@ -837,14 +757,9 @@ display:flex;
     font-size:90%;
     font-weight:300;
     margin-top:13px;
-
-
-
 }
 
-
-/* meine freunde */
-
+/* Meine Freunde */
 
 #ueberschriftmeinefreunde {
     position: absolute;
@@ -871,7 +786,6 @@ display:flex;
     -moz-border-radius: 15px;
     -webkit-border-radius: 15px;
     -o-border-radius: 15px;
-
 }
 
 #kastentext {
@@ -882,9 +796,6 @@ display:flex;
     float: left;
     margin-left: 30px;
     margin-top:10px;
-
-
-
 }
 
 #meinefreundeprofilbild {
@@ -895,7 +806,6 @@ display:flex;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -o-border-radius: 10px;
-
 }
 
 #keinefreunde {
@@ -904,10 +814,7 @@ display:flex;
     font-size: 120%;
     font-weight:300;
     text-align:center;
-
-
 }
-
 
 /* Einstellungen*/
 
@@ -915,8 +822,6 @@ display:flex;
     margin-top:190px;
     background-color: white;
 }
-
-
 
 .benennung1 {
     font-family: "Helvetica Neue";
@@ -934,7 +839,6 @@ display:flex;
     font-family: "Helvetica Neue";
     font-size: 80%;
     font-weight:300;
-
 }
 
 #button4neu {
@@ -948,9 +852,7 @@ display:flex;
     font-family: "Helvetica Neue";
     font-size: 75%;
     font-weight:400;
-
 }
-
 
 #button5neu {
     position: absolute;
@@ -963,8 +865,8 @@ display:flex;
     font-size: 75%;
     font-weight:400;
     justify-content: center;
-
 }
+
 #ueberschriftneu {
     position: absolute;
     color: white;
@@ -986,9 +888,7 @@ display:flex;
     margin-top:5px;
 }
 
-
 #profildatenneu1 {
-
     position:absolute;
     margin-top: 40px;
     margin-left: 20px;
@@ -999,16 +899,12 @@ display:flex;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -o-border-radius: 10px;
-
-
 }
+
 .eingabefeld {
     margin-right:10px;
     margin-top:7px;
     margin-bottom: 5px ;
-
-
-
 }
 
 .benennung {
@@ -1066,7 +962,6 @@ display:flex;
     font-family: "Helvetica Neue";
     font-size: 110%;
     font-weight:400;
-
 }
 
 .buttonsavesettings :hover {
@@ -1094,7 +989,6 @@ display:flex;
 
 
 #backgroundneu {
-
     position: relative;
     height: 800px;
     background-color: #888483;
@@ -1105,8 +999,6 @@ display:flex;
     -moz-border-radius: 15px;
     -webkit-border-radius: 15px;
     -o-border-radius: 15px;
-
-
 }
 
 .neubuttonsave {
@@ -1127,13 +1019,13 @@ display:flex;
     -moz-border-radius: 70px;
     -webkit-border-radius: 70px;
     -o-border-radius: 70px;
-
 }
 
 .neubuttonsave:hover {
     background-color:#7B0202;
     color: white;
 }
+
 #kastentext {
     color:black;
     font-family: "Helvetica Neue";
@@ -1141,11 +1033,7 @@ display:flex;
     font-weight:300;
     float: left;
     margin-left: 10px;
-
-
-
 }
-
 
 /* Follow */
 
@@ -1167,18 +1055,14 @@ display:flex;
     -moz-border-radius: 70px;
     -webkit-border-radius: 70px;
     -o-border-radius: 70px;
-
-
 }
+
 .followbutton:hover {
     background-color:#7B0202;
     color: white;
 }
 
-
 /* Notification */
-
-
 
 #postnotname {
     color:white;
@@ -1187,9 +1071,7 @@ display:flex;
     padding-top:35px;
     font-weight: 200;
     text-align: center;
-
 }
-
 
 #postnotkasten2 {
     height:auto;
@@ -1212,9 +1094,8 @@ display:flex;
     padding-bottom:10px;
     font-weight: 200;
     text-align: center;
-
-
 }
+
 #postnotpostbild {
     display:flex;
     justify-content:center;
@@ -1225,14 +1106,12 @@ display:flex;
     padding-bottom:10px;
     font-weight: 200;
     text-align: center;
-
 }
 
 #not1 {
     text-align: center;
     font-family: "Helvetica Neue";
     font-weight: 300;
-
 }
 
 #postnotbutton {
@@ -1250,7 +1129,6 @@ display:flex;
     -moz-border-radius: 15px;
     -webkit-border-radius: 15px;
     -o-border-radius: 15px;
-
 }
 
 #postnotbutton:hover {
@@ -1258,11 +1136,7 @@ display:flex;
     color: white;
 }
 
-
-
-/* Anzahl Posts & Freunde fremdes profil*/
-
-
+/* Anzahl Posts & Freunde Fremdes Profil*/
 
 #ueberschriftneuneufreunde {
 position: absolute;
@@ -1272,8 +1146,6 @@ position: absolute;
     color:black;
     margin-left: 20px;
     margin-top: 150px;
-
-
 }
 
 #ueberschriftneuneubeiträge {
@@ -1284,7 +1156,6 @@ position: absolute;
     color:black;
     margin-left: 200px;
     margin-top:150px;
-
 }
 
 #buttonfriendsneuneu {
@@ -1294,12 +1165,10 @@ position: absolute;
     margin-top:180px;
     background-color: white;
     margin-left:43px;
-
     border-radius: 15px;
     -moz-border-radius: 15px;
     -webkit-border-radius: 15px;
     -o-border-radius: 15px;
-
 }
 
 #buttonbeiträgeneuneu {
@@ -1313,9 +1182,7 @@ position: absolute;
     -moz-border-radius: 15px;
     -webkit-border-radius: 15px;
     -o-border-radius: 15px;
-
 }
-
 
 .anzahlneuneu {
     text-align:center;
@@ -1323,13 +1190,9 @@ position: absolute;
     font-size:150%;
     font-weight:300;
     margin-top:2px;
-
-
-
-
 }
 
-/*friends*/
+/*Friends*/
 
 #friendsbeiträge {
     font-family: "Helvetica Neue";
@@ -1339,24 +1202,17 @@ position: absolute;
     color:white;
     margin-left:20px;
  margin-bottom:-15px;
-
-
-
 }
 
-/* login*/
+/* Login*/
 
 #ueberschriftlogin {
-
     font-family: "Helvetica Neue";
     position: absolute;
     font-size: 500%;
     color: white;
     font-weight: 100;
-
 }
-
-
 
 #headerlogin {
     display:flex;
@@ -1372,7 +1228,6 @@ position: absolute;
     -moz-border-radius: 100px;
     -webkit-border-radius: 100px;
     -o-border-radius: 100px;
-
 }
 
 #unterueberschriftlogin {
@@ -1383,11 +1238,7 @@ position: absolute;
     font-size: 190%;
     font-weight: 200;
     margin-top:30px;
-
-
-
 }
-
 
 .beschriftungbenutzername {
     display:flex;
@@ -1399,7 +1250,6 @@ position: absolute;
     font-size: 120%;
     font-weight: 200;
     margin-top: 50px;
-
 }
 
 .beschriftungpasswort {
@@ -1412,7 +1262,6 @@ position: absolute;
     font-size: 120%;
     font-weight: 200;
     margin-top: 10px;
-
 }
 
 .beschriftung2 {
@@ -1427,10 +1276,7 @@ position: absolute;
     -moz-border-radius: 100px;
     -webkit-border-radius: 100px;
     -o-border-radius: 100px;
-
-
 }
-
 
 /* Registrieren */
 
@@ -1443,11 +1289,7 @@ position: absolute;
     font-weight: 200;
     margin-top:50px;
     margin-bottom:-85px;
-
-
-
 }
-
 
 .beschriftung {
     display:flex;
@@ -1459,7 +1301,6 @@ position: absolute;
     font-weight: 200;
  position:relative;
     margin-top:20px;
-
 }
 
 .beschriftung3 {
@@ -1474,9 +1315,7 @@ position: absolute;
     -moz-border-radius: 100px;
     -webkit-border-radius: 100px;
     -o-border-radius: 100px;
-
 }
-
 
 #loginbutton {
     display:flex;
@@ -1491,10 +1330,8 @@ position: absolute;
     -moz-border-radius: 100px;
     -webkit-border-radius: 100px;
     -o-border-radius: 100px;
-
-
-
 }
+
 #loginbutton:hover {
     background-color:#7B0202;
     color:white;
@@ -1517,5 +1354,4 @@ position: absolute;
     -moz-border-radius: 100px;
     -webkit-border-radius: 100px;
     -o-border-radius: 100px;
-
 }

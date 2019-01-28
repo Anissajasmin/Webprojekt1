@@ -16,9 +16,7 @@ if (!isset($_SESSION['login-id'])) {
 }else {
 include("datenbankpasswort.php");
 include_once "header.php";
-
 ?>
-
 
 <body>
 <div id="main">
@@ -53,7 +51,7 @@ include_once "header.php";
                             echo "</span>";
                             echo "</div>";
                         }
-                    }else{
+                    } else{
                         $row = $checkfollow->fetch();
                         $userid = $row['user_id'];
                         $my_id = $row ['follow_id'];
@@ -68,7 +66,6 @@ include_once "header.php";
                             <div id="kasten">
                                 <a href="profilseite.php?user_id=<?php echo $users ?>"><img id="recommendationprofilbild" src="<?php echo $row3['profilbildtext'] ?>"></a>
                                 <a style="text-decoration:none;" href="profilseite.php?user_id=<?php echo $users ?>"><div id="kastentext"><?php echo $row3['benutzername'] ?></div></a>
-
                             </div>
                             <?php
                             echo "</span>";
@@ -89,25 +86,21 @@ include_once "header.php";
                         Einstellungen
                     </div>
 
-
                     <div id="profilbild1">
-
                     </div>
-                    <div>
 
+                    <div>
                         <?php
                         //Profilbild soll hier angezeigt werden
 
                         $stmt = $pdo->prepare("SELECT * FROM profilbildlogin WHERE profil_user_id = $user_id ");
-
                         $result = $stmt->execute();
                         while ($row = $stmt->fetch()) {
                             ?>
                             <a><img id="profilbild1" src="<?php echo $row['profilbildtext'] ?>"></a>
                             <?php
-                        }
-
-                        ?>
+                                 }
+                             ?>
                     </div>
                     <div id="benutzernameprofil">
                         <?php
@@ -116,11 +109,9 @@ include_once "header.php";
                     </div>
 
                     <div id="benutzernamemail">
-
                         <?php
                         echo $title['hdm_mail'];
                         ?>
-
                     </div>
 
                     <br>
@@ -132,7 +123,6 @@ include_once "header.php";
                     //Einfügen Bild
 
                     $upload_ordner = 'bilder/'; //Das Upload-Verzeichnis
-
                     $tmpname = $_FILES["upfile"] ["name"];
                     $tmpname_teile = explode(".", $tmpname);
                     $endung = $tmpname_teile [count($tmpname_teile) - 1];
@@ -140,18 +130,16 @@ include_once "header.php";
                     //Überprüfung der Bildendung
                     $erlaubte_endungen = array('png', 'jpg', 'jpeg', 'gif');
 
-
                     if (isset($_POST['bildgesendet'])) {
-
                         if (!in_array($endung, $erlaubte_endungen)) {
                             die("Es sind nur png, jpg, jpeg und gif-Dateien erlaubt.");
                         } else {
                             $bildname = "profilbild_" . date("YmdHis") . $endung;
 
-//Pfad zum Upload
+                    //Pfad zum Upload
                             $new_path = $upload_ordner . $bildname . '.' . $endung;
 
-//In DB einfügen bzw. updaten, falls ein Profilbild bereits hochgeladen wurde
+                    //In DB einfügen bzw. updaten, falls ein Profilbild bereits hochgeladen wurde
                         }
                     }
                     $stmt = $pdo->prepare("SELECT profil_user_id FROM profilbild WHERE profil_user_id = :profil_user_id");
@@ -159,7 +147,6 @@ include_once "header.php";
                     $ergebnis = $stmt->fetch();
 
                     if (isset($_POST['bildgesendet'])) {
-
                         if ($ergebnis !== false) {
                             $update = $pdo->prepare("UPDATE profilbild SET profilbildtext = :profilbildtext WHERE profil_user_id = :profil_user_id");
                             $update->bindParam(':profilbildtext', $new_path);
@@ -168,7 +155,6 @@ include_once "header.php";
                                 echo "Dein Profilbild wurde erfolgreich geändert";
                             }
                         } else {
-
                             $statement = $pdo->prepare("INSERT INTO profilbild (profilbildtext, profil_user_id) VALUES ('$new_path', '$my_id')");
                             $statement->bindParam(':profilbildtext', $new_path);
                             $statement->bindParam(':profil_user_id', $my_id);
@@ -198,7 +184,6 @@ include_once "header.php";
                     move_uploaded_file($_FILES['upfile']['tmp_name'], $new_path);
                     //echo 'Bild erfolgreich hochgeladen: <a href="'.$new_path.'">'.$new_path.'</a>';
 
-
                     ?>
 
                     <form enctype="multipart/form-data"
@@ -212,7 +197,6 @@ include_once "header.php";
                     </form>
 
                     <hr class="strich5">
-
                     <p id="text3"> Profil bearbeiten:</p>
 
                     <?php
@@ -234,27 +218,22 @@ include_once "header.php";
                         <table id="profildatenneu1">
                             <tr>
                                 <td class="benennung1">Vorname:</td>
-                                <td><input class="eingabefeld" type="text" name="vorname"
-                                           placeholder="<?php echo $datenvorname; ?>">
+                                <td><input class="eingabefeld" type="text" name="vorname" placeholder="<?php echo $datenvorname; ?>">
                                 </td>
                             </tr>
                             <tr>
                                 <td class="benennung1">Nachname:</td>
-                                <td><input class="eingabefeld" type="text" name="nachname"
-                                           placeholder="<?php echo $datennachname; ?>">
+                                <td><input class="eingabefeld" type="text" name="nachname" placeholder="<?php echo $datennachname; ?>">
                                 </td>
                             </tr>
                             <tr>
                                 <td class="benennung1">Studiengang:</td>
-                                <td><input class="eingabefeld" type="text" name="studiengang" id="subject"
-                                           placeholder="<?php echo $datenstudiengang; ?>">
+                                <td><input class="eingabefeld" type="text" name="studiengang" id="subject" placeholder="<?php echo $datenstudiengang; ?>">
                                 </td>
                             </tr>
                             <tr>
                                 <td class="benennung1">Semester:</td>
-                                <td><input class="eingabefeld" type="number" name="semester" id="semester" min="1"
-                                           max="10"
-                                           placeholder="<?php echo $datensemester; ?>">
+                                <td><input class="eingabefeld" type="number" name="semester" id="semester" min="1" max="10" placeholder="<?php echo $datensemester; ?>">
                                 </td>
                             </tr>
                         </table>
@@ -262,9 +241,9 @@ include_once "header.php";
                         <br>
                         <br>
                         <br>
-
                         <p><input id="speichern" type="submit" name="newchanges" value="Sichern"></p>
                     </form>
+
                     <?php
                     // Profildaten bearbeiten
                     $stmt = $pdo->prepare("SELECT * FROM benutzerdaten WHERE my_id = $my_id");
@@ -328,7 +307,6 @@ include_once "header.php";
                 </div>
             </div>
 
-
             <div class="col-sm-3">
                 <div id="anzeigederbeiträgeundfreunde">
                     <h2 class="ueberschrift11"> Anzahl deiner Freunde:
@@ -355,7 +333,6 @@ include_once "header.php";
                             </div>
                         </h2>
                     </h3>
-
                 </div>
             </div>
         </div>

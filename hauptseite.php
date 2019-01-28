@@ -24,19 +24,12 @@
     $visit_user->execute();
     $title = $visit_user->fetch();
 
-
     ?>
 
 </head>
-
 <body>
 
-
-
-
-
 <div id="hauptseite">
-
 <div id="main">
     <div class="container">
         <div class="row">
@@ -68,7 +61,7 @@
                             echo "</span>";
                             echo "</div>";
                         }
-                    }else{
+                    } else{
                         $row = $checkfollow->fetch();
                         $userid = $row['user_id'];
                         $my_id = $row ['follow_id'];
@@ -83,7 +76,6 @@
                             <div id="kasten">
                                 <a href="profilseite.php?user_id=<?php echo $users ?>"><img id="recommendationprofilbild" src="<?php echo $row3['profilbildtext'] ?>"></a>
                                 <a style="text-decoration:none;" href="profilseite.php?user_id=<?php echo $users ?>"><div id="kastentext"><?php echo $row3['benutzername'] ?></div></a>
-
                             </div>
                             <?php
                             echo "</span>";
@@ -105,7 +97,6 @@
 
                     <div id=neuerbeitrag> Neuer Beitrag</div>
                     <br>
-
 
                     <form id=postbox2 action="hauptseite.php?user_id=<?php echo $my_id; ?>" method="post">
                         <input type="hidden" name="text" value="1">
@@ -129,9 +120,9 @@
                     if (empty($_POST[$feld])) {
                     $error = true;
                     $fehlerfelder[$feld] = true;
-                    }
-                    }
-                    }
+                                }
+                          }
+                     }
                     //Einfügen des Textes, Fehlerausgabe wenn Textfeld leer abgeschickt wird
 
                     if ($error === false) {
@@ -141,31 +132,23 @@
                     $statement->bindParam('user_id', $user_id);
                     $result = $statement->execute();
 
-
                     if ($result) {
                         ?>
                         <div id="beitrag">
                         <?php
-
-                    echo 'Danke für deinen Beitrag!';
-                    ?>
+                        echo 'Danke für deinen Beitrag!';
+                         ?>
                     </div>
                     <?php
-
                     } else {
-
                     if ($error === true)
                     echo '<div id="meldung"> <br><br>Etwas ist schief gelaufen.<br> </div>';
+                        }
                     }
-                    }
-                    ?>
-
-                    <?php
 
                     //Einfügen Bild
 
                     $upload_ordner = 'bilder/'; //Das Upload-Verzeichnis
-
                     $tmpname = $_FILES["upfile"] ["name"];
                     $tmpname_teile = explode(".", $tmpname);
                     $endung = $tmpname_teile [count($tmpname_teile) - 1];
@@ -182,7 +165,6 @@
                             $new_path = $upload_ordner . $bildname . '.' . $endung;
 
                             //In DB einfügen
-
                             $statement = $pdo->prepare("INSERT INTO beitrag (bildtext, beitrag_user_id) VALUES ('$new_path', '$user_id')");
                             $statement->bindParam('bildtext', $new_path);
                             $statement->bindParam('user_id', $user_id);
@@ -212,7 +194,6 @@
                     //echo 'Bild erfolgreich hochgeladen: <a href="'.$new_path.'">'.$new_path.'</a>';
                     ?>
                     <hr class="strich">
-
                     <form enctype="multipart/form-data"
                           name="uploadformular" action="hauptseite.php?user_id=<?php echo $my_id; ?>" method="post">
                         <input type="hidden" name="picture" value="1">
@@ -226,7 +207,7 @@
                     <br>
                     <hr class="strich">
                     <div id="friendsbeiträge">Alle Beiträge</div>
-<br>
+                    <br>
                     <div>
                         <?php
                         //Chronik - wo die geposteten Beiträge auftauchen
@@ -237,9 +218,7 @@
                                 $show_profilepic = $pdo->prepare ("SELECT * FROM profilbildlogin WHERE login_id = $userid");
                                 $show_profilepic->execute();
                                 $row4 = $show_profilepic->fetch();
-                                ?>
 
-                                <?php
                                 if(empty($row['bildtext'])) {
                                     ?>
                                     <div id="postskasten">
@@ -250,7 +229,6 @@
                                         <br>
                                         <p id="poststext"> <?php echo $row['posts'] ?></p>
                                     </div>
-
 
                                     <?php
                                 }else {
@@ -265,17 +243,10 @@
                                     </div>
 
                                     <?php
-                                }
-
-                                }
-
+                                } }
                                 ?>
 
-
-
-
                                 <br>
-
                     </div>
                 </div>
             </div>
@@ -283,8 +254,7 @@
 
             <div class="col-sm-3">
                 <div id="profile">
-                    <h2 class="ueberschriftenmain"> Profile
-                    </h2>
+                    <h2 class="ueberschriftenmain"> Profile </h2>
 
                     <div class="name">
                         Benutzername:
@@ -294,14 +264,12 @@
                     </div>
                     <br>
                     <br>
-
                     <div class= "adresseneu">
                         E-Mail Adresse:
                         <br>
                         <?php
                         echo $title['hdm_mail'];
                         ?>
-
 
                     </div>
                 </div>

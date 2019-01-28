@@ -23,19 +23,11 @@
     $visit_user = $pdo->prepare("SELECT * FROM login WHERE login_id=$user_id");
     $visit_user->execute();
     $title = $visit_user->fetch();
-
     ?>
-
 </head>
 
 <body>
-
-
-
-
-
 <div id="hauptseite">
-
     <div id="main">
         <div class="container">
             <div class="row">
@@ -45,7 +37,6 @@
                         </h2>
                         <br>
                         <br>
-
                         <?php
                         //Nutzer, denen man noch nicht folgt werden hier angezeigt
                         //Wird dem Benutzer bereits gefolgt?
@@ -83,7 +74,6 @@
                                 <div id="kasten">
                                     <a href="profilseite.php?user_id=<?php echo $users ?>"><img id="recommendationprofilbild" src="<?php echo $row3['profilbildtext'] ?>"></a>
                                     <a style="text-decoration:none;" href="profilseite.php?user_id=<?php echo $users ?>"><div id="kastentext"><?php echo $row3['benutzername'] ?></div></a>
-
                                 </div>
                                 <?php
                                 echo "</span>";
@@ -99,8 +89,6 @@
                         <div id="ueberschriftmeinefreunde"> Dein Suchergebnis</div>
                         <br>
                         <br>
-
-
                         <?php
                         //Suchfunktion - Ergebnisse der Suche
                         if (isset($_POST["suche"])) {
@@ -108,12 +96,10 @@
 
                             $benutzersuche = $pdo->prepare("SELECT * FROM profilbildlogin WHERE benutzername ='$allebenutzername' AND aktiviert = 1");
                             if ($benutzersuche->execute()) {
-
                                 while ($row = $benutzersuche->fetch()) {
                                     $userid = $row['login_id'];
                                     echo "<div id=\"tabelleposts\">";
                                     ?>
-
                                     <div id="kasten">
                                         <a class="" href="profilseite.php?user_id=<?php echo $userid ?>"><img id="recommendationprofilbild" src="<?php echo $row['profilbildtext'] ?>"></a>
                                         <a class="" href="profilseite.php?user_id=<?php echo $userid ?>"><div id="kastentext"><?php echo $row['benutzername'] ?></div></a>
@@ -121,30 +107,26 @@
 
                                     <?php
                                     echo "</div>";
-                                }
-                            } else {
-                                echo "<div id=\"tabelleposts\">";
-                                ?>
+                                         }
+                                     } else {
+                                     echo "<div id=\"tabelleposts\">";
+                                     ?>
                         <div id="kasten">
                                 <p> "No user found" </p>
                         </div>
                                 <?php
                                 echo "</div>";
-                            }
-                        }
-                        ?>
-
+                                     }
+                                 }
+                                 ?>
                         <br>
-
                     </div>
                 </div>
-
 
                 <div class="col-sm-3">
                     <div id="profile">
                         <h2 class="ueberschriftenmain"> Profile
                         </h2>
-
                         <div class="name">
                             Benutzername:
                             <?php
@@ -153,21 +135,17 @@
                         </div>
                         <br>
                         <br>
-
                         <div class= "adresseneu">
                             E-Mail Adresse:
                             <br>
                             <?php
                             echo $title['hdm_mail'];
                             ?>
-
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 </body>

@@ -14,15 +14,11 @@
     }else{
     include("datenbankpasswort.php");
     include("header.php");
-?>
-
-    </head>
+    ?>
+</head>
 
 <body>
-
-
 <div id="hauptseite">
-
     <div id="main">
         <div class="container">
             <div class="row">
@@ -69,7 +65,6 @@
                                 <div id="kasten">
                                     <a href="profilseite.php?user_id=<?php echo $users ?>"><img id="recommendationprofilbild" src="<?php echo $row3['profilbildtext'] ?>"></a>
                                     <a style="text-decoration:none;" href="profilseite.php?user_id=<?php echo $users ?>"><div id="kastentext"><?php echo $row3['benutzername'] ?></div></a>
-
                                 </div>
                                 <?php
                                 echo "</span>";
@@ -85,8 +80,6 @@
                         <div id="ueberschriftmeinefreunde"> Meine Freunde</div>
                         <br>
                         <br>
-
-
                         <?php
                         //Liste mit den Namen der Personen, denen man folgt
                         //Es wird zuerst geschaut, ob man jemandem folgt
@@ -104,8 +97,7 @@
                             </div>
                             <?php
                             echo "</div>";
-                        }
-                        else {
+                        } else {
                             //Wenn man jemandem folgt, werden die Namen der Personen, denen man folgt, in dieser Liste angezeigt
                             while($row = $checkfollow->fetch()) {
                                 $userid = $row['user_id'];
@@ -113,38 +105,29 @@
                                 $show_profilepic->execute();
                                 $show_friends = $pdo->prepare("SELECT * FROM vlj_loginfollow WHERE login_id= $userid");
                                 $show_friends->execute();
-
                                 $row3 = $show_friends->fetch();
                                 $row4 = $show_profilepic->fetch();
-
                                 echo "<div id=\"tabelleposts\">";
                                 echo "<span>";
                                 ?>
                                 <div id="kasten">
                                     <a href="profilseite.php?user_id=<?php echo $userid ?>"><img id="recommendationprofilbild" src="<?php echo $row4['profilbildtext'] ?>"></a>
                                     <a style="text-decoration:none;" href="profilseite.php?user_id=<?php echo $userid ?>"><div id="kastentext"><?php echo $row3['benutzername'] ?></div></a>
-
                                 </div>
                                 <?php
                                 echo "</span>";
                                 echo "</div>";
-
                             }
                         }
-
                         ?>
                         <br>
-
-
                     </div>
                 </div>
 
 
                 <div class="col-sm-3">
                     <div id="profile">
-                        <h2 class="ueberschriftenmain"> Profile
-                        </h2>
-
+                        <h2 class="ueberschriftenmain"> Profile </h2>
                         <div class="name">
                             Benutzername:
                             <?php
@@ -153,21 +136,17 @@
                         </div>
                         <br>
                         <br>
-
                         <div class= "adresseneu">
                             E-Mail Adresse:
                             <br>
                             <?php
                             echo $title['hdm_mail'];
                             ?>
-
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 </body>

@@ -1,10 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <link rel="stylesheet" type="text/css" href="header.css">
-
-
-
 
 <?php
 session_start();
@@ -15,13 +11,10 @@ $my_id = $_SESSION['login-id'];
 $meine_id = $_SESSION['login-id'];
 $user_id = $_GET['user_id'];
 
-
-
 //Profildaten der unterschiedlichen Nutzer
 $visit_user = $pdo->prepare("SELECT * FROM login WHERE login_id=$user_id");
 $visit_user->execute();
 $title = $visit_user->fetch();
-
 
 ?>
 
@@ -50,12 +43,9 @@ $title = $visit_user->fetch();
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-
 </head>
 
-
 <body>
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a id="fonttouch" class="navbar-brand">TOUCH</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -67,27 +57,23 @@ $title = $visit_user->fetch();
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
                 <a class="nav-link" id="fontfeed" href="hauptseite.php?user_id=<?php echo $my_id; ?>">Mein Feed
-                    <span
-                            class="sr-only">(current)</span></a>
+                    <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                    data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    Profil
+                   aria-haspopup="true" aria-expanded="false"> Profil
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" id="fontprofil" href="profilseite.php?user_id=<?php echo $my_id; ?>">Mein
-                        Profil</a>
+                    <a class="dropdown-item" id="fontprofil" href="profilseite.php?user_id=<?php echo $my_id; ?>">Mein Profil</a>
                     <a class="dropdown-item" id="fonteinstellungen"
-                       href="settings.php?user_id=<?php echo $my_id; ?>">Einstellungen</a>
+                       href="settings.php?user_id=<?php echo $my_id; ?>"> Einstellungen
+                    </a>
                 </div>
 
             </li>
             <li class="nav-item active">
-                <a class="nav-link" id="fontfreunde" href="meinefreunde.php?user_id=<?php echo $my_id; ?>">Meine
-                    Freunde <span
-                            class="sr-only">(current)</span></a>
+                <a class="nav-link" id="fontfreunde" href="meinefreunde.php?user_id=<?php echo $my_id; ?>">Meine Freunde <span class="sr-only">(current)</span></a>
             </li>
         </ul>
         <div>
@@ -112,17 +98,11 @@ $title = $visit_user->fetch();
                     style="font-family: 'Helvetica Neue'; font-size:120%; font-weight: 200;" name="suche" id="suchebutton"
                     type="submit">Suche
             </button>
-
-
         </form>
 
-
-
-
-
-
-    <button type="button" class="btn btn-outline-dark "
-            style=" font-family: 'Helvetica Neue'; color:white; font-size:120%; font-weight: 200; background-color:#7B0202;""><a style=color:white; href="logout.php">Log Out</a></button>
+        <button type="button" class="btn btn-outline-dark " style=" font-family: 'Helvetica Neue'; color:white; font-size:120%; font-weight: 200; background-color:#7B0202;"">
+        <a style=color:white; href="logout.php">Log Out</a>
+        </button>
 
 
 </nav>

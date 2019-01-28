@@ -10,18 +10,14 @@ body {
 #startseite {
     margin-left: auto;
     margin-right: auto;
-
 }
 
-
 #ueberschrift {
-
     font-family: "Helvetica Neue";
     position: absolute;
     font-size: 500%;
     color: white;
     font-weight: 100;
-
 }
 
 #unterueberschrift {
@@ -34,7 +30,6 @@ body {
     font-weight: 200;
     margin-top:70px;
     margin-left:60px;
-
 }
 
 #buttonlogin {
@@ -80,16 +75,12 @@ body {
     -webkit-border-radius: 70px;
     -o-border-radius: 70px;
     top:10px;
-
 }
 
 #buttonregister:hover {
     background-color: #7B0202;
     color:white;
 }
-
-
-
 
 #header {
     display:flex;
@@ -109,7 +100,6 @@ body {
 }
 
 #main {
-
     width: 350px;
     height: 450px;
     background-color: #2C2C2C;
@@ -120,20 +110,19 @@ body {
     -moz-border-radius: 100px;
     -webkit-border-radius: 100px;
     -o-border-radius: 100px;
-
 }
-
-
 
 .row-centered {
     text-align:center;
 }
+
 .col-centered {
     display:inline-block;
     float:none;
     text-align:left;
     margin-right:-4px;
 }
+
 .pos{
     position: relative;
     top: 240px;
