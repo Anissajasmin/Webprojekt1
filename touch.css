@@ -242,7 +242,7 @@ body {
 }
 
 #recommendation {
-    height: 300px;
+    height: auto;
     background-color: #888483;
     margin-top: 80px;
     horiz-align: center;
@@ -506,7 +506,7 @@ display:flex;
 }
 
 #recommendationsprofilseite {
-    height: 300px;
+    height: auto;
     background-color: #888483;
     margin-top: 80px;
     horiz-align: center;
@@ -817,6 +817,19 @@ display:flex;
 }
 
 /* Einstellungen*/
+.einstellungenaktualisiert {
+    justify-content: center;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+    font-family: "Helvetica Neue";
+    font-size: 120%;
+    font-weight: 300;
+    color:black;
+    margin-top:130px;
+}
+
+
 
 .strich4 {
     margin-top:190px;
@@ -1338,9 +1351,12 @@ position: absolute;
 }
 
 #meldung {
-    color: white;
+    color: black;
     margin-top:5px;
-    background: #9999;
+    justify-content:center;
+    text-align: center;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 #main2 {

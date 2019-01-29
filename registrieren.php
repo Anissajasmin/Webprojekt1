@@ -147,7 +147,7 @@
         $statement->bindParam(':hash', $hash);
         $ergebnis = $statement->execute(array(':benutzername' => $benutzername, ':hdm_mail' => $mail, ':passwort' => $passworthash, ':hash' => $hash));
         if ($ergebnis) {
-            echo '<div id="meldung"> <br><br>Du wurdest erfolgreich registriert. Du hast eine EMail bekommen. Bitte aktiviere deinen Account</a> </div>';
+            echo '<div id="meldung"> <br><br>Du wurdest erfolgreich registriert. Du hast eine E-Mail bekommen. Bitte aktiviere deinen Account</a> </div>';
 
             // Email Verifizieren lassen
             $to      = $mail; // Empfänger der Mail

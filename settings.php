@@ -73,6 +73,7 @@ include_once "header.php";
                         }
                     }
                     ?>
+                    <br>
                 </div>
             </div>
 
@@ -272,7 +273,7 @@ include_once "header.php";
                                 if ($updatedaten->execute()) {
                                     ?>
                                     <br>
-                                    <div>
+                                    <div class="einstellungenaktualisiert">
                                         Du hast dein Profil geupdated!
                                     </div>
                                     <?php
@@ -290,7 +291,7 @@ include_once "header.php";
                                         ?>
                                         <br>
                                         <br>
-                                        <div>
+                                        <div class="einstellungenaktualisiert">
                                             Du hast dein Profil angepasst!
                                         </div>
                                         <?php
