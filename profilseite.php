@@ -57,7 +57,7 @@ include_once "header.php";
                         $userid = $row['user_id'];
                         $my_id = $row ['follow_id'];
                         //Wenn man jemandem nicht folgt, werden die Namen der Personen, denen man nicht folgt, in dieser Liste angezeigt
-                        $show_users = $pdo->prepare("SELECT * FROM profilbildlogin WHERE NOT login_id = $my_id AND NOT login_id = $userid");
+                        $show_users = $pdo->prepare("SELECT * FROM profilbildlogin WHERE NOT login_id = $my_id AND NOT login_id = $userid LIMIT 3");
                         $show_users->execute();
                         while ($row3 = $show_users->fetch()) {
                             $users = $row3['login_id'];

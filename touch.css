@@ -461,14 +461,14 @@ body {
 }
 
 #postsbild {
-display:flex;
+    display:flex;
     justify-content: center;
-   margin-left:auto;
+    margin-left:auto;
     margin-right:auto;
     padding-bottom:20px;
     margin-bottom: 15px;
     margin-top: 20px;
-    height:200px;
+    width:250px;
 }
 
 #postsbildfriends {
@@ -479,7 +479,7 @@ display:flex;
     padding-bottom:20px;
     margin-bottom: 15px;
     margin-top: 20px;
-    height:200px;
+    width:250px;
 }
 
 #recommendationprofilbild {
@@ -1114,7 +1114,7 @@ display:flex;
     justify-content:center;
     margin-left:auto;
     margin-right:auto;
-    height:200px;
+    width:250px;
     padding-top:10px;
     padding-bottom:10px;
     font-weight: 200;
@@ -1358,7 +1358,15 @@ position: absolute;
     margin-left:auto;
     margin-right:auto;
 }
+.meldung2 {
+    color: black;
+    font-family: "Helvetica Neue";
+    font-weight: 300;
+    padding-top:20px;
+    padding-bottom:20px;
+    margin-left:15px;
 
+}
 #main2 {
     width: 350px;
     height: 450px;

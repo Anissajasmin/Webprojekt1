@@ -69,7 +69,7 @@
                             $my_id = $row ['follow_id'];
 
                             //Wenn man jemandem nicht folgt, werden die Namen der Personen, denen man nicht folgt, in dieser Liste angezeigt
-                            $show_users = $pdo->prepare("SELECT * FROM profilbildlogin WHERE NOT login_id = $my_id AND NOT login_id = $userid");
+                            $show_users = $pdo->prepare("SELECT * FROM profilbildlogin WHERE NOT login_id = $my_id AND NOT login_id = $userid LIMIT 3");
                             $show_users->execute();
                             while($row3 = $show_users->fetch()) {
                                 $users = $row3['login_id'];
@@ -172,7 +172,13 @@
                         $erlaubte_endungen = array('png', 'jpg', 'jpeg', 'gif');
                         if (isset($_POST['bildgesendet'])) {
                             if (!in_array($endung, $erlaubte_endungen)) {
-                                die("Es sind nur png, jpg, jpeg und gif-Dateien erlaubt.");
+                                ?>
+                                <div class="meldung2">
+                                    <?php
+                                    die("Achtung: Es sind nur png, jpg, jpeg und gif-Dateien erlaubt.");
+                                    ?>
+                                </div>
+                                <?php
                             } else {
                                 $bildname = "post_" . date("YmdHis") . $endung;
 
@@ -190,8 +196,14 @@
                         //Überprüfung der Dateigröße, nicht größer als 500 kB
                         $max_size = 500 * 1024;
                         if ($_FILES['upfile']['size'] > $max_size) {
+                            ?>
+                        <div class="meldung2">
+                            <?php
                             die("Bitte keine Dateien größer 500kb hochladen.");
-                        }
+                            ?>
+                            </div>
+                            <?php
+                                  }
 
                         //Überprüfung, dass das Bild keine Fehler enthält
                         if (isset($_POST["bildgesendet"])) {
@@ -199,7 +211,13 @@
                                 $erlaubte_typen = array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF);
                                 $geschuetzte_typen = exif_imagetype($_FILES['upfile']['tmp_name']);
                                 if (!in_array($geschuetzte_typen, $erlaubte_typen)) {
+                                    ?>
+                                      <div class="meldung2">
+                                    <?php
                                     die("Nur der Upload von Bilddateien ist gestattet");
+                                    ?>
+                                    </div>
+                                    <?php
                                 }
                             }
                         }

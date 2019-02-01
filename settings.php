@@ -56,7 +56,7 @@ include_once "header.php";
                         $userid = $row['user_id'];
                         $my_id = $row ['follow_id'];
                         //Wenn man jemandem nicht folgt, werden die Namen der Personen, denen man nicht folgt, in dieser Liste angezeigt
-                        $show_users = $pdo->prepare("SELECT * FROM profilbildlogin WHERE NOT login_id = $my_id AND NOT login_id = $userid");
+                        $show_users = $pdo->prepare("SELECT * FROM profilbildlogin WHERE NOT login_id = $my_id AND NOT login_id = $userid LIMIT 3");
                         $show_users->execute();
                         while($row3 = $show_users->fetch()) {
                             $users = $row3['login_id'];
@@ -153,14 +153,26 @@ include_once "header.php";
                             $update->bindParam(':profilbildtext', $new_path);
                             $update->bindParam(':profil_user_id', $my_id);
                             if ($update->execute()) {
-                                echo "Dein Profilbild wurde erfolgreich geändert";
+                                ?>
+                                 <div class="meldung2">
+                                     <?php
+                                     echo "Dein Profilbild wurde erfolgreich geändert";
+                                     ?>
+                                 </div>
+                                <?php
                             }
                         } else {
                             $statement = $pdo->prepare("INSERT INTO profilbild (profilbildtext, profil_user_id) VALUES ('$new_path', '$my_id')");
                             $statement->bindParam(':profilbildtext', $new_path);
                             $statement->bindParam(':profil_user_id', $my_id);
                             $result = $statement->execute();
-                            echo "Dein Bild wurde erfolgreich hochgeladen";
+                            ?>
+                            <div class="meldung2">
+                                <?php
+                                  echo "Dein Bild wurde erfolgreich hochgeladen";
+                                  ?>
+                            </div>
+                    <?php
                         }
                     }
 
