@@ -23,7 +23,7 @@
     $visit_user = $pdo->prepare("SELECT * FROM login WHERE login_id=$user_id");
     $visit_user->execute();
     $title = $visit_user->fetch();
-   ?>
+    ?>
 
 </head>
 
@@ -38,55 +38,7 @@
                         <h2 class="ueberschriftenmain"> Recommendations </h2>
                         <br>
                         <br>
-
-                        <?php
-                        //Nutzer, denen man noch nicht folgt werden hier angezeigt
-
-                        //Wird dem Benutzer bereits gefolgt?
-                        $checkfollow = $pdo->prepare("SELECT * FROM follow WHERE follow_id='" . $my_id . "'");
-                        $checkfollow->execute();
-                        $notfollowing = $checkfollow->rowCount();
-
-                        if (!$notfollowing > 0) {
-                            $showallusers = $pdo->prepare ("SELECT * FROM profilbildlogin WHERE NOT login_id = $my_id");
-                            $showallusers->execute();
-                            while ($row1 = $showallusers->fetch()){
-                                $allusers = $row1['login_id'];
-                                echo "<div id=\"tabelleposts\">";
-                                echo "<span>";
-                                ?>
-                                <div id="kasten">
-                                    <a href="profilseite.php?user_id=<?php echo $allusers ?>"><img id="recommendationprofilbild" src="<?php echo $row1['profilbildtext'] ?>"></a>
-                                    <a style="text-decoration:none;" href="profilseite.php?user_id=<?php echo $allusers ?>"><div id="kastentext"><?php echo $row1['benutzername'] ?></div></a>
-                                </div>
-                                <?php
-                                echo "</span>";
-                                echo "</div>";
-                            }
-                        } else{
-                            $row = $checkfollow->fetch();
-                            $userid = $row['user_id'];
-                            $my_id = $row ['follow_id'];
-
-                            //Wenn man jemandem nicht folgt, werden die Namen der Personen, denen man nicht folgt, in dieser Liste angezeigt
-                            $show_users = $pdo->prepare("SELECT * FROM profilbildlogin WHERE NOT login_id = $my_id AND NOT login_id = $userid LIMIT 3");
-                            $show_users->execute();
-                            while($row3 = $show_users->fetch()) {
-                                $users = $row3['login_id'];
-                                echo "<div id=\"tabelleposts\">";
-                                echo "<span>";
-                                ?>
-                                <div id="kasten">
-                                    <a href="profilseite.php?user_id=<?php echo $users ?>"><img id="recommendationprofilbild" src="<?php echo $row3['profilbildtext'] ?>"></a>
-                                    <a style="text-decoration:none;" href="profilseite.php?user_id=<?php echo $users ?>"><div id="kastentext"><?php echo $row3['benutzername'] ?></div></a>
-                                </div>
-
-                                <?php
-                                echo "</span>";
-                                echo "</div>";
-                            }
-                        }
-                        ?>
+                        <?php include_once "recommendation.php" ?>
                         <br>
                     </div>
                 </div>
@@ -112,7 +64,8 @@
                         </form>
                         <hr class="strich">
 
-                        <form enctype="multipart/form-data" name="uploadformular" action="friends.php?user_id=<?php echo $my_id; ?>" method="post">
+                        <form enctype="multipart/form-data" name="uploadformular"
+                              action="friends.php?user_id=<?php echo $my_id; ?>" method="post">
                             <input type="hidden" name="picture" value="1">
                             <p id="text2"> Auswahl und Absenden des Bildes:</p>
                             <br>
@@ -129,12 +82,12 @@
                         $fehlerfelder = array();
 
                         if (isset($_POST['text'])) {
-                        $error = false;
+                            $error = false;
 
-                        foreach ($textbox as $feld) {
-                        if (empty($_POST[$feld])) {
-                        $error = true;
-                        $fehlerfelder[$feld] = true;
+                            foreach ($textbox as $feld) {
+                                if (empty($_POST[$feld])) {
+                                    $error = true;
+                                    $fehlerfelder[$feld] = true;
                                 }
                             }
                         }
@@ -143,21 +96,21 @@
 
                         if ($error === false) {
 
-                        $statement = $pdo->prepare("INSERT INTO beitrag (posts, beitrag_user_id) VALUES ('$posts', '$user_id')");
-                        $statement->bindParam('posts', $posts);
-                        $statement->bindParam('user_id', $user_id);
-                        $result = $statement->execute();
+                            $statement = $pdo->prepare("INSERT INTO beitrag (posts, beitrag_user_id) VALUES ('$posts', '$user_id')");
+                            $statement->bindParam('posts', $posts);
+                            $statement->bindParam('user_id', $user_id);
+                            $result = $statement->execute();
 
-                        if ($result) {
-                        ?>
-                        <div id="beitrag">
-                        <?php echo 'Danke für deinen Beitrag!'; ?>
-                        </div>
+                            if ($result) {
+                                ?>
+                                <div id="beitrag">
+                                    <?php echo 'Danke für deinen Beitrag!'; ?>
+                                </div>
 
-                    <?php
-                        } else {
-                            if ($error === true)
-                            echo '<div id="meldung"> <br><br>Etwas ist schief gelaufen.<br> </div>';
+                                <?php
+                            } else {
+                                if ($error === true)
+                                    echo '<div id="meldung"> <br><br>Etwas ist schief gelaufen.<br> </div>';
                             }
                         }
 
@@ -197,13 +150,13 @@
                         $max_size = 500 * 1024;
                         if ($_FILES['upfile']['size'] > $max_size) {
                             ?>
-                        <div class="meldung2">
-                            <?php
-                            die("Bitte keine Dateien größer 500kb hochladen.");
-                            ?>
+                            <div class="meldung2">
+                                <?php
+                                die("Bitte keine Dateien größer 500kb hochladen.");
+                                ?>
                             </div>
                             <?php
-                                  }
+                        }
 
                         //Überprüfung, dass das Bild keine Fehler enthält
                         if (isset($_POST["bildgesendet"])) {
@@ -212,10 +165,10 @@
                                 $geschuetzte_typen = exif_imagetype($_FILES['upfile']['tmp_name']);
                                 if (!in_array($geschuetzte_typen, $erlaubte_typen)) {
                                     ?>
-                                      <div class="meldung2">
-                                    <?php
-                                    die("Nur der Upload von Bilddateien ist gestattet");
-                                    ?>
+                                    <div class="meldung2">
+                                        <?php
+                                        die("Nur der Upload von Bilddateien ist gestattet");
+                                        ?>
                                     </div>
                                     <?php
                                 }
@@ -239,31 +192,41 @@
                             if (!$nofollower > 0) {
                                 //Wenn man niemandem folgt
                                 echo "<div id=\"tabelleposts\">";
-                                echo "Du hast noch keine Freunde. Folge erstmal einem Nutzer hier bei Touch!";
+                                ?>
+                                <div class="keinefreunde">
+                                    <?php
+                                    echo "Du hast noch keine Freunde. Folge einem Nutzer, um ihn in deiner Liste angezeigt zu bekommen!"; ?>
+                                </div>
+
+                                <?php
                                 echo "</div>";
+                                echo "<br>";
                             } else {
                                 //Wenn man jemandem folgt, werden die Posts der User, denen man folgt, angezeigt
-                               while ($row = $checkfollow->fetch()) {
+                                while ($row = $checkfollow->fetch()) {
                                     $userid = $row['user_id'];
                                     $show_name = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE beitrag_user_id= $userid ORDER BY zeitstempel DESC");
                                     $show_name->execute();
                                     $row5 = $show_name->fetch();
-                                    $keinbeitrag =$show_name->rowCount();
+                                    $keinbeitrag = $show_name->rowCount();
 
-                                    if (!$keinbeitrag > 0 ){
+                                    if (!$keinbeitrag > 0) {
                                         $kein_name = $pdo->prepare("SELECT * FROM login WHERE login_id= $userid");
                                         $kein_name->execute();
                                         $row6 = $kein_name->fetch();
-                                    ?>
-                                    <div id="friendsbeiträge">
-                                       <?php
-                                       echo "<div id=\"tabelleposts5\">";
-                                       echo $row6['benutzername']; echo " hat noch keine Beiträge";echo "</div>";?>
-                                   </div>
-                                   <br>
+                                        ?>
 
-                                   <?php
-                                    }else {
+                                        <div id="friendsbeiträge">
+                                            <?php
+                                            echo "<div id=\"tabelleposts5\">";
+                                            echo $row6['benutzername'];
+                                            echo " hat noch keine Beiträge";
+                                            echo "</div>"; ?>
+                                        </div>
+                                        <br>
+
+                                        <?php
+                                    } else {
                                         ?>
 
                                         <div id="friendsbeiträge">
@@ -276,7 +239,7 @@
                                         </div>
                                         <br>
                                         <?php
-                                          }
+                                    }
 
                                     $show_posts = $pdo->prepare("SELECT * FROM vlj_beitraglogin WHERE beitrag_user_id = $userid AND posts IS NOT NULL OR beitrag_user_id = $userid AND bildtext IS NOT NULL ORDER BY zeitstempel DESC");
                                     $show_posts->execute();
@@ -290,8 +253,11 @@
                                         if (empty($row3['bildtext'])) {
                                             ?>
                                             <div id="postskasten">
-                                                <a href="profilseite.php?user_id=<?php echo $userid ?>"><img id="postsprofilbild" src="<?php echo $row4['profilbildtext'] ?>"></a>
-                                                <a id="postsbenutzername" href="profilseite.php?user_id=<?php echo $userid ?>"><?php echo $row3['benutzername'] ?> </a>
+                                                <a href="profilseite.php?user_id=<?php echo $userid ?>"><img
+                                                            id="postsprofilbild"
+                                                            src="<?php echo $row4['profilbildtext'] ?>"></a>
+                                                <a id="postsbenutzername"
+                                                   href="profilseite.php?user_id=<?php echo $userid ?>"><?php echo $row3['benutzername'] ?> </a>
                                                 <br>
                                                 <br>
                                                 <div id="postszeitfriends"> <?php echo $row3['zeitstempel'] ?> </div>
@@ -303,8 +269,11 @@
                                         } else {
                                             ?>
                                             <div id="postskasten">
-                                                <a href="profilseite.php?user_id=<?php echo $userid ?>"><img id="postsprofilbild" src="<?php echo $row4['profilbildtext'] ?>"></a>
-                                                <a id="postsbenutzername" href="profilseite.php?user_id=<?php echo $userid ?>"><?php echo $row3['benutzername'] ?> </a>
+                                                <a href="profilseite.php?user_id=<?php echo $userid ?>"><img
+                                                            id="postsprofilbild"
+                                                            src="<?php echo $row4['profilbildtext'] ?>"></a>
+                                                <a id="postsbenutzername"
+                                                   href="profilseite.php?user_id=<?php echo $userid ?>"><?php echo $row3['benutzername'] ?> </a>
                                                 <br>
                                                 <div id="postszeitfriends1"> <?php echo $row3['zeitstempel'] ?> </div>
                                                 <br>
@@ -319,8 +288,8 @@
                                 ?>
                                 <br>
                                 <?php
-                                     }
-                                ?>
+                            }
+                            ?>
 
                         </div>
                     </div>
@@ -363,4 +332,6 @@
 
 <?php
 }
-    ?>
+?>
+
+

@@ -808,7 +808,7 @@ body {
     -o-border-radius: 10px;
 }
 
-#keinefreunde {
+.keinefreunde {
     color:black;
     font-family: "Helvetica Neue";
     font-size: 120%;
@@ -1365,6 +1365,16 @@ position: absolute;
     padding-top:20px;
     padding-bottom:20px;
     margin-left:15px;
+}
+
+#meldung3 {
+    color: black;
+    font-family: "Helvetica Neue";
+    font-weight: 300;
+    padding-top:20px;
+    margin-top:110px;
+    padding-bottom:20px;
+    margin-left:30px;
 
 }
 #main2 {

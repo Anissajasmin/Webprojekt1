@@ -28,51 +28,7 @@ include_once "header.php";
                     </h2>
                     <br>
                     <br>
-
-                    <?php
-                    //Nutzer, denen man noch nicht folgt werden hier angezeigt
-                    //Wird dem Benutzer bereits gefolgt?
-                    $checkfollow = $pdo->prepare("SELECT * FROM follow WHERE follow_id='" . $my_id . "'");
-                    $checkfollow->execute();
-                    $notfollowing = $checkfollow->rowCount();
-                    if (!$notfollowing > 0) {
-                        $showallusers = $pdo->prepare ("SELECT * FROM profilbildlogin WHERE NOT login_id = $my_id");
-                        $showallusers->execute();
-                        while ($row1 = $showallusers->fetch()){
-                            $allusers = $row1['login_id'];
-                            echo "<div id=\"tabelleposts\">";
-                            echo "<span>";
-                            ?>
-                            <div id="kasten">
-                                <a href="profilseite.php?user_id=<?php echo $allusers ?>"><img id="recommendationprofilbild" src="<?php echo $row1['profilbildtext'] ?>"></a>
-                                <a style="text-decoration:none;" href="profilseite.php?user_id=<?php echo $allusers ?>"><div id="kastentext"><?php echo $row1['benutzername'] ?></div></a>
-                            </div>
-                            <?php
-                            echo "</span>";
-                            echo "</div>";
-                        }
-                    } else{
-                        $row = $checkfollow->fetch();
-                        $userid = $row['user_id'];
-                        $my_id = $row ['follow_id'];
-                        //Wenn man jemandem nicht folgt, werden die Namen der Personen, denen man nicht folgt, in dieser Liste angezeigt
-                        $show_users = $pdo->prepare("SELECT * FROM profilbildlogin WHERE NOT login_id = $my_id AND NOT login_id = $userid LIMIT 3");
-                        $show_users->execute();
-                        while($row3 = $show_users->fetch()) {
-                            $users = $row3['login_id'];
-                            echo "<div id=\"tabelleposts\">";
-                            echo "<span>";
-                            ?>
-                            <div id="kasten">
-                                <a href="profilseite.php?user_id=<?php echo $users ?>"><img id="recommendationprofilbild" src="<?php echo $row3['profilbildtext'] ?>"></a>
-                                <a style="text-decoration:none;" href="profilseite.php?user_id=<?php echo $users ?>"><div id="kastentext"><?php echo $row3['benutzername'] ?></div></a>
-                            </div>
-                            <?php
-                            echo "</span>";
-                            echo "</div>";
-                        }
-                    }
-                    ?>
+                    <?php include_once"recommendation.php" ?>
                     <br>
                 </div>
             </div>
@@ -133,7 +89,13 @@ include_once "header.php";
 
                     if (isset($_POST['bildgesendet'])) {
                         if (!in_array($endung, $erlaubte_endungen)) {
+                            ?>
+                            <div class="meldung2">
+                            <?php
                             die("Es sind nur png, jpg, jpeg und gif-Dateien erlaubt.");
+                            ?>
+                            </div>
+                            <?php
                         } else {
                             $bildname = "profilbild_" . date("YmdHis") . $endung;
 
@@ -179,7 +141,13 @@ include_once "header.php";
                     //Überprüfung der Dateigröße, nicht größer als 500 kB
                     $max_size = 500 * 1024;
                     if ($_FILES['upfile']['size'] > $max_size) {
+                        ?>
+                    <div class="meldung2">
+                        <?php
                         die("Bitte keine Dateien größer 500kb hochladen.");
+                        ?>
+                    </div>
+                    <?php
                     }
 
                     //Überprüfung dass das Bild keine Fehler enthält
@@ -188,7 +156,13 @@ include_once "header.php";
                             $erlaubte_typen = array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF);
                             $geschuetzte_typen = exif_imagetype($_FILES['upfile']['tmp_name']);
                             if (!in_array($geschuetzte_typen, $erlaubte_typen)) {
+                                ?>
+                    <div class="meldung2">
+                        <?php
                                 die("Nur der Upload von Bilddateien ist gestattet");
+                                ?>
+                    </div>
+                    <?php
                             }
                         }
                     }
@@ -267,11 +241,11 @@ include_once "header.php";
                         $nachname = $_POST['nachname'];
                         $studiengang = $_POST['studiengang'];
                         $semester = $_POST['semester'];
-                        if (empty($_POST["vorname"]) && empty($_POST["nachname"]) && empty($_POST["studiengang"]) && empty($_POST["semester"])) {
+                        if (empty($_POST["vorname"]) || empty($_POST["nachname"]) || empty($_POST["studiengang"]) || empty($_POST["semester"])) {
                             ?>
                             <br>
-                            <div>
-                                <strong> Achtung! </strong> Fülle alle Felder aus!
+                            <div id="meldung3">
+                                 Achtung! Fülle alle Felder aus!
                             </div>
                             <?php
                         } else {
