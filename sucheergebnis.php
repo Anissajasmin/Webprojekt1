@@ -33,8 +33,7 @@
             <div class="row">
                 <div class="col-sm-3">
                     <div id="recommendation">
-                        <h2 class="ueberschriftenmain"> Recommendations
-                        </h2>
+                        <h2 class="ueberschriftenmain"> Deine Vorschläge </h2>
                         <br>
                         <br>
                         <?php include_once"recommendation.php" ?>
@@ -83,7 +82,7 @@
 
                 <div class="col-sm-3">
                     <div id="profile">
-                        <h2 class="ueberschriftenmain"> Profile
+                        <h2 class="ueberschriftenmain"> Profil
                         </h2>
                         <div class="name">
                             Benutzername:

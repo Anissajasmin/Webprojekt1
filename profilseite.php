@@ -24,8 +24,7 @@ include_once "header.php";
         <div class="row">
             <div class="col-sm-3">
                 <div id="recommendationsprofilseite">
-                    <h2 class="ueberschriftenmain"> Recommendations
-                    </h2>
+                    <h2 class="ueberschriftenmain"> Deine Vorschläge </h2>
                     <br>
                     <br>
                     <?php include_once"recommendation.php" ?>
