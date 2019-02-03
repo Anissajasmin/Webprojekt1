@@ -161,7 +161,7 @@
                 ------------------------
  
                 Bitte klicke auf den Link, um deinen Account bei uns zu aktivieren:
-                https://mars.iuk.hdm-stuttgart.de/~nk093/Webprojekt1/aktivierung.php?mail='.$mail.'&hash='.$hash.'
+                https://mars.iuk.hdm-stuttgart.de/~nd045/Webprojekt2/aktivierung.php?mail='.$mail.'&hash='.$hash.'
  
                 '; // Die Nachricht der Email
             $headers = 'From:deinteam@touch.de' . "\r\n"; // Von wem wirds verschickt?
